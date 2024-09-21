@@ -1,0 +1,290 @@
+\documentclass[leqno]{amsart}
+\usepackage{amssymb}
+\usepackage{amsmath} 
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{mathrsfs}
+\usepackage{color}
+\usepackage{mathtools,caption,bbm,euscript}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{tikz-cd}
+\usepackage[utf8]{inputenc}
+\usepackage[OT2,T1]{fontenc}
+\hypersetup{
+ colorlinks=true,
+ linkcolor=DarkOrchid,
+ filecolor=blue,
+ citecolor=olive,
+ urlcolor=orange,
+ pdftitle={Paskunas' theory},
+ %pdfpagemode=FullScreen,
+ }
+\usepackage{booktabs}
+
+%[label=(\alph*)]
+%[label=(\Alph*)]
+%[label=(\roman*)]
+%[label={(\bfseries R\arabic*)}]
+
+
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2in}
+\calclayout
+
+
+\newcommand{\smat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix} \right)}
+\newcommand{\mat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix} \right)}
+\newcommand{\dBr}[1]{\llbracket{#1}\rrbracket}
+\newcommand{\leg}[2]{\left(\frac{#1}{#2}\right)}
+
+% double bracket
+\makeatletter
+\newsavebox{\@brx}
+\newcommand{\llangle}[1][]{\savebox{\@brx}{\(\m@th{#1\langle}\)}%
+  \mathopen{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+\newcommand{\rrangle}[1][]{\savebox{\@brx}{\(\m@th{#1\rangle}\)}%
+  \mathclose{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+  \newcommand{\llbracket}[1][]{\savebox{\@brx}{\(\m@th{#1[}\)}%
+  \mathopen{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+\newcommand{\rrbracket}[1][]{\savebox{\@brx}{\(\m@th{#1]}\)}%
+  \mathclose{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
+\makeatother
+
+
+\newcommand{\Gp}{\mathcal{G}_{\Qp}} %Galois group over \Qp
+
+
+\newcommand{\phk}{\mathcal{H}_{\wt{k}}} %Hecke algebra
+\newcommand{\ordp}{e}
+
+
+\newcommand{\vk}{v_{-\wt{k}}} % lowest weight vector
+\newcommand{\lk}{\mathnormal{l}_{\wt{k}}} % projection to lowest weight
+\newcommand{\blk}{\mathnormal{l}_{\bwt{k}}} % projection to lowest weight
+\newcommand{\Lk}{L_{\wt{k}}} 
+\newcommand{\pf}{\hat{f}} % algebraic modular form
+\newcommand{\pfk}{\hat{f}_{\wt{k}}}
+\newcommand{\euF}{\EuScript{F}} % Hida family
+\newcommand{\B}{\mathbf{B}} % pairing of algebraic modular form
+
+
+\newcommand{\ww}{\boldsymbol{\omega}}
+\DeclareMathOperator{\an}{an}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\cts}{cts}
+\DeclareMathOperator{\FJ}{FJ}
+
+
+%%% Linear algebraic groups
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\Sp}{Sp}
+\DeclareMathOperator{\Mp}{Mp}
+\DeclareMathOperator{\GSp}{GSp}
+\DeclareMathOperator{\UU}{U}
+\DeclareMathOperator{\GUU}{GU}
+\DeclareMathOperator{\gl}{\mathfrak{gl}}
+\DeclareMathOperator{\mtr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\Ad}{Ad}
+\DeclareMathOperator{\vol}{vol}
+
+\DeclareMathOperator{\val}{val}
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\Pol}{Pol_p}
+
+%%% Adelic rings
+\newcommand{\Q}{{\mathbf{Q}}}
+\newcommand{\Z}{{\mathbf{Z}}}
+\newcommand{\Qp}{\mathbf{Q}_p}
+\newcommand{\Zp}{\mathbf{Z}_p}
+\newcommand{\Ql}{\mathbf{Q}_\ell}
+\newcommand{\Zl}{\mathbf{Z}_\ell}
+\newcommand{\R}{\mathbf R}
+\newcommand{\C}{\mathbf C}
+\newcommand{\A}{\mathbf A}
+\newcommand{\hZ}{{\hat{\mathbf{Z}}}}
+\newcommand{\dd}{\mathfrak{d}} %different
+\newcommand{\DD}{\mathcal{D}}  %discriminant
+
+\newcommand{\arch}{\mathbf{a}}
+\newcommand{\fin}{\mathbf{h}}
+
+\newcommand{\F}{{\mathcal{F}}} %global 
+\newcommand{\OF}{{\mathcal{O}_{\F}}}
+\newcommand{\K}{{\mathcal{K}}} %global quadratic
+\newcommand{\OK}{\mathcal{O}_{\K}}
+\newcommand{\kk}{F} %local
+\newcommand{\E}{E} %local quadratic
+
+
+\DeclareMathOperator{\Sel}{Sel}
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\Nr}{\mathsf{N}}
+\DeclareMathOperator{\Tr}{Tr}
+\newcommand{\qch}{\epsilon} % quadratic character of K/F
+
+
+%%% Fonts
+\newcommand{\oeu}{\EuScript{O}}
+\newcommand{\eeu}{\EuScript{E}}
+\newcommand{\feu}{\EuScript{F}}
+\newcommand{\geu}{\EuScript{G}}
+\newcommand{\keu}{\EuScript{K}}
+
+\newcommand{\oo}{\mathcal O}
+\newcommand{\bs}{\mathcal S}
+\newcommand{\id}{\mathbf{1}}
+
+\newcommand{\1}{\mathbf{1}} 
+\newcommand{\bfe}{\mathbf e}
+\newcommand{\bff}{\mathbf f}
+
+\newcommand{\bX}{\mathbb{X}}
+\newcommand{\bY}{\mathbb{Y}}
+\newcommand{\bV}{\mathbb{V}}
+\newcommand{\bW}{\mathbb{W}}
+
+\newcommand{\fa}{\mathfrak a}
+\newcommand{\fg}{\mathfrak g}
+\newcommand{\fc}{\mathfrak c}
+\newcommand{\fs}{\mathfrak s}
+\newcommand{\fm}{\mathfrak m}
+\newcommand{\fn}{\mathfrak n}
+\newcommand{\fl}{\mathfrak l}
+\newcommand{\fp}{\mathfrak p}
+\newcommand{\bfp}{\overline{\mathfrak p}}
+\newcommand{\fq}{\mathfrak q}
+\newcommand{\bfq}{\overline{\mathfrak q}}
+
+\newcommand{\btheta}{\boldsymbol{\theta}}
+\newcommand{\bdelta}{\boldsymbol{\delta}}
+
+
+\newcommand{\fG}{\mathfrak{G}}
+\newcommand{\fX}{\mathfrak{X}}
+\newcommand{\euW}{\EuScript{W}}
+
+
+%%% Categorical
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Inj}{Inj}
+\DeclareMathOperator{\Isom}{Isom}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\corank}{corank}
+
+
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\rec}{rec}
+
+
+
+\newcommand{\bw}{{w^c}}
+\newcommand{\ee}{\mathbf e}
+
+
+\newtheorem*{theorem*}{Theorem}
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+
+
+\theoremstyle{definition}
+\newtheorem{definition}[thm]{Definition}
+\newtheorem{defn}[thm]{Definition}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem*{Remark*}{Remark}
+\newtheorem{ack}{Acknowledgement}
+
+\newcommand{\red}[1]{\textcolor{Red}{#1}}
+
+
+
+\begin{document}
+\title{Paskunas' theory}
+\author[Y-S.~Lee]{Yu-Sheng Lee}
+\address{Department of Mathematics, University  of Michigan, Ann Arbor, MI 48109, USA}
+\email{yushglee@umich.edu}
+\date{\today}
+
+\maketitle
+\setcounter{tocdepth}{1}
+\tableofcontents
+
+
+
+
+\section{Paskunas theory}
+A
+
+\subsection{generically reducible local deformation}
+
+We recall below the results in \cite{pask} onward
+on the structure of the universal pseudo-deformation ring 
+of $\chi\colon\Gp\to k$,
+where  $\chi=\chi_1+\chi_2$
+and  $\chi_1\chi_2^{-}\neq \id,\omega^\pm$.
+
+
+We recall the results in \cite{pask}
+which gives a descripton of the endomorphism algebra in the generic case.
+In this case, we have
+$\dim_k\Ext_{\mathcal{G}_{\Q_p}}^1(\chi_1,\chi_2)=\dim_k\Ext_{\mathcal{G}_{\Q_p}}^1(\chi_2,\chi_1)=1$
+and the universal deformation rings $R_{ij}$ and $R$ are isomorphic to each other 
+and formally smooth over $\ir$ of relative dimension $3$.
+Since the reducible quotient $R^\red$ is the completed tensor product
+of the universal deformations of the characters $\chi_i$, with the fixed determinant,
+$R^\red$ is formally smooth of dimension $2$
+and the reducibility ideal of $R$ is generated by a regular element.
+
+More explicitly, after fixing a suitable basis, we can realize the universal deformation 
+$\tilde{\rho}_{12}$ by the the matrix representation
+\begin{equation*}
+    \tilde{\rho}_{ij}(\sigma)=\mat{a(\sigma) & b(\sigma)\\ c(\sigma) & d(\sigma)}
+\end{equation*}
+on $\gl_2(R_{12})$ with the following properties.
+\begin{enumerate}[label=(\roman*)]
+    \item $\tr\tilde{\rho}_{12}(\sigma)=a(\sigma)+b(\sigma)\in R_{12}$ induces an isomorphism $R\cong R_{12}$,
+    \item the $c(\sigma)$'s generate the reducibility ideal of $R$ through the above isomorphism,
+    \item let $x\in R_{12}$ be a generator of (the image of) the reducibility ideal, 
+    the representation
+    \begin{equation*}
+        \tilde{\rho}_{12}^x(\sigma)\coloneqq \mat{x&\\&1}\tilde{\rho}_{12}(\sigma)\mat{x&\\&1}^{-1}\in \gl_2(R_{12})
+    \end{equation*}
+    is a deformation of $\rho_{21}$ to $R_{12}$ and induces an isomorphism $R_{12}\cong R_{21}$,
+    \item the reductions of $a(\sigma)$ and $d(\sigma)$ in $R^\red$ are
+    the universal deformations of the characters $\chi_1$ and $\chi_2$ respectively.
+    \item we have $\End(\tilde{\rho}_{12})=R_{12}=\End(\tilde{\rho}^x_{12})$,
+    \item $\Hom(\tilde{\rho}_{12},\tilde{\rho}_{12}^x)$
+    and $\Hom(\tilde{\rho}_{12}^x,\tilde{\rho}_{12})$
+    are free of rank one over $R$ generated by 
+    $\Phi_{12}=\smat{x&\\&1}$ and $\Phi_{21}=\smat{1&\\&x}$ respectively.
+\end{enumerate}
+From now on we identify $R=R_{12}=R_{21}$ and $\tilde{\rho}_{21}=\tilde{\rho}_{12}^x$. Therefore
+\begin{equation}\label{center}
+        \En_\B=\End(\Pn_\B)\cong \End(\tilde{\rho}_{12}\oplus \tilde{\rho}_{21})\cong 
+        \mat{R & R\Phi_{12}\\ R\Phi_{21} & R}
+\end{equation}
+is free of rank $4$ over $R$ with the center isomorphic to $R$ and $\Phi_{ji}\circ \Phi_{ij}=x\in R\cong \End(\tilde{\rho}_{ij})$.
+Note that if we denote by $\tilde{\chi}_i$ the universal deformations of the characters to $R^\red$
+and let $\tilde{\rho}_{ij}^\red$ be the reduction of $\tilde{\rho}_{ij}$ in $R^\red$, then
+\begin{equation*}
+    \tilde{\rho}_{12}^\red=\mat{\tilde{\chi}_1 & * \\ & \tilde{\chi}_2},\quad
+    \tilde{\rho}_{21}^\red=\mat{\tilde{\chi}_1 &  \\ * & \tilde{\chi}_2}.
+\end{equation*}
+
+
+
+
+
+
+\bibliographystyle{amsalpha}
+\bibliography{biblio}
+\end{document}
