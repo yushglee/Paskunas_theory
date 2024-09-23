@@ -31,6 +31,13 @@
 \addtolength{\textwidth}{-2in}
 \calclayout
 
+\tikzset{
+  symbol/.style={
+    draw=none,
+    every to/.append style={
+      edge node={node [sloped, allow upside down, auto=false]{$#1$}}}
+  }
+}
 
 \newcommand{\smat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix} \right)}
 \newcommand{\mat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix} \right)}
@@ -53,9 +60,12 @@
 
 \newcommand{\Gp}{\mathcal{G}_{\Qp}} %Galois group over \Qp
 \newcommand{\laMod}{\textnormal{Mod}^{\textnormal{ladm}}}
+\newcommand{\aMod}{\textnormal{Mod}^{\textnormal{adm}}}
 \newcommand{\lfMod}{\textnormal{Mod}^{\textnormal{lfin}}}
+\newcommand{\Rep}{\textnormal{Rep}}
 \newcommand{\Ord}{\textnormal{Ord}}
 \newcommand{\V}{\check{\mathbf{V}}} %Colmez
+\newcommand{\Fr}{\textnormal{Fr}}
 
 
 \newcommand{\phk}{\mathcal{H}_{\wt{k}}} %Hecke algebra
@@ -69,24 +79,17 @@
 \newcommand{\pf}{\hat{f}} % algebraic modular form
 \newcommand{\pfk}{\hat{f}_{\wt{k}}}
 \newcommand{\euF}{\EuScript{F}} % Hida family
-\newcommand{\B}{\mathbf{B}} % pairing of algebraic modular form
 
 
 \newcommand{\ww}{\boldsymbol{\omega}}
 \DeclareMathOperator{\an}{an}
 \DeclareMathOperator{\ord}{ord}
 \DeclareMathOperator{\cts}{cts}
-\DeclareMathOperator{\FJ}{FJ}
 
 
 %%% Linear algebraic groups
 \DeclareMathOperator{\GL}{GL}
 \DeclareMathOperator{\SL}{SL}
-\DeclareMathOperator{\Sp}{Sp}
-\DeclareMathOperator{\Mp}{Mp}
-\DeclareMathOperator{\GSp}{GSp}
-\DeclareMathOperator{\UU}{U}
-\DeclareMathOperator{\GUU}{GU}
 \DeclareMathOperator{\gl}{\mathfrak{gl}}
 \DeclareMathOperator{\mtr}{tr}
 \DeclareMathOperator{\diag}{diag}
@@ -153,6 +156,7 @@
 \newcommand{\fg}{\mathfrak g}
 \newcommand{\fc}{\mathfrak c}
 \newcommand{\fC}{\mathfrak C}
+\newcommand{\B}{\mathfrak B}
 \newcommand{\fs}{\mathfrak s}
 \newcommand{\fm}{\mathfrak m}
 \newcommand{\fn}{\mathfrak n}
@@ -179,6 +183,7 @@
 \DeclareMathOperator{\Isom}{Isom}
 \DeclareMathOperator{\Aut}{Aut}
 \DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\cInd}{c-Ind}
 \DeclareMathOperator{\coker}{coker}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\corank}{corank}
@@ -189,7 +194,6 @@
 
 
 
-\newcommand{\bw}{{w^c}}
 \newcommand{\ee}{\mathbf e}
 
 
@@ -226,7 +230,13 @@
 
 
 
+
 \section{Paskunas theory}
+
+Let $L$ be a finite extension of  $\Qp$
+with the ring of integers  $\oo$
+and uniformizer  $\varpi$.
+Let  $k$ be the residue field.
 
 \subsection{generically reducible deformation}
 
@@ -300,48 +310,134 @@ by \cite[Prop B.26]{pask}.
 
 \subsection{Ordinary parts}
 
-Let $\chi_1,\chi_2\colon \Qp^\times\to k^\times$
-be smooth characters satisfying the generic assumption
+
+In \cite{eme},
+Emerton has defined a functor of ordinary parts
+$\Ord_P\colon \laMod_{G,\zeta}(A)\to \laMod_{T,\zeta}(A)$
+where $A$ is local complete Noetherian  $\oo$-algebra
+with a finite residue field,
+which satisfies that
+Would you please get in touch with them to talk about how the course is structured?
+
+$\Ord_P(\Ind_{\bar{P}}^GU)\cong U$
+and that passage to ordinary parts
+induces an isomorphism
+\begin{equation}\label{eq:adj}
+	\Hom_{A[G]}(\Ind_{\bar{P}}^GU,V)\cong
+	\Hom_{A[T]}(U,\Ord_PV)
+\end{equation}
+by \cite[Thm 4.4.6]{eme}.
+
+By abuse of notation,
+let $\chi_1,\chi_2\colon \Qp^\times\to k^\times$
+be the smooth characters obtained through
+the geometrically normalized reciprocity,
+sending a geometric Frobenius $\Fr$ to $p\in \Qp^\times$.
+The characters satisfy the generic assumption
 $\chi_1\chi_2^{-1}\neq \id,\omega^{\pm1}$.
 Let $\chi\colon T\to k^\times$
 be the character  $\chi=\chi_1\otimes\chi_2\omega^{-1}$
 and  $\chi^s\alpha=\chi_2\otimes \chi_1\omega^{-1}$, and
 \[
-	\pi_1\coloneqq \Ind_{P}^G\chi\cong\Ind_{P}^G\chi_1\otimes\chi_2\omega^{-1}\text{ and }
-	\pi_2\coloneqq \Ind_{P}^G\chi^s\alpha\cong \Ind_{P}^G\chi_2\otimes\chi_1\omega^{-1}
+\pi_1\coloneqq \Ind_{P}^G\chi\cong
+\Ind_{P}^G\chi_1\otimes\chi_2\omega^{-1}\quad
+\pi_2\coloneqq \Ind_{P}^G\chi^s\alpha\cong 
+\Ind_{P}^G\chi_2\otimes\chi_1\omega^{-1} \in \laMod_{G,\zeta}(\oo)
 \]
-be the induced irreducible representations.
+be the induced irreducible representations
+with central characters $\zeta=\chi_1\chi_2\varepsilon^{-1}$.
+These are irreducible by \cite[Thm 30]{barthel}.
+And by \cite[Thm 33]{barthel}, there exists
+a smooth irreducible $KZ$-representation  $\sigma$
+and an exact sequence
+\begin{equation}
+	0\to \cInd_{KZ}^B\sigma\to
+	\cInd_{KZ}^B\sigma\to \pi_i\to 0
+\end{equation}
+where the injectiveness follows from \cite[Thm 19]{barthel}.
+\cite{barthel}
+
 There exists the unique non-split extension
 \[
-	0\to \pi_1\to \kappa\to \pi_2\to 0
+	0\to \pi_1\to \kappa_{21}\to \pi_2\to 0
 \]
 
-Denote by $\tilde{P}_i$
-the projective envelope of $\pi_i^\vee$
+
+By \cite[Prop 7.1]{pask},
+let $\iota\colon \pi_1\hookrightarrow \tilde{J}_1$
+be the injective envelope of $\pi_1$
+in $\laMod_{G,\zeta}(\oo)$,
+then $\Ord_P(\iota)\colon \Ord_P(\pi_1)\to \Ord_P(\tilde{J}_1)$
+is isomorphic to the injective envelope $\tilde{J}_{\chi^s}$ 
+of $\chi^s=\Ord_P(\pi_1)$
+in $\laMod_{T,\zeta}(\oo)$.
+Furthermore, 
+fix an isomorphism $\tilde{J}_{\chi^s}\to \Ord_P(\tilde{J}_1)$,
+the morphism in $\Hom_{G}(\Ind_{\bar{P}}^G(\tilde{J}_{\chi^s}), \tilde{P}_1)$
+induced by the adjunction formula \eqref{eq:adj}
+is injective.
+A similar result also holds for
+the injective envelope $\pi_2\to\tilde{J}_2$ of $\pi_2$
+in $\laMod_{G,\zeta}(\oo)$
+and the injective envelope $\tilde{J}_{(\chi^s\alpha)^s}$ of $(\chi^s\alpha)^s$
+in $\laMod_{T,\zeta}(\oo)$.
+
+Passing to the Pontryagin dual,
+let $\tilde{P}_i=\tilde{J}_i^\vee$ denote
+the projective envelopes of $\pi_i^\vee$
 in  $\fC_{G,\zeta}(\oo)$;
-any let $\tilde{M}_1, \tilde{M}_2$
-be the Pontryagin dual of 
-$\Ind_P^G\tilde{J}_\chi$ and $\Ind_P^G\tilde{J}_{\chi^s\alpha}$,
+and $\tilde{M}_1, \tilde{M}_2$ denote
+the Pontryagin duals of 
+$\Ind_P^G\tilde{J}_\chi\cong\Ind_{\bar{P}}^G \tilde{J}_{\chi^s}$ and 
+$\Ind_P^G\tilde{J}_{\chi^s\alpha}\cong
+\Ind_{\bar{}}^G\tilde{J}_{(\chi^s\alpha)^s}$,
 where $ \tilde{J}_\chi$ and $\tilde{J}_{\chi^s\alpha}$
 are respectively the injective envelopes
-of $\chi$ and  $\chi^s\alpha$ in  $\lfMod_{T,zeta}(\oo)$.
-By \cite[Cor 7.7]{pask} there exists exact sequences 
-\[
-	0\to \tilde{P}_{2}\xrightarrow{\Phi_{12}} \tilde{P}_{1}\to \tilde{M}_1\to 0 \text{ and }
-	0\to \tilde{P}_{1}\xrightarrow{\Phi_{21}} \tilde{P}_{2}\to \tilde{M}_2\to 0
-\]
-Furthermore, 
-by \cite[Cor 7.2]{pask}
-the composition of the projection $\tilde{P}_i\to \tilde{M}_i$
-with any endomorphism of  $\tilde{P}_i$
-factors through $\tilde{M}_i$, inducing a ring homomorphism
+of $\chi$ and  $\chi^s\alpha$ in  $\lfMod_{T,\zeta}(\oo)$.
+The surjections
+$p_i\colon \tilde{P}_i\twoheadrightarrow \tilde{M}_i$
+obtained by previous discussions
+extend to the exact sequences
+\begin{equation}\label{eq:exact}
+	0\to \tilde{P}_{2}\xrightarrow{\Phi_{12}} 
+	\tilde{P}_{1}\xrightarrow{p_1} \tilde{M}_1\to 0 \text{ and }
+	0\to \tilde{P}_{1}\xrightarrow{\Phi_{21}} 
+	\tilde{P}_{2}\xrightarrow{p_2} \tilde{M}_2\to 0
+\end{equation}
+by \cite[Cor 7.7]{pask}.
+
+Observe that $\Ord_P(\tilde{M}_i^\vee)=\tilde{J}_{\chi^s}=\tilde{J}_{\chi_1}$
+through identify $\laMod_{T,\zeta}(\oo)$
+with $\laMod_{\Qp^\times}(\oo)$ through 
+identifying $\Qp^\times\cong \{\smat{1&\\&*}\}\subset T$.
+
+
+Moreover, it follows from \cite[Cor 7.2]{pask} that
+compositions of the surjections $\tilde{P}_i\to \tilde{M}_i$
+induce surjective ring homomorphisms
 \[
 	\End_{\fC_{G,\zeta}(\oo)}(\tilde{P}_i)\twoheadrightarrow
-	\End_{\fC_{G,\zeta}(\oo)}(\tilde{M}_i)\cong \oo\llbracket x,y\rrbracket
+	\End_{\fC_{G,\zeta}(\oo)}(\tilde{M}_i)\cong
+	\End_{\fC_{T,\zeta}(\oo)}(\Ord_P(\tilde{M}_i)^\vee)\cong
+	\oo\llbracket x,y\rrbracket
 \]
 
 
-
+Let $\Rep_{\Gp}(\oo)$
+be the category of continuous $\Gp$-representations
+on compact $\oo$-modules, 
+and $\V\colon \C_{G,\zeta}(\oo)\to \Rep_{\Gp}(\oo)$
+be the exact covariant functor defined in
+\cite[\S 5.7]{pask}.
+Note that 
+$\V(\pi_i^\vee)=\chi_i$
+and $\V(\kappa^\vee)=\rho_{21}$ is a non-split exact sequence
+ \[
+	0\to\chi_2\to \rho_{21}\to \chi_1\to 0.
+\]
+And $\V(\tilde{P}_1)$
+is the universal deformation of $\rho_{21}$ with determinant  $\zeta\varepsilon$
+by \cite[Cor 8.7]{pask}.
 
 \begin{lem}
 	Let $\fa=\ker(\tilde{E}_1\to \tilde{E})$,
@@ -352,45 +448,201 @@ factors through $\tilde{M}_i$, inducing a ring homomorphism
 	\begin{tikzcd}
 		0 &
 		\tilde{M}_2 \arrow[l] \arrow[d] &
-		\tilde{P}_2 \arrow[l] \arrow[d,"\Phi_{12}"] &
+		\tilde{P}_2 \arrow[l,"p_2"] \arrow[d,"\Phi_{12}"] &
 		\tilde{P}_1 \arrow[l,"\Phi_{21}"] \arrow[d,equal] & 0 \arrow[l]\\
 		0 &
-		\tilde{P}_1/\fa\tilde{P}_1 \arrow[l] \arrow[d] &
-		\tilde{P}_1 \arrow[l] \arrow[d] &
+		\tilde{P}_1/\tau\tilde{P}_1 \arrow[l] \arrow[d] &
+		\tilde{P}_1 \arrow[l] \arrow[d,"p_1"] &
 		\tilde{P}_1 \arrow[l] & 0 \arrow[l]\\
 				      & \tilde{M}_1 
 				      & \tilde{M}_1 \arrow[l,equal] & & 
 	\end{tikzcd}
 \]
 \end{lem}
+\begin{proof}
+Since $\Hom_{\C_{G,\zeta}(\oo)}(\tilde{P}_2,\tilde{M}_1)\cong
+\Hom_{\laMod_{T,\zeta}(\oo)}(\tilde{J}_{\chi^s},\tilde{J}_{(\chi^s\alpha)^s})=0$
+by the adjunction formula \eqref{eq:adj},
+(see the discussion in the begining of \cite[\S 7.2]{pask})
+taking $\Hom(\tilde{P}_2,\cdot)$ to the first exact sequence in
+\eqref{eq:exact} gives
+$\Phi_{12}\colon \End_{\C_{G,\zeta}(\oo)}(\tilde{P}_2)\cong 
+\Hom_{\C_{G,\zeta}(\oo)}(\tilde{P}_2,\tilde{P}_1)$.
 
-Emerton has defined a functor
-$\Ord_P\colon \laMod_{G,\zeta}(A)\to \laMod_{T,\zeta}(A)$
-where $A$ is local complete Noetherian  $\oo$-algebra
-with a finite residue field satisfying 
-\[
-	\Hom_{A[G]}(\Ind_{\bar{P}}^GU,V)\cong \Hom_{A[T]}(U, \Ord_P(V))
+But by \cite[Lem 8.10]{pask}
+and the results on the structures
+of deformation rings recalled in the previous subsection,
+$\V$ induces an isomorphism
+ \[
+	\V(\Phi_{12})\colon 
+	R\cong R_{12}\cong \End_{\Gp}(\tilde{\rho}_{12})\cong
+	\Hom_{\Gp}(\tilde{\rho}_{12},\tilde{\rho}_{21})\cong R\Phi_{12}.
 \]
-
-Let $\chi\colon T\to k^\times$ be a smooth character
-such that  $\chi|_Z=\zeta$.
-Let  $\iota\colon \Ind_{\bar{P}}^G\chi\hookrightarrow J$ 
-be an injective envelope of $\Ind_{\bar{P}}^G\chi$
-in $\laMod_{G,\zeta}(A)$, 
-by \cite[Prop 7.1]{pask} the following hold
-\begin{enumerate}[label=(\alph*)]
-	\item $\Ord_P(\Ind_{\bar{P}}^G\chi)\hookrightarrow \Ord_P(J)$
-		is an injective envelope of $\chi$ in  $\laMod_{T,\zeta}(A)$;
-	\item the adjoint map $\Ind_{\bar{P}}^G(\Ord_P(J))\to J$ is injective;
-	\item there exists a surjective ring homomorphism
-		\[
-			\End_{A[G]}(J)\twoheadrightarrow \End_{A[T]}(\Ord_P(J))
-		\]
-\end{enumerate}
+We thus conclude that 
+$\Phi_{12}\circ \Phi_{21}$
+is induced by a generator of the 
+reducibility ideal $\tau\subset R\cong \End_{\C_{G,\zeta}(\oo)}(\tilde{P}_1)$.
 
 
+Since $\Ord_P(\Phi_{ij})\in \Hom_{\C_{T,\zeta}}()\cong \Hom(\tilde{J},\tilde{J})=0$,
+we see $\tau\subset \ker(\tilde{E}\to \oo\llbracket x,y\rrbracket)$,
+thus equality holds.
+\end{proof}
+
+\subsection{injective elements}
+
+We consider in this subsection 
+an object $N\subset \laMod_{G,\zeta}(\oo)$ 
+satisfying the assumption
+\begin{equation}\label{cond:adm_inj}\tag{\text{adm-inj}}
+	N\in \aMod_{G,\zeta}(\oo) 
+	\text{ and is injective as a $\GL_2(\Zp)$-representation}.
+\end{equation}
+
+\begin{lem}
+    When $N$ is in the abstract setup,
+    let $n_i=\dim_k\Ext^n(\pi_i,N)$
+    and $I_n=\tilde{J}_1^{n_1}\oplus\tilde{J}_2^{n_2}$ for $n\geq 0$,
+    we have an injective resolution
+    \begin{equation*}
+        0\to N\to I_0 \to\cdots \to I_n \to\cdots.
+    \end{equation*}
+\end{lem}
+\begin{proof}
+    Since $N$ is admissible, the socle $\textnormal{soc}(N)$ is a finite direct sum of $\pi_1$ and $\pi_2$.
+    Precisely we should have
+    $\textnormal{soc}(N)=\pi_1^{0_1}\oplus \pi_2^{0_2}$ and $I_0$
+    is the injective envelope of which. 
+    Then $\textnormal{soc}(N)\hookrightarrow I_0$ factors as
+    \begin{equation*}
+    \begin{tikzcd}
+       & \oplus \tilde{J}_i \\
+       \text{soc}(N) \arrow[r,hookrightarrow] \arrow[ur,hookrightarrow] & M\arrow[u,dashed,"\phi"].
+    \end{tikzcd}
+\end{equation*}
+Since $\text{soc}(N)\hookrightarrow N$ is essential, the map $\phi$ is injective.
+We wish to take 
+$0\to N\to J_0\to J_0/N\to 0$
+and apply the same construction to $J_0/N$.
+But apply $\Hom(\pi_i,\cdot)$ to the exact sequence  and use $\Hom(\pi_i,\tilde{J}_i)\cong \End(\pi_i)$, we see that
+\begin{equation*}
+    \begin{tikzcd}[column sep=0.8em, row sep=2ex]
+        &&
+        \Hom(\pi_i,\text{soc}(N)) \arrow[d,symbol=\subset] \arrow[drr,"\sim"]
+        &&&&&&&\\
+        0\arrow[rr] && \Hom(\pi_i,N) \arrow[rr] 
+        && \Hom(\pi_i,J_0) \arrow[rr]
+        && \Hom(\pi_i,J_0/N) \arrow[rr] 
+        &&  \Ext^1(\pi_i,N) \arrow[rr] && 0
+    \end{tikzcd}
+\end{equation*}
+and $\Hom(\pi_i,J_0/N)\cong \Ext^1(\pi_i,N)$.
+We thus obtain $J_0/N\hookrightarrow I_1$
+and inductively the rest of the injective resolution.
+\end{proof}
 
 
+\begin{lem}
+When $N$ is in the abstract setup and $M=N^\vee$,
+there exists a projective resolution
+\begin{equation*}
+0\to \tilde{P}_\B^r\to \tilde{P}_\B^r\to M\to 0
+\end{equation*}
+\end{lem}
+\begin{proof}
+By the previous lemma it suffices to prove that 
+$0_i=1_i$ and $n_i=0$ for $n\geq 2$
+then take $r=\max\{0_1,0_2\}$.
+Recall that an irreducible $\pi_i$ can be expressed by
+Taking the Ext functor to the exact sequence gives
+\begin{equation*}
+    \begin{tikzcd}[row sep=2ex]
+        \Ext^{i-1}_{G}(\pi, N)\arrow[r] &
+        \Ext^{i}_{G}(\text{c-ind}_{KZ}^G\sigma, N)\arrow[r] \arrow[d,symbol={=}] &
+        \Ext^{i}_{G}(\text{c-ind}_{KZ}^G\sigma, N)\arrow[r] \arrow[d,symbol={=}] &
+        \Ext^{i}_{G}(\pi, N)\\ 
+        & \Ext^i_K(\sigma ,N) &
+         \Ext^i_K(\sigma ,N) &
+    \end{tikzcd}
+\end{equation*}
+But since $N$ is injective as a $K=\GL_2(\Zp)$-representation, we have
+\begin{equation*}
+    0 \to \Hom_G(\pi_i,N)\to \Hom_K(\sigma_i,N)\to \Hom_K(\sigma_i,N)\to \Ext^1_G(\pi_i,N)\to 0
+\end{equation*}
+It follows that $\dim_k\Hom_G(\pi_i,N)=\dim_k \Ext^1_G(\pi_i,N)$ and we have the desired result.
+\end{proof}
+
+We can write
+$A=\smat{A_{11} & A_{12}\Phi_{12}\\A_{21}\Phi_{21} & A_{22}}$ where $A_{ij}\in M_2(R)$.
+To shorten the notation, we define the right exact ordinary functor on $\fC_T(\oo)$ by
+$\Ord_PM=((\Ord_PM^\vee)^\vee)^s\in \fC_T(\oo)$, in particular $\Ord_P\tilde{P}_1\cong \tilde{P}_\chi$ and $\Ord_P\tilde{P}_2\cong \tilde{P}_{\chi^s\alpha}$. 
+Since $\Ord_P(\Phi_{ij})=0$ and $\Ord_P(\tilde{E}_{21})\cong \tilde{E}_\chi\cong R^{red}$ by  and similarly for $\Ord_P(\tilde{E}_{12})$,
+the image of the resolution under $\Ord_P$ is
+\begin{equation*}
+    (\tilde{P}_\chi\oplus\tilde{P}_{\chi^s\alpha})^{\oplus r} \xrightarrow{\overline{A}_{11}+\overline{A}_{22}}
+    (\tilde{P}_\chi\oplus\tilde{P}_{\chi^s\alpha})^{\oplus r} \to \Ord_PM\to 0
+\end{equation*}
+
+\begin{prop}    
+	The matrix $\overline{A}_{11}\in M_r(R^{red})$ is injective.
+    In particular apply $\Hom(\tilde{P}_\chi,\cdot)$ to the above image of $\Ord_P$ gives an exact sequence
+    \begin{equation}
+    0\to \End(\tilde{P}_\chi)^{\oplus r} \xrightarrow{\overline{A}_{11}}
+    \End(\tilde{P}_\chi)^{\oplus r} \to \Hom(\tilde{P}_\chi,\Ord_PM)\to 0.
+    \end{equation}
+\end{prop}
+\begin{proof}
+    Since $\Ord_P$ preserves admissibility, the augmented representation $\Ord_P M\in \fC_T(\oo)$
+    is finitely generated over $\oo\llbracket (1+p\Z_p)\rrbracket$, which is a formal power series ring of one variable.
+    Since both $\tilde{E}_\chi$ and $\tilde{E}_{\chi^s\alpha}$ are isomorphic to $R^{red}\cong \oo\llbracket X,Y\rrbracket$,
+    $\Hom(\tilde{P}_\chi,\Ord_PM)$ must be an $R^{red}$-torsion module.
+    If $\ker(\overline{A}_{11})\neq 0$, then $\Hom(\tilde{P}_\chi,\Ord_PM)\otimes(frac R^{red})a\neq 0$
+    gives a contradiction.
+\end{proof}
+
+\begin{prop}
+	When $N$ is in the abstract setup,
+    the representation $M=N^\vee\in \fC_G(\oo)$ has no $x$-torsion, where $x$ is a generator of the reducibility ideal of $R$.
+\end{prop}
+\begin{proof}
+    recall that by, $x=\varphi_{ij}\circ \varphi_{ji}$ injective on $\tilde{P}_i$. Apply the snake lemma to 
+    \begin{equation*}
+    \begin{tikzcd}
+        0 \arrow[r] & \tilde{P}_\B^{\oplus r} \arrow[d,"x",hookrightarrow] \arrow[r,"A"] & \tilde{P}_\B^{\oplus r} \arrow[d,"x",hookrightarrow] \arrow[r] & M \arrow[d,"x"] \arrow[r] & 0 \\ 
+        0 \arrow[r] & \tilde{P}_\B^{\oplus r} \arrow[r,"A"] & \tilde{P}_\B^{\oplus r}  \arrow[r] & M  \arrow[r] & 0 
+    \end{tikzcd}
+\end{equation*}
+Using the same argument as the previous proposition,
+$\overline{A}_{11}$ and $\overline{A}_{22}$ are injective and$\Phi_{ij}\circ \Phi_{ji}=x$, so $\overline{A}\in M_{2r}(R^{red})$ is also injective.
+If follows that $\overline{A}\colon (\tilde{P}_\B/(x))^{\oplus r}\hookrightarrow (\tilde{P}_\B/(x))^{\oplus r}$ 
+on the cokernel is an injection. Consequently we have $M[x]=0$.
+\end{proof}
+
+\begin{prop}
+    When $N\in  \laMod_{G,\zeta}(\oo)^\B$ is in the abstract setup , we have an $R^{red}$-modules isomorphism
+    \begin{equation*}
+        \Hom(\tilde{P}_1,M^{red})=\Hom(\tilde{P}_{\chi^s\alpha}, \Ord_PM)\oplus \Hom(\tilde{P}_\chi,\Ord_PM).
+    \end{equation*}
+\end{prop}
+\begin{proof}
+Write $M^{red}=M/(x)$ and similarly for $\tilde{P}_\B^{red}, \tilde{P}_i^{red}$, and $\Phi_{ij}^{red}\colon \tilde{P}_i^{red}\to \tilde{P}_j^{red}$ (recall that $R$ is the center of the category).
+We have $0\to (\tilde{P}_\B^{red})^{\oplus r}\xrightarrow{\overline{A}}(\tilde{P}_\B^{red})^{\oplus r}\to M^{red}\to 0$ from the proof above.
+Since $\Hom(\tilde{P}_1,(\tilde{P}_2^{red})^{\oplus r})\cong (R^{red} \Phi_{12}^{red})^{\oplus r}$ and $\Phi_{21}^{red}\circ \Phi_{12}^{red}=0$,
+$\overline{A}$ stabilizes the subspace $\Hom(\tilde{P}_1,(\tilde{P}_2^{red})^{\oplus r})\subset \Hom(\tilde{P}_1,(\tilde{P}_\B^{red})^{\oplus r})$.
+Consider then the diagram
+\begin{equation*}
+    \begin{tikzcd}[column sep=small]
+        0 \arrow[r] & (\Hom(\tilde{P}_1,\tilde{P}_2^{red})^{\oplus r} \arrow[d,"\overline{A}_{22}",hookrightarrow] \arrow[r] & (\Hom(\tilde{P}_1,\tilde{P}_\B^{red})^{\oplus r} \arrow[d,"\overline{A}",hookrightarrow] \arrow[r] & (\Hom(\tilde{P}_1,\tilde{P}_1^{red})^{\oplus r} \arrow[d,"\overline{A}_{11}",hookrightarrow] \arrow[r] & 0 \\ 
+        0 \arrow[r] &(R^{red}\Phi_{12}^{red})^{\oplus r} \arrow[d] \arrow[r] & (R^{red}\Phi_{12}^{red}\oplus R^{red})^{\oplus r} \arrow[d] \arrow[r] & (R^{red})^{\oplus r}\arrow[d] \arrow[r] & 0 \\ 
+        0 \arrow[r] & (R^{red} \Phi_{12})^{\oplus r}/\overline{A}_{22}  \arrow[r] & \Hom(\tilde{P}_1,M^{red}) \arrow[r] & (R^{red})^{\oplus r}/\overline{A}_{11}\arrow[r] & 0 
+    \end{tikzcd}
+\end{equation*}
+Apply  to the two columns on the sides,  we have an exact sequence of $R^{red}$-modules
+\begin{equation*}
+    0\to \Hom(\tilde{P}_{\chi^s\alpha}, \Ord_PM)\to \Hom(\tilde{P}_1,M^{red})\to \Hom(\tilde{P}_\chi,\Ord_PM)\to 0
+\end{equation*}
+which is split since the $R^{red}$-actions via $\tilde{P}_\chi$ and $\tilde{P}_{\chi^s\alpha}$ are distinct.
+\end{proof}
 
 \bibliographystyle{amsalpha}
 \bibliography{biblio}
