@@ -258,6 +258,7 @@ And let $\zeta\colon \Gp\to L^\times$
 be the Teichmuller lift of the character  $\chi_1\chi_2\omega^{-1}$.
 
 
+
 \subsection{generically reducible deformation}
 
 We recall from \cite[\S B.1]{pask}
@@ -764,7 +765,41 @@ to $\Hom_{\fC_T(\oo)}(\tilde{P}_{\chi_2^\vee}, (\Ord_PN)^\vee)$ and
 $\Hom_{\fC_T(\oo)}(\tilde{P}_{\chi_1^\vee}, (\Ord_PN)^\vee)$ respectively.
 \end{proof}  
 
+\section{completed cohomology}
+
+In this section, let $\F$ be a totally real number field.
+Let $\A=\A_\F$ be the ring of adeles.
+
+Let $A$ be a topological  $\Zp$-algebra,
+$U=\prod_vU_v$ be an open compact subgroup
+such that  $U_v\subset \GL_2(\oo_v)$ for all  $v\mid p$.
+Let $\psi\colon \A_f^\times/\F_+^\times\to A^\times$ 
+be a continuous character,
+and  $\tau\colon U_p\to \Aut(W_\tau)$
+be a continuous representation on a finite  $A$-module  $W_\tau$.
+Let $S_{\tau, \psi}(U, A)$ be the space of continuous functions
+\[
+f: D^{\times} \backslash(D \otimes_F \mathbb{A}_F^{\infty})^{\times} \rightarrow W_\tau
+\quad f(zgu)=\psi(z)\cdot \tau(u^{-1})(f(g)).
+\]
+For the space to be nonzero, 
+$\tau^{-1}=\psi|_{U\cap \A_f^\times}$.
+
+When $\tau$ is trivial and assume $\psi=1|_{U^p\cap \A_f^\times}$, define
+$S_\psi(U^p,A)=\varinjlim_{U_p}S_\psi(U^pU_p,A)$ and
+\begin{gather*}
+	M_\psi(U^p)=S_\psi(U_p,E/\oo)^{\vee}\in \fC(\oo) \text{completed homology}\\
+	S_\psi(U^p)=\Hom_{\oo}(E/\oo, S_\psi(U^p,E/\oo))=
+	\Hom_{\oo}^{cts}(M_\psi(U^p), \oo) \text{completed cohomology}
+\end{gather*}
+
+
+
+
+
+under Hecke correpondence.
 
 \bibliographystyle{amsalpha}
 \bibliography{biblio}
 \end{document}
+
