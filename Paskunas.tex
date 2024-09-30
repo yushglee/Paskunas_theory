@@ -60,9 +60,11 @@
 \newcommand{\Gp}{\mathcal{G}_{\Qp}} %Galois group over \Qp
 \newcommand{\laMod}{\textnormal{Mod}^{\textnormal{ladm}}}
 \newcommand{\aMod}{\textnormal{Mod}^{\textnormal{adm}}}
+\newcommand{\Ban}{\textnormal{Ban}^{\textnormal{adm.fl}}}
 \newcommand{\lfMod}{\textnormal{Mod}^{\textnormal{lfin}}}
 \newcommand{\Rep}{\textnormal{Rep}}
 \newcommand{\Ord}{\textnormal{Ord}}
+\newcommand{\Irr}{\textnormal{Irr}}
 \newcommand{\V}{\check{\mathbf{V}}} %Colmez
 \newcommand{\Fr}{\textnormal{Fr}} %geometric Frobenius
 \newcommand{\frob}{\textnormal{frob}} %arithmetic Frobenius
@@ -90,6 +92,7 @@
 \DeclareMathOperator{\diag}{diag}
 \DeclareMathOperator{\Ad}{Ad}
 \DeclareMathOperator{\vol}{vol}
+\DeclareMathOperator{\Sym}{Sym}
 
 \DeclareMathOperator{\val}{val}
 \DeclareMathOperator{\Lie}{Lie}
@@ -561,6 +564,53 @@ it generates the kernel
 since  $R$ is formally smooth of relative dimension  $3$.
 \end{proof}
 
+
+\subsection{Banach}
+
+Let $\fn$ be a maximal ideal of  $R[1/p]$
+with residue field  $L$ and 
+$T_\fn\colon \Gp\to L$ 
+be the corresponding pseudo-representation.
+Let  $\Irr(\fn)$
+be the set of irreducible objects in  $\Ban_{G,\zeta}(L)^\B_{\fn}$.
+
+
+By \cite[Cor 8.14]{pask}, 
+if $T_\fn$ is irreducible over the residue field, 
+then $\Irr(\fn)$ contains only on e irreducible object.
+
+By \cite[Cor 8.15]{pask}, 
+if $T_\fn=\psi_1+\psi_2$,
+where  $\psi_i\colon \Gp\to L^\times$
+are continuous homomorphisms, then  
+\[
+	\Irr(\fn)=\{(\Ind_P^G\psi_1\otimes\psi_2\varepsilon^{-1})_{cont},
+	(\Ind_P^G\psi_2\otimes\psi_1\varepsilon^{-1})_{cont}\}
+\]
+
+
+\subsection{unitary completion}
+
+Let $\pi$ be a smooth absolutely irreducible
+$G$-representation
+and  $W=\det^l\otimes\Sym^{k-1}L^2$. 
+
+By \cite[Thm 12.3]{pask}, 
+Let $\chi_1,\chi_2\colon \Qp^\times\to L^\times$
+be smooth characters, 
+if 
+\[
+	val(\chi_2(p))=-l, \val(\chi_1(p))=-l-k
+\]
+then the universal unitary completion of
+$(\Ind_P^G\chi_1\otimes\chi_2||^{-1})_{sm}\otimes W$ 
+is isomorphic to $\Ind_P^G\psi)_{cont}$, where
+\[
+	\psi(\smat{a&*\\&d})=\chi_2(a)a^l\chi_1(d)|d|^{-1}d^{k+l-1}.
+\]
+
+
+
 \subsection{injective objects}
 
 In this subsection 
@@ -797,7 +847,6 @@ $S_\psi(U^p,A)=\varinjlim_{U_p}S_\psi(U^pU_p,A)$ and
 
 
 
-under Hecke correpondence.
 
 \bibliographystyle{amsalpha}
 \bibliography{biblio}
