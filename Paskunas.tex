@@ -565,50 +565,6 @@ since  $R$ is formally smooth of relative dimension  $3$.
 \end{proof}
 
 
-\subsection{Banach}
-
-Let $\fn$ be a maximal ideal of  $R[1/p]$
-with residue field  $L$ and 
-$T_\fn\colon \Gp\to L$ 
-be the corresponding pseudo-representation.
-Let  $\Irr(\fn)$
-be the set of irreducible objects in  $\Ban_{G,\zeta}(L)^\B_{\fn}$.
-
-
-By \cite[Cor 8.14]{pask}, 
-if $T_\fn$ is irreducible over the residue field, 
-then $\Irr(\fn)$ contains only on e irreducible object.
-
-By \cite[Cor 8.15]{pask}, 
-if $T_\fn=\psi_1+\psi_2$,
-where  $\psi_i\colon \Gp\to L^\times$
-are continuous homomorphisms, then  
-\[
-	\Irr(\fn)=\{(\Ind_P^G\psi_1\otimes\psi_2\varepsilon^{-1})_{cont},
-	(\Ind_P^G\psi_2\otimes\psi_1\varepsilon^{-1})_{cont}\}
-\]
-
-
-\subsection{unitary completion}
-
-Let $\pi$ be a smooth absolutely irreducible
-$G$-representation
-and  $W=\det^l\otimes\Sym^{k-1}L^2$. 
-
-By \cite[Thm 12.3]{pask}, 
-Let $\chi_1,\chi_2\colon \Qp^\times\to L^\times$
-be smooth characters, 
-if 
-\[
-	val(\chi_2(p))=-l, \val(\chi_1(p))=-l-k
-\]
-then the universal unitary completion of
-$(\Ind_P^G\chi_1\otimes\chi_2||^{-1})_{sm}\otimes W$ 
-is isomorphic to $\Ind_P^G\psi)_{cont}$, where
-\[
-	\psi(\smat{a&*\\&d})=\chi_2(a)a^l\chi_1(d)|d|^{-1}d^{k+l-1}.
-\]
-
 
 
 \subsection{injective objects}
@@ -843,9 +799,98 @@ $S_\psi(U^p,A)=\varinjlim_{U_p}S_\psi(U^pU_p,A)$ and
 	\Hom_{\oo}^{cts}(M_\psi(U^p), \oo) \text{completed cohomology}
 \end{gather*}
 
+\subsection{Banach}
+
+Let $\fn$ be a maximal ideal of  $R[1/p]$
+with residue field  $L$ and 
+$T_\fn\colon \Gp\to L$ 
+be the corresponding pseudo-representation.
+Let  $\Irr(\fn)$
+be the set of irreducible objects in  $\Ban_{G,\zeta}(L)^\B_{\fn}$.
 
 
+By \cite[Cor 8.14]{pask}, 
+if $T_\fn$ is irreducible over the residue field, 
+then $\Irr(\fn)$ contains only on e irreducible object.
 
+By \cite[Cor 8.15]{pask}, 
+if $T_\fn=\psi_1+\psi_2$,
+where  $\psi_i\colon \Gp\to L^\times$
+are continuous homomorphisms, then  
+\[
+	\Irr(\fn)=\{(\Ind_P^G\psi_1\otimes\psi_2\varepsilon^{-1})_{cont},
+	(\Ind_P^G\psi_2\otimes\psi_1\varepsilon^{-1})_{cont}\}
+\]
+
+\subsection{unitary completion}
+
+Let $\pi$ be a smooth absolutely irreducible
+$G$-representation
+and  $W=\det^l\otimes\Sym^{k-1}L^2$. 
+
+By \cite[Thm 12.3]{pask}, 
+Let $\chi_1,\chi_2\colon \Qp^\times\to L^\times$
+be smooth characters, 
+if 
+\[
+	val(\chi_2(p))=-l, \val(\chi_1(p))=-l-k
+\]
+then the universal unitary completion of
+$(\Ind_P^G\chi_1\otimes\chi_2||^{-1})_{sm}\otimes W$ 
+is isomorphic to $\Ind_P^G\psi)_{cont}$, where
+\[
+	\psi(\smat{a&*\\&d})=\chi_2(a)a^l\chi_1(d)|d|^{-1}d^{k+l-1}.
+\]
+
+
+And by \cite[Thm. 1.3]{CDP},
+when $\V(\Pi)$ is crystalline with Hodge-Tate weights $-a,-a-k$
+and  $\Delta$ is the Weil-Deligne representation 
+associated to  $D_{pst}(\V(\Pi))$,
+then $\Pi$ is the universal unitary completion
+of  $\pi\otimes(\Sym^{k-1}\otimes \det^a)$
+where $\pi=LL(\Delta)$ is the
+Hecke correspondence sending  $\Delta=\psi_1+\psi_2$
+to the (un-normalized) induction
+ $\Ind_B^G(\psi_1\otimes\psi_2||^{-1})$.
+
+
+\subsection{computation}
+
+Let $\rho$ be the Galois representation
+associated to  $\pi$, that satisfies
+ \[
+	WD(\rho_v)=Rec(\pi_v||^{-1/2})
+\]
+and let $\B$ be the block associated to the reduction
+of  $\rho\otimes\varepsilon$.
+
+If $\rho_v=\psi_1+\psi_2$,
+where $\psi_i$ are respectively of weight
+$w$ and  $w+k-1$
+then 
+\[
+	WD(\rho)=\psi_1\varepsilon^w||^{-w}+
+	\psi_2\varepsilon^{w+k-1}||^{1-k-2}
+\]
+thus $pi_v\cong Ind( \psi_1\varepsilon^w||^{1-w}+
+\psi_2\varepsilon^{w+k-1}||^{1-k-2})_{sm}
+=Ind(\mu_1\otimes\mu_2||^{-1})_{sm}$,
+here we used the un-normalized induction, and
+\[
+	\mu_1=\psi_1\varepsilon^{w}||^{1-w},\quad
+	\mu_2=\psi_2\varepsilon^{w+k-1}||^{2-k-2}
+\]
+By the above lemma, with $-\ell=w+k-2$ and  $k=k-1$,
+use
+ \[
+	 (\Sym^{k-2}\otimes\det^w)^*\cong 
+	 \Sym^{(k-1)-1}\otimes\det^{2-k-w}
+\]
+we see that the unitary completion is 
+indeed 
+$\Ind(\psi_2\varepsilon\otimes\psi_1)_{cont}=
+\Ind((\psi_2\varepsilon)\otimes(\psi_1\varepsilon)\varepsilon^{-1})$.
 
 
 \bibliographystyle{amsalpha}
