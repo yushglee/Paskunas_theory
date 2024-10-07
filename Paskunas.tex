@@ -63,12 +63,17 @@
 \newcommand{\Ban}{\textnormal{Ban}^{\textnormal{adm.fl}}}
 \newcommand{\lfMod}{\textnormal{Mod}^{\textnormal{lfin}}}
 \newcommand{\Rep}{\textnormal{Rep}}
+\newcommand{\Rec}{\textnormal{Rec}}
 \newcommand{\Ord}{\textnormal{Ord}}
 \newcommand{\Irr}{\textnormal{Irr}}
 \newcommand{\V}{\check{\mathbf{V}}} %Colmez
 \newcommand{\Fr}{\textnormal{Fr}} %geometric Frobenius
 \newcommand{\frob}{\textnormal{frob}} %arithmetic Frobenius
+\newcommand{\WD}{\textnormal{WD}} 
 
+\newcommand{\dR}{\textnormal{dR}}
+\newcommand{\pst}{\textnormal{pst}}
+\newcommand{\cris}{\textnormal{cris}}
 
 \newcommand{\phk}{\mathcal{H}_{\wt{k}}} %Hecke algebra
 \newcommand{\ordp}{e}
@@ -78,8 +83,10 @@
 \newcommand{\ww}{\boldsymbol{\omega}}
 \DeclareMathOperator{\an}{an}
 \DeclareMathOperator{\ord}{ord}
-\DeclareMathOperator{\cts}{cts}
-\DeclareMathOperator{\ps}{ps}
+\newcommand{\cont}{\textnormal{cont}}
+\newcommand{\cts}{\textnormal{cts}}
+\newcommand{\sm}{\textnormal{sm}}
+\newcommand{\ps}{\textnormal{ps}}
 \DeclareMathOperator{\red}{red}
 \DeclareMathOperator{\soc}{soc}
 
@@ -736,11 +743,15 @@ is trivial by the previous proposition.
 \begin{cor}
 	When $N$ satisfies \eqref{cond:adm_inj}, 
 	there exists an isomorphism between $R^{\red}$-modules
-    \begin{equation*}
-	    \Hom_{\fC_{G}(\oo)}(\tilde{P}_2,(N^\vee)^{\red})\cong
+    \begin{align}
+	    \Hom_{\fC_{G}(\oo)}(\tilde{P}_2,(N^\vee)^{\red})
+	    &\cong
 	    \Hom_{\fC_{T}(\oo)}(\tilde{P}_{\chi_1^\vee}, (\Ord_PN)^\vee)\oplus
-	    \Hom_{\fC_{T}(\oo)}(\tilde{P}_{\chi_2^\vee},(\Ord_PN)^\vee).
-    \end{equation*}
+	    \Hom_{\fC_{T}(\oo)}(\tilde{P}_{\chi_2^\vee},(\Ord_PN)^\vee)\\
+	    &\cong
+	    ((\Ord_PN)_{U_p\equiv \chi_2\omega^{-1}})^\vee\oplus
+	    ((\Ord_PN)_{U_p\equiv \chi_1\omega^{-1}})^\vee
+    \end{align}
 \end{cor}
 \begin{proof}
 	Denote $\Hom_{\fC_{G}(\oo)}$ by $\Hom_G$ for short.
@@ -771,6 +782,95 @@ to $\Hom_{\fC_T(\oo)}(\tilde{P}_{\chi_2^\vee}, (\Ord_PN)^\vee)$ and
 $\Hom_{\fC_T(\oo)}(\tilde{P}_{\chi_1^\vee}, (\Ord_PN)^\vee)$ respectively.
 \end{proof}  
 
+\subsection{unitary completion}
+
+Recall that $R$ is the universal deformation ring
+of the pseudo-representation
+$\chi_1+\chi_2$, with fixed determinant  $\zeta\varepsilon$;
+and that  $R$
+is also isomorphic to the center
+of the category  $\fC_G(\oo)^\B$,
+for  $\B=\{\pi_1,\pi_2\}$ 
+introduced in the previous subsections.
+
+Let $\fn$ be a maximal ideal of  $R[\frac{1}{p}]$
+with residue field  $L$ and 
+$T_\fn\colon \Gp\to L$ 
+be the corresponding pseudo-representation.
+Let  $\Irr(\fn)$
+be the set of irreducible objects in  $\Ban_{G,\zeta}(L)^\B_{\fn}$.
+
+By \cite[Cor 8.15]{pask}, 
+if $T_\fn=\psi_1+\psi_2$,
+where  $\psi_i\colon \Gp\to L^\times$
+are continuous homomorphisms, then  
+\begin{equation}\label{eq:comple1}
+	\Irr(\fn)=\{(\Ind_P^G\psi_1\otimes\psi_2\varepsilon^{-1})_{cont},
+	(\Ind_P^G\psi_2\otimes\psi_1\varepsilon^{-1})_{cont}\}
+\end{equation}
+
+And by \cite[Cor 8.14]{pask}, 
+if $T_\fn$ is irreducible over the residue field $L$, 
+then $\Irr(\fn)=\{\Pi\}$ contains only one irreducible object,
+which satisfies that $\mtr\mathbf{V}(\Pi)=T_\fn$.
+Moreover, by \cite[Thm. 1.3]{CDP},
+when $\mathbf{V}(\Pi)$ is crystalline with Hodge-Tate weights $-a,-a-b$,
+and $\pi$ is the smooth admissible irreducible
+$\GL_2(\Qp)$-representation
+corresponding to the Weil-Deligne representation
+associated to  $D_{\cris}(\mathbf{V}(\Pi)\vert_{\Gp})$
+under the Hecke correspondence
+(if the Weil-Deligne representation is $\psi_1+\psi_2$,
+then $\pi$ is isomorphic to 
+the (un-normalized) induction $\Ind_B^G(\psi_1\otimes\psi_2||^{-1})$,
+then $\Pi$ is the universal unitary completion
+of  $\pi\otimes(\Sym^{b-1}\otimes \det^a)$
+
+
+\subsection{computation}
+
+Let $\rho$ be the Galois representation
+associated to  $\pi$, that satisfies
+\[
+	\WD(\rho_v)=\Rec(\pi_v||^{-1/2})
+\]
+and let $\B$ be the block associated to the reduction
+of  $\rho\otimes\varepsilon$.
+
+If $\mtr\rho_v=\psi_1+\psi_2$ is reducible,
+where $\psi_i$ are respectively of weight
+$w$ and  $w+k-1$
+then 
+\[
+	\WD(\rho)=\psi_1\varepsilon^w||^{-w}+
+	\psi_2\varepsilon^{w+k-1}||^{1-k-2}
+\]
+Then $\pi_v$ is isomorphic to the un-normalized induction
+$\Ind(\mu_1\otimes\mu_2||^{-1})_{\sm}$, where
+\begin{align*}
+	\mu_1&=\psi_1\varepsilon^{w}||^{1-w} &
+	\val_p(\mu_1(p))&=w-1=(w+k-2)-(k-1)\\
+	\mu_2&=\psi_2\varepsilon^{w+k-1}||^{2-k-w} &
+	\val_p(\mu_2(p))&=w+k-2
+\end{align*}
+Since $(\Sym^{k-2}\otimes\det{}^w)^*\cong \Sym^{(k-1)-1}\otimes\det{}^{2-k-w}$
+and $\varepsilon(x)=x|x|$,
+by \cite[Thm 12.3]{pask}, 
+the universal unitary completion
+of $\pi_v\otimes(\Sym^{k-2}\otimes\det{}^w)^*$
+is isomorphic to $\Ind_B^G(\psi)_{\cont}$, where
+\[
+	\psi(\smat{a&*\\&d})=\mu_2(a)a^{2-k-w}\mu_1(d)|d|^{-1}d^{(k-1)+(2-k-w)-1}
+	=\psi_2\varepsilon(a)\psi_1(d)
+\]
+Note that indeed 
+$\Ind(\psi_2\varepsilon\otimes\psi_1)_{cont}=
+\Ind((\psi_2\varepsilon)\otimes(\psi_1\varepsilon)\varepsilon^{-1})$.
+
+
+
+
+
 \section{completed cohomology}
 
 In this section, let $\F$ be a totally real number field.
@@ -799,99 +899,22 @@ $S_\psi(U^p,A)=\varinjlim_{U_p}S_\psi(U^pU_p,A)$ and
 	\Hom_{\oo}^{cts}(M_\psi(U^p), \oo) \text{completed cohomology}
 \end{gather*}
 
-\subsection{Banach}
-
-Let $\fn$ be a maximal ideal of  $R[1/p]$
-with residue field  $L$ and 
-$T_\fn\colon \Gp\to L$ 
-be the corresponding pseudo-representation.
-Let  $\Irr(\fn)$
-be the set of irreducible objects in  $\Ban_{G,\zeta}(L)^\B_{\fn}$.
-
-
-By \cite[Cor 8.14]{pask}, 
-if $T_\fn$ is irreducible over the residue field, 
-then $\Irr(\fn)$ contains only on e irreducible object.
-
-By \cite[Cor 8.15]{pask}, 
-if $T_\fn=\psi_1+\psi_2$,
-where  $\psi_i\colon \Gp\to L^\times$
-are continuous homomorphisms, then  
+\section{Notes}
+For the exact sequence
 \[
-	\Irr(\fn)=\{(\Ind_P^G\psi_1\otimes\psi_2\varepsilon^{-1})_{cont},
-	(\Ind_P^G\psi_2\otimes\psi_1\varepsilon^{-1})_{cont}\}
+	0\to x_{red}\to h_\fm\to {h^\red}_\fm\to 0
 \]
-
-\subsection{unitary completion}
-
-Let $\pi$ be a smooth absolutely irreducible
-$G$-representation
-and  $W=\det^l\otimes\Sym^{k-1}L^2$. 
-
-By \cite[Thm 12.3]{pask}, 
-Let $\chi_1,\chi_2\colon \Qp^\times\to L^\times$
-be smooth characters, 
-if 
-\[
-	val(\chi_2(p))=-l, \val(\chi_1(p))=-l-k
-\]
-then the universal unitary completion of
-$(\Ind_P^G\chi_1\otimes\chi_2||^{-1})_{sm}\otimes W$ 
-is isomorphic to $\Ind_P^G\psi)_{cont}$, where
-\[
-	\psi(\smat{a&*\\&d})=\chi_2(a)a^l\chi_1(d)|d|^{-1}d^{k+l-1}.
-\]
+with ${h^\red}\to {h^\ord}_1\times {h^\ord}_2$.
+Let  $\fq=\ker(h_\fm\to {h^\ord}_1)$,
+then after localization  get  $(x_{\red})=\fq$.
 
 
-And by \cite[Thm. 1.3]{CDP},
-when $\V(\Pi)$ is crystalline with Hodge-Tate weights $-a,-a-k$
-and  $\Delta$ is the Weil-Deligne representation 
-associated to  $D_{pst}(\V(\Pi))$,
-then $\Pi$ is the universal unitary completion
-of  $\pi\otimes(\Sym^{k-1}\otimes \det^a)$
-where $\pi=LL(\Delta)$ is the
-Hecke correspondence sending  $\Delta=\psi_1+\psi_2$
-to the (un-normalized) induction
- $\Ind_B^G(\psi_1\otimes\psi_2||^{-1})$.
-
-
-\subsection{computation}
-
-Let $\rho$ be the Galois representation
-associated to  $\pi$, that satisfies
+And $\Ord_P\tilde{H}$ is $K$-injective
+if
  \[
-	WD(\rho_v)=Rec(\pi_v||^{-1/2})
+	\Ind_{\bar{P}}(c-ind_K^G)=
+	c-ind_{K'}^{G'}(\Ind_{\bar{P}_0})
 \]
-and let $\B$ be the block associated to the reduction
-of  $\rho\otimes\varepsilon$.
-
-If $\rho_v=\psi_1+\psi_2$,
-where $\psi_i$ are respectively of weight
-$w$ and  $w+k-1$
-then 
-\[
-	WD(\rho)=\psi_1\varepsilon^w||^{-w}+
-	\psi_2\varepsilon^{w+k-1}||^{1-k-2}
-\]
-thus $pi_v\cong Ind( \psi_1\varepsilon^w||^{1-w}+
-\psi_2\varepsilon^{w+k-1}||^{1-k-2})_{sm}
-=Ind(\mu_1\otimes\mu_2||^{-1})_{sm}$,
-here we used the un-normalized induction, and
-\[
-	\mu_1=\psi_1\varepsilon^{w}||^{1-w},\quad
-	\mu_2=\psi_2\varepsilon^{w+k-1}||^{2-k-2}
-\]
-By the above lemma, with $-\ell=w+k-2$ and  $k=k-1$,
-use
- \[
-	 (\Sym^{k-2}\otimes\det^w)^*\cong 
-	 \Sym^{(k-1)-1}\otimes\det^{2-k-w}
-\]
-we see that the unitary completion is 
-indeed 
-$\Ind(\psi_2\varepsilon\otimes\psi_1)_{cont}=
-\Ind((\psi_2\varepsilon)\otimes(\psi_1\varepsilon)\varepsilon^{-1})$.
-
 
 \bibliographystyle{amsalpha}
 \bibliography{biblio}
