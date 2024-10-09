@@ -87,7 +87,7 @@
 \newcommand{\cts}{\textnormal{cts}}
 \newcommand{\sm}{\textnormal{sm}}
 \newcommand{\ps}{\textnormal{ps}}
-\DeclareMathOperator{\red}{red}
+\newcommand{\red}{red}
 \DeclareMathOperator{\soc}{soc}
 
 
@@ -899,23 +899,112 @@ $S_\psi(U^p,A)=\varinjlim_{U_p}S_\psi(U^pU_p,A)$ and
 	\Hom_{\oo}^{cts}(M_\psi(U^p), \oo) \text{completed cohomology}
 \end{gather*}
 
-\section{Notes}
-For the exact sequence
+When $V_p\subset U_p$ is a normal subgroup
+\begin{align*}
+&S(U^p,E/\oo)=\varinjlim_{U_p} S(U^pU_p, E/\oo)\to&
+&S(U^pV_p,\oo/(\varpi^s))\to&
+&S(U^pU_p,k)=
+S(U^pV_p,\oo/(\varpi^s))\otimes_{\oo/(\varpi^s)[U_p/V_p]}k\\
+&\mathbb{T}(U^p)\to&
+&\mathbb{T}(U^pV_p,\oo/(\varpi^s))\to&
+&\mathbb{T}(U^pU_p,k)
+\end{align*}
+
+Thus
+$\mathbb{T}(U^p)\cong\mathbb{T}(U^p)_{\fm_1}\times\cdots
+\times \mathbb{T}(U^p)_{\fm_r}$
+is semi-local.
+
+On the other hand, use
 \[
-	0\to x_{red}\to h_\fm\to {h^\red}_\fm\to 0
+	\Psi\colon \Gal\to \mathbb{T}(U^pV_p,\oo)
+	\Fr_v\mapsto T_v\quad
+	\det\Psi(\Fr_v)=\varepsilon^{-1}(\Fr_v)
+	[(\smat{\varpi_v&\\&\varpi_v})]
 \]
-with ${h^\red}\to {h^\ord}_1\times {h^\ord}_2$.
-Let  $\fq=\ker(h_\fm\to {h^\ord}_1)$,
-then after localization  get  $(x_{\red})=\fq$.
+and build up big pseudo-representation
+$\Psi\colon \Gal\to \mathbb{T}(U^p)$.
+
+\begin{rem}
+	$S(U^p,E/\oo)_\fm(\langle \xi_\fm\rangle^{-1/2})$
+	for 
+	 \[
+	 \xi_m=\zeta_m\langle \xi_\fm\rangle\colon 
+	 Z(\A_f)\to \mathbb{T}(U^p)_{\fm}
+	 \]
+	 s probably not $\GL_2(\Qp)$-admissible.
+	 ut the property is needed for the existence of 
+	 resolution $0\to \tilde{P}_\B^r\to \tilde{P}_\B^r\to 
+	 S(U^p,E/\oo)_{\fm}^\vee\to 0$.
+	 hus indeed we simply take $\psi=\zeta_\fm$
+	 nd use 
+	$S_\psi(U^p,E/\oo) _{\fm}\subset S(U^p,E/\oo)_{\fm}$.
+\end{rem}
+
+\begin{lem}
+	$\Ord_P(S_\psi(U^p,E/\oo))=S_\psi^{\ord}(U^p,E/\oo)$	
+\end{lem}
+\begin{proof}
+	Let $K(r)\equiv\smat{1&\\&1}$ 
+	and $I_r\equiv\smat{1&*\\&1}=K(r)N_0$, then
+	\[
+	S_\psi(U^p,E/\oo)^{N_0}=\varinjlim_{I_r}
+	S_\psi(U^pI_r,E/\oo)
+	\]
+	Consider then 
+	\[
+		\Ord_{P}(S_\psi(U^p,E/\oo))\coloneqq
+		\Hom_{Z_M^+}(Z_M, S_\psi(U^p,E/\oo)^{N_{0}})_{Z_M-fin}
+		\hookrightarrow S_\psi(U^p,E/\oo)^{N_0}\quad
+		\phi\mapsto \phi(1)
+	\]
+	\begin{enumerate}[label=(\alph*)]
+		\item given $\phi$ as above, 
+			then  $Im(\phi)\subset S_\psi(U^p,E/\oo)^{N_0}$ 
+			is a $Z_M$-finite subspace on which 
+			 $U_p$ is invertible.
+		 \item conversely, any  $f(g)\in S_\psi^{\ord}(U^p,E/\oo)
+			 =\varinjlim S_\psi^{\ord}(U^pI_r,E/\oo)$ 
+			 generates a  $Z_M$-finite subspace,
+			 can use which to construct $\phi$
+			 with  $\phi(1)=f(g)$.
+	\end{enumerate}
+\end{proof}
+
+\begin{gather*}
+S_\psi(U^p,E/\oo)\times \varprojlim \oo[Y(U^pU_p)]_\psi \times E/\oo\\
+S_\psi^{\ord}(U^p,E/\oo)\times 
+e\varprojlim \oo[Y(U^pI_r)]_\psi \times E/\oo\\
+\end{gather*}
+\begin{lem}
+	$\Ord_P(S_\psi(U^p,E/\oo))^\vee\cong e\oo\llbracket Y(U^pI_\bullet)\rrbracket_\psi \cong e\oo\llbracket Y(U^pK_\bullet)\rrbracket$
+\end{lem}
+\begin{proof}
+	Compare with $\oo\llbracket Y(U^pI_\bullet)\rrbracket$,
+	with action by  $\oo\llbracket T(1+\varpi\oo)\rrbracket$.
+	One is the quotient by  $XY=\psi$,
+	one is the quotient by  $Y$,
+	the quotient are both isomorphic to $\oo\llbracket X\rrbracket$.
+\end{proof}
 
 
-And $\Ord_P\tilde{H}$ is $K$-injective
-if
- \[
-	\Ind_{\bar{P}}(c-ind_K^G)=
-	c-ind_{K'}^{G'}(\Ind_{\bar{P}_0})
-\]
-
+%\section{Notes}
+%For the exact sequence
+%\[
+%	0\to x_{red}\to h_{\fm}\to {h^{red}}_{\fm}\to 0
+%\]
+%with ${h^{red}}\to {h^\ord}_1\times {h^\ord}_2$.
+%Let  $\fq=\ker(h_{\fm}\to {h^\ord}_1)$,
+%then after localization  get  $(x_{\red})=\fq$.
+%
+%
+%And $\Ord_P\tilde{H}$ is $K$-injective
+%if
+% \[
+%	\Ind_{\bar{P}}(c-ind_K^G)=
+%	c-ind_{K'}^{G'}(\Ind_{\bar{P}_0})
+%\]
+%
 \bibliographystyle{amsalpha}
 \bibliography{biblio}
 \end{document}
