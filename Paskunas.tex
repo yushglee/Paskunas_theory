@@ -146,6 +146,10 @@
 \newcommand{\bs}{\mathcal S}
 \newcommand{\id}{\mathbf{1}}
 
+\newcommand{\TT}{\mathbb{T}}
+
+
+
 \newcommand{\1}{\mathbf{1}} 
 \newcommand{\bfe}{\mathbf e}
 \newcommand{\bff}{\mathbf f}
@@ -168,6 +172,7 @@
 \newcommand{\bfp}{\overline{\mathfrak p}}
 \newcommand{\fq}{\mathfrak q}
 \newcommand{\bfq}{\overline{\mathfrak q}}
+
 
 \newcommand{\btheta}{\boldsymbol{\theta}}
 \newcommand{\bdelta}{\boldsymbol{\delta}}
@@ -997,32 +1002,58 @@ Let $K=\GL_2(\Zp)\subset G$.
 	in $\Mod^{\sm}_{K}(\oo)$.
 \end{prop}
 \begin{proof}
-	We first consider the second case.
-	Observe that by smoothness
+	Following the strategy of the proof of 
+	\cite[Prop 3.2.4]{pan} , we aim to show the surjectivity of
 	\[
-		\Ord_P(S_\psi(U^p,E/\oo))=\varinjlim_{T_0}
-		\Ord_P(S_\psi(U^p,E/\oo))^{T_0}
+		\Hom_{\oo[K]}(\pi,\Ord_P(S_\psi(U^p,E/\oo)))\to 
+		\Hom_{\oo[K]}(\pi',\Ord_P(S_\psi(U^p,E/\oo)))
 	\]
-	where $T_0$ goes through compact open subgroup in  $T$
-	and each $\Ord_P(S_\psi(U^p,E/\oo))^{T_0}$
-	is an admissible $G$-module. 
-	Similar to the proof of 
-	\cite[Prop 4.2.4]{pan} and use
-	\cite[Prop 2.1.3]{emeII}, we aim to show the surjectivity of
-	\[
-		\Hom_{\oo[K]}(\pi,\Ord_P(S_\psi(U^p,E/\oo))^{T_0})\to 
-		\Hom_{\oo[K]}(\pi',\Ord_P(S_\psi(U^p,E/\oo))^{T_0})
+	when $\pi_{1}\hookrightarrow \pi$ 
+	is an injective map between finite $\oo$-modules 
+	in  $\aMod_{K}(\oo)$.
+	Observe that by definition
+	\begin{multline*}
+		\Hom_{\oo[M_0]}(\pi,\Ord_P(S_\psi(U^p,E/\oo)))
+		= \Hom_{\oo[M_0]}(\pi,\Ord_P
+		(\varprojlim_{U_p}S_\psi(U^pU_p,E/\oo)))
+		\\=\varprojlim_{U_p}\Hom_{\oo[M_0]}(\pi,\Ord_P
+		(S_\psi(U^pU_p,E/\oo)))
+	\end{multline*}
+	where the last equality follows from the $\oo$-finiteness of  $\pi$.
+	Unwinding the definition of  $\Ord_P$
+	and use the $\oo$-finiteness of  $\pi$ again, we have
+	\begin{multline*}
+	\Hom_{\oo[M_0]}(\pi,\Ord_P (S_\psi(U^pU_p,E/\oo)))=
+	\Hom_{\oo[M_0]}(\pi,\Hom_{\oo[Z_M^+]}(\oo[Z_M],
+	S_\psi(U^pU_p,E/\oo)^{N_0})_{Z_M-\fin})\\
+	=
+	\Hom_{\oo[Z_M^+]}(\oo[Z_M],\Hom_{\oo[M_0]}(\pi,
+	S_\psi(U^pU_p,E/\oo)^{N_0}))_{Z_M-\fin}
+	\end{multline*}
+	When $U_p=K(n)$ and $I(n)=\bar{N}_{n}K_0N_0$,
+	assume $n>>0$ and the action of  $K_0$
+	factors through  $\mod p^n$, then 
+	 \[
+		 \Hom_{\oo[K_0]}(\pi,S_\psi(U^pU_p,E/\oo)^{N_0})=
+		 \Hom_{\oo[I_n]}(\pi,S_\psi(U^pU_p,E/\oo)^{N_0})
+		 \cong S_{\pi^{\vee},\psi}(U^pI_n)
 	\]
-	given $\pi'\hookrightarrow \pi$ in  $\aMod_{K}(\oo)$
-	and are finite $\oo$-modules.
-	$\Hom_{\oo[K]}(\pi',\Ord_P(S_\psi(U^p,E/\oo))^{T_0}) $
-	is localization of finite $\oo$-modules, 
-	thus the surjectivity.
+	in which we extend the $K_0$-action on  $\pi$
+	to  $I_n$ via the group homomorphism
+	 \[
+		I_n\mapsto P_0\mod p^n\mapsto M_0\mod p^n
+	\]
+	But $S_{\pi^{\vee},\psi}(U^pI_n)\mapsto S_{\pi_{1}^{\vee},\psi}(U^pI_n)$
+	by the previous lemma.
+	This proved the desired surjectivity.
 \end{proof}
 
 \begin{rem}
 	Will prove the compatibility on 
 	$\Ord_P(S_\psi(U^p,E/\oo))^{T_0}$ first.
+	On this we have the density of 
+	algebraic vectors for sure.
+	On which prove compatibility. 
 \end{rem}
 
 
@@ -1094,30 +1125,30 @@ Which induces
 	\to \End_A(S_{k,w,\psi}^{\ord}(U^p(c),A))
 \]
 \begin{defn}
-	$\mathbb{T}_{k, \psi}^{\ord}(U^p)$ 
+	$\TT_{k, \psi}^{\ord}(U^p)$ 
 	acts faithfully on 
 	$S_\psi^{\ord}(U^p,E/\oo)$ 
 	and its Pontryagin dual.
 	Also there exists 
 	\[
-		G_{F,S}\to \mathbb{T}_{k, \psi}^{\ord}(U^p)
+		G_{F,S}\to \TT_{k, \psi}^{\ord}(U^p)
 	\]
 	This is independent of $k=(k,w)$
 \end{defn}
 
 \begin{rem}
-	$\mathbb{T}_{k, \psi}^{\ord}(U^p)$
+	$\TT_{k, \psi}^{\ord}(U^p)$
 	is reduced.
 	Let 
 	\[
 		T^{\ord}\colon G_{F,S}\to 
-		\mathbb{T}_{k, \psi}^{\ord}(U^p)
+		\TT_{k, \psi}^{\ord}(U^p)
 	\]
 	such that $\rho(\fp)\vert_{F_{F_v}}\sim \smat{\psi_{v,1}&*\\&1}$
-	for $\fp\subset\mathbb{T}_{k, \psi}^{\ord}(U^p)$
+	for $\fp\subset\TT_{k, \psi}^{\ord}(U^p)$
 	Also  
 	let $\Lambda_\F=\hat{\bigotimes}_{v\mid p}\oo\llbracket\oo_v^\times(p)\rrbracket$
-	to $\mathbb{T}^{\ord}$ by $ \langle\rangle$.
+	to $\TT^{\ord}$ by $ \langle\rangle$.
 	And $M_\psi^{\ord}(U^p, E/\oo)$ 
 	is finite free over $\Lambda_F$.
 \end{rem}
@@ -1128,27 +1159,27 @@ Which induces
 	Since 
  $S_{\tau\otimes A/I, \psi}(U, A/I)\cong S_{\tau, \psi}(U, A)\otimes A/I$,
  \[
-	 \ker(\mathbb{T}_{\tau,\psi}^S(U,A)\otimes A/I\to \mathbb{T}_{\tau,\psi}^S(U,A/I))
+	 \ker(\TT_{\tau,\psi}^S(U,A)\otimes A/I\to \TT_{\tau,\psi}^S(U,A/I))
  \]
  is nilpotent.
 \end{lem}
 
 \begin{defn}
 	\[
-		T_{(k,w),psi}(U)\colon G_{F,S}\to \mathbb{T}^S_{\tau,\psi}
+		T_{(k,w),psi}(U)\colon G_{F,S}\to \TT^S_{\tau,\psi}
 		(U,\oo)\quad
 		\Fr_v\mapsto T_v
 	\]
 	for $\tau=\tau_{(k,w)}$
 	and $\psi=\tau^{-1}\vert_{U\cap \A_f^\times}$.
-	Thus  $\mathbb{T}^S$ is independent of  $S$
+	Thus  $\TT^S$ is independent of  $S$
 \end{defn}
 \begin{proof}
 	This used that the Hecke algebra is reduced.
 \end{proof}
 
 \begin{defn}
-	$\mathbb{T}_\psi(U^p)$ acts faithfully on  $S_\psi(U^p)$
+	$\TT_\psi(U^p)$ acts faithfully on  $S_\psi(U^p)$
 	and thus should also be reduced.
 \end{defn}
 
@@ -1158,32 +1189,32 @@ When $V_p\subset U_p$ is a normal subgroup
 &S(U^pV_p,\oo/(\varpi^s))\to&
 &S(U^pU_p,k)=
 S(U^pV_p,\oo/(\varpi^s))\otimes_{\oo_s)[U_p/V_p]}k\\
-&\mathbb{T}(U^p)\to&
-&\mathbb{T}(U^pV_p,\oo/(\varpi^s))\to&
-&\mathbb{T}(U^pU_p,k)
+&\TT(U^p)\to&
+&\TT(U^pV_p,\oo/(\varpi^s))\to&
+&\TT(U^pU_p,k)
 \end{align*}
 
 Thus
-$\mathbb{T}(U^p)\cong\mathbb{T}(U^p)_{\fm_1}\times\cdots
-\times \mathbb{T}(U^p)_{\fm_r}$
+$\TT(U^p)\cong\TT(U^p)_{\fm_1}\times\cdots
+\times \TT(U^p)_{\fm_r}$
 is semi-local.
 
 On the other hand, use
 \[
-	\Psi\colon \Gal\to \mathbb{T}(U^pV_p,\oo)
+	\Psi\colon \Gal\to \TT(U^pV_p,\oo)
 	\Fr_v\mapsto T_v\quad
 	\det\Psi(\Fr_v)=\varepsilon^{-1}(\Fr_v)
 	[(\smat{\varpi_v&\\&\varpi_v})]
 \]
 and build up big pseudo-representation
-$\Psi\colon \Gal\to \mathbb{T}(U^p)$.
+$\Psi\colon \Gal\to \TT(U^p)$.
 
 \begin{rem}
 	$S(U^p,E/\oo)_\fm(\langle \xi_\fm\rangle^{-1/2})$
 	for 
 	 \[
 	 \xi_m=\zeta_m\langle \xi_\fm\rangle\colon 
-	 Z(\A_f)\to \mathbb{T}(U^p)_{\fm}
+	 Z(\A_f)\to \TT(U^p)_{\fm}
 	 \]
 	 s probably not $\GL_2(\Qp)$-admissible.
 	 ut the property is needed for the existence of 
@@ -1310,18 +1341,18 @@ Let $E$ be the injective envelope of  $\Omega$ in the category of diescrete
 
 For example, let $\Lambda=\Lambda_i=\oo$,
 a valuationring of a finite extension  $E/\Qp$,
- $A=A_i$ a local complete Noetherian  $\oo$-algebra
- with finite residue,
- and  $B=\oo\llbracket G\rrbracket =\varprojlim \oo[G/N_i]$
- and  $B_i=\oo[G/N_i]$, then
-  \[
- 	A\llbracket G\rrbracket \coloneqq 
+$A=A_i$ a local complete Noetherian  $\oo$-algebra
+with finite residue,
+and  $B=\oo\llbracket G\rrbracket =\varprojlim \oo[G/N_i]$
+and  $B_i=\oo[G/N_i]$, then
+\[
+	A\llbracket G\rrbracket \coloneqq 
 	A\hat{\otimes}_\oo\oo\llbracket G\rrbracket 
 	\cong \varprojlim
 	A\hat{\otimes}_{\oo}\oo[G/N_i]
 	\cong \varprojlim
 	A[G/N_i]
- \]
+\]
 
 
 \bibliographystyle{amsalpha}
