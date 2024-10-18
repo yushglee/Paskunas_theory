@@ -62,11 +62,13 @@
 \newcommand{\frob}{\textnormal{frob}} %arithmetic Frobenius
 
 
-\DeclareMathOperator{\laMod}{\textnormal{Mod}^\textnormal{ladm}}
+\newcommand{\aMod}{\textnormal{Mod}^{\textnormal{adm}}}
+\newcommand{\laMod}{\textnormal{Mod}^{\textnormal{l.adm}}}
+\newcommand{\lfMod}{\textnormal{Mod}^{\textnormal{lfin}}}
+\newcommand{\Ban}{\textnormal{Ban}^{\textnormal{adm.fl}}}
+
+
 \DeclareMathOperator{\Mod}{\textnormal{Mod}}
-\DeclareMathOperator{\aMod}{\textnormal{Mod}^{\textnormal{adm}}}
-\DeclareMathOperator{\Ban}{\textnormal{Ban}^{\textnormal{adm.fl}}}
-\DeclareMathOperator{\lfMod}{\textnormal{Mod}^{\textnormal{lfin}}}
 \DeclareMathOperator{\Rep}{Rep}
 \DeclareMathOperator{\Ord}{Ord}
 \DeclareMathOperator{\Irr}{Irr}
@@ -920,19 +922,26 @@ Let  $\GG$ be a totally definite reductive group over  $\F$,
 such that  $\GG(\C)\cong \GL_n(\C)$
 and $\GG(\F_v)\cong \GL_n(\F_v)$
 for all  $v\in S_p$.
-We identify $\GG(\F_v)$
-with  $G_v\coloneqq \GL_n(\F_v)$ by a fixed isomorphism.
-Write $K_p\coloneqq \prod_{v\in S_p}K_v, K_v\coloneqq \GL_n(\oo_v)$.
+Identify $\GG(\F_v)$
+and  $G_v\coloneqq \GL_n(\F_v)$ by the above isomorphism,
+we denote 
+\[
+	G_p\coloneqq\prod_{v\in S_p}G_v,\quad
+	K_p\coloneqq\prod_{v\in S_p}K_v,\quad
+	K_v\coloneqq\GL_n(\oo_v).
+\]
 Let $U=\prod_{v\in\finite}U_v\subset \GG(\A_f)$
-be an open compact subgroup 
-such that $U_p=\prod_{v\in S_p}U_v\subset K_p$.
-and  $\tau\colon U_p\to \Aut(W_\tau)$
-be a continuous representation on a finite  $A$-module  $W_\tau$.
-Define
+be an open compact subgroup and denote
+$U_p=\prod_{v\notin S_p}U_v$,
+$U_p=\prod_{v\in S_p}U_v$.
+We always assume that $U_p\subset K_p$.
+When $\tau\colon U_p\to \Aut(W_\tau)$
+is a continuous representation on a finite  $A$-module  $W_\tau$,
+define
 \begin{align}
 S_{\tau}(U,A)&=
 \left\{ f: \GG(\F)\backslash \GG(\A_f)/U^p \rightarrow W_\tau 
-\mid f(gu)=\tau(u^{-1})\cdot f(g), u\in U\right\} \\
+\mid f(gu)=\tau(u_p^{-1})\cdot f(g), u\in U\right\} \\
 S_{\tau,\psi}(U,A)&=\left\{
 f\in S_{\tau}(U,A)
 \mid f(zg)=\psi(z)\cdot f(g), z\in Z_{\GG}(\A_f)\right\} 
@@ -940,7 +949,7 @@ f\in S_{\tau}(U,A)
 when $\psi\colon \A_f^\times/\F_+^\times\to A^\times$ 
 is a continuous character
 and 
-$\tau^{-1}_{U\cap Z_{\GG}(\A_f)}=\psi|_{U\cap Z_{\GG}(\A_f)}$.
+$\tau^{-1}\vert_{U\cap Z_{\GG}(\A_f)}=\psi|_{U\cap Z_{\GG}(\A_f)}$.
 
 We assume that $U^p$ satisfies the assumption
 \begin{equation}\label{cond:small}\tag{\text{small}}
@@ -958,28 +967,110 @@ Note that the index set $I$ is a finite set.
 \end{lem}
 
 
-When $\tau$ is trivial and assume  $\psi(U^p\cap Z_\GG(\A_f))=1$,
-define 
-\[
-	S_\psi(U^p,A)=
-	\varinjlim_{U_p}S_\psi(U^pU_p,A)
-\]
+When $\tau$ is the trivial representation and $\psi(U^p\cap Z_\GG(\A_f))=1$
+we define $S_\psi(U^p,A)= \varinjlim_{U_p}S_\psi(U^pU_p,A)$.
 In particular, 
-$S_\psi(U^p,E/\oo)\in \aMod_{G_p}(\oo)$.
+\[
+	S_\psi(U^p,E/\oo)\in \aMod_{G_p}(\oo).
+\]
 
 \begin{defn}
 	Let $A$ be a complete Noetherian local  $\oo$-algebra
-	with finite residue field.
-	Let  $G_p$ be a connected reductive p-group,
-	P=MN a parabolic subgroup and its Levi decomposition.
-	Let 
+	with finite residue field,
+	and $P=MN$ be the Levi decomposition of 
+	a parabolic subgroup in the connected reductive  $p$-group  $G_p$.
+	Write $M_0=M(\oo_p)=K_p\cap M$ and  $N_0=K_p\cap N$.
+	The functor of ordinary parts is given by
 	\[
 		\Ord_P(V)\coloneqq 
 		\Hom_{A[Z_M^+]}(A[Z_M], V^{N_0})_{Z_M-\fin}\colon
 		\Mod^{\sm}_{G_p}(A)\to \Mod^{\sm}_M(A)
 	\]
-	be the functor of ordinary parts. 
 \end{defn}
+
+\begin{prop}
+	$\Ord_P(S_\psi(U^p,E/\oo))$ is injective
+	as an object in $\Mod^{\sm}_{M_0}(\oo)$.
+\end{prop}
+\begin{proof}
+	Following the strategy of the proof of 
+	\cite[Prop 3.2.4]{pan}, it suffices to show the surjectivity of
+	\[
+		\Hom_{\oo[M_0]}(\pi,\Ord_P(S_\psi(U^p,E/\oo)))\to 
+		\Hom_{\oo[M_0]}(\pi',\Ord_P(S_\psi(U^p,E/\oo)))
+	\]
+	when $\pi_{1}\hookrightarrow \pi$ 
+	is an injective morphism between $M_0$-admissible
+	representations that are finite  $\oo$-modules.
+	Since $\Ord_P$ commutes with inductive limits, by definition
+	\begin{multline*}
+		\Hom_{\oo[M_0]}(\pi,\Ord_P(S_\psi(U^p,E/\oo)))
+		= \Hom_{\oo[M_0]}(\pi,
+		\varprojlim_{U_p}\Ord_P(S_\psi(U^pU_p,E/\oo)))
+		\\=\varprojlim_{U_p}\Hom_{\oo[M_0]}(\pi,\Ord_P
+		(S_\psi(U^pU_p,E/\oo)))
+	\end{multline*}
+	where the last equality follows from the $\oo$-finiteness of  $\pi$.
+	Unwinding the definition of  $\Ord_P$,
+	\[
+		\Hom_{\oo[M_0]}(\pi,\Ord_P (S_\psi(U^pU_p,E/\oo)))=
+		\Hom_{\oo[M_0]}(\pi,\Hom_{\oo[Z_M^+]}(\oo[Z_M],
+		S_\psi(U^pU_p,E/\oo)^{N_0})_{Z_M-\fin})
+	\]
+	it follows again from the $\oo$-finiteness of  $\pi$
+	that any homomorphism factors through 
+	$S_\psi(U^pU_p,p^{-s}\oo/\oo)$ for a sufficiently large $s$ and
+	the $Z_M$-fintieness condition is automatic
+	\cite[Lem 3.1.5]{emeI}.
+	Thus the right hand side is isomorphic to 
+	$\Hom_{\oo[M_0]}(\pi,\Hom_{\oo[Z_M^+]}(\oo[Z_M],
+			S_\psi(U^pU_p,E/\oo)^{N_0}))$,
+			which is isomorphic to 
+	\[
+		\Hom_{\oo[Z_M^+]}(\oo[Z_M],\Hom_{\oo[M_0]}(\pi,
+		S_\psi(U^pU_p,E/\oo)^{N_0})).
+	\]
+
+	Now, 
+	define the open compact subgroups
+	$K(n)\coloneqq\{k\in K_p\mid k\equiv 1 \mod p^n\}$ and
+	$I(n)\coloneqq\{k\in K_p\mid k\in P \mod p^n\}$ of $G_p$,
+	the latter group admits the Iwahori decomposition
+	$I(n)=\bar{N}_{n}M_0N_0$,
+	where $ \bar{N}_{n}=\bar{N}\cap I(n)=\bar{N}\cap K(n)$
+	and $ \bar{N}$ is the unipotent radical
+	of the opposite parabolic subgroup $ \bar{P}=M\bar{N}$.
+	Since $\pi$ is  $\oo$-finite, 
+	the  $M_0$-representations  $\pi$ and  $\pi_1$
+	factors through $M(\oo_p/p^n)$ for  $n>>0$,
+	thus we may extend the representations to  $I(n)$
+	via the group homomorphism
+	\[
+		I(n)\mapsto P(\oo_p/p^n)\to M(\oo_p/p^n).
+	\]
+	Then when $U_p=K(n)$ there is the isomorphism
+	\[
+		 \Hom_{\oo[M_0]}(\pi,S_\psi(U^pU_p,E/\oo)^{N_0})=
+		 \Hom_{\oo[I(n)]}(\pi,S_\psi(U^pU_p,E/\oo)^{N_0})
+		 \cong S_{\pi^{\vee},\psi}(U^pI(n))
+	\]
+	But $S_{\pi^{\vee},\psi}(U^pI_n)\hookrightarrow 
+	S_{\pi_{1}^{\vee},\psi}(U^pI_n)$
+	by the previous lemma
+	and $\Hom_{\oo[Z_M^+]}(\oo[Z_M],S_{\pi^{\vee},\psi}(U^pI_n)) $
+	is isomorphic to (sums) of localizations $S_{\pi^{\vee},\psi}(U^pI_n)$
+	by loc.cit,
+	we get the desired surjectively on each  $K(n)$.
+	The proposition now follows from that
+	$\{K(n)\}$ is cofinal in the filtered system $\{U_p\}$
+	of all compact open subgroups of $K_p$
+	and that the finite  $\oo$-modules
+	$\Hom_{\oo[Z_M^+]}(\oo[Z_M],S_{\pi^{\vee},\psi}(U^pI_n)) $
+	satisfies the Mittag-Leffler condition.
+\end{proof}
+
+
+
 We assume from now on that 
 there exists a prime $v\in S_p$
 such that  $\F_v\cong \Qp$,
@@ -995,68 +1086,8 @@ We will consider the following two cases
 In both cases,
 $M$ is product of  $G=\GL_2(\Qp)$
 and a split torus $T$.
-Let $K=\GL_2(\Zp)\subset G$.
-
-\begin{prop}
-	$\Ord_P(S_\psi(U^p,E/\oo))$ is an injective element
-	in $\Mod^{\sm}_{K}(\oo)$.
-\end{prop}
-\begin{proof}
-	Following the strategy of the proof of 
-	\cite[Prop 3.2.4]{pan} , we aim to show the surjectivity of
-	\[
-		\Hom_{\oo[K]}(\pi,\Ord_P(S_\psi(U^p,E/\oo)))\to 
-		\Hom_{\oo[K]}(\pi',\Ord_P(S_\psi(U^p,E/\oo)))
-	\]
-	when $\pi_{1}\hookrightarrow \pi$ 
-	is an injective map between finite $\oo$-modules 
-	in  $\aMod_{K}(\oo)$.
-	Observe that by definition
-	\begin{multline*}
-		\Hom_{\oo[M_0]}(\pi,\Ord_P(S_\psi(U^p,E/\oo)))
-		= \Hom_{\oo[M_0]}(\pi,\Ord_P
-		(\varprojlim_{U_p}S_\psi(U^pU_p,E/\oo)))
-		\\=\varprojlim_{U_p}\Hom_{\oo[M_0]}(\pi,\Ord_P
-		(S_\psi(U^pU_p,E/\oo)))
-	\end{multline*}
-	where the last equality follows from the $\oo$-finiteness of  $\pi$.
-	Unwinding the definition of  $\Ord_P$
-	and use the $\oo$-finiteness of  $\pi$ again, we have
-	\begin{multline*}
-	\Hom_{\oo[M_0]}(\pi,\Ord_P (S_\psi(U^pU_p,E/\oo)))=
-	\Hom_{\oo[M_0]}(\pi,\Hom_{\oo[Z_M^+]}(\oo[Z_M],
-	S_\psi(U^pU_p,E/\oo)^{N_0})_{Z_M-\fin})\\
-	=
-	\Hom_{\oo[Z_M^+]}(\oo[Z_M],\Hom_{\oo[M_0]}(\pi,
-	S_\psi(U^pU_p,E/\oo)^{N_0}))_{Z_M-\fin}
-	\end{multline*}
-	When $U_p=K(n)$ and $I(n)=\bar{N}_{n}K_0N_0$,
-	assume $n>>0$ and the action of  $K_0$
-	factors through  $\mod p^n$, then 
-	 \[
-		 \Hom_{\oo[K_0]}(\pi,S_\psi(U^pU_p,E/\oo)^{N_0})=
-		 \Hom_{\oo[I_n]}(\pi,S_\psi(U^pU_p,E/\oo)^{N_0})
-		 \cong S_{\pi^{\vee},\psi}(U^pI_n)
-	\]
-	in which we extend the $K_0$-action on  $\pi$
-	to  $I_n$ via the group homomorphism
-	 \[
-		I_n\mapsto P_0\mod p^n\mapsto M_0\mod p^n
-	\]
-	But $S_{\pi^{\vee},\psi}(U^pI_n)\mapsto S_{\pi_{1}^{\vee},\psi}(U^pI_n)$
-	by the previous lemma.
-	This proved the desired surjectivity.
-\end{proof}
-
-\begin{rem}
-	Will prove the compatibility on 
-	$\Ord_P(S_\psi(U^p,E/\oo))^{T_0}$ first.
-	On this we have the density of 
-	algebraic vectors for sure.
-	On which prove compatibility. 
-\end{rem}
-
-
+Let $K=\GL_2(\Zp)\subset G$
+and $M_0=K\times T_0$.
 
 \begin{gather*}
 	M_\psi(U^p)=S_\psi(U_p,E/\oo)^{\vee}\in \fC(\oo)
@@ -1069,7 +1100,7 @@ Let $K=\GL_2(\Zp)\subset G$.
 \[
 S_\psi(U^p)_E^{v-a,v'-la}=
 \bigcup_{U^v}
-Im\left(
+\Image\left(
 	\bigoplus_{(k,w)}\Hom_{E[K_vU^v]}(W_{k,w,E}, S_\psi(U^p)_E)
 	\otimes_EW_{k,w,E}\xrightarrow{ev}
 	S_\psi(U^p)_E
@@ -1099,6 +1130,104 @@ is dense.
 		(W_\C^*, C^\infty())
 	\]
 \end{rem}
+
+\subsection{Hecke algebras}
+
+When $v=w\bar{w}$ is a split place
+$\GG(\F_v)\cong \GL_2(\F_v)$ and 
+$U_v\cong \GL_2(oo_v)$, we define the Hecke algebras
+\[
+	T_v=[U_v\smat{\varpi_v&\\&1}U_v]=
+	\sum_{b\in \oo_v/(\varpi_v)}\smat{\varpi_v&b\\&1}U_v
+\]
+\begin{defn}
+	Given $S_{\tau,\psi}(U,A)$ as above, 
+	let $\TT^S_{\tau,\psi}(U,A)\subset \End_A(S_{\tau,\psi}(U,A))$
+	be the $\oo$-subalgebra generated by  $T_v$
+	for  split $v$ not in  $S$,
+	which acts faithfully on $S_{\tau,\psi}(U,A)$
+	by definition. 
+	We then define 
+	\[
+		\TT^S_\psi(U^p)=\varprojlim_{U_p}
+		\TT_{\psi}(U^pU_p, E/\oo)
+	\]
+\end{defn}
+
+\begin{rem}
+	Prove the reducedness and show existence of 
+	pseudo-representation.
+	\cite[Prop 2.27]{ger}
+\end{rem}
+
+
+
+\begin{lem}
+	Since 
+ $S_{\tau\otimes A/I, \psi}(U, A/I)\cong S_{\tau, \psi}(U, A)\otimes A/I$,
+ \[
+	 \ker(\TT_{\tau,\psi}^S(U,A)\otimes A/I\to \TT_{\tau,\psi}^S(U,A/I))
+ \]
+ is nilpotent.
+\end{lem}
+
+\begin{defn}
+	\[
+		T_{(k,w),\psi}(U)\colon G_{F,S}\to \TT^S_{\tau,\psi}
+		(U,\oo)\quad
+		\Fr_v\mapsto T_v
+	\]
+	for $\tau=\tau_{(k,w)}$
+	and $\psi=\tau^{-1}\vert_{U\cap \A_f^\times}$.
+	Thus  $\TT^S$ is independent of  $S$
+\end{defn}
+\begin{proof}
+	This used that the Hecke algebra is reduced.
+\end{proof}
+
+\begin{defn}
+	$\TT_\psi(U^p)$ acts faithfully on  $S_\psi(U^p)$
+	and thus should also be reduced.
+\end{defn}
+
+When $V_p\subset U_p$ is a normal subgroup
+\begin{align*}
+&S(U^p,E/\oo)=\varinjlim_{U_p} S(U^pU_p, E/\oo)\to&
+&S(U^pV_p,\oo/(\varpi^s))\to&
+&S(U^pU_p,k)=
+S(U^pV_p,\oo/(\varpi^s))\otimes_{\oo_s)[U_p/V_p]}k\\
+&\TT(U^p)\to&
+&\TT(U^pV_p,\oo/(\varpi^s))\to&
+&\TT(U^pU_p,k)
+\end{align*}
+
+Thus
+$\TT(U^p)\cong\TT(U^p)_{\fm_1}\times\cdots
+\times \TT(U^p)_{\fm_r}$
+is semi-local.
+
+On the other hand, use
+\[
+	\Psi\colon \Gal\to \TT(U^pV_p,\oo)
+	\Fr_v\mapsto T_v\quad
+	\det\Psi(\Fr_v)=\varepsilon^{-1}(\Fr_v)
+	[(\smat{\varpi_v&\\&\varpi_v})]
+\]
+and build up big pseudo-representation
+$\Psi\colon \Gal\to \TT(U^p)$.
+
+\subsection{compatibility}
+
+
+\begin{rem}
+	Will prove the compatibility on 
+	$\Ord_P(S_\psi(U^p,E/\oo))^{T_0}$ first.
+	On this we have the density of 
+	algebraic vectors for sure.
+	On which prove compatibility. 
+\end{rem}
+
+
 
 \subsection{Ordinary forms}
 
@@ -1153,61 +1282,6 @@ Which induces
 	is finite free over $\Lambda_F$.
 \end{rem}
 
-\subsection{Hecke algebras}
-
-\begin{lem}
-	Since 
- $S_{\tau\otimes A/I, \psi}(U, A/I)\cong S_{\tau, \psi}(U, A)\otimes A/I$,
- \[
-	 \ker(\TT_{\tau,\psi}^S(U,A)\otimes A/I\to \TT_{\tau,\psi}^S(U,A/I))
- \]
- is nilpotent.
-\end{lem}
-
-\begin{defn}
-	\[
-		T_{(k,w),psi}(U)\colon G_{F,S}\to \TT^S_{\tau,\psi}
-		(U,\oo)\quad
-		\Fr_v\mapsto T_v
-	\]
-	for $\tau=\tau_{(k,w)}$
-	and $\psi=\tau^{-1}\vert_{U\cap \A_f^\times}$.
-	Thus  $\TT^S$ is independent of  $S$
-\end{defn}
-\begin{proof}
-	This used that the Hecke algebra is reduced.
-\end{proof}
-
-\begin{defn}
-	$\TT_\psi(U^p)$ acts faithfully on  $S_\psi(U^p)$
-	and thus should also be reduced.
-\end{defn}
-
-When $V_p\subset U_p$ is a normal subgroup
-\begin{align*}
-&S(U^p,E/\oo)=\varinjlim_{U_p} S(U^pU_p, E/\oo)\to&
-&S(U^pV_p,\oo/(\varpi^s))\to&
-&S(U^pU_p,k)=
-S(U^pV_p,\oo/(\varpi^s))\otimes_{\oo_s)[U_p/V_p]}k\\
-&\TT(U^p)\to&
-&\TT(U^pV_p,\oo/(\varpi^s))\to&
-&\TT(U^pU_p,k)
-\end{align*}
-
-Thus
-$\TT(U^p)\cong\TT(U^p)_{\fm_1}\times\cdots
-\times \TT(U^p)_{\fm_r}$
-is semi-local.
-
-On the other hand, use
-\[
-	\Psi\colon \Gal\to \TT(U^pV_p,\oo)
-	\Fr_v\mapsto T_v\quad
-	\det\Psi(\Fr_v)=\varepsilon^{-1}(\Fr_v)
-	[(\smat{\varpi_v&\\&\varpi_v})]
-\]
-and build up big pseudo-representation
-$\Psi\colon \Gal\to \TT(U^p)$.
 
 \begin{rem}
 	$S(U^p,E/\oo)_\fm(\langle \xi_\fm\rangle^{-1/2})$
