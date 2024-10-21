@@ -81,6 +81,7 @@
 \newcommand{\cris}{\textnormal{cris}}
 \newcommand{\cont}{\textnormal{cont}}
 \newcommand{\cts}{\textnormal{cts}}
+\newcommand{\alg}{\textnormal{alg}}
 \newcommand{\sm}{\textnormal{sm}}
 \newcommand{\ps}{\textnormal{ps}}
 \newcommand{\red}{\textnormal{red}}
@@ -232,7 +233,6 @@
 \maketitle
 \setcounter{tocdepth}{1}
 \tableofcontents
-
 
 
 
@@ -913,30 +913,34 @@ and  $\A=\A_\F$ be the ring of adeles.
 Let $I_\F$ denote $\Hom(\F,\C)$
 and $S_p$ denote the set of primes of $\F$ above $p$.
 Fix an isomorphism $\iota\colon \C\cong \bar{\Q}_p$,
-which define a map $I_\F\to S_p$
+which induces a map $I_\F\to S_p$
 sending  $\sigma\in I_F$
 to the prime  $v_\sigma$
-induced by  $\iota\circ \sigma\colon \F\to \bar{\Q}_p$.
+corresponding to $\iota\circ \sigma\colon \F\to \bar{\Q}_p$.
 
 Let  $\GG$ be a totally definite reductive group over  $\F$,
 such that  $\GG(\C)\cong \GL_n(\C)$
 and $\GG(\F_v)\cong \GL_n(\F_v)$
 for all  $v\in S_p$.
 Identify $\GG(\F_v)$
-and  $G_v\coloneqq \GL_n(\F_v)$ by the above isomorphism,
-we denote 
+and  $G_v\coloneqq \GL_n(\F_v)$ by the above isomorphisms,
+we define 
 \[
 	G_p\coloneqq\prod_{v\in S_p}G_v,\quad
 	K_p\coloneqq\prod_{v\in S_p}K_v,\quad
 	K_v\coloneqq\GL_n(\oo_v).
 \]
-Let $U=\prod_{v\in\finite}U_v\subset \GG(\A_f)$
-be an open compact subgroup and denote
+When $U=\prod_{v\in\finite}U_v\subset \GG(\A_f)$
+is an open compact subgroup, 
+we will write 
 $U_p=\prod_{v\notin S_p}U_v$,
-$U_p=\prod_{v\in S_p}U_v$.
-We always assume that $U_p\subset K_p$.
-When $\tau\colon U_p\to \Aut(W_\tau)$
-is a continuous representation on a finite  $A$-module  $W_\tau$,
+$U_p=\prod_{v\in S_p}U_v$,
+and always assume $U_p\subset K_p$.
+Let $\tau\colon U_p\to \Aut(W_\tau)$
+be a continuous representation on a finite  $A$-module  $W_\tau$,
+and $\psi\colon \A_f^\times/\F_+^\times\to A^\times$ 
+be a continuous character satisfying
+$\tau^{-1}\vert_{U\cap Z_{\GG}(\A_f)}=\psi|_{U\cap Z_{\GG}(\A_f)}$,
 define
 \begin{align}
 S_{\tau}(U,A)&=
@@ -946,49 +950,84 @@ S_{\tau,\psi}(U,A)&=\left\{
 f\in S_{\tau}(U,A)
 \mid f(zg)=\psi(z)\cdot f(g), z\in Z_{\GG}(\A_f)\right\} 
 \end{align}
-when $\psi\colon \A_f^\times/\F_+^\times\to A^\times$ 
-is a continuous character
-and 
-$\tau^{-1}\vert_{U\cap Z_{\GG}(\A_f)}=\psi|_{U\cap Z_{\GG}(\A_f)}$.
+In particular, 
+when $\lambda=(\lambda_{\sigma})\in \Z[I_\F]^n$
+satisfies that 
+$\lambda_{\sigma,1}\geq \lambda_{\sigma,2}\geq \cdots\lambda_{\sigma,n}$
+for all $\sigma\in I_\F$, 
+let $W_\lambda=\otimes_{I_\F}W_{\lambda_\sigma}$ denote the algebraic  
+$\prod_{I_\F}\GL(n)$-representation
+of highest weight $\lambda$.
+Then  $K_p$ acts on  $W_{\lambda, A}$ via 
+\[
+	K_p=\prod_{v\in S_p}\GL_n(\oo_v)\to
+	\prod_{v\in S_p}\prod_{v_\sigma=v}\GL_n(A)=\prod_{\sigma}\GL_n(A)
+\]
+where $\GL_n(\oo_v)\mapsto \prod_{v_\sigma=v}\GL_n(A)$
+is the diagonal map.
+And for $U$ as above, 
+we write  
+$S_{\tau}(U,A)=S_{\lambda}(U,A)$
+and $S_{\tau,\psi}(U,A)=S_{\lambda,\psi}(U,A)$
+when $W_\tau=W_\lambda$;
+and $S_{\lambda}(U,A)=S(U,A)$, 
+$S_{\lambda,\psi}(U,A)=S_\psi(U,A)$
+when $\lambda$ is the trivial weight.
 
-We assume that $U^p$ satisfies the assumption
+It is well-known that 
+$\GG(\F)\backslash \GG(\A_f)/U$ is a finite set.
+We futher assume that $U^p$ satisfies the assumption
 \begin{equation}\label{cond:small}\tag{\text{small}}
 	\GG(\A_f)=\bigsqcup_{i\in I}
 	\GG(\F)t_i (U^pK_p),\quad
 	\GG(\F)\cap t_i(U^pK_p)t_i^{-1}=\{1\} \text{ for all } i\in I
 \end{equation}
-Note that the index set $I$ is a finite set.
 \begin{lem}\label{lem:small}
 	Under the assumption \eqref{cond:small},
 	$S_\tau(U,A)$ and $S_{\tau,\psi}(U,A)$
-	are isomorphic to finite direct sums
-	of $W_\tau$
-	as $A$-modules.
+	are isomorphic as $A$-modules
+	to finite direct sums of $W_\tau$.
 \end{lem}
+\begin{proof}
+	By the assumption,
+	the map sending $f\in S_\tau(U,A)$ to 
+	$(f(t_i))_{i\in I}$ is an isomorphism.
+	The case for $S_{\tau,\psi}(U,A)$ is identical,
+	after replacing the set $\{t_i\}$
+	by a set of representatives of 
+	$\GG(\F)\backslash \GG(\A_f)/UZ_\GG(\A_f)$.
+\end{proof}
 
-
-When $\tau$ is the trivial representation and $\psi(U^p\cap Z_\GG(\A_f))=1$
-we define $S_\psi(U^p,A)= \varinjlim_{U_p}S_\psi(U^pU_p,A)$.
-In particular, 
-\[
-	S_\psi(U^p,E/\oo)\in \aMod_{G_p}(\oo).
-\]
 
 \begin{defn}
-	Let $A$ be a complete Noetherian local  $\oo$-algebra
+	Recall that when 
+	$P=MN$ is the Levi decomposition of 
+	a parabolic subgroup in the connected reductive $p$-group  $G_p$,
+	and $A$ is a complete Noetherian local  $\oo$-algebra
 	with finite residue field,
-	and $P=MN$ be the Levi decomposition of 
-	a parabolic subgroup in the connected reductive  $p$-group  $G_p$.
-	Write $M_0=M(\oo_p)=K_p\cap M$ and  $N_0=K_p\cap N$.
-	The functor of ordinary parts is given by
+	the functor of ordinary parts is defined as
 	\[
-		\Ord_P(V)\coloneqq 
-		\Hom_{A[Z_M^+]}(A[Z_M], V^{N_0})_{Z_M-\fin}\colon
-		\Mod^{\sm}_{G_p}(A)\to \Mod^{\sm}_M(A)
+		\Ord_P\colon
+		\Mod^{\sm}_{G_p}(A)\to \Mod^{\sm}_M(A)\quad
+		\Ord_P(V)=\Hom_{A[Z_M^+]}(A[Z_M], V^{N_0})_{Z_M-\fin}
 	\]
+	where $M_0=M(\oo_p)=K_p\cap M$ and  $N_0=K_p\cap N$.
+	The functor preserves admissibility.
+
+	Assume $\psi(U^p\cap Z_\GG(\A_f))=1$, then
+	$S_\psi(U^p,E/\oo)= \varinjlim_{U_p}S_\psi(U^pU_p,E/\oo)$
+	is a smooth admissible $G_p$-representation under 
+	right translation action,
+	where $\{U_p\}$ is the filtered system of 
+	all the compact open subgroups in $K_p$ under inclusion relation.
+	We consider
+	\begin{equation}
+	\Ord_P(S_\psi(U^p,E/\oo))\in \aMod_{M}(\oo).
+	\end{equation}
 \end{defn}
 
 \begin{prop}
+	After restriction, 
 	$\Ord_P(S_\psi(U^p,E/\oo))$ is injective
 	as an object in $\Mod^{\sm}_{M_0}(\oo)$.
 \end{prop}
@@ -1000,136 +1039,121 @@ In particular,
 		\Hom_{\oo[M_0]}(\pi',\Ord_P(S_\psi(U^p,E/\oo)))
 	\]
 	when $\pi_{1}\hookrightarrow \pi$ 
-	is an injective morphism between $M_0$-admissible
-	representations that are finite  $\oo$-modules.
-	Since $\Ord_P$ commutes with inductive limits, by definition
+	is injective between $M_0$-admissible
+	representations that are finite $\oo$-modules.
+	By definition
 	\begin{multline*}
-		\Hom_{\oo[M_0]}(\pi,\Ord_P(S_\psi(U^p,E/\oo)))
-		= \Hom_{\oo[M_0]}(\pi,
-		\varprojlim_{U_p}\Ord_P(S_\psi(U^pU_p,E/\oo)))
-		\\=\varprojlim_{U_p}\Hom_{\oo[M_0]}(\pi,\Ord_P
-		(S_\psi(U^pU_p,E/\oo)))
+		\Hom_{\oo[M_0]}(\pi,\Ord_P(S_\psi(U^p,E/\oo)))=
+		\Hom_{\oo[M_0]}(\pi,
+		\Hom_{\oo[Z_M^+]}
+		(\oo[Z_M], S_\psi(U^p,E/\oo)^{N_0})_{Z_M-\fin})\\=
+		\Hom_{\oo[M_0]}(\pi,
+		\Hom_{\oo[Z_M^+]}
+		(\oo[Z_M], S_\psi(U^p,E/\oo)^{N_0}))=
+		\Hom_{\oo[Z_M^+]}(\oo[Z_M],
+		\Hom_{\oo[M_0]}(\pi, S_\psi(U^p,E/\oo)^{N_0}))
 	\end{multline*}
-	where the last equality follows from the $\oo$-finiteness of  $\pi$.
-	Unwinding the definition of  $\Ord_P$,
-	\[
-		\Hom_{\oo[M_0]}(\pi,\Ord_P (S_\psi(U^pU_p,E/\oo)))=
-		\Hom_{\oo[M_0]}(\pi,\Hom_{\oo[Z_M^+]}(\oo[Z_M],
-		S_\psi(U^pU_p,E/\oo)^{N_0})_{Z_M-\fin})
-	\]
-	it follows again from the $\oo$-finiteness of  $\pi$
-	that any homomorphism factors through 
-	$S_\psi(U^pU_p,p^{-s}\oo/\oo)$ for a sufficiently large $s$ and
+	where the second equality follows from the $\oo$-finiteness of $\pi$,
+	as any homomorphism in above factors through some 
+	$S_\psi(U^pU_p,p^{-s}\oo/\oo)$,
+	for which
 	the $Z_M$-fintieness condition is automatic
-	\cite[Lem 3.1.5]{emeI}.
-	Thus the right hand side is isomorphic to 
-	$\Hom_{\oo[M_0]}(\pi,\Hom_{\oo[Z_M^+]}(\oo[Z_M],
-			S_\psi(U^pU_p,E/\oo)^{N_0}))$,
-			which is isomorphic to 
+	by \cite[Lem 3.1.5]{emeI}.
+	Write $\tau=\cInd_{M_0N_0}^{K_p}\pi, \tau_1=\cInd_{M_0N_0}^{K_p}\pi_1$
+	and observe that 
 	\[
-		\Hom_{\oo[Z_M^+]}(\oo[Z_M],\Hom_{\oo[M_0]}(\pi,
-		S_\psi(U^pU_p,E/\oo)^{N_0})).
+	\Hom_{\oo[M_0]}(\pi, S_\psi(U^p,E/\oo)^{N_0})\cong
+	\Hom_{\oo[K_p]}(\tau, S_\psi(U^p,E/\oo))\cong 
+	S_{\tau^\vee, \psi}(U^pK_p).
 	\]
-
-	Now, 
-	define the open compact subgroups
-	$K(n)\coloneqq\{k\in K_p\mid k\equiv 1 \mod p^n\}$ and
-	$I(n)\coloneqq\{k\in K_p\mid k\in P \mod p^n\}$ of $G_p$,
-	the latter group admits the Iwahori decomposition
-	$I(n)=\bar{N}_{n}M_0N_0$,
-	where $ \bar{N}_{n}=\bar{N}\cap I(n)=\bar{N}\cap K(n)$
-	and $ \bar{N}$ is the unipotent radical
-	of the opposite parabolic subgroup $ \bar{P}=M\bar{N}$.
-	Since $\pi$ is  $\oo$-finite, 
-	the  $M_0$-representations  $\pi$ and  $\pi_1$
-	factors through $M(\oo_p/p^n)$ for  $n>>0$,
-	thus we may extend the representations to  $I(n)$
-	via the group homomorphism
+	The proposition now follows from that 
+	$S_{\tau^\vee, \psi}(U^pK_p)\twoheadrightarrow 
+	S_{\tau_1^\vee, \psi}(U^pK_p)$
+	by Lemma \ref{lem:small}
+	and that by loc.cit
 	\[
-		I(n)\mapsto P(\oo_p/p^n)\to M(\oo_p/p^n).
+		\Hom_{\oo[Z_M^+]}(\oo[Z_M], S_{\tau^\vee, \psi}(U^pK_p))
+		\cong \prod_{\fm:\text{ordinary}}
+		S_{\tau^\vee, \psi}(U^pK_p)_{\fm}.
 	\]
-	Then when $U_p=K(n)$ there is the isomorphism
-	\[
-		 \Hom_{\oo[M_0]}(\pi,S_\psi(U^pU_p,E/\oo)^{N_0})=
-		 \Hom_{\oo[I(n)]}(\pi,S_\psi(U^pU_p,E/\oo)^{N_0})
-		 \cong S_{\pi^{\vee},\psi}(U^pI(n))
-	\]
-	But $S_{\pi^{\vee},\psi}(U^pI_n)\hookrightarrow 
-	S_{\pi_{1}^{\vee},\psi}(U^pI_n)$
-	by the previous lemma
-	and $\Hom_{\oo[Z_M^+]}(\oo[Z_M],S_{\pi^{\vee},\psi}(U^pI_n)) $
-	is isomorphic to (sums) of localizations $S_{\pi^{\vee},\psi}(U^pI_n)$
-	by loc.cit,
-	we get the desired surjectively on each  $K(n)$.
-	The proposition now follows from that
-	$\{K(n)\}$ is cofinal in the filtered system $\{U_p\}$
-	of all compact open subgroups of $K_p$
-	and that the finite  $\oo$-modules
-	$\Hom_{\oo[Z_M^+]}(\oo[Z_M],S_{\pi^{\vee},\psi}(U^pI_n)) $
-	satisfies the Mittag-Leffler condition.
 \end{proof}
-
 
 
 We assume from now on that 
 there exists a prime $v\in S_p$
 such that  $\F_v\cong \Qp$,
-and let  $\sigma\in I_\F$
+let  $\sigma\in I_\F$
 denote the unique embedding such that  $v_\sigma=v$.
-We will consider the following two cases
-\begin{itemize}
-	\item $n=3$ and  $G_p\cong\prod_{v\in S_p}\GL_3(\F_v)$,
-		and $P=P_v\times\prod_{v'\neq v}B_{v'}$.
-	\item $n=2$ and  $G_p\cong\prod_{v\in S_p}\GL_2(\F_v)$,
-		and $P=G_v\times\prod_{v'\neq v}B_{v'}$.
-\end{itemize}
-In both cases,
-$M$ is product of  $G=\GL_2(\Qp)$
-and a split torus $T$.
-Let $K=\GL_2(\Zp)\subset G$
-and $M_0=K\times T_0$.
+We also assume that 
+the parabolic subgroup $P\subset G_p$ is given by 
+$P=P_v\times\prod_{v'\neq v}B_{v'}$,
+where $B_{v'}\subset \GL_n(\oo_{v'})$
+are the Borel subgroups
+and the Levi component of $P_v\subset GL_n(\oo_v)$
+is the product of $\GL_2(\Q_p)$ and a split torus.
+In other word, $M$ is isomorphic to the product  
+of  $G=\GL_2(\Qp)$ and a split torus  $T$,
+and  $\Ord_P(S_\psi(U^p,E/\oo))\in \aMod_M(\oo)\cap \laMod_{G}(\oo)$.
+\begin{defn}
+	We define the $P$-ordinary completed homology and cohomology by
+	\begin{equation*}
+		M_\psi(U^p)=\Hom_\oo(\Ord_P(S_\psi(U^p,E/\oo)),E/\oo),\qquad
+		S_\psi(U^p)=\Hom_\oo(E/\oo, \Ord_P(S_\psi(U^p,E/\oo))).
+	\end{equation*}
+	We also write $S_{\psi}(U^p)_E=S_\psi(U^p)\otimes_\oo E$.
+	It is immediately that 
+	$M_\psi(U^p)\in \fC_{G,\zeta}(\oo)$,
+	where $\zeta=\psi\vert_{\F_v^\times}$.
+	It is also easily verified that 
+	\[
+		M_\psi(U^p)\cong \Hom_\oo(S_\psi(U^p),\oo),\qquad
+		S_\psi(U^p)\cong \Hom_\oo^{\cts}(M_\psi(U^p),\oo),
+	\]
+	here $\Phi\in \Hom_\oo(M_\psi(U^p),\oo)$ 
+	is continuous if 
+	$\Phi \mod p^n$ factors through
+	$S_{\psi}(U^pU_p,E/\oo)^\vee$ for some $U_p$
+	for any positive integer $n$
+	($U_p$ depedents on  $n$).
+\end{defn}
 
-\begin{gather*}
-	M_\psi(U^p)=S_\psi(U_p,E/\oo)^{\vee}\in \fC(\oo)
-	\cong \Hom_\oo(S_\psi(U^p),\oo)\text{completed homology}\\
-	S_\psi(U^p)=\Hom_{\oo}(E/\oo, S_\psi(U^p,E/\oo))=
-	\Hom_{\oo}^{\cts}(M_\psi(U^p), \oo) \text{completed cohomology}
-\end{gather*}
+
+\begin{lem}
+	Let $\lambda$ be a dominant weight
+	and $S_{\lambda,\psi}^{P-\ord}(U^pK_p)_E
+	\coloneqq \Hom_{\oo[Z_M^+]}
+	(\oo[Z_M], S_{\lambda,\psi}(U^pK_p,\oo))\otimes_\oo E$.
+	and  $\pi_\lambda=\Ind_{M\cap B}^M\lambda$,
+	then
+	\[
+		\Hom_{\oo[M_0]}(\pi_\lambda^*, S_\psi(U^p)_E)\cong
+		S_{\lambda,\psi}^{P-\ord}(U^pK_p)_E.
+	\]
+\end{lem}
+\begin{proof}
+	Use
+\end{proof}
 
 
-\[
-S_\psi(U^p)_E^{v-a,v'-la}=
-\bigcup_{U^v}
-\Image\left(
-	\bigoplus_{(k,w)}\Hom_{E[K_vU^v]}(W_{k,w,E}, S_\psi(U^p)_E)
-	\otimes_EW_{k,w,E}\xrightarrow{ev}
-	S_\psi(U^p)_E
-\right)
-\]
+
 \begin{prop}
-Assume that $\psi\vert_{N_{D/F}(U^p)}=1$ and 
-$\psi(a_v)=\sigma_v(a_v)^w$
+Assume that $\psi(a_v)=\sigma(a_v)^w$
 for  $a_v\in \oo_v^\times$,
-then $S_\psi(U^p)_E^{v-a,v'-la}\subset S_\psi(U^p)_E$
+then $S_\psi(U^p)_E^{\alg}\subset S_\psi(U^p)_E$
 is dense.
 \end{prop}
 \begin{proof}
 	Reduced to $C_\psi(K_p,E)$ use the  $K_p$-injective properties.
 \end{proof}
-
-
-
-\begin{rem}
-	$S_{\tau,\psi}(U^pK_p,\oo)
-	\cong \Hom_{\oo[K_p]}(\tau^\vee, S_\psi(U^p,E/\oo))$
-	and 
-	\[
-		\varinjlim_{U_v}
-		S_{\tau,\psi}(U,E)\otimes \C
-		\cong \Hom_{D_\infty^\times}
-		(W_\C^*, C^\infty())
-	\]
-\end{rem}
+\[
+S_\psi(U^p)_E^{\alg}=
+\Image\left(
+	\bigoplus_{\lambda}\Hom_{E[K\times T_0]}(W_{\lambda,E}^*, 
+	S_\psi(U^p)_E)
+	\otimes_EW_{\lambda,E}^*\xrightarrow{ev}
+	S_\psi(U^p)_E
+\right)
+\]
 
 \subsection{Hecke algebras}
 
