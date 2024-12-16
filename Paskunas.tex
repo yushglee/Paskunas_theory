@@ -61,6 +61,8 @@
 \newcommand{\phk}{\mathcal{H}_{\wt{k}}} %Hecke algebra
 \newcommand{\ordp}{e}
 
+\newcommand{\wt}[1]{\underline{ #1 }}
+\newcommand{\bwt}[1]{\underline{\boldsymbol { #1 }}}
 
 \newcommand{\vk}{v_{-\wt{k}}} % lowest weight vector
 \newcommand{\lk}{\mathnormal{l}_{\wt{k}}} % projection to lowest weight
@@ -128,7 +130,8 @@
 \DeclareMathOperator{\Tr}{Tr}
 \newcommand{\qch}{\epsilon} % quadratic character of K/F
 
-
+\newcommand{\M}{\mathbf{M}}
+\newcommand{\bnu}{\boldsymbol{\nu}}
 %%% Fonts
 \newcommand{\oeu}{\EuScript{O}}
 \newcommand{\eeu}{\EuScript{E}}
@@ -224,7 +227,99 @@
 \tableofcontents
 
 
+\section{Previous results}
+Let $\chi$ be a character of $\A_{\K}^\times/\K^\times$
+such that $\chi\mid_{\A_\F^\times}=\qch_{\K/\F}$
+is the quadratic character associated to $\K/\F$.
+Put $\chi_\circ=\chi|\cdot|_{\K}^{1/2}$ and $\chi^0=\bar{\chi}_\circ$.
+We assumed the following condition.
+\begin{equation}\label{cond:chi}\tag{$\chi$}
+    \frac{L(\frac{1}{2},\chi)}{\Omega_\infty^{\Sigma}}\not\equiv 0\text{ mod } \fm
+    \text{ and } \chi_\circ
+    \text{ satisfies the conditions of \cite[Theorem A]{Hsieh12}}.
+\end{equation}
 
+Let $\fc$ be the conductor of $\chi$ and $\fs=\fs^c$ be a prime-to-$p\fc$
+idea of $\K$ consists only of split primes.
+Let $\K_{p^n\fs}$ be the ray class group of conductor $p^n\fs$ over $\K$,
+$\K_{p^\infty\fs}=\bigcup_{n}\K_{p^n\fs}$,
+and $\fG_{\fs}^-$ be the Galois group of the maximal pro-$p$ anticyclotomic
+subextension in $\K_{p^\infty\fs}$.
+We denote by $\fX_{\fs}^-$
+the set of characters of $\fG_{\fs}^-$
+which are $p$-adic avatars of 
+algebraic Hecke characters $\eta$ such that 
+\begin{enumerate}
+    \item $\eta$ has infinity type $k\geq 0$.
+    \item $\eta$ is ramified only at places dividing $p\fs$.
+    \item the prime-to-$p$ part of the conductor of $\tilde{\eta}$ divides $\fs$.
+\end{enumerate}
+We can construct a Hida family $\euF^\circ_{\fs}\in \M(K(\fn),\Lambda_{\fs}^-)$
+of level $\fn=\fc\fs$ over $\Lambda_{\fs}^-=R\llbracket \fG_{\fs}^-\rrbracket$ for 
+a sufficiently large $p$-adic ring $R$,
+which interpolates the $p$-adic modular form
+associated to the pull-back theta lifts of $\eta$ when $\eta\in \fX_{\fs}^-$.
+
+\begin{thm}\label{thm:intro1}
+    Under the assumption \eqref{cond:chi}
+    and suppose $p$ is ``large enough'' with respect to $\K$ and $\fc$,
+    the Hida family $\euF^\circ_{\fs}$
+    can be shown to be primitive inside $\M(K(\fn),\Lambda_{\fs}^-)$.
+\end{thm}
+
+Therefore
+\begin{align*}
+    U_w\theta^\square_{\Phi'}(\eta,\bnu)(g)&=
+    (\chi^{-1}|\cdot|_\K^{-1/2})_w(\varpi_w)
+    \theta^\square_{\Phi'}(\eta,\bnu)((\varpi_w,\varpi_w^{-1})g)
+    =(\chi_\circ^{-1}\tilde{\eta})_w(\varpi_w)
+    \theta^\square_{\Phi'}(\eta,\bnu)(g)\\
+    T_w\theta^\square_{\Phi'}(\eta,\bnu)(g)&=
+    (\chi_\circ^{-1}\tilde{\eta})_w(\varpi_w)
+    \theta^\square_{\Phi'}(\eta,\bnu)(g)
+\end{align*}
+Since $\chi_\circ$ and $\eta$ has infinity type $\Sigma^c$ and $k$ respecitvely,
+\begin{align}
+    U_wf^\circ(\eta)&=
+    \wt{k}(\varpi_w,1)
+    (\chi_\circ^{-1}\tilde{\eta})_w(\varpi_w)f^\circ(\eta)=
+    \hat{\chi}_\circ^{-1}(\varpi_w)\hat{\eta}(\varpi_w,\varpi_\bw^{-1})f^\circ(\eta)\\
+    T_wf^\circ(\eta)&=
+    (q_w\chi_\circ(\varpi_w)
+    +\chi_\circ^{-1}\tilde{\eta}(\varpi_w))
+    f^\circ(\eta)
+\end{align}
+has a $p$-unit as an eigenvalue when $w\in \Sigma_p$.
+Note that the formula also holds when $w\mid \fs$.
+
+
+where $\rho_{\wt{k}}(g_\infty)=\rho^{\wt{k}}(g_\infty^{-\intercal})
+\coloneqq \rho^{\bwt{k}}(g_\infty^{-\intercal},\id_2)$
+for $\wt{k}\coloneqq (k,0)$
+
+
+
+\begin{thm}\label{thm:intro2}
+    Put $\mathcal{L}_\fn=\B_\fn(\euF^\circ_{\fs},U_\fs^{-1}\euF^\circ_{\fs})
+    \in \Lambda_{\fs}^-$
+    where $U_\fs$ is some Hecke action defined above $\fs$. Then
+    \begin{equation*}
+        \frac{1}{\Omega_p^{2k+4}}
+        \int_{\fG_{\fn}}\hat{\eta}\,\mathcal{L}_\fn=
+    C(\eta,\chi,\K)
+    \frac{(2\pi i)^{k}\Gamma(k+2)L(1,\chi^{-2}\tilde{\eta})}{\Omega_\infty^{k+2\Sigma}}
+    \prod_{w\mid p\fs}
+    \varepsilon(1,(\chi^{2}\tilde{\eta}^{-1})_w,\psi_w)
+    \frac{1-(\chi^{-2}\tilde{\eta})^{-1}_w(\varpi_v)}
+    {1-(\chi^{-2}\tilde{\eta})_w(\varpi_v)q_v^{-1}}
+    \end{equation*}
+    up to powers of $2$
+    when $\hat{\eta}\in \fX^+_{\fs}$.
+    Here $C(\eta,\chi,\K)$ is a scalar depending on $\eta,\chi$ and $\K$
+    which is a $p$-unit when \eqref{cond:chi} is satisfied 
+    and $p$ is ``large enough''
+    with respect to $\K$ and $\fc$. 
+\end{thm}
 
 \section{Paskunas theory}
 
