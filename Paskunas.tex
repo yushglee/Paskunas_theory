@@ -39,9 +39,6 @@
 }
 
 \newcommand{\smat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix} \right)}
-\newcommand{\mat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix} \right)}
-\newcommand{\dBr}[1]{\llbracket{#1}\rrbracket}
-\newcommand{\leg}[2]{\left(\frac{#1}{#2}\right)}
 
 % double bracket
 \makeatletter
@@ -57,40 +54,63 @@
 \makeatother
 
 
-\newcommand{\Gp}{\mathcal{G}_{\Qp}} %Galois group over \Qp
-\newcommand{\Fr}{\textnormal{Fr}} %geometric Frobenius
-\newcommand{\frob}{\textnormal{frob}} %arithmetic Frobenius
 
+
+\newcommand{\euF}{\EuScript{F}} %Hida family
+\newcommand{\M}{\mathbf{M}} % modular form
+\newcommand{\bnu}{\boldsymbol{\nu}}
+\newcommand{\wt}[1]{\underline{ #1 }}
+\newcommand{\bwt}[1]{\underline{\boldsymbol { #1 }}}
+\newcommand{\TT}{\mathbb{T}} % Hecke 
+\newcommand{\fG}{\mathfrak{G}}
+\newcommand{\fX}{\mathfrak{X}}
+\newcommand{\GG}{\mathbf G} 
+\newcommand{\Iw}{\textnormal{Iw}} 
+
+
+\newcommand{\bw}{\overline{w}}
+%%% Block theory
 
 \newcommand{\aMod}{\textnormal{Mod}^{\textnormal{adm}}}
 \newcommand{\laMod}{\textnormal{Mod}^{\textnormal{l.adm}}}
 \newcommand{\lfMod}{\textnormal{Mod}^{\textnormal{lfin}}}
 \newcommand{\Ban}{\textnormal{Ban}^{\textnormal{adm.fl}}}
-
-
 \DeclareMathOperator{\Mod}{\textnormal{Mod}}
 \DeclareMathOperator{\Rep}{Rep}
-\DeclareMathOperator{\Ord}{Ord}
-\DeclareMathOperator{\Irr}{Irr}
-\DeclareMathOperator{\WD}{WD}
+\newcommand{\B}{\mathfrak B} 
+\newcommand{\fC}{\mathfrak C}
 \DeclareMathOperator{\soc}{soc}
 \DeclareMathOperator{\V}{\check{\mathbf{V}}} %Colmez
 
+
+%%% p_adic Hodge
+
+\newcommand{\Gp}{\mathcal{G}_{\Qp}} %Galois group over \Qp
+\newcommand{\Fr}{\textnormal{Fr}} %geometric Frobenius
+\newcommand{\frob}{\textnormal{frob}} %arithmetic Frobenius
 \newcommand{\dR}{\textnormal{dR}}
 \newcommand{\pst}{\textnormal{pst}}
 \newcommand{\cris}{\textnormal{cris}}
+
+\DeclareMathOperator{\Gal}{Gal}
+
+\DeclareMathOperator{\Ord}{Ord}
+\DeclareMathOperator{\Irr}{Irr}
+\DeclareMathOperator{\WD}{WD}
+\DeclareMathOperator{\rec}{rec}
+\DeclareMathOperator{\Rec}{Rec}
+
 \newcommand{\cont}{\textnormal{cont}}
 \newcommand{\cts}{\textnormal{cts}}
 \newcommand{\alg}{\textnormal{alg}}
 \newcommand{\sm}{\textnormal{sm}}
+\newcommand{\adm}{\textnormal{adm}}
 \newcommand{\ps}{\textnormal{ps}}
 \newcommand{\red}{\textnormal{red}}
 \newcommand{\fin}{\textnormal{fin}}
 \newcommand{\an}{\textnormal{an}}
 \newcommand{\ord}{\textnormal{ord}}
 
-
-\newcommand{\GG}{\mathbb G}
 
 %%% Linear algebraic groups
 \DeclareMathOperator{\GL}{GL}
@@ -102,9 +122,10 @@
 \DeclareMathOperator{\vol}{vol}
 \DeclareMathOperator{\Sym}{Sym}
 
-\DeclareMathOperator{\val}{val}
 \DeclareMathOperator{\Lie}{Lie}
-\DeclareMathOperator{\Pol}{Pol_p}
+
+\newcommand{\bs}{\mathcal{S}}
+\newcommand{\id}{\mathbf{1}}
 
 %%% Adelic rings
 \newcommand{\Q}{{\mathbf{Q}}}
@@ -116,99 +137,65 @@
 \newcommand{\R}{\mathbf R}
 \newcommand{\C}{\mathbf C}
 \newcommand{\A}{\mathbf A}
-\newcommand{\hZ}{{\hat{\mathbf{Z}}}}
 \newcommand{\dd}{\mathfrak{d}} %different
 \newcommand{\DD}{\mathcal{D}}  %discriminant
+\DeclareMathOperator{\Nr}{\mathsf{N}} %norm
+\DeclareMathOperator{\Tr}{Tr} %trace
 
 \newcommand{\arch}{\mathbf{a}}
 \newcommand{\finite}{\mathbf{h}}
 
-\newcommand{\F}{{\mathbf{F}}} %global 
-\newcommand{\OF}{{\mathcal{O}_{\F}}}
-\newcommand{\K}{{\mathcal{K}}} %global quadratic
-\newcommand{\OK}{\mathcal{O}_{\K}}
-\newcommand{\kk}{F} %local
+\newcommand{\F}{{\mathbf{F}}} %global field
+\newcommand{\K}{{\mathbf{K}}} %global quadratic
+\newcommand{\kk}{F} %local field
 \newcommand{\E}{E} %local quadratic
-
-
-\DeclareMathOperator{\Sel}{Sel}
-\DeclareMathOperator{\Gal}{Gal}
-\DeclareMathOperator{\Nr}{\mathsf{N}}
-\DeclareMathOperator{\Tr}{Tr}
 \newcommand{\qch}{\epsilon} % quadratic character of K/F
+
+\newcommand{\oo}{\mathcal{O}} %ring of integer
+\DeclareMathOperator{\val}{val}
 
 
 %%% Fonts
+
 \newcommand{\oeu}{\EuScript{O}}
 \newcommand{\eeu}{\EuScript{E}}
 \newcommand{\feu}{\EuScript{F}}
 \newcommand{\geu}{\EuScript{G}}
 \newcommand{\keu}{\EuScript{K}}
 
-\newcommand{\oo}{\mathcal O}
-\newcommand{\bs}{\mathcal S}
-\newcommand{\id}{\mathbf{1}}
-
-\newcommand{\TT}{\mathbb{T}}
-
-
-
-\newcommand{\1}{\mathbf{1}} 
-\newcommand{\bfe}{\mathbf e}
-\newcommand{\bff}{\mathbf f}
-
-\newcommand{\bX}{\mathbb{X}}
-\newcommand{\bY}{\mathbb{Y}}
-\newcommand{\bV}{\mathbb{V}}
-\newcommand{\bW}{\mathbb{W}}
-
-\newcommand{\fa}{\mathfrak a}
-\newcommand{\fg}{\mathfrak g}
-\newcommand{\fc}{\mathfrak c}
-\newcommand{\fC}{\mathfrak C}
-\newcommand{\B}{\mathfrak B}
-\newcommand{\fs}{\mathfrak s}
-\newcommand{\fm}{\mathfrak m}
-\newcommand{\fn}{\mathfrak n}
-\newcommand{\fl}{\mathfrak l}
-\newcommand{\fp}{\mathfrak p}
-\newcommand{\bfp}{\overline{\mathfrak p}}
-\newcommand{\fq}{\mathfrak q}
+\newcommand{\fa}{\mathfrak{a}}
+\newcommand{\fc}{\mathfrak{c}}
+\newcommand{\fg}{\mathfrak{g}}
+\newcommand{\fk}{\mathfrak{k}}
+\newcommand{\fs}{\mathfrak{s}}
+\newcommand{\fm}{\mathfrak{m}}
+\newcommand{\fn}{\mathfrak{n}}
+\newcommand{\fl}{\mathfrak{l}}
+\newcommand{\fp}{\mathfrak{p}}
+\newcommand{\fq}{\mathfrak{q}}
+\newcommand{\bfp}{\overlin{\mathfrak p}}
 \newcommand{\bfq}{\overline{\mathfrak q}}
-
-\newcommand{\M}{\mathbf{M}}
-\newcommand{\bnu}{\boldsymbol{\nu}}
-\newcommand{\wt}[1]{\underline{ #1 }}
-\newcommand{\bwt}[1]{\underline{\boldsymbol { #1 }}}
 
 \newcommand{\btheta}{\boldsymbol{\theta}}
 \newcommand{\bdelta}{\boldsymbol{\delta}}
 
 
-\newcommand{\fG}{\mathfrak{G}}
-\newcommand{\fX}{\mathfrak{X}}
-\newcommand{\euW}{\EuScript{W}}
-\newcommand{\euF}{\EuScript{F}}
-
-
 %%% Categorical
-\DeclareMathOperator{\Ext}{Ext}
 \DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\Inj}{Inj}
-\DeclareMathOperator{\Image}{Im}
-\DeclareMathOperator{\Isom}{Isom}
 \DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tor}{Tor}
 \DeclareMathOperator{\Ind}{Ind}
 \DeclareMathOperator{\cInd}{c-Ind}
+\DeclareMathOperator{\nInd}{n-Ind}
 \DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\Image}{Im}
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\corank}{corank}
 \DeclareMathOperator{\Res}{Res}
-\DeclareMathOperator{\rec}{rec}
-\DeclareMathOperator{\Rec}{Rec}
 
-%\newcommand{\red}[1]{\textcolor{Red}{#1}}
+
 
 
 \newtheorem{thm}{Theorem}[section]
@@ -238,6 +225,831 @@
 \maketitle
 \setcounter{tocdepth}{1}
 \tableofcontents
+
+\section{Notations}
+
+Throughout the article, $\F$ is a totally real field
+and $\K$ is a totally imaginary quadratic extension over $\F$.
+Denote by $\arch=\Hom(\F, \C)$ 
+the set of archimedean places of $\F$,
+and by $\fin$ the set of finite places of $\F$.
+Let $\dd_\K$ and $\dd_{\K/\F}$ denote respectively 
+the absolute and the relative ideals of different in $\K$,
+recall that $\dd_\K=\dd_{\K/\F}\dd_\F$,
+where $\dd_\F$ denotes 
+the absolute ideals of different in $\F$.
+
+We fix an odd prime $p$ throughout the article
+and assume that $p$ is prime to the class number $h_\K$,
+the number of roots of unity in $\K$,
+and satisfies the following ordinary condition.
+\begin{equation}\label{cond:ord}\tag{ord}
+\text{Every finite place of $\F$ above $p$ is split in $\K$}.
+\end{equation}
+We fix an embedding $\iota_\infty:\bar{\Q}\to \C$
+and an isomorphism $\iota:\C\cong \C_p$,
+and write $\iota_p=\iota\circ\iota_\infty:\bar{\Q}\to \C_p$.
+
+
+Given a place $v$ of $\F$, archimedean or finite,
+let $w\mid v$ denote a place $w$ of $\K$ above $v$.
+Then $\K_w$ and $\F_v$ are respectively
+the completions of the fields $\K$ and $\F$ at $w$ and $v$.
+When $v\in \fin$ we denote by $\oo_w$ and $\oo_v$ 
+the rings of integers of $\K_w$ and $\F_v$.
+Let $|\cdot|_v$ be the norm on $\F_v$,
+which is the usual absolute value when $v\in \arch$
+and $q_v=|\varpi_v|_v^{-1}$,
+for any choice of uniformizer $\varpi_v$ in $\oo_v$,
+is the cardinality of the residue field $\oo_v/(\varpi_v)$
+when $v\in \fin$.
+For $w\mid v$, define $|a|_w=|\Nr_{\K_w/\F_v}(a)|_v$.
+
+
+Denote by $\A=\A_{\F}$ the ring of adeles over $\F$,
+by $\A_{\infty}$ and $\A_{f}$ respectively
+the archimedean and the finite components of $\A$.
+Let $\qch_{\K/\F}$ denote 
+the quadratic character on $\A_\F^\times/\F^\times$
+associated to $\K/\F$ by the global class field theory,
+$\qch_v$ denote the component on $\F_v^\times$ 
+when $v\in \fin$.
+If $\eta$ is a character of $\A_\K^1/\K^1$, 
+we denote
+by $\tilde{\eta}(\alpha)\coloneqq \eta(\alpha/\alpha^c)$
+the Hecke character which is the base change of $\eta$ 
+to $\A_\K^\times/\K^\times$.
+
+\subsection{CM types}
+
+Denote respectively by $S_p$ and $S_p^\K$ the set of places above $p$
+of $\F$ and $\K$.
+Identify $I_\K=\Hom(\K,\bar{\Q})$ with
+$\Hom(\K,\C)$ and $\Hom(\K,\C_p)$ by compositions with $\iota_\infty$ and $\iota_p$.
+Given $\sigma\in I_\K$,
+let $w_\sigma\in S_p^\K$ be the place induced by
+$\sigma_p\coloneqq \iota_p\circ \sigma\in\Hom(\K,\C_p)$.
+For $w\in S_p^\K$, define
+\[
+    I_w=\{\sigma\in I_\K\mid w=w_\sigma \}=\Hom(\K_w,\C_p)
+\]
+and decompose $I_\K=\sqcup_{w\mid p}I_w$.
+For a subset $\Sigma\subset I_\K$
+define $\Sigma_p=\{w_\sigma\mid \sigma\in \Sigma\}$.
+We write
+$\Sigma^c=\{\sigma c\mid \sigma\in \Sigma\}$ and 
+$\Sigma_p^c=\{cw\mid w\in \Sigma_p\}$.
+We fix throughout the article a $p$-ordinary CM type,
+which is a subset $\Sigma\subset I_\K$ such that
+\[
+    \Sigma\sqcup \Sigma^c=I_\K,\quad
+    \Sigma_p\sqcup \Sigma_p^c=S_p^\K.
+\]
+The $p$-ordinary CM type $\Sigma$
+always exists by the assumption \eqref{cond:ord},
+and is identified with $\arch=\Hom(\F,\C)$ by restrictions.
+When $v\in S_p$ decomposes into $v=w\bw$,
+we understand always that $w\in \Sigma_p$.
+
+\subsection{Characters}
+
+Given 
+$\kappa=\sum_{\sigma\in \Sigma} a_\sigma\sigma+b_\sigma\sigma c\in \Z[I_\K]$,
+an algebraic Hecke character 
+$\chi\colon \A_\K^\times/\K^\times\to \C^\times$ 
+has type $\kappa$ if
+\[
+    \chi_\infty(\alpha)=
+    \iota_\infty \left(\prod_{\sigma\in \Sigma} 
+    \sigma(\alpha)^{a_\sigma}\sigma(c \alpha)^{b_\sigma}\right),\quad
+    \alpha\in \K^\times.
+\]
+For $\alpha_\infty=(\alpha_\sigma)\in \A_{\K,\infty}^\times$
+and $\alpha_p=(\alpha_w,\alpha_{\bw})\in \prod_{v\in S_p}\K_v^\times$, 
+define
+\[
+    \alpha_\infty^\kappa=
+    \prod_{\sigma\in \Sigma} 
+    (\alpha_\sigma)^{a_\sigma}(\bar{\alpha}_\sigma)^{b_\sigma}\in \C^\times,\quad
+    \alpha_p^\kappa=
+    \prod_{w\in \Sigma_p}
+    \prod_{\sigma\in I_w}
+    \sigma_p(\alpha_w)^{a_\sigma}\sigma_p(\alpha_{\bw})^{b_\sigma}\in \C_p^\times,
+\]
+for example,
+$(2\pi)^\Sigma=(2\pi)^{[\F:\Q]}$
+when $2\pi$ is embedded diagonally in $\A_{\K,\infty}^\times$.
+Define the $p$-adic avatar of $\chi$ by
+\[
+    \hat{\chi}\colon \A_\K^\times\to \bar{\Z}_p^\times,\quad
+    \hat{\chi}(\alpha)=\iota(\chi(\alpha)\alpha_\infty^{-\kappa})\alpha_p^{\kappa}
+\]
+where $\alpha_\infty$ and $\alpha_p$ are respectively 
+the archimedean component and the components above $p$ of $\alpha\in \A_\K^\times$.
+
+
+\subsection{Matrices}
+When $R$ is an $\F$-algebra and 
+$m=(m_{ij})\in \text{M}_{r,s}(\K\otimes_\F R)$,
+we denote by 
+$m^\intercal=(m_{ji}), 
+m^c=(m^c_{ij})$, and
+$m^*=(m^c_{ji})$
+respectively the transpose, conjugate, and conjugate-transpose of $m$.
+
+When $r=s$ and $g\in \GL_r(\K\otimes_\F R)$ is invertible, we write
+$g^{-\intercal}=(g^{-1})^\intercal$ and $g^{-*}=(g^{-1})^*$.
+We write $\mtr(m)$ for the trace of a square matrix $m$,
+and reserve $\Tr$ for the traces between fields extensions.
+
+When $v=w\bw$ is a place that is split in $\K$,
+identify $\K_w=\F_v=\K_{\bw}$ and 
+write $\K_v=\F_v^2$, 
+where the first component corresponds to $\K_w$.
+Then $m=(m_w,m_{\bw})\in M_n(\K\otimes_\F\F_v)=M_n(\F_v)\times M_n(\F_v)$ 
+denotes an element in $m\in M_n(\K\otimes_\F\F_v)$ and its components.
+
+
+\section{Modular forms on definite unitary groups}
+
+Let $G$ be the definite unitary group over $\F$,
+such that for any $\F$-algebra $R$
+\[
+    G(R)=\{g\in \GL_{n}(\K\otimes_\F R) \mid gg^*=\id_n\}.
+\]
+Let $g_v=(g_w,g_{\bw})\in G(\F_v)$
+when $v=w\bw$ is place of $F$ that is split in $\K$.
+Then the map $g_v\mapsto g_w$ is an isomorphism
+$\iota_w\colon G(\F_v)\cong \GL_n(\F_v)$
+such that 
+$\iota_w(g_v)=\iota_{\bw}(g_v)^{-\intercal}$.
+In particular, when $w\in \Sigma_p$ and  $w\mid v\in S_p$,
+we identify $G(\F_v)$ with 
+$G_{w}\coloneqq\GL_n(\K_w)=\GL_n(\F_v)$ 
+via the isomorphisms $\iota_w$, and define 
+\[
+	G_p\coloneqq\prod_{w\in \Sigma_p}G_w,\quad
+	K_p\coloneqq\prod_{w\in \Sigma_p}K_w,\quad
+	K_w\coloneqq\GL_n(\oo_v).
+\]
+
+Let $B_n\subset \GL_n$ be the subgroup of
+upper trigiangular matrices
+and $T_n\subset B_n$ be the diagonal torus.
+We identify the set of algebraic characters $X^*(T_n)$
+with  $\Z^n$.
+
+
+
+Following \cite[Defn 2.3]{ger},
+when $\wt{k}=(k_\sigma)\in (\Z^n)^{\Sigma}$ 
+is a dominant weight, 
+we let $\xi_{\wt{k}}$ be the algebraic representation 
+of $G_p$ given by 
+\[
+	\xi_{\wt{k}}=\bigotimes_{\sigma\in \Sigma}
+	\Ind_{B_n}^{\GL_n}(w_0k_{\sigma})\quad
+	g=(g_w)\mapsto 
+	\otimes_{w\in \Sigma_p}
+	\otimes_{\sigma\in I_w}\xi_{k_\sigma}(g_v)
+\]
+where $w_0$ is the longest element in the Weyl group of
+$\GL_n$ and  
+$\xi_{k_\sigma}\coloneqq\Ind_{B_n}^{\GL_n}(w_0k_{\sigma})$
+is the algebraic representation of highest weight $k_\sigma$.
+
+Let $E$ be a sufficiently large
+finite extension over  $\Qp$
+that contains $\iota_p(\sigma(\K))$
+for all  $\sigma\in I_\K$.
+Let  $\oo$ be the ring of integers of  $E$.
+Let $W_{\wt{k}}$ and $M_{\wt{k}}$ 
+be the points of $\xi_{\wt{k}}$ over
+$E$ and over  $\oo$ respecitvely.
+Then $W_{\wt{k}}=M_{\wt{k}}\otimes_{\oo}E$
+and $K_p$ acts on $M_{\wt{k}}$ via $\xi_{\wt{k}}$.
+
+\begin{rem}
+	In previous work, 
+	we have defined $\rho_k$ as the 
+	algebraic representation with lowest weight  $-k$.
+	Thus $\xi_k$ is isomorphic to the representation 
+	$\rho^k(g)\coloneqq \rho_k(g^{-\intercal})$.
+\end{rem}
+
+
+
+When $U=\prod_{v\in\finite}U_v\subset G(\A_f)$
+is an open compact subgroup, 
+let $U^p=\prod_{v\notin S_p}U_v$ and 
+$U_p=\prod_{v\in S_p}U_v$.
+\begin{defn}
+Let $\wt{k}\in (\Z^n)^{\Sigma}$ be a dominant weight
+and $U$ be an open compact subgroup as above,
+and let $M$ be an $\oo$-module.
+When  $U_p\subset K_p$, we define 
+the space of modular forms
+of weight $\wt{k}$ and level $U$ as 
+\begin{equation}
+S_{\wt{k}}(U,M)=
+\left\{ f: G(\F)\backslash G(\A_f)/U^p 
+\rightarrow M\otimes_{\oo}M_{\wt{k}}
+\mid f(gu)=\xi_{\wt{k}}(u_p)^{-1}\cdot f(g), u\in U\right\} 
+\end{equation}
+We will write $S(U,M)$ for $S_{\wt{k}}(U,M)$
+when $\wt{k}$ is the trivial weight.
+\end{defn}
+Since $\GG(\F)\backslash \GG(\A_f)/U$ is a finite set,
+any modular form $f\in S_{\wt{k}}(U,M)$ 
+is determined by its values on a finite set of points.
+Furthermore, when $U$ satisfies the 
+sufficiently small assumption
+\begin{equation}\label{cond:small}\tag{\text{small}}
+	\GG(\A_f)=\bigsqcup_{i\in I}
+	\GG(\F)t_i U,\quad
+	\GG(\F)\cap t_iUt_i^{-1}=\{1\} \text{ for all } i\in I
+\end{equation}
+then a modular form determines and is determined by
+its values at the representatives $\{t_i\}$.
+In other word  $S_{\wt{k}}(U,M)$ is
+isomorphic to a finite direct sum of 
+$M\otimes_{\oo}M_{\wt{k}}$.
+
+\subsection{Hecke operators and $P$-ordinary forms}
+
+Let $U$ be an open compact subgroup as above
+such that $U_p=K_p$.
+For $w\in \Sigma_p$ and $c\geq b\geq 0$ with  $c>0$, 
+let $\Iw(w^{b,c})\subset K_w$
+be the subgroup of elements
+that are upper triangular modulo $\varpi_w^c$ and 
+upper triangular unipotent modulo $\varpi_w^b$.
+we then write $\Iw(p^{b,c})$
+for $\prod_{v\in S_p}\Iw(w^{b,c})$.
+We recall from \cite[\S 2.3]{ger}
+the collection of Hecke operators 
+acting on $S_{\wt{k}}(U^p\Iw(p^{b,c}),M)$
+defined as the following double-coset operators.
+
+If $v=w\bw$ is split in  $\K$
+and  $\iota_w(U_v)=\GL_n(\oo_v)$, 
+for $1\leq j\leq n$ let
+\begin{equation}
+	T_w^{(j)}=
+	\left[\iota_w^{-1}\left(
+	\GL_n(\oo_v)
+	\begin{pmatrix}
+		\varpi_v\id_{j}&\\&\id_{n-j}
+	\end{pmatrix}
+	\GL_n(\oo_v)
+	\right)\right],
+	\text{ note that }
+	T_{\bw}^{(j)}=(T_{w}^{{n}})^{-1}T_w^{(n-j)}.
+\end{equation}
+
+If $w\in \Sigma_p$, let  
+$\alpha_w^{(j)}=\iota_w^{-1}
+\left(\begin{smallmatrix}
+\varpi_v\id_{j}&\\&\id_{n-j} 
+\end{smallmatrix}\right)$ for $1\leq j\leq n$,
+or let $u\in \iota_w^{-1}(T_n(\oo_w))$, then define
+\begin{equation}
+	U_{\wt{k},w}^{(j)}=
+	(w_0\wt{k})^{-1}(\alpha_{w}^{(j)})\cdot
+	[\Iw(p^{b,c})\alpha_w^{(j)}\Iw(p^{b,c})]
+	\text{ and }
+	\langle u\rangle= [\Iw(p^{b,c})u\Iw(p^{b,c})].
+\end{equation}
+
+More generally, 
+for each $w\in \Sigma_p$ let $P_w\subset G_w$
+be a standard parabolic subgroup containing 
+the Borel subgroup $B_w\coloneqq B_n(\oo_w)$,
+and write
+$P=\prod_{w\in \Sigma_p}P_w$,
+$B=\prod_{w\in \Sigma_p}B_w$.
+Let $P=QU$
+and $B=TN$ denote the Levi decompositions and define
+$\Iw^P(p^{b,c})=\prod_{v\in S_p}\Iw^P(w^{b,c})$, where
+\[
+	\Iw^P(w^{b,c})=
+	\{
+	k\in K_w\mid 
+	k\text{ mod } \varpi_w^c \in P\,\text{ and }
+	k\text{ mod } \varpi_w^c \in U
+	\}.
+\]
+Then when $\alpha_{w}^{(j)}\in Z_Q$,
+the center of the Levi subgroup $Q$,
+by a slight abuse of notation 
+we also write $U_{\wt{k},w}^{(j)}$
+for the similarly defined double-coset operator
+on $S_{\wt{k}}(U^p\Iw^P(p^{b,c}),M)$.
+As explained in \cite[Lem 2.10]{ger},
+these operators commute with each other 
+and are equivariant with respect to the inclusions
+$ S_{\wt{k}}(U^p\Iw(p^{b,c}),M)\hookrightarrow
+S_{\wt{k}}(U^p\Iw(p^{b',c'}),M)$
+if $b'\geq b$ and $c'\geq c$.
+
+
+
+\begin{defn}
+	Givne a parabolic subgroup $P$ as above,
+	and let  $M$ be either a finite  $\oo$-module
+	or the Pontryagin dual of which, 
+	we define the space of $P$-ordinary modular forms as
+	\[
+	S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,c}),M)\coloneqq
+		e_PS_{\wt{k}}(U^p\Iw^P(p^{b,c}),M),\quad
+		e_P\coloneqq\lim_{n\to \infty}
+		(\prod_{w\in \Sigma_p}\prod_j
+		U_{\wt{k},w}^{(j)})^{n!}
+	\]
+	here $j$ runs through indices $1\leq j\leq n$
+	such that  $\alpha_w^{(j)}\in Z_Q$,
+	the center of the Levi subgroup $Q\subset P$.
+	In particular,
+	$S_{\wt{k}}^{B-\ord}(U^p\Iw(p^{b,c}),M)$ 
+	is the space of ordinary forms as defined in 
+	\cite[Def 2.13]{ger}.
+\end{defn}
+
+\subsection{Emerton's Functor of ordinary parts}
+
+On the other hand,
+given a parabolic subgroup $P$ as above, 
+we may apply 
+the functor of $P$-ordinary parts as defined in \cite{emeI}
+on the smooth admissible $G_p$-module
+\[
+	S(U^p,E/\oo)\coloneqq
+	\varinjlim_{U_p}S(U^pU_p,E/\oo)\in 
+	\Mod^{\adm}_{G_p}(\oo)
+\]
+where $\{U_p\}$ is the filtered system of 
+all the compact open subgroups in $K_p$.
+To recall the definition,
+let $U_0=U\cap K_p$,
+$Q^+=\{m\in Q\mid mU_0m^{-1}\subset U_0\}$, and 
+$Z_Q^+=Q^+\cap Z_Q$.
+For a $P$-representation $V$ define
+\[
+	h_Q(m)\cdot v=\sum_{x\in U_0/mU_0m^{-1}} xm\cdot v
+	\text{ for } v\in V^{U_0}.
+\]
+Then the functor of ordinary parts
+$ \Ord_P\colon \Mod^{\sm}_{G_p}(A)\to \Mod^{\sm}_Q(A)$
+is defined as
+\[
+	\Ord_P(V)=\Hom_{A[Z_Q^+]}(A[Z_Q], V^{U_0})_{Z_Q-\fin}
+\]
+
+\begin{defn}
+	For each $v\in S_p$
+	let $T_v\subset \GL_n(\F_v)$
+	be the diagonal torus and 
+	identify  $X^*(T_v)=\Z^n$.
+	Given $\lambda\in \Z^n$
+	such that $\lambda_1\geq \cdots\geq \lambda_n$,
+	let  $w_0$ be the longest Weyl element, define
+	\begin{equation}
+	\pi_\lambda=\Ind_{T(B\cap M)}^M(w_0\lambda),\qquad
+	\tau_\lambda=\Ind_B^G(w_0\lambda)\cong 
+	\Ind_P^G(\pi_\lambda).
+	\end{equation}
+	More generally,
+	when $\lambda=(\lambda_{\sigma})\in \Z[I_\F]^n$
+	satisfies 
+	$\lambda_{\sigma,1}\geq \lambda_{\sigma,2}\geq \cdots\lambda_{\sigma,n}$
+	for all $\sigma\in I_\F$, 
+	write 
+	$\pi_\lambda=\otimes_{I_\F}\pi_{\lambda_{\sigma}}$ and 
+	$\tau_\lambda=\otimes_{I_\F}\tau_{\lambda_{\sigma}}$
+	for the algebraic representations of $M$ and  $G_p$
+	respectively given by 
+	\[
+	\prod_{v\in S_p}P_v(\F_v)\to 	
+	\prod_{v\in S_p}\prod_{v=v_\sigma}P_v(E)\quad
+	\prod_{v\in S_p}\GL_n(\F_v)\to 	
+	\prod_{v\in S_p}\prod_{v=v_\sigma}\GL_n(E)\quad
+	\]
+\end{defn}
+
+
+
+The relation between the two definitions
+is provided by the following "weight independence" result
+generalizaing \cite[Prop 2.22]{ger}.
+\begin{prop}
+	For $c\geq r$ There exists an $M_0$-equivariant isomorphism
+	\[
+		\epsilon_\lambda
+		\colon S_{\lambda}^{P-\ord}(U^pH_{c,c}, \oo/p^r)\cong 
+		\Hom_{\oo}(\pi_\lambda^\vee(\oo/p^r),
+		\Ord_PS(U^p,\oo/p^r)^{M_c}).
+	\]
+	Here $m\in M_0$ acts on  $f\in S_\lambda^{P-\ord}(U^pH_{c,c},\oo/p^r)$
+	through $[m\cdot f](g)=m\cdot f(gm)$;
+	and on the right hand side through 
+	$\Ord_PS(U^p,\oo/p^r)$,
+	note that $M_c\subset M_0$ is a normal subgroup.
+\end{prop}
+\begin{proof}
+	Let $ev\colon \tau_\lambda\to \pi_\lambda$ 
+	be the evaluation at the identity, which is 
+	$H_{r,0}$-equivariant over $\oo/p^r$.
+	Define 
+	\[
+	\epsilon_{\lambda}\colon S_\lambda(U^pH_{c,c}, \oo/p^r)\to 
+	\Hom_{\oo}(\pi_\lambda^\vee(\oo/p^r), S(U^pH_{c,c},\oo/p^r))\qquad
+	\epsilon_{\lambda}(\tilde{f})(g)=
+	ev(\tilde{f}(g)).
+	\]
+	That $\epsilon_\lambda(\tilde{f})\in 	
+	\Hom_{\oo}(\tau_\lambda^\vee(\oo/p^r), S(U^pH_{c,c},\oo/p^r))$
+	follows from the above equivariance.
+	It is easily verified that 
+	the map is $M_0$-equivariant.
+	Moreover, since
+	$(w_0\lambda)(z)=\lambda'(z)$
+	for any weight $\lambda'\subset \pi_\lambda$,
+	the map is also $Z_M^+$-equivariant.
+
+	To construct a map in the reversed direction,
+	let $\alpha\in Z_M^+$ be the product
+	of a finite set of generators of $Z_M^+$
+	and let $ \{x_i\}\in N_0$
+	be a set of represntatives for $N_0/\alpha N_0\alpha^{-1}$.
+	Let $\iota\colon \pi_\lambda\hookrightarrow \tau_\lambda$
+	be the incusion of the weight vectors and define 
+	\[
+	\varphi(f)(g)\coloneqq \sum_i x_i\cdot \iota(f(gx_i\alpha))	
+	\]
+	The same argument in loc.cit shows 
+	$\varphi(f)\in S_\lambda(U^pH_{c,c},\oo/p^r)$
+	and the commutative diagram 
+	\[
+	\begin{tikzcd}
+		S_\lambda(U^pH_{c,c},\oo/p^r)
+		\arrow[r,"\epsilon_{\lambda}"]
+		\arrow[d,"\langle\alpha\rangle"]
+		& \Hom_\oo(\pi_\lambda^\vee(\oo/p^r), S(U^pH_{c,c},\oo/p^r))
+		\arrow[d,"h_M(\alpha)"]
+		\arrow[dl,"\varphi"]\\
+		S_\lambda(U^pH_{c,c},\oo/p^r)
+		\arrow[r,"\epsilon_{\lambda}"]
+		& \Hom_\oo(\pi_\lambda^\vee(\oo/p^r), S(U^pH_{c,c},\oo/p^r))
+	\end{tikzcd}	
+	\]
+	Thus $\epsilon_{\lambda}$ is an isomorphism
+	after localizing at the ordinary primes. 
+\end{proof}
+
+
+
+\begin{prop}
+	After restriction, 
+	$\Ord_P(S(U^p,E/\oo))$ is injective
+	as an object in $\Mod^{\sm}_{M_0}(\oo)$.
+\end{prop}
+\begin{proof}
+	Following the strategy of the proof of 
+	\cite[Prop 3.2.4]{pan}, it suffices to show the surjectivity of
+	\[
+		\Hom_{\oo[M_0]}(\pi,\Ord_P(S(U^p,E/\oo)))\to 
+		\Hom_{\oo[M_0]}(\pi',\Ord_P(S(U^p,E/\oo)))
+	\]
+	when $\pi_{1}\hookrightarrow \pi$ 
+	is injective between $M_0$-admissible
+	representations that are finite $\oo$-modules.
+	By definition
+	\begin{multline*}
+		\Hom_{\oo[M_0]}(\pi,\Ord_P(S(U^p,E/\oo)))=
+		\Hom_{\oo[M_0]}(\pi,
+		\Hom_{\oo[Z_M^+]}
+		(\oo[Z_M], S(U^p,E/\oo)^{N_0}))\\=
+		\Hom_{\oo[Z_M^+]}(\oo[Z_M],
+		\Hom_{\oo[M_0]}(\pi, S(U^p,E/\oo)^{N_0}))=
+		\Hom_{\oo[Z_M^+]}(\oo[Z_M],
+		S_{\pi^\vee}(U^pH_{c,0})
+	\end{multline*}
+	where the first equality follows from the $\oo$-finiteness of $\pi$,
+	as any homomorphism in above factors through some 
+	$S(U^pU_p,p^{-s}\oo/\oo)$,
+	for which
+	the $Z_M$-fintieness condition is automatic
+	by \cite[Lem 3.1.5]{emeI};
+	and the section equality comes from 
+	extending $\pi$ from  $M_0$ to  $H_{c,0}$ via
+	\[
+		H_{c,0}\to P \mod p^c\to M_0/M_c
+	\]
+	suppose the $M_0$-actions on  $\pi$ and  $\pi_1$
+	factor through  $M_0/M_c$.
+\end{proof}
+
+
+
+
+We assume from now on that 
+there exists a prime $v\in S_p$
+such that  $\F_v\cong \Qp$,
+let  $\sigma\in I_\F$
+denote the unique embedding such that  $v_\sigma=v$.
+We also assume that 
+the parabolic subgroup $P\subset G_p$ is given by 
+$P=P_v\times\prod_{v'\neq v}B_{v'}$,
+where $B_{v'}\subset \GL_n(\oo_{v'})$
+are the Borel subgroups
+and the Levi component of $P_v\subset GL_n(\oo_v)$
+is the product of $\GL_2(\Q_p)$ and a split torus.
+In other word, $M$ is isomorphic to the product  
+of  $G=\GL_2(\Qp)$ and a split torus  $T$,
+and  $\Ord_P(S(U^p,E/\oo))\in \aMod_M(\oo)\cap \laMod_{G}(\oo)$.
+\begin{defn}
+	We define the $P$-ordinary completed homology and cohomology by
+	\begin{equation*}
+		M(U^p)=\Hom_\oo(\Ord_P(S(U^p,E/\oo)),E/\oo),\qquad
+		S(U^p)=\Hom_\oo(E/\oo, \Ord_P(S(U^p,E/\oo))).
+	\end{equation*}
+	We also write $S(U^p)_E=S(U^p)\otimes_\oo E$.
+	It is immediately that 
+	$M(U^p)\in \fC_{G}(\oo)$,
+	It is also easily verified that 
+	\[
+		M(U^p)\cong \Hom_\oo(S(U^p),\oo),\qquad
+		S(U^p)\cong \Hom_\oo^{\cts}(M(U^p),\oo),
+	\]
+	here $\Phi\in \Hom_\oo(M(U^p),\oo)$ 
+	is continuous if 
+	$\Phi \mod p^n$ factors through
+	$S(U^pU_p,E/\oo)^\vee$ for some $U_p$
+	for any positive integer $n$
+	($U_p$ depedents on  $n$).
+\end{defn}
+
+
+
+
+\subsection{Hecke algebras}
+
+When $v=w\bar{w}$ is a split place
+$\GG(\F_v)\cong \GL_2(\F_v)$ and 
+$U_v\cong \GL_2(\oo_v)$, we define the Hecke algebras
+\[
+	T_v=[U_v\smat{\varpi_v&\\&1}U_v]=
+	\sum_{b\in \oo_v/(\varpi_v)}\smat{\varpi_v&b\\&1}U_v
+\]
+\begin{defn}
+	Given $S_{\tau}(U,A)$ as above, 
+	let $\TT^S_{\tau}(U,A)\subset \End_A(S_{\tau}(U,A))$
+	be the $\oo$-subalgebra generated by  $T_v$
+	for  split $v$ not in  $S$,
+	which acts faithfully on $S_{\tau}(U,A)$
+	by definition. 
+	We then define 
+	\[
+		\TT^S(U^p)=\varprojlim_{U_p}
+		\TT(U^pU_p, E/\oo)
+	\]
+\end{defn}
+
+\begin{rem}
+	Prove the reducedness and show existence of 
+	pseudo-representation.
+	\cite[Prop 2.27]{ger}
+\end{rem}
+
+
+
+\begin{lem}
+	Since 
+ $S_{\tau\otimes A/I}(U, A/I)\cong S_{\tau}(U, A)\otimes A/I$,
+ \[
+	 \ker(\TT_{\tau}^S(U,A)\otimes A/I\to \TT_{\tau}^S(U,A/I))
+ \]
+ is nilpotent.
+\end{lem}
+
+\begin{defn}
+	\[
+		T_{(k,w)}(U)\colon G_{F,S}\to \TT^S_{\tau}
+		(U,\oo)\quad
+		\Fr_v\mapsto T_v
+	\]
+	for $\tau=\tau_{(k,w)}$
+	and $\psi=\tau^{-1}\vert_{U\cap \A_f^\times}$.
+	Thus  $\TT^S$ is independent of  $S$
+\end{defn}
+\begin{proof}
+	This used that the Hecke algebra is reduced.
+\end{proof}
+
+\begin{defn}
+	$\TT_\psi(U^p)$ acts faithfully on  $S_\psi(U^p)$
+	and thus should also be reduced.
+\end{defn}
+
+When $V_p\subset U_p$ is a normal subgroup
+\begin{align*}
+&S(U^p,E/\oo)=\varinjlim_{U_p} S(U^pU_p, E/\oo)\to&
+&S(U^pV_p,\oo/(\varpi^s))\to&
+&S(U^pU_p,k)=
+S(U^pV_p,\oo/(\varpi^s))\otimes_{\oo_s)[U_p/V_p]}k\\
+&\TT(U^p)\to&
+&\TT(U^pV_p,\oo/(\varpi^s))\to&
+&\TT(U^pU_p,k)
+\end{align*}
+
+Thus
+$\TT(U^p)\cong\TT(U^p)_{\fm_1}\times\cdots
+\times \TT(U^p)_{\fm_r}$
+is semi-local.
+
+On the other hand, use
+\[
+	\Psi\colon \Gal\to \TT(U^pV_p,\oo)
+	\Fr_v\mapsto T_v\quad
+	\det\Psi(\Fr_v)=\varepsilon^{-1}(\Fr_v)
+	[(\smat{\varpi_v&\\&\varpi_v})]
+\]
+and build up big pseudo-representation
+$\Psi\colon \Gal\to \TT(U^p)$.
+
+\subsection{compatibility}
+
+\begin{prop}
+Assume that $\psi(a_v)=\sigma(a_v)^w$
+for  $a_v\in \oo_v^\times$,
+then $S_\psi(U^p)_E^{\alg}\subset S_\psi(U^p)_E$
+is dense.
+\end{prop}
+\begin{proof}
+	Reduced to $C_\psi(K_p,E)$ use the  $K_p$-injective properties.
+\end{proof}
+\[
+S_\psi(U^p)_E^{\alg}=
+\Image\left(
+	\bigoplus_{\lambda}\Hom_{E[K\times T_0]}(W_{\lambda,E}^*, 
+	S_\psi(U^p)_E)
+	\otimes_EW_{\lambda,E}^*\xrightarrow{ev}
+	S_\psi(U^p)_E
+\right)
+\]
+
+\begin{lem}
+	Let $S_{\lambda,\psi}^{P-\ord}(U^pK_p)_E
+	\coloneqq \Hom_{\oo[Z_M^+]}
+	(\oo[Z_M], S_{\lambda,\psi}(U^pK_p,\oo))\otimes_\oo E$,
+	then
+	\[
+		\Hom_{\oo[M_0]}(\pi_\lambda^*, S_\psi(U^p)_E)\cong
+		S_{\lambda,\psi}^{P-\ord}(U^pK_p,E)
+	\]
+\end{lem}
+\begin{proof}
+	We first note that 
+	$S_\psi(U^p)\colon \varprojlim_{n}\Ord_PS_\psi(U^p, \oo/p^n)$,
+	thus 
+	\[
+		\Hom_{\oo[M_0]}(\pi_\lambda^\vee(\oo),S_\psi(U^p)\cong
+		\varprojlim_{n}\Hom_{\oo[M_0]}(\pi^\vee(\oo/p^n),
+		\Ord_PS_\psi(U^p,\oo/p^n))
+	\]
+	which induces an element in 
+	$\varprojlim_n S_{\psi,\lambda}^{P-\ord}(U^pH_{n,n},\oo/p^n)^{M_0}
+	=\varprojlim_n S_{\psi,\lambda}^{P-\ord}(U^pH_{n,0},\oo/p^n)$,
+	which gives rises to a $P$-ordinary form in 
+	$S_{\psi,\lambda}^{P-\ord}(U^pH_{n,0},\oo)$.
+\end{proof}
+
+
+\begin{rem}
+	Will prove the compatibility on 
+	$\Ord_P(S_\psi(U^p,E/\oo))^{T_0}$ first.
+	On this we have the density of 
+	algebraic vectors for sure.
+	On which prove compatibility. 
+\end{rem}
+
+
+
+\subsection{Ordinary forms}
+
+Let $U^p(c)=U^p\prod_{v\mid p}Iw_1(v^c)$
+where $Iw_1(v^c)=\{g\in K_v\mid g\equiv \smat{1&*\\&1}\mod \varpi_v^c\}$.
+
+For $\gamma\in \oo_p\cap (F\otimes\Qp)^\times, f\in S_{k,w,\psi}(U^p(c) A)$,
+\[
+	(\langle\gamma\rangle\cdot f)(g)=
+	\prod_{\sigma}\sigma(\gamma)^{-w_\sigma}\cdot
+	\sum_{\alpha\in \oo_p/(\gamma)}
+	\tau(\smat{\gamma&\alpha\\&1})\cdot
+	f(g\smat{\gamma&\alpha\\&1}))
+\]
+Let $e=\lim_{n\to \infty}\langle p\rangle^{n!}\in \End_A(S_{k,w,\psi}(U^p(c),A))$
+and define $S_{k,w,\psi}^{\ord}(U^p(c),A)$. This defines
+\[
+	\langle\cdot\rangle\colon (\F\otimes\Qp)^\times
+	\to \End_A(S_{k,w,\psi}^{\ord}(U^p(c),A))
+\]
+Which induces  
+\[
+	\psi_{v,1}\colon G_{\F_v}
+	\to \End_A(S_{k,w,\psi}^{\ord}(U^p(c),A))
+\]
+\begin{defn}
+	$\TT_{k, \psi}^{\ord}(U^p)$ 
+	acts faithfully on 
+	$S_\psi^{\ord}(U^p,E/\oo)$ 
+	and its Pontryagin dual.
+	Also there exists 
+	\[
+		G_{F,S}\to \TT_{k, \psi}^{\ord}(U^p)
+	\]
+	This is independent of $k=(k,w)$
+\end{defn}
+
+\begin{rem}
+	$\TT_{k, \psi}^{\ord}(U^p)$
+	is reduced.
+	Let 
+	\[
+		T^{\ord}\colon G_{F,S}\to 
+		\TT_{k, \psi}^{\ord}(U^p)
+	\]
+	such that $\rho(\fp)\vert_{F_{F_v}}\sim \smat{\psi_{v,1}&*\\&1}$
+	for $\fp\subset\TT_{k, \psi}^{\ord}(U^p)$
+	Also  
+	let $\Lambda_\F=\hat{\bigotimes}_{v\mid p}\oo\llbracket\oo_v^\times(p)\rrbracket$
+	to $\TT^{\ord}$ by $ \langle\rangle$.
+	And $M_\psi^{\ord}(U^p, E/\oo)$ 
+	is finite free over $\Lambda_F$.
+\end{rem}
+
+
+\begin{rem}
+	$S(U^p,E/\oo)_\fm(\langle \xi_\fm\rangle^{-1/2})$
+	for 
+	 \[
+	 \xi_m=\zeta_m\langle \xi_\fm\rangle\colon 
+	 Z(\A_f)\to \TT(U^p)_{\fm}
+	 \]
+	 s probably not $\GL_2(\Qp)$-admissible.
+	 ut the property is needed for the existence of 
+	 resolution $0\to \tilde{P}_\B^r\to \tilde{P}_\B^r\to 
+	 S(U^p,E/\oo)_{\fm}^\vee\to 0$.
+	 hus indeed we simply take $\psi=\zeta_\fm$
+	 nd use 
+	$S_\psi(U^p,E/\oo) _{\fm}\subset S(U^p,E/\oo)_{\fm}$.
+\end{rem}
+
+\begin{lem}
+	$\Ord_P(S_\psi(U^p,E/\oo))=S_\psi^{\ord}(U^p,E/\oo)$	
+\end{lem}
+\begin{proof}
+	Let $K(r)\equiv\smat{1&\\&1}$ 
+	and $I_r\equiv\smat{1&*\\&1}=K(r)N_0$, then
+	\[
+	S_\psi(U^p,E/\oo)^{N_0}=\varinjlim_{I_r}
+	S_\psi(U^pI_r,E/\oo)
+	\]
+	Consider then 
+	\[
+		\Ord_{P}(S_\psi(U^p,E/\oo))\coloneqq
+		\Hom_{Z_M^+}(Z_M, S_\psi(U^p,E/\oo)^{N_{0}})_{Z_M-fin}
+		\hookrightarrow S_\psi(U^p,E/\oo)^{N_0}\quad
+		\phi\mapsto \phi(1)
+	\]
+	\begin{enumerate}[label=(\alph*)]
+		\item given $\phi$ as above, 
+			then  $Im(\phi)\subset S_\psi(U^p,E/\oo)^{N_0}$ 
+			is a $Z_M$-finite subspace on which 
+			 $U_p$ is invertible.
+		 \item conversely, any  $f(g)\in S_\psi^{\ord}(U^p,E/\oo)
+			 =\varinjlim S_\psi^{\ord}(U^pI_r,E/\oo)$ 
+			 generates a  $Z_M$-finite subspace,
+			 can use which to construct $\phi$
+			 with  $\phi(1)=f(g)$.
+	\end{enumerate}
+\end{proof}
+
+\begin{gather*}
+S_\psi(U^p,E/\oo)\times \varprojlim \oo[Y(U^pU_p)]_\psi \times E/\oo\\
+S_\psi^{\ord}(U^p,E/\oo)\times 
+e\varprojlim \oo[Y(U^pI_r)]_\psi \times E/\oo\\
+\end{gather*}
+\begin{lem}
+	$\Ord_P(S_\psi(U^p,E/\oo))^\vee\cong e\oo\llbracket Y(U^pI_\bullet)\rrbracket_\psi \cong e\oo\llbracket Y(U^pK_\bullet)\rrbracket$
+\end{lem}
+\begin{proof}
+	Compare with $\oo\llbracket Y(U^pI_\bullet)\rrbracket$,
+	with action by  $\oo\llbracket T(1+\varpi\oo)\rrbracket$.
+	One is the quotient by  $XY=\psi$,
+	one is the quotient by  $Y$,
+	the quotient are both isomorphic to $\oo\llbracket X\rrbracket$.
+\end{proof}
 
 
 
@@ -1003,598 +1815,6 @@ and  $V\in Mod_G(A)$, define
 	then locally admissible 
 	implies locally of finite length
 \end{rem}
-
-\section{completed cohomology}
-
-In this section, 
-let $\F$ be a totally real number field
-and  $\A=\A_\F$ be the ring of adeles.
-Let $I_\F$ denote $\Hom(\F,\C)$
-and $S_p$ denote the set of primes of $\F$ above $p$.
-Fix an isomorphism $\iota\colon \C\cong \bar{\Q}_p$,
-which induces a map $I_\F\to S_p$
-sending  $\sigma\in I_F$
-to the prime  $v_\sigma$
-corresponding to $\iota\circ \sigma\colon \F\to \bar{\Q}_p$.
-
-Let  $\GG$ be a totally definite reductive group over  $\F$,
-such that  $\GG(\C)\cong \GL_n(\C)$
-and $\GG(\F_v)\cong \GL_n(\F_v)$
-for all  $v\in S_p$.
-Identify $\GG(\F_v)$
-and  $G_v\coloneqq \GL_n(\F_v)$ by the above isomorphisms,
-we define 
-\[
-	G_p\coloneqq\prod_{v\in S_p}G_v,\quad
-	K_p\coloneqq\prod_{v\in S_p}K_v,\quad
-	K_v\coloneqq\GL_n(\oo_v).
-\]
-When $U=\prod_{v\in\finite}U_v\subset \GG(\A_f)$
-is an open compact subgroup, 
-we will write 
-$U_p=\prod_{v\notin S_p}U_v$,
-$U_p=\prod_{v\in S_p}U_v$,
-and always assume $U_p\subset K_p$.
-Let $\tau\colon U_p\to \Aut(W_\tau)$
-be a continuous representation on a finite  $A$-module  $W_\tau$,
-and $\psi\colon \A_f^\times/\F_+^\times\to A^\times$ 
-be a continuous character satisfying
-$\tau^{-1}\vert_{U\cap Z_{\GG}(\A_f)}=\psi|_{U\cap Z_{\GG}(\A_f)}$,
-define
-\begin{align}
-S_{\tau}(U,A)&=
-\left\{ f: \GG(\F)\backslash \GG(\A_f)/U^p \rightarrow W_\tau 
-\mid f(gu)=\tau(u_p^{-1})\cdot f(g), u\in U\right\} \\
-S_{\tau,\psi}(U,A)&=\left\{
-f\in S_{\tau}(U,A)
-\mid f(zg)=\psi(z)\cdot f(g), z\in Z_{\GG}(\A_f)\right\} 
-\end{align}
-It is well-known that 
-$\GG(\F)\backslash \GG(\A_f)/U$ is a finite set.
-We futher assume that $U^p$ satisfies the assumption
-\begin{equation}\label{cond:small}\tag{\text{small}}
-	\GG(\A_f)=\bigsqcup_{i\in I}
-	\GG(\F)t_i (U^pK_p),\quad
-	\GG(\F)\cap t_i(U^pK_p)t_i^{-1}=\{1\} \text{ for all } i\in I
-\end{equation}
-\begin{lem}\label{lem:small}
-	Under the assumption \eqref{cond:small},
-	$S_\tau(U,A)$ and $S_{\tau,\psi}(U,A)$
-	are isomorphic as $A$-modules
-	to finite direct sums of $W_\tau$.
-\end{lem}
-\begin{proof}
-	By the assumption,
-	the map sending $f\in S_\tau(U,A)$ to 
-	$(f(t_i))_{i\in I}$ is an isomorphism.
-	The case for $S_{\tau,\psi}(U,A)$ is identical,
-	after replacing the set $\{t_i\}$
-	by a set of representatives of 
-	$\GG(\F)\backslash \GG(\A_f)/UZ_\GG(\A_f)$.
-\end{proof}
-
-\subsection{Functor of ordinary parts and ordinary forms}
-
-Let $P=\prod_{v\in S_p}P_v\subset G_p$ be a product 
-of standard parabolic subgroups $P_v\subset \GL_n(\oo_v)$.
-In particular, let  $B=\prod_{v\in S_p}B_v$
-be the product of the upper triangular Borel subgroups.
-Let $P=MN$ and  $B=TU$ denote the Levi decompositions,
-$\bar{N}$ and $\bar{U}$ denote the opposite unipotent subgroups.
-Since the compact open subgroups
-$K(r)=\{k\in K_p\mid k\equiv 1\mod p^r\}$ 
-for $r\geq 1$
-admits Iwahori decomposition
-\[
-	\bar{N}_r\times M_r\times N_r\to K(r)\quad
-	\bar{N}_r=\bar{N}\cap K(r),\,
-	M_r=M\cap K(r),\,
-	N_r=N\cap K(r)
-\]
-following \cite[\S 3.3]{emeI},
-we define the open compact subgroups
-$H_{c,b}=\bar{N}_cM_bN_0$
-for $c\geq b\geq 0$,
-where $M_0=M\cap K_p$ and
-$N_0=N\cap K_p$.
-
-\begin{defn}
-	For each $v\in S_p$
-	let $T_v\subset \GL_n(\F_v)$
-	be the diagonal torus and 
-	identify  $X^*(T_v)=\Z^n$.
-	Given $\lambda\in \Z^n$
-	such that $\lambda_1\geq \cdots\geq \lambda_n$,
-	let  $w_0$ be the longest Weyl element, define
-	\begin{equation}
-	\pi_\lambda=\Ind_{T(B\cap M)}^M(w_0\lambda),\qquad
-	\tau_\lambda=\Ind_B^G(w_0\lambda)\cong 
-	\Ind_P^G(\pi_\lambda).
-	\end{equation}
-	More generally,
-	when $\lambda=(\lambda_{\sigma})\in \Z[I_\F]^n$
-	satisfies 
-	$\lambda_{\sigma,1}\geq \lambda_{\sigma,2}\geq \cdots\lambda_{\sigma,n}$
-	for all $\sigma\in I_\F$, 
-	write 
-	$\pi_\lambda=\otimes_{I_\F}\pi_{\lambda_{\sigma}}$ and 
-	$\tau_\lambda=\otimes_{I_\F}\tau_{\lambda_{\sigma}}$
-	for the algebraic representations of $M$ and  $G_p$
-	respectively given by 
-	\[
-	\prod_{v\in S_p}P_v(\F_v)\to 	
-	\prod_{v\in S_p}\prod_{v=v_\sigma}P_v(E)\quad
-	\prod_{v\in S_p}\GL_n(\F_v)\to 	
-	\prod_{v\in S_p}\prod_{v=v_\sigma}\GL_n(E)\quad
-	\]
-	Then for $U$ as above, we write 
-	$S_{\tau}(U,A)=S_{\lambda}(U,A)$ when $W_\tau=\tau_\lambda(A)$, and
-	$S(U,A)=S_{\lambda}(U,A)$ when $\lambda$ is the trivial weight.
-	Note that $S(U,A)$ is none other than the set of 
-	$A$-valued functions on  $\GG(\F)\backslash \GG(\A_f)/U$.
-\end{defn}
-
-
-Let $Z_M^+=\{z\in Z_M\mid zN_0z^{-1}\subset N_0\}$.
-the action
-\[
-	\langle z\rangle f(g)\coloneqq
-	(w_0\lambda)(z^{-1})\sum_i (x_iz)\cdot f(gx_iz)
-\]
-where $\{x_i\}$ is 
-as set of representatives for $N_0/zN_0z^{-1}$,
-defines an endomorphism on $f\in S_\lambda(U^pH_{c,b},A)$
-and is equivariant with respect to the inclusion
-$S_\lambda(U^pH_{c,b},A)\subset S_\lambda(U^pH_{c',b'},A)$,
-where  $c'\geq c$ and  $b'\geq b$.
-\begin{defn}
-Let $B\subset \End_\oo(S_\lambda(U^pH_{c,b},A))$ 
-be the commutative finite $\oo$-subalgebra generated by 
-$ \langle z\rangle$ for $z\in Z_M^+$.
-Thus $B=\prod_{\fm \text{maximal}}B_\fm$.
-A maximal ideal $\fm\subset B$ is said to be ordinary
-if $ \langle z\rangle\notin \fm$ for all $z\in Z_M^+$, we then define 
-the subspace of $P$-ordinary forms by
-\[
-	S_\lambda^{P-\ord}(U^pH_{c,b},A)\coloneqq\prod_{\fm \text{ ordinary}}
-	S_\lambda(U^pH_{c,b},A)_{\fm}\subset
-	S_\lambda(U^pH_{c,b},A).
-\]
-\end{defn}
-
-On the other hand, 
-let $S(U^p,A)=\varinjlim_{U_p}S(U^pU_p,A)$,
-where $\{U_p\}$ is the filtered system of 
-all the compact open subgroups in $K_p$ under inclusion relation,
-for $m\in M^+$ Emerton has defined in \cite{emeI} the action
-\[
-	h_M(m)f(g)=\sum_i f(gx_im)
-\]
-where $\{x_i\}$ is 
-as set of representatives for $N_0/mN_0m^{-1}$
-on $f\in S(U^p,A)^{N_0}$ 
-and the functor of ordinary parts as
-the functor of ordinary parts is defined as
-\[
-	\Ord_P\colon
-	\Mod^{\sm}_{G_p}(A)\to \Mod^{\sm}_M(A)\quad
-	\Ord_P(V)=\Hom_{A[Z_M^+]}(A[Z_M], V^{N_0})_{Z_M-\fin}
-\]
-
-The relation between the two definitions
-is provided by the following "weight independence" result
-generalizaing \cite[Prop 2.22]{ger}.
-\begin{prop}
-	For $c\geq r$ There exists an $M_0$-equivariant isomorphism
-	\[
-		\epsilon_\lambda
-		\colon S_{\lambda}^{P-\ord}(U^pH_{c,c}, \oo/p^r)\cong 
-		\Hom_{\oo}(\pi_\lambda^\vee(\oo/p^r),
-		\Ord_PS(U^p,\oo/p^r)^{M_c}).
-	\]
-	Here $m\in M_0$ acts on  $f\in S_\lambda^{P-\ord}(U^pH_{c,c},\oo/p^r)$
-	through $[m\cdot f](g)=m\cdot f(gm)$;
-	and on the right hand side through 
-	$\Ord_PS(U^p,\oo/p^r)$,
-	note that $M_c\subset M_0$ is a normal subgroup.
-\end{prop}
-\begin{proof}
-	Let $ev\colon \tau_\lambda\to \pi_\lambda$ 
-	be the evaluation at the identity, which is 
-	$H_{r,0}$-equivariant over $\oo/p^r$.
-	Define 
-	\[
-	\epsilon_{\lambda}\colon S_\lambda(U^pH_{c,c}, \oo/p^r)\to 
-	\Hom_{\oo}(\pi_\lambda^\vee(\oo/p^r), S(U^pH_{c,c},\oo/p^r))\qquad
-	\epsilon_{\lambda}(\tilde{f})(g)=
-	ev(\tilde{f}(g)).
-	\]
-	That $\epsilon_\lambda(\tilde{f})\in 	
-	\Hom_{\oo}(\tau_\lambda^\vee(\oo/p^r), S(U^pH_{c,c},\oo/p^r))$
-	follows from the above equivariance.
-	It is easily verified that 
-	the map is $M_0$-equivariant.
-	Moreover, since
-	$(w_0\lambda)(z)=\lambda'(z)$
-	for any weight $\lambda'\subset \pi_\lambda$,
-	the map is also $Z_M^+$-equivariant.
-
-	To construct a map in the reversed direction,
-	let $\alpha\in Z_M^+$ be the product
-	of a finite set of generators of $Z_M^+$
-	and let $ \{x_i\}\in N_0$
-	be a set of represntatives for $N_0/\alpha N_0\alpha^{-1}$.
-	Let $\iota\colon \pi_\lambda\hookrightarrow \tau_\lambda$
-	be the incusion of the weight vectors and define 
-	\[
-	\varphi(f)(g)\coloneqq \sum_i x_i\cdot \iota(f(gx_i\alpha))	
-	\]
-	The same argument in loc.cit shows 
-	$\varphi(f)\in S_\lambda(U^pH_{c,c},\oo/p^r)$
-	and the commutative diagram 
-	\[
-	\begin{tikzcd}
-		S_\lambda(U^pH_{c,c},\oo/p^r)
-		\arrow[r,"\epsilon_{\lambda}"]
-		\arrow[d,"\langle\alpha\rangle"]
-		& \Hom_\oo(\pi_\lambda^\vee(\oo/p^r), S(U^pH_{c,c},\oo/p^r))
-		\arrow[d,"h_M(\alpha)"]
-		\arrow[dl,"\varphi"]\\
-		S_\lambda(U^pH_{c,c},\oo/p^r)
-		\arrow[r,"\epsilon_{\lambda}"]
-		& \Hom_\oo(\pi_\lambda^\vee(\oo/p^r), S(U^pH_{c,c},\oo/p^r))
-	\end{tikzcd}	
-	\]
-	Thus $\epsilon_{\lambda}$ is an isomorphism
-	after localizing at the ordinary primes. 
-\end{proof}
-
-
-
-\begin{prop}
-	After restriction, 
-	$\Ord_P(S_\psi(U^p,E/\oo))$ is injective
-	as an object in $\Mod^{\sm}_{M_0}(\oo)$.
-\end{prop}
-\begin{proof}
-	Following the strategy of the proof of 
-	\cite[Prop 3.2.4]{pan}, it suffices to show the surjectivity of
-	\[
-		\Hom_{\oo[M_0]}(\pi,\Ord_P(S_\psi(U^p,E/\oo)))\to 
-		\Hom_{\oo[M_0]}(\pi',\Ord_P(S_\psi(U^p,E/\oo)))
-	\]
-	when $\pi_{1}\hookrightarrow \pi$ 
-	is injective between $M_0$-admissible
-	representations that are finite $\oo$-modules.
-	By definition
-	\begin{multline*}
-		\Hom_{\oo[M_0]}(\pi,\Ord_P(S_\psi(U^p,E/\oo)))=
-		\Hom_{\oo[M_0]}(\pi,
-		\Hom_{\oo[Z_M^+]}
-		(\oo[Z_M], S_\psi(U^p,E/\oo)^{N_0}))\\=
-		\Hom_{\oo[Z_M^+]}(\oo[Z_M],
-		\Hom_{\oo[M_0]}(\pi, S_\psi(U^p,E/\oo)^{N_0}))=
-		\Hom_{\oo[Z_M^+]}(\oo[Z_M],
-		S_{\psi,\pi^\vee}(U^pH_{c,0})
-	\end{multline*}
-	where the first equality follows from the $\oo$-finiteness of $\pi$,
-	as any homomorphism in above factors through some 
-	$S_\psi(U^pU_p,p^{-s}\oo/\oo)$,
-	for which
-	the $Z_M$-fintieness condition is automatic
-	by \cite[Lem 3.1.5]{emeI};
-	and the section equality comes from 
-	extending $\pi$ from  $M_0$ to  $H_{c,0}$ via
-	\[
-		H_{c,0}\to P \mod p^c\to M_0/M_c
-	\]
-	suppose the $M_0$-actions on  $\pi$ and  $\pi_1$
-	factor through  $M_0/M_c$.
-\end{proof}
-
-
-
-
-We assume from now on that 
-there exists a prime $v\in S_p$
-such that  $\F_v\cong \Qp$,
-let  $\sigma\in I_\F$
-denote the unique embedding such that  $v_\sigma=v$.
-We also assume that 
-the parabolic subgroup $P\subset G_p$ is given by 
-$P=P_v\times\prod_{v'\neq v}B_{v'}$,
-where $B_{v'}\subset \GL_n(\oo_{v'})$
-are the Borel subgroups
-and the Levi component of $P_v\subset GL_n(\oo_v)$
-is the product of $\GL_2(\Q_p)$ and a split torus.
-In other word, $M$ is isomorphic to the product  
-of  $G=\GL_2(\Qp)$ and a split torus  $T$,
-and  $\Ord_P(S_\psi(U^p,E/\oo))\in \aMod_M(\oo)\cap \laMod_{G}(\oo)$.
-\begin{defn}
-	We define the $P$-ordinary completed homology and cohomology by
-	\begin{equation*}
-		M_\psi(U^p)=\Hom_\oo(\Ord_P(S_\psi(U^p,E/\oo)),E/\oo),\qquad
-		S_\psi(U^p)=\Hom_\oo(E/\oo, \Ord_P(S_\psi(U^p,E/\oo))).
-	\end{equation*}
-	We also write $S_{\psi}(U^p)_E=S_\psi(U^p)\otimes_\oo E$.
-	It is immediately that 
-	$M_\psi(U^p)\in \fC_{G,\zeta}(\oo)$,
-	where $\zeta=\psi\vert_{\F_v^\times}$.
-	It is also easily verified that 
-	\[
-		M_\psi(U^p)\cong \Hom_\oo(S_\psi(U^p),\oo),\qquad
-		S_\psi(U^p)\cong \Hom_\oo^{\cts}(M_\psi(U^p),\oo),
-	\]
-	here $\Phi\in \Hom_\oo(M_\psi(U^p),\oo)$ 
-	is continuous if 
-	$\Phi \mod p^n$ factors through
-	$S_{\psi}(U^pU_p,E/\oo)^\vee$ for some $U_p$
-	for any positive integer $n$
-	($U_p$ depedents on  $n$).
-\end{defn}
-
-
-\begin{prop}
-Assume that $\psi(a_v)=\sigma(a_v)^w$
-for  $a_v\in \oo_v^\times$,
-then $S_\psi(U^p)_E^{\alg}\subset S_\psi(U^p)_E$
-is dense.
-\end{prop}
-\begin{proof}
-	Reduced to $C_\psi(K_p,E)$ use the  $K_p$-injective properties.
-\end{proof}
-\[
-S_\psi(U^p)_E^{\alg}=
-\Image\left(
-	\bigoplus_{\lambda}\Hom_{E[K\times T_0]}(W_{\lambda,E}^*, 
-	S_\psi(U^p)_E)
-	\otimes_EW_{\lambda,E}^*\xrightarrow{ev}
-	S_\psi(U^p)_E
-\right)
-\]
-
-\begin{lem}
-	Let $S_{\lambda,\psi}^{P-\ord}(U^pK_p)_E
-	\coloneqq \Hom_{\oo[Z_M^+]}
-	(\oo[Z_M], S_{\lambda,\psi}(U^pK_p,\oo))\otimes_\oo E$,
-	then
-	\[
-		\Hom_{\oo[M_0]}(\pi_\lambda^*, S_\psi(U^p)_E)\cong
-		S_{\lambda,\psi}^{P-\ord}(U^pK_p,E)
-	\]
-\end{lem}
-\begin{proof}
-	We first note that 
-	$S_\psi(U^p)\colon \varprojlim_{n}\Ord_PS_\psi(U^p, \oo/p^n)$,
-	thus 
-	\[
-		\Hom_{\oo[M_0]}(\pi_\lambda^\vee(\oo),S_\psi(U^p)\cong
-		\varprojlim_{n}\Hom_{\oo[M_0]}(\pi^\vee(\oo/p^n),
-		\Ord_PS_\psi(U^p,\oo/p^n))
-	\]
-	which induces an element in 
-	$\varprojlim_n S_{\psi,\lambda}^{P-\ord}(U^pH_{n,n},\oo/p^n)^{M_0}
-	=\varprojlim_n S_{\psi,\lambda}^{P-\ord}(U^pH_{n,0},\oo/p^n)$,
-	which gives rises to a $P$-ordinary form in 
-	$S_{\psi,\lambda}^{P-\ord}(U^pH_{n,0},\oo)$.
-\end{proof}
-
-
-
-\subsection{Hecke algebras}
-
-When $v=w\bar{w}$ is a split place
-$\GG(\F_v)\cong \GL_2(\F_v)$ and 
-$U_v\cong \GL_2(oo_v)$, we define the Hecke algebras
-\[
-	T_v=[U_v\smat{\varpi_v&\\&1}U_v]=
-	\sum_{b\in \oo_v/(\varpi_v)}\smat{\varpi_v&b\\&1}U_v
-\]
-\begin{defn}
-	Given $S_{\tau,\psi}(U,A)$ as above, 
-	let $\TT^S_{\tau,\psi}(U,A)\subset \End_A(S_{\tau,\psi}(U,A))$
-	be the $\oo$-subalgebra generated by  $T_v$
-	for  split $v$ not in  $S$,
-	which acts faithfully on $S_{\tau,\psi}(U,A)$
-	by definition. 
-	We then define 
-	\[
-		\TT^S_\psi(U^p)=\varprojlim_{U_p}
-		\TT_{\psi}(U^pU_p, E/\oo)
-	\]
-\end{defn}
-
-\begin{rem}
-	Prove the reducedness and show existence of 
-	pseudo-representation.
-	\cite[Prop 2.27]{ger}
-\end{rem}
-
-
-
-\begin{lem}
-	Since 
- $S_{\tau\otimes A/I, \psi}(U, A/I)\cong S_{\tau, \psi}(U, A)\otimes A/I$,
- \[
-	 \ker(\TT_{\tau,\psi}^S(U,A)\otimes A/I\to \TT_{\tau,\psi}^S(U,A/I))
- \]
- is nilpotent.
-\end{lem}
-
-\begin{defn}
-	\[
-		T_{(k,w),\psi}(U)\colon G_{F,S}\to \TT^S_{\tau,\psi}
-		(U,\oo)\quad
-		\Fr_v\mapsto T_v
-	\]
-	for $\tau=\tau_{(k,w)}$
-	and $\psi=\tau^{-1}\vert_{U\cap \A_f^\times}$.
-	Thus  $\TT^S$ is independent of  $S$
-\end{defn}
-\begin{proof}
-	This used that the Hecke algebra is reduced.
-\end{proof}
-
-\begin{defn}
-	$\TT_\psi(U^p)$ acts faithfully on  $S_\psi(U^p)$
-	and thus should also be reduced.
-\end{defn}
-
-When $V_p\subset U_p$ is a normal subgroup
-\begin{align*}
-&S(U^p,E/\oo)=\varinjlim_{U_p} S(U^pU_p, E/\oo)\to&
-&S(U^pV_p,\oo/(\varpi^s))\to&
-&S(U^pU_p,k)=
-S(U^pV_p,\oo/(\varpi^s))\otimes_{\oo_s)[U_p/V_p]}k\\
-&\TT(U^p)\to&
-&\TT(U^pV_p,\oo/(\varpi^s))\to&
-&\TT(U^pU_p,k)
-\end{align*}
-
-Thus
-$\TT(U^p)\cong\TT(U^p)_{\fm_1}\times\cdots
-\times \TT(U^p)_{\fm_r}$
-is semi-local.
-
-On the other hand, use
-\[
-	\Psi\colon \Gal\to \TT(U^pV_p,\oo)
-	\Fr_v\mapsto T_v\quad
-	\det\Psi(\Fr_v)=\varepsilon^{-1}(\Fr_v)
-	[(\smat{\varpi_v&\\&\varpi_v})]
-\]
-and build up big pseudo-representation
-$\Psi\colon \Gal\to \TT(U^p)$.
-
-\subsection{compatibility}
-
-
-\begin{rem}
-	Will prove the compatibility on 
-	$\Ord_P(S_\psi(U^p,E/\oo))^{T_0}$ first.
-	On this we have the density of 
-	algebraic vectors for sure.
-	On which prove compatibility. 
-\end{rem}
-
-
-
-\subsection{Ordinary forms}
-
-Let $U^p(c)=U^p\prod_{v\mid p}Iw_1(v^c)$
-where $Iw_1(v^c)=\{g\in K_v\mid g\equiv \smat{1&*\\&1}\mod \varpi_v^c\}$.
-
-For $\gamma\in \oo_p\cap (F\otimes\Qp)^\times, f\in S_{k,w,\psi}(U^p(c) A)$,
-\[
-	(\langle\gamma\rangle\cdot f)(g)=
-	\prod_{\sigma}\sigma(\gamma)^{-w_\sigma}\cdot
-	\sum_{\alpha\in \oo_p/(\gamma)}
-	\tau(\smat{\gamma&\alpha\\&1})\cdot
-	f(g\smat{\gamma&\alpha\\&1}))
-\]
-Let $e=\lim_{n\to \infty}\langle p\rangle^{n!}\in \End_A(S_{k,w,\psi}(U^p(c),A))$
-and define $S_{k,w,\psi}^{\ord}(U^p(c),A)$. This defines
-\[
-	\langle\cdot\rangle\colon (\F\otimes\Qp)^\times
-	\to \End_A(S_{k,w,\psi}^{\ord}(U^p(c),A))
-\]
-Which induces  
-\[
-	\psi_{v,1}\colon G_{\F_v}
-	\to \End_A(S_{k,w,\psi}^{\ord}(U^p(c),A))
-\]
-\begin{defn}
-	$\TT_{k, \psi}^{\ord}(U^p)$ 
-	acts faithfully on 
-	$S_\psi^{\ord}(U^p,E/\oo)$ 
-	and its Pontryagin dual.
-	Also there exists 
-	\[
-		G_{F,S}\to \TT_{k, \psi}^{\ord}(U^p)
-	\]
-	This is independent of $k=(k,w)$
-\end{defn}
-
-\begin{rem}
-	$\TT_{k, \psi}^{\ord}(U^p)$
-	is reduced.
-	Let 
-	\[
-		T^{\ord}\colon G_{F,S}\to 
-		\TT_{k, \psi}^{\ord}(U^p)
-	\]
-	such that $\rho(\fp)\vert_{F_{F_v}}\sim \smat{\psi_{v,1}&*\\&1}$
-	for $\fp\subset\TT_{k, \psi}^{\ord}(U^p)$
-	Also  
-	let $\Lambda_\F=\hat{\bigotimes}_{v\mid p}\oo\llbracket\oo_v^\times(p)\rrbracket$
-	to $\TT^{\ord}$ by $ \langle\rangle$.
-	And $M_\psi^{\ord}(U^p, E/\oo)$ 
-	is finite free over $\Lambda_F$.
-\end{rem}
-
-
-\begin{rem}
-	$S(U^p,E/\oo)_\fm(\langle \xi_\fm\rangle^{-1/2})$
-	for 
-	 \[
-	 \xi_m=\zeta_m\langle \xi_\fm\rangle\colon 
-	 Z(\A_f)\to \TT(U^p)_{\fm}
-	 \]
-	 s probably not $\GL_2(\Qp)$-admissible.
-	 ut the property is needed for the existence of 
-	 resolution $0\to \tilde{P}_\B^r\to \tilde{P}_\B^r\to 
-	 S(U^p,E/\oo)_{\fm}^\vee\to 0$.
-	 hus indeed we simply take $\psi=\zeta_\fm$
-	 nd use 
-	$S_\psi(U^p,E/\oo) _{\fm}\subset S(U^p,E/\oo)_{\fm}$.
-\end{rem}
-
-\begin{lem}
-	$\Ord_P(S_\psi(U^p,E/\oo))=S_\psi^{\ord}(U^p,E/\oo)$	
-\end{lem}
-\begin{proof}
-	Let $K(r)\equiv\smat{1&\\&1}$ 
-	and $I_r\equiv\smat{1&*\\&1}=K(r)N_0$, then
-	\[
-	S_\psi(U^p,E/\oo)^{N_0}=\varinjlim_{I_r}
-	S_\psi(U^pI_r,E/\oo)
-	\]
-	Consider then 
-	\[
-		\Ord_{P}(S_\psi(U^p,E/\oo))\coloneqq
-		\Hom_{Z_M^+}(Z_M, S_\psi(U^p,E/\oo)^{N_{0}})_{Z_M-fin}
-		\hookrightarrow S_\psi(U^p,E/\oo)^{N_0}\quad
-		\phi\mapsto \phi(1)
-	\]
-	\begin{enumerate}[label=(\alph*)]
-		\item given $\phi$ as above, 
-			then  $Im(\phi)\subset S_\psi(U^p,E/\oo)^{N_0}$ 
-			is a $Z_M$-finite subspace on which 
-			 $U_p$ is invertible.
-		 \item conversely, any  $f(g)\in S_\psi^{\ord}(U^p,E/\oo)
-			 =\varinjlim S_\psi^{\ord}(U^pI_r,E/\oo)$ 
-			 generates a  $Z_M$-finite subspace,
-			 can use which to construct $\phi$
-			 with  $\phi(1)=f(g)$.
-	\end{enumerate}
-\end{proof}
-
-\begin{gather*}
-S_\psi(U^p,E/\oo)\times \varprojlim \oo[Y(U^pU_p)]_\psi \times E/\oo\\
-S_\psi^{\ord}(U^p,E/\oo)\times 
-e\varprojlim \oo[Y(U^pI_r)]_\psi \times E/\oo\\
-\end{gather*}
-\begin{lem}
-	$\Ord_P(S_\psi(U^p,E/\oo))^\vee\cong e\oo\llbracket Y(U^pI_\bullet)\rrbracket_\psi \cong e\oo\llbracket Y(U^pK_\bullet)\rrbracket$
-\end{lem}
-\begin{proof}
-	Compare with $\oo\llbracket Y(U^pI_\bullet)\rrbracket$,
-	with action by  $\oo\llbracket T(1+\varpi\oo)\rrbracket$.
-	One is the quotient by  $XY=\psi$,
-	one is the quotient by  $Y$,
-	the quotient are both isomorphic to $\oo\llbracket X\rrbracket$.
-\end{proof}
-
 
 
 \section{pseudo-compact}
