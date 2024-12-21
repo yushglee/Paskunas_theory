@@ -411,7 +411,7 @@ of $G_p$ given by
 	\Ind_{B_n}^{\GL_n}(w_0k_{\sigma})\quad
 	g=(g_w)\mapsto 
 	\otimes_{w\in \Sigma_p}
-	\otimes_{\sigma\in I_w}\xi_{k_\sigma}(g_v)
+	\otimes_{\sigma\in I_w}\xi_{k_\sigma}(g_w)
 \]
 where $w_0$ is the longest element in the Weyl group of
 $\GL_n$ and  
@@ -479,17 +479,20 @@ $M\otimes_{\oo}M_{\wt{k}}$.
 
 Let $U$ be an open compact subgroup as above
 such that $U_p=K_p$.
-For $w\in \Sigma_p$ and $c\geq b\geq 0$ with  $c>0$, 
+For $w\in \Sigma_p$ let $B_w=B_n(\oo_w)$
+be the subgroup of upper triangular matrices
+and  $B=\prod_{w\in \Sigma_p}B_w$.
+For $c\geq b\geq 0$ with  $c>0$, 
 let $\Iw(w^{b,c})\subset K_w$
 be the subgroup of elements
 that are upper triangular modulo $\varpi_w^c$ and 
 upper triangular unipotent modulo $\varpi_w^b$.
-we then write $\Iw(p^{b,c})$
-for $\prod_{v\in S_p}\Iw(w^{b,c})$.
-We recall from \cite[\S 2.3]{ger}
-the collection of Hecke operators 
-acting on $S_{\wt{k}}(U^p\Iw(p^{b,c}),M)$
-defined as the following double-coset operators.
+Let $\Iw(p^{b,c})=\prod_{v\in S_p}\Iw(w^{b,c})$.
+We recall 
+the Hecke operators 
+acting on $S_{\wt{k}}(U^p\Iw(p^{b,c}),M)$,
+defined in \cite[\S 2.3]{ger}
+as the following double-coset operators.
 
 If $v=w\bw$ is split in  $\K$
 and  $\iota_w(U_v)=\GL_n(\oo_v)$, 
@@ -520,16 +523,30 @@ or let $u\in \iota_w^{-1}(T_n(\oo_w))$, then define
 	\text{ and }
 	\langle u\rangle= [\Iw(p^{b,c})u\Iw(p^{b,c})].
 \end{equation}
+Note that if $B=TN$ is the Levi decomposition
+and  $N_0\coloneqq N\cap K_p$,
+then the $\alpha_w^{(j)}$ and $u$ above belong to 
+\[
+	T^+=\{z\in T\mid zN_0z^{-1}\subset N_0\}
+\]
+In particular a set of representatives for $N_0/zN_0z^{-1}$ 
+is also a set of representatives for $\Iw(p^{b,c})/z\Iw(p^{b,c})z^{-1}$.
+If we let $m\in T^+N_0$ acts on  $S_{\wt{k}}(U^p\Iw(p^{b,c}),M)$ via 
+\begin{equation}\label{eq:eme_action}
+	m\cdot f(g)=(w_0\wt{k})^{-1}(m)\cdot \xi_{\wt{k}}(m)f(gm),\quad
+	f\in S_{\wt{k}}(U^p\Iw(p^{b,c}),M)
+\end{equation}
+then $U_{\wt{k},w}^{(j)}=h_T(\alpha_w^{(j)})$ and $\langle u\rangle=h_T(u)$,
+where $h_T(z)$ for $z\in T^+$ are as defined in 
+\cite[Def 3.1.3]{emeI}.
+
+
 
 More generally, 
 for each $w\in \Sigma_p$ let $P_w\subset G_w$
-be a standard parabolic subgroup containing 
-the Borel subgroup $B_w\coloneqq B_n(\oo_w)$,
-and write
-$P=\prod_{w\in \Sigma_p}P_w$,
-$B=\prod_{w\in \Sigma_p}B_w$.
-Let $P=QU$
-and $B=TN$ denote the Levi decompositions and define
+be a standard parabolic subgroup containing $B_w$
+and $P=\prod_{w\in \Sigma_p}P_w$.
+Let $P=QU$ be the Levi decompositions and define
 $\Iw^P(p^{b,c})=\prod_{v\in S_p}\Iw^P(w^{b,c})$, where
 \[
 	\Iw^P(w^{b,c})=
@@ -539,42 +556,269 @@ $\Iw^P(p^{b,c})=\prod_{v\in S_p}\Iw^P(w^{b,c})$, where
 	k\text{ mod } \varpi_w^c \in U
 	\}.
 \]
-Then when $\alpha_{w}^{(j)}\in Z_Q$,
-the center of the Levi subgroup $Q$,
-by a slight abuse of notation 
-we also write $U_{\wt{k},w}^{(j)}$
-for the similarly defined double-coset operator
-on $S_{\wt{k}}(U^p\Iw^P(p^{b,c}),M)$.
-As explained in \cite[Lem 2.10]{ger},
-these operators commute with each other 
+Let $Z_Q$ be
+the center of the Levi subgroup $Q$ 
+and $Z_Q^+=Z_Q\cap T^+$.
+And let $Z_Q^+U_0$ acts on  $S_{\wt{k}}(U^p\Iw^P(p^{b,c}),M)$
+as in \eqref{eq:eme_action},
+where $U_0=U\cap K_p$,
+for those $\alpha_w^{(j)}$ and $u$ belonging to  $Z_Q$, we also define
+the Hecke operators 
+$U_{\wt{k},w}^{(j)}=h_Q(\alpha_w^{(j)})$ and $\langle u\rangle=h_Q(u)$
+acting on $S_{\wt{k}}(U^p\Iw^P(p^{b,c}),M)$.
+
+
+\begin{lem}
+The Hecke operators defined above commutes with each other
 and are equivariant with respect to the inclusions
-$ S_{\wt{k}}(U^p\Iw(p^{b,c}),M)\hookrightarrow
-S_{\wt{k}}(U^p\Iw(p^{b',c'}),M)$
+$ S_{\wt{k}}(U^p\Iw^P(p^{b,c}),M)\hookrightarrow
+S_{\wt{k}}(U^p\Iw^P(p^{b',c'}),M)$
 if $b'\geq b$ and $c'\geq c$.
+\end{lem}
+\begin{proof}
+That each $T_w^{(j)}$ commutes with other Hecke operators is classical,
+and the equivariance is clear.
+For the Hecke operators at  $w\in \Sigma_p$,
+the commutivity follows from \cite[Lem 3.1.4]{emeI},
+and the equivariance follows from 
+that of the action \eqref{eq:eme_action}.
+See also \cite[Lem 2.10]{ger} for the proof when $P=B$.
+\end{proof}
 
 
 
 \begin{defn}
-	Givne a parabolic subgroup $P$ as above,
-	and let  $M$ be either a finite  $\oo$-module
-	or the Pontryagin dual of which, 
-	we define the space of $P$-ordinary modular forms as
+	Givne $P$ as above,
+	let $U_P$ be the product of all  $U_{\wt{k},w}^{(j)}$
+	such that $\alpha_w^{(j)}\in Z_Q$.
+	When $M$ is either a finite  $\oo$-module
+	or the Pontryagin dual of which,
+	we define the space of $P$-ordinary modular forms
 	\[
 	S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,c}),M)\coloneqq
 		e_PS_{\wt{k}}(U^p\Iw^P(p^{b,c}),M),\quad
-		e_P\coloneqq\lim_{n\to \infty}
-		(\prod_{w\in \Sigma_p}\prod_j
-		U_{\wt{k},w}^{(j)})^{n!}
+		e_P\coloneqq\lim_{n\to \infty}(U_P)^{n!}
 	\]
-	here $j$ runs through indices $1\leq j\leq n$
-	such that  $\alpha_w^{(j)}\in Z_Q$,
-	the center of the Levi subgroup $Q\subset P$.
-	In particular,
+	Note that
 	$S_{\wt{k}}^{B-\ord}(U^p\Iw(p^{b,c}),M)$ 
 	is the space of ordinary forms as defined in 
 	\cite[Def 2.13]{ger}.
 \end{defn}
 
+\begin{lem}
+	For $M$ as in the definition above,
+	the inclusions below are isomorphisms.
+	\begin{align*}
+	&S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),M)\hookrightarrow	
+	S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,c}),M)\quad c\geq b\geq 1\\
+	&S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,1}),M)\hookrightarrow	
+	S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,c}),M)\quad c\geq 1
+	\end{align*}
+\end{lem}
+\begin{proof}
+	It suffices to show that 
+	$(U_P)^{n!}S_{\wt{k}}(U^p\Iw^P(p^{b,c}),M)
+	\subset S_{\wt{k}}(U^p\Iw^P(p^{b,b}),M)$
+	for $n$ sufficiently large. 
+	Since $\Iw^P(p^{b,c})$ admits Iwahori decompositions,
+	this follows from \cite[Lem 3.3.2]{emeI}.
+	The same argument also applies to 
+	$S_{\wt{k}}(U^p\Iw^P(p^{0,c}),M)$.
+	See also \cite[Lem 2.19]{ger} for the proof when $P=B$.
+\end{proof}
+
+\begin{lem}
+	For $M$ as above and $b\geq 1$ we have the inclusions 
+	\begin{equation*}
+		S_{\wt{k}}^{B-\ord}(U^p\Iw(p^{b,b}),M)\subset
+		S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),M)
+	\end{equation*}
+	which are equivariant with repsect to the 
+	Hecke operator that are defined in both spaces.
+\end{lem}
+\begin{proof}
+	Since $\Iw^P(p^{b,b})\subset \Iw(p^{b,b})$,
+	it suffices to show that the Hecke operators 
+	are equivariant with respect to the natural inclusions
+	$S_{\wt{k}}(U^p\Iw(p^{b,b}),M)\subset S_{\wt{k}}(U^p\Iw^P(p^{b,b}),M)$.
+	This is clear for $T_w^{(j)}$ and $\langle u\rangle$.
+	And for  $U_{\wt{k},w}^{(j)}$ such that 
+	$\alpha=\alpha_w^{(j)}\in Z_Q$, this follows from that 
+	the following set of representatives for $N_0/\alpha N_0\alpha^{-1}$
+	\[
+	\begin{pmatrix}
+		\id_j&X\\&\id_{n-j}
+	\end{pmatrix},\quad
+	X \text{ runs through a set of representatives of }
+	M_{j,n-j}(\oo_w)\mod \varpi_w.
+	\]
+	as given in \cite[Lem 2.10]{ger}, is also
+	a set of representatives for $U_0/\alpha U_0\alpha^{-1}$.
+\end{proof}
+
+
+\begin{defn}
+	Let $P_w=Q_wU_w$ be the Levi decomposition  for each  $w\in \Sigma_p$.
+	For a dominant weight 
+	$\wt{k}=(k_\sigma)\in (\Z^n)^{\Sigma}$,
+	let $\pi_{k_\sigma}=\Ind_{T_n(B_w\cap Q_w)}^{Q_w}(\omega_0 k_\sigma)$
+	and $\pi_{\wt{k}}$ be the algebraic representation of $M$ given by
+	\[
+		\pi_{\wt{k}}=\bigotimes_{\sigma\in \Sigma}\pi_{k_\sigma}\quad
+		m=(m_w)\mapsto 
+		\otimes_{w\in \Sigma_p}\otimes_{\sigma\in I_w}
+		\pi_{k_\sigma}(m_w).
+	\]
+\end{defn}
+
+We now formulate a weight independence results 
+for $P$-ordinary forms
+generalizaing \cite[Prop 2.22]{ger}.
+
+\begin{prop}
+	Let $A=\varpi^{-r}\oo/\oo$,
+	where $\varpi\in\oo$ be a uniformizer,
+	and $\pi_{\wt{k}}^*$ be the contragredient of 
+	$\pi_{\wt{k}}$.
+	When $b$ satisfies
+	$\iota_p\circ\sigma(\varpi_w^b)\in (\varpi^r)$
+	for all  $w\in \Sigma_p$ and $\sigma\in I_w$,
+	there exists an isomorphism
+	\[
+		\epsilon_{\wt{k}}
+		\colon S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),A)\cong 
+		\Hom_{\oo}(\pi_{\wt{k}}^*(\oo),
+		S^{P-\ord}(U^p\Iw^P(p^{b,b}),A)),
+	\]
+	which are equivariant for the action of Hecke operators.
+\end{prop}
+\begin{proof}
+	Fix an isomorphism $\xi_{\wt{k}}\cong \Ind_{P}^{G_p}\pi_{\wt{k}}$
+	and let $ev\colon \xi_{\wt{k}}\to \pi_{\wt{k}}$
+	be the evaluation at the identity.
+	For $f(g)\in S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),A)$, we define 
+	$\epsilon_{\wt{k}}(f)$ as the map
+	\[
+	\epsilon_{\wt{k}}(f)\colon \pi^*_{\wt{k}}(\oo)\rightarrow
+	S(U^p\Iw^P(p^{b,b}),A)\quad
+	\ell\mapsto [g\mapsto \ell(ev(f(g)))].
+	\]
+	By the assumption on $b$,
+	the map $ev$ is equivariant with repsect to  $\Iw^P(p^{b,0})$ 
+	over $A$
+	and $\Iw^P(p^{b,b})$ acts trivially on $\pi_{\wt{k}}(A)$.
+	Thus the function defined above is indeed a modular form
+	of trivial weight.
+
+
+	Let $\mu$ be a character of $T$ appearing 
+	in $\pi_{\wt{k}}$ when restricted to $T$, then $\mu$
+	also appears in  $\xi_{\wt{k}}$.
+	For such $\mu$, we fix a weight vector $v_\mu\in \xi_{\wt{k}}$
+	and $v^*_\mu\in \pi_{\wt{k}}^*$
+	such that $v^*_{\mu}(ev(v_\mu))=1$.
+	To construct the reversed map,
+	let $\alpha_P\in Z_Q^+$ be the product
+	of all $\alpha_w^{(j)}\in Z_Q$, $\{x_i\}\in U_0$
+	be a set of represntatives for $U_0/\alpha_P^r U_0\alpha^{-r}_P$.
+	We put 
+	\begin{align*}
+		\varphi\colon 
+		\Hom_{\oo}(\pi_{\wt{k}}^*(\oo),&
+		S(U^p\Iw^P(p^{b,b}),A))\longrightarrow
+		S_{\wt{k}}(U^p\Iw^P(p^{b,b}),A)\\
+		\phi&\mapsto 
+		F_\phi(g)=\sum_i \sum_{\mu}
+		x_i\cdot \phi(v^*_\mu)(gx_i\alpha)v_\mu
+	\end{align*}
+
+	To show that the resulting function defines a modular form,
+	let $u\in \Iw^P(p^{b,b})$, as explained, 
+	there exists a bijection $i\to i'$ such that 
+	 \[
+		ux_i=x_{i'}v_i,\quad
+		v_i\in\alpha_P^r\Iw^P(p^{b,b})\alpha_P^{-r} \cap \Iw^P(p^{b,b})
+	\]
+	Thus
+	\[
+		\xi_{\wt{k}}(u)\cdot F_\phi(gu)=
+		\sum_{i,\mu}
+		\xi_{\wt{k}}(x_i'v_i)\cdot 
+		\phi(v^*_\mu)(gx_i'v_i\alpha)v_\mu=
+		\sum_{i,\mu}
+		\xi_{\wt{k}}(x_i'v_i)\cdot 
+		\phi(v^*_\mu)(gx_i'\alpha)v_\mu
+	\]
+	since $\xi_{\wt{k}}(v_i)$ is trivial since such $v_i$ reduces to 
+	the identity matrix modulo  $\varpi^r$.
+
+	It is easily seen that 
+	\[
+		\epsilon_{\wt{k}}(F_\phi)\colon 
+		v_\mu^*\mapsto \sum_i\phi(v_\mu^*)(gx_i\alpha)
+	\]
+	
+	And also when we decompose $F$ with respect to weight spaces
+	 $F(g)=\sum_\mu F_\mu(g)v_\mu+\sum_{\mu'}F_{\mu'}(g)v_{\mu'}$, 
+	 then 
+	 \[
+	 	U_P^rF(g)=
+		\sum_i
+		\sum_\mu \xi_{\wt{k}}(x_i)\cdot F_\mu(gx_i\alpha)
+		+
+		\sum_i
+		\sum_{\mu'}\frac{\mu'(\alpha)}{(w_0\wt{k})(\alpha)}
+		\xi_{\wt{k}}(x_i)\cdot F_{\mu'}(gx_i\alpha)
+	 \]
+
+
+
+	\[
+	\begin{tikzcd}
+		S_{\wt{k}}(U^p\Iw^P(p^{b,b}),A)
+		\arrow[r,"\epsilon_{\wt{k}}"]
+		\arrow[d,"U_P^r"]
+		& \Hom_\oo(\pi^*_{\wt{k}}(\oo), S(U^p\Iw^P(p^{b,b}),A))
+		\arrow[d,"U_P^r"]
+		\arrow[dl,"\varphi"]\\
+		S_{\wt{k}}(U^p\Iw^P(p^{b,b}),A)
+		\arrow[r,"\epsilon_{\wt{k}}"]
+		& \Hom_\oo(\pi^*_{\wt{k}}(\oo), S(U^p\Iw^P(p^{b,b}),A))
+	\end{tikzcd}	
+	\]
+	Thus $\epsilon_{\lambda}$ is an isomorphism
+	after localizing at the ordinary primes. 
+
+\end{proof}
+
+\subsection{Hecke operators and Galois representations}
+
+Restriction to two situations.
+Assume there is special place $w\in \Sigma_p$
+such that  $\oo_w=\Zp$.
+ \begin{itemize}
+	\item $n=3$, $P_w$ maximal and  $  P_{w'}=B_{w'}$
+	\item  $n=2$,  $P_w=G_w$ and $  P_{ w' } =B_{w'}$
+\end{itemize}
+
+There exist a unique continuous semisimple representation
+\[
+r_\pi: G_F \rightarrow \GL_n(\bar{\Q}_p)
+r_\pi^c \cong r_\pi^{\vee} \epsilon_p^{1-n}
+\]
+with the following properties.
+\begin{enumerate}[label=(\alph*)]
+\item If $v \notin S_l \cup R$ is a finite place of $F^{+}$which splits as $w w^c$ in $F$, then
+\[
+\left.r_\pi\right|_{G_{F w}} ^{\mathrm{ss}} \cong\left(r_l\left(\pi_v \circ \iota_w^{-1}\right)^{\vee}(1-n)\right)^{\mathrm{ss}} .
+\]
+Moreover, if $\pi_v$ is unramified, then $\left.r_\pi\right|_{G_{F w}}$ is also unramified.
+\item If $w\in S_p^\K$ then $r_\pi$ is potentially semistable at $w$.
+If $\pi_v$ is unramified, then $r_\pi$ is crystalline at $w$
+and the characteristic polynomial of 
+$\operatorname{Frob}_w$ on $\operatorname{WD}\left(D_{\text {cris }}\left(\left.r_\pi\right|_{G_{F_w}}\right)\right)$ equals the characteristic polynomial of $\mathrm{Frob}_w$ on $r_{l, \mathrm{WD}}\left(\pi_v \circ \iota_w^{-1}\right)^{\vee}(1-n)$.
+
+\end{enumerate}
 \subsection{Emerton's Functor of ordinary parts}
 
 On the other hand,
@@ -588,123 +832,21 @@ on the smooth admissible $G_p$-module
 	\Mod^{\adm}_{G_p}(\oo)
 \]
 where $\{U_p\}$ is the filtered system of 
-all the compact open subgroups in $K_p$.
+all the compact open subgroups in $K_p$
+and $G_p$ acts through right translation.
 To recall the definition,
-let $U_0=U\cap K_p$,
-$Q^+=\{m\in Q\mid mU_0m^{-1}\subset U_0\}$, and 
-$Z_Q^+=Q^+\cap Z_Q$.
-For a $P$-representation $V$ define
-\[
-	h_Q(m)\cdot v=\sum_{x\in U_0/mU_0m^{-1}} xm\cdot v
-	\text{ for } v\in V^{U_0}.
-\]
+let $Q^+=\{m\in Q\mid mU_0m^{-1}\subset U_0\}$ 
+so that $Z_Q^+=Z_Q\cap Q^+$.
 Then the functor of ordinary parts
-$ \Ord_P\colon \Mod^{\sm}_{G_p}(A)\to \Mod^{\sm}_Q(A)$
+$ \Ord_P\colon \Mod^{\sm}_{G_p}(\oo)\to \Mod^{\sm}_Q(\oo)$
 is defined as
 \[
-	\Ord_P(V)=\Hom_{A[Z_Q^+]}(A[Z_Q], V^{U_0})_{Z_Q-\fin}
+	\Ord_P(V)=\Hom_{\oo[Z_Q^+]}(\oo[Z_Q], V^{U_0})_{Z_Q-\fin}.
 \]
-
-\begin{defn}
-	For each $v\in S_p$
-	let $T_v\subset \GL_n(\F_v)$
-	be the diagonal torus and 
-	identify  $X^*(T_v)=\Z^n$.
-	Given $\lambda\in \Z^n$
-	such that $\lambda_1\geq \cdots\geq \lambda_n$,
-	let  $w_0$ be the longest Weyl element, define
-	\begin{equation}
-	\pi_\lambda=\Ind_{T(B\cap M)}^M(w_0\lambda),\qquad
-	\tau_\lambda=\Ind_B^G(w_0\lambda)\cong 
-	\Ind_P^G(\pi_\lambda).
-	\end{equation}
-	More generally,
-	when $\lambda=(\lambda_{\sigma})\in \Z[I_\F]^n$
-	satisfies 
-	$\lambda_{\sigma,1}\geq \lambda_{\sigma,2}\geq \cdots\lambda_{\sigma,n}$
-	for all $\sigma\in I_\F$, 
-	write 
-	$\pi_\lambda=\otimes_{I_\F}\pi_{\lambda_{\sigma}}$ and 
-	$\tau_\lambda=\otimes_{I_\F}\tau_{\lambda_{\sigma}}$
-	for the algebraic representations of $M$ and  $G_p$
-	respectively given by 
-	\[
-	\prod_{v\in S_p}P_v(\F_v)\to 	
-	\prod_{v\in S_p}\prod_{v=v_\sigma}P_v(E)\quad
-	\prod_{v\in S_p}\GL_n(\F_v)\to 	
-	\prod_{v\in S_p}\prod_{v=v_\sigma}\GL_n(E)\quad
-	\]
-\end{defn}
-
-
-
-The relation between the two definitions
-is provided by the following "weight independence" result
-generalizaing \cite[Prop 2.22]{ger}.
-\begin{prop}
-	For $c\geq r$ There exists an $M_0$-equivariant isomorphism
-	\[
-		\epsilon_\lambda
-		\colon S_{\lambda}^{P-\ord}(U^pH_{c,c}, \oo/p^r)\cong 
-		\Hom_{\oo}(\pi_\lambda^\vee(\oo/p^r),
-		\Ord_PS(U^p,\oo/p^r)^{M_c}).
-	\]
-	Here $m\in M_0$ acts on  $f\in S_\lambda^{P-\ord}(U^pH_{c,c},\oo/p^r)$
-	through $[m\cdot f](g)=m\cdot f(gm)$;
-	and on the right hand side through 
-	$\Ord_PS(U^p,\oo/p^r)$,
-	note that $M_c\subset M_0$ is a normal subgroup.
-\end{prop}
-\begin{proof}
-	Let $ev\colon \tau_\lambda\to \pi_\lambda$ 
-	be the evaluation at the identity, which is 
-	$H_{r,0}$-equivariant over $\oo/p^r$.
-	Define 
-	\[
-	\epsilon_{\lambda}\colon S_\lambda(U^pH_{c,c}, \oo/p^r)\to 
-	\Hom_{\oo}(\pi_\lambda^\vee(\oo/p^r), S(U^pH_{c,c},\oo/p^r))\qquad
-	\epsilon_{\lambda}(\tilde{f})(g)=
-	ev(\tilde{f}(g)).
-	\]
-	That $\epsilon_\lambda(\tilde{f})\in 	
-	\Hom_{\oo}(\tau_\lambda^\vee(\oo/p^r), S(U^pH_{c,c},\oo/p^r))$
-	follows from the above equivariance.
-	It is easily verified that 
-	the map is $M_0$-equivariant.
-	Moreover, since
-	$(w_0\lambda)(z)=\lambda'(z)$
-	for any weight $\lambda'\subset \pi_\lambda$,
-	the map is also $Z_M^+$-equivariant.
-
-	To construct a map in the reversed direction,
-	let $\alpha\in Z_M^+$ be the product
-	of a finite set of generators of $Z_M^+$
-	and let $ \{x_i\}\in N_0$
-	be a set of represntatives for $N_0/\alpha N_0\alpha^{-1}$.
-	Let $\iota\colon \pi_\lambda\hookrightarrow \tau_\lambda$
-	be the incusion of the weight vectors and define 
-	\[
-	\varphi(f)(g)\coloneqq \sum_i x_i\cdot \iota(f(gx_i\alpha))	
-	\]
-	The same argument in loc.cit shows 
-	$\varphi(f)\in S_\lambda(U^pH_{c,c},\oo/p^r)$
-	and the commutative diagram 
-	\[
-	\begin{tikzcd}
-		S_\lambda(U^pH_{c,c},\oo/p^r)
-		\arrow[r,"\epsilon_{\lambda}"]
-		\arrow[d,"\langle\alpha\rangle"]
-		& \Hom_\oo(\pi_\lambda^\vee(\oo/p^r), S(U^pH_{c,c},\oo/p^r))
-		\arrow[d,"h_M(\alpha)"]
-		\arrow[dl,"\varphi"]\\
-		S_\lambda(U^pH_{c,c},\oo/p^r)
-		\arrow[r,"\epsilon_{\lambda}"]
-		& \Hom_\oo(\pi_\lambda^\vee(\oo/p^r), S(U^pH_{c,c},\oo/p^r))
-	\end{tikzcd}	
-	\]
-	Thus $\epsilon_{\lambda}$ is an isomorphism
-	after localizing at the ordinary primes. 
-\end{proof}
+Here $Z_Q^+$ acts by translation on the left; by $h_Q$ on the right.
+And the action of $Q=Z_Q\cdot Q^+$ is induced by 
+havig $Z_Q$ act by translation on the left and 
+$Q^+$ act by $h_Q$ on the right.
 
 
 
