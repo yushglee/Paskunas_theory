@@ -688,91 +688,104 @@ generalizaing \cite[Prop 2.22]{ger}.
 		\epsilon_{\wt{k}}
 		\colon S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),A)\cong 
 		\Hom_{\oo}(\pi_{\wt{k}}^*(\oo),
-		S^{P-\ord}(U^p\Iw^P(p^{b,b}),A)),
+		S^{P-\ord}(U^p\Iw^P(p^{b,b}),A)).
 	\]
-	which are equivariant for the action of Hecke operators.
 \end{prop}
+
 \begin{proof}
 	Fix an isomorphism $\xi_{\wt{k}}\cong \Ind_{P}^{G_p}\pi_{\wt{k}}$
 	and let $ev\colon \xi_{\wt{k}}\to \pi_{\wt{k}}$
 	be the evaluation at the identity.
-	For $f(g)\in S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),A)$, we define 
-	$\epsilon_{\wt{k}}(f)$ as the map
-	\[
-	\epsilon_{\wt{k}}(f)\colon \pi^*_{\wt{k}}(\oo)\rightarrow
+	For $F(g)\in S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),A)$, we define 
+	$\epsilon_{\wt{k}}(F)$ as 
+	\begin{equation}\label{eq:wt_indep}
+	\epsilon_{\wt{k}}(F)\colon \pi^*_{\wt{k}}(\oo)\rightarrow
 	S(U^p\Iw^P(p^{b,b}),A)\quad
-	\ell\mapsto [g\mapsto \ell(ev(f(g)))].
-	\]
+	v^*\mapsto [g\mapsto v^*(ev(F(g)))].
+	\end{equation}
 	By the assumption on $b$,
-	the map $ev$ is equivariant with repsect to  $\Iw^P(p^{b,0})$ 
-	over $A$
-	and $\Iw^P(p^{b,b})$ acts trivially on $\pi_{\wt{k}}(A)$.
+	the action of $\Iw^P(p^{b,b})$ on $\pi_{\wt{k}}(A)$,
+	which factors through $U(A)$,
+	is trivial.
 	Thus the function defined above is indeed a modular form
 	of trivial weight.
 
 
-	Let $\mu$ be a character of $T$ appearing 
-	in $\pi_{\wt{k}}$ when restricted to $T$, then $\mu$
-	also appears in  $\xi_{\wt{k}}$.
-	For such $\mu$, we fix a weight vector $v_\mu\in \xi_{\wt{k}}$
+	To construct the reversed map,
+	we first note that the weight characters of $T$
+	in $\xi_{\wt{k}}$ or $\pi_{\wt{k}}$
+	are of the form $w\wt{k}$
+	and of multiplicity one,
+	where $w$ are elements in Weyl groups of $G_p$ or $M$.
+	If $\mu$ is a weight character of  $\pi_{\wt{k}}$, then
+	it is also a weight character  of $\xi_{\wt{k}}$.
+	We fix weight vectors $v_\mu\in \xi_{\wt{k}}$
 	and $v^*_\mu\in \pi_{\wt{k}}^*$
 	such that $v^*_{\mu}(ev(v_\mu))=1$.
-	To construct the reversed map,
-	let $\alpha_P\in Z_Q^+$ be the product
-	of all $\alpha_w^{(j)}\in Z_Q$, $\{x_i\}\in U_0$
-	be a set of represntatives for $U_0/\alpha_P^r U_0\alpha^{-r}_P$.
-	We put 
+	Now, let $\alpha_P\in Z_Q^+$ be the product
+	of all $\alpha_w^{(j)}\in Z_Q$ and 
+	let $\alpha=\alpha_P^r$.
+	Pick a set of represntatives $\{x_i\}_{i\in I}$
+	for $U_0/\alpha U_0\alpha^{-1}$,
+	we put 
 	\begin{align*}
 		\varphi\colon 
 		\Hom_{\oo}(\pi_{\wt{k}}^*(\oo),&
 		S(U^p\Iw^P(p^{b,b}),A))\longrightarrow
 		S_{\wt{k}}(U^p\Iw^P(p^{b,b}),A)\\
 		\phi&\mapsto 
-		F_\phi(g)=\sum_i \sum_{\mu}
-		x_i\cdot \phi(v^*_\mu)(gx_i\alpha)v_\mu
+		F_\phi(g)=\sum_{i\in I} \sum_{\mu}
+		\xi_{\wt{k}}(x_i)\cdot \phi(v^*_\mu)(gx_i\alpha)v_\mu
 	\end{align*}
-
+	where $\mu$ runs through the weight characters in  $\pi_{\wt{k}}$.
 	To show that the resulting function defines a modular form,
-	let $u\in \Iw^P(p^{b,b})$, as explained, 
-	there exists a bijection $i\to i'$ such that 
+	let $u\in \Iw^P(p^{b,b})$, then as explained in \cite[Prop 2.22]{ger}
+	there exists a bijection $i\mapsto i'$ of $I$ such that 
 	 \[
 		ux_i=x_{i'}v_i,\quad
-		v_i\in\alpha_P^r\Iw^P(p^{b,b})\alpha_P^{-r} \cap \Iw^P(p^{b,b})
+		v_i\in\alpha\Iw^P(p^{b,b})\alpha^{-1} \cap \Iw^P(p^{b,b})
 	\]
-	Thus
+	Since each $v_i$ is reduced to the identity matrix 
+	modulo $\varpi^r$ and thus acts trivially on $\xi_{\wt{k}}(A)$,
 	\[
 		\xi_{\wt{k}}(u)\cdot F_\phi(gu)=
-		\sum_{i,\mu}
+		\sum_{i\in I}\sum_{\mu}
 		\xi_{\wt{k}}(x_i'v_i)\cdot 
 		\phi(v^*_\mu)(gx_i'v_i\alpha)v_\mu=
-		\sum_{i,\mu}
-		\xi_{\wt{k}}(x_i'v_i)\cdot 
-		\phi(v^*_\mu)(gx_i'\alpha)v_\mu
+		\sum_{i\in I}\sum_{\mu}
+		\xi_{\wt{k}}(x_i')\cdot 
+		\phi(v^*_\mu)(gx_i'\alpha)v_\mu=F_\phi(g)
 	\]
-	since $\xi_{\wt{k}}(v_i)$ is trivial since such $v_i$ reduces to 
-	the identity matrix modulo  $\varpi^r$.
+	and indeed $F_\varphi(g)\in S_{\wt{k}}(U^p\Iw^P(p^{b,b}),A)$.
 
-	It is easily seen that 
+	At last, we observe that for each $\mu$ the composition
+	$\epsilon_{\wt{k}}(F_\phi)$ is the homomorphism
 	\[
-		\epsilon_{\wt{k}}(F_\phi)\colon 
-		v_\mu^*\mapsto \sum_i\phi(v_\mu^*)(gx_i\alpha)
+		v_\mu^*\mapsto \sum_{i\in I}\phi(v_\mu^*)(gx_i\alpha)
+		=U_P^r\phi(v_\mu^*)(g)
 	\]
-	
-	And also when we decompose $F$ with respect to weight spaces
-	 $F(g)=\sum_\mu F_\mu(g)v_\mu+\sum_{\mu'}F_{\mu'}(g)v_{\mu'}$, 
-	 then 
-	 \[
-	 	U_P^rF(g)=
-		\sum_i
-		\sum_\mu \xi_{\wt{k}}(x_i)\cdot F_\mu(gx_i\alpha)
-		+
-		\sum_i
-		\sum_{\mu'}\frac{\mu'(\alpha)}{(w_0\wt{k})(\alpha)}
-		\xi_{\wt{k}}(x_i)\cdot F_{\mu'}(gx_i\alpha)
-	 \]
+	On the other hand 
+	if we decompose $F$ with respect to a choice of weight vectors
+	$F(g)=\sum_\mu F_\mu(g)v_\mu+\sum_{\mu'}F_{\mu'}(g)v_{\mu'}$, 
+	with $\mu$ go through weight vectors that also appears in $\pi_{\wt{k}}$
+	and $\mu'$ go through the complement,
+	then as $\mu(\alpha)=(w_0\wt{k})(\alpha)$ for $\alpha\in Z_Q$,
+	\begin{multline*}
+	U_P^rF(g)=
+	\sum_{i\in I}
+	\sum_\mu \xi_{\wt{k}}(x_i)\cdot F_\mu(gx_i\alpha)v_\mu+
+	\sum_{i\in I}
+	\sum_{\mu'}\frac{\mu'(\alpha)}{(w_0\wt{k})(\alpha)}
+	\xi_{\wt{k}}(x_i)\cdot F_{\mu'}(gx_i\alpha)v_{\mu'}\\=
+	\sum_{i\in I}
+	\sum_\mu \xi_{\wt{k}}(x_i)\cdot F_\mu(gx_i\alpha)v_\mu=
+	\sum_{i\in I}
+	\sum_\mu \xi_{\wt{k}}(x_i)\cdot\epsilon_{\wt{k}}(F)(v^*_\mu)(gx_i\alpha)
+	=F_{\epsilon_{\wt{k}}(F)}(g).
+	\end{multline*}
 
-
-
+	We thus have the following commutative diagram,
+	from which the proposition follows.
 	\[
 	\begin{tikzcd}
 		S_{\wt{k}}(U^p\Iw^P(p^{b,b}),A)
@@ -786,39 +799,155 @@ generalizaing \cite[Prop 2.22]{ger}.
 		& \Hom_\oo(\pi^*_{\wt{k}}(\oo), S(U^p\Iw^P(p^{b,b}),A))
 	\end{tikzcd}	
 	\]
-	Thus $\epsilon_{\lambda}$ is an isomorphism
-	after localizing at the ordinary primes. 
-
 \end{proof}
 
-\subsection{Hecke operators and Galois representations}
+\subsection{Hecke algebras and Galois representations}
 
-Restriction to two situations.
-Assume there is special place $w\in \Sigma_p$
-such that  $\oo_w=\Zp$.
- \begin{itemize}
-	\item $n=3$, $P_w$ maximal and  $  P_{w'}=B_{w'}$
-	\item  $n=2$,  $P_w=G_w$ and $  P_{ w' } =B_{w'}$
-\end{itemize}
-
-There exist a unique continuous semisimple representation
+For a dominant weight $\wt{k}\in (\Z^n)^{\Sigma}$ let
 \[
-r_\pi: G_F \rightarrow \GL_n(\bar{\Q}_p)
-r_\pi^c \cong r_\pi^{\vee} \epsilon_p^{1-n}
+	S_{\wt{k}}(\bar{\Q}_p)=\varinjlim_{U}
+	S_{\wt{k}}(U,\bar{\Q}_p)\quad
+	U\subset G(\A_f) \text{ open compact subgroup}
 \]
-with the following properties.
+endowed with the $G(\A_f)$-action
+where $g\cdot f(x)=\xi_{\wt{k}}(g_p)\cdot f(xg)$ for
+$f(x)\in S_{\wt{k}}(\bar{Q}_p)$,
+so $S_{\wt{k}}(U,\bar{Q}_p)=S_{\wt{k}}(\bar{Q}_p)^U$.
+Moreover, by \cite[Prop 3.3.2]{CHT}, 
+ther exists the $G(\A_f)$ equivariant isomorphism
+\[
+	\iota\colon S_{\wt{k}}(\bar{Q}_p)\otimes_{\iota,\bar{Q}_p}\C
+	\rightarrow \Hom_{G(\A_\infty)} (\xi_{\wt{k}}^*(\C), \mathcal{A})\quad
+	\iota(F)\colon v^*\mapsto 
+	[g\mapsto \xi_{\wt{k}}(g_\infty)\xi_{\wt{k}}(g_p)\cdot F(g_f)]
+\]
+
+
+\begin{prop}\cite[Prop.2.27]{ger}
+	Let $\pi$ be an irreducible constituent of 
+	$G(\A_f)$-representation in $S_{\wt{k}}(\bar{Q}_p)$.
+	Then there exist a unique continuous semisimple representation
+	\[
+	r_\pi: G_\K \rightarrow \GL_n(\bar{\Q}_p)\quad
+	r_\pi^c \cong r_\pi^{\vee} \epsilon_p^{1-n}
+	\]
+	where $\epsilon_p$ is the cyclotomic character,
+	with the following properties.
 \begin{enumerate}[label=(\alph*)]
-\item If $v \notin S_l \cup R$ is a finite place of $F^{+}$which splits as $w w^c$ in $F$, then
+\item If $v=w\bw$ is a prime-to-$p$ place that is split in $\K$,
+let $\pi_w$ be the $\GL_n(\K_w)$-representation
+induced by $\iota_w\colon G(\F_v)\cong \GL_n(\K_w)$, then
 \[
-\left.r_\pi\right|_{G_{F w}} ^{\mathrm{ss}} \cong\left(r_l\left(\pi_v \circ \iota_w^{-1}\right)^{\vee}(1-n)\right)^{\mathrm{ss}} .
+\WD\left(\left.r_\pi\right|_{G_{\K_w}}\right)^{\mathrm{ss}} \cong
+\Rec(\pi_w|\cdot|^{\frac{1-n}{2}})^{\mathrm{ss}}
 \]
-Moreover, if $\pi_v$ is unramified, then $\left.r_\pi\right|_{G_{F w}}$ is also unramified.
-\item If $w\in S_p^\K$ then $r_\pi$ is potentially semistable at $w$.
-If $\pi_v$ is unramified, then $r_\pi$ is crystalline at $w$
-and the characteristic polynomial of 
-$\operatorname{Frob}_w$ on $\operatorname{WD}\left(D_{\text {cris }}\left(\left.r_\pi\right|_{G_{F_w}}\right)\right)$ equals the characteristic polynomial of $\mathrm{Frob}_w$ on $r_{l, \mathrm{WD}}\left(\pi_v \circ \iota_w^{-1}\right)^{\vee}(1-n)$.
-
+Moreover, $r_\pi$ is unramified at $w$ and $\bw$ if $\pi_v$ is unramified.
+\item If $v=w\bw$ and  $w\in \Sigma_p$.
+The representation $r_\pi$ is potentially semistable at $w$ and  $\bw$;
+and crystalline if $\pi_v$ is unramified.
+In this latter case, 
+and the characteristic polynomial of $\Fr_w$, the geometric Frobenius,
+on $\WD\left(D_{\mathrm{cris }}\left(\left.r_\pi\right|_{G_{F_w}}\right)\right)$
+coincides with that of $\Rec(\pi_w|\cdot|^{\frac{1-n}{2}})^{\mathrm{ss}}$.
+\item 
+Let $k_{\sigma,j}=-k_{\sigma c, n-j+1}$
+for $\sigma\notin \Sigma$.
+If $\sigma\in I_w$ for $w\in S_p^\K$, then
+\[
+\dim_{\bar{\Q}_p}\operatorname{gr}^i
+\left(r_\pi \otimes_{\sigma, \K_w} B_{\dR}\right)^{G_{\K_w}}=1
+\]
+when $i=k_{\sigma, j}+n-j$ 
+for some $j=1, \ldots, n$, and is equal to 0 otherwise.
 \end{enumerate}
+\end{prop}
+
+From now on,
+we fix a place $w\in \Sigma_p$ and
+assume we are in one of the following two situations
+\begin{enumerate}[label=(\Roman*)]
+	\item $n=3$, $P_{w'}=B_{w'}$ for $w'\neq w$ and $P_w$ is
+		maximal proper parabolic.
+	\item $n=2$, $P_{w'}=B_{w'}$ for $w'\neq w$ and $P_w=G_w$.
+\end{enumerate}
+
+Following \cite{ger},
+we say a dominant weight $\wt{k}$ is sufficiently regular
+if for each $w\in \Sigma_p$ and $1\leq j<n$,
+there exists  $\sigma\in I_w$
+such that  $k_{\sigma,j}>k_{\sigma,j+1}$.
+\begin{lem}
+	Let $\wt{k}$ be a sufficiently regular dominant weight
+	$\pi$ be an irreducible constituent of 
+	$G(\A_f)$-representation in $S_{\wt{k}}(\bar{Q}_p)$
+	and $U$ be a compact open subgroup such that 
+	\[
+		\pi^{U^p\Iw^P(p^{1,0})}\cap 
+		S^{P-\ord}_{\wt{k}}(U^p\Iw^P(p^{1,0}),\oo)\neq\{0\},
+	\]
+	then $\pi_v$ is actually unramified for all $v\in S_p$.
+\end{lem}
+\begin{proof}
+	The statement follows from \cite[Lem 2.30]{ger} when $P_{w'}=B_{w'}$
+	and is automatic when $P_w=G_w$.
+	When $n=3$ and
+	$P=\begin{psmallmatrix}
+		*&*&*\\
+		*&*&*\\
+		 &&*
+	\end{psmallmatrix}$,
+	by the proof of \cite[Lem 3.1.5]{CHT}
+	$\pi_w$ is either unramified or 
+	the irreducible quotient of 
+	$\Ind_{B_3}^{\GL_3}(\chi_1\otimes \chi_2\otimes\chi_2|\cdot|)$
+	for unramified characters  $\chi_1$ and $\chi_2$.
+	In this latter case
+	the  $\Iw^P(p^{1,0})$-invariant subspace is one-dimensional, with
+	 \[
+		U_1=q\chi_1(\varpi)+\chi_2(\varpi),\quad
+		U_2=\chi_1\chi_2(\varpi)\quad
+		U_3=q^{-1}\chi_1\chi_2\chi_2(\varpi)
+	\]
+	Thus 
+	\begin{gather}
+		\val(\chi_2(\varpi_w))=\sum_{\sigma\in I_w}k_{\sigma,1}+1\\
+		\val(\chi_1(\varpi_w))=\sum_{\sigma\in I_w}
+		k_{\sigma,3}+k_{\sigma,2}-k_{\sigma,1}-1
+		\sum_{\sigma\in I_w}(k_{\sigma,2}-k_{\sigma,1})+
+		\sum_{\sigma\in I_w}(k_{\sigma,1}-k_{\sigma,3})+1
+	\end{gather}
+	but the last leads to contradiction when $\wt{k}$
+	is sufficiently regular.
+
+	The case when
+	$P=\begin{psmallmatrix}
+	*&*&*\\
+	&*&*\\
+	&*&*
+	\end{psmallmatrix}$ follows using inner involution.
+\end{proof}
+
+\begin{prop}
+	Galois representation has subspace.
+\end{prop}
+\begin{proof}
+	Following \cite[Lem 2.30]{ger},
+	$\pi$ is a subquotient of 
+	$\sigma=\Ind(\chi_1\otimes\chi_2\otimes\chi_3)$.
+	which implies 
+\end{proof}
+
+\begin{defn}
+	Hecke algebra 
+	generated by $T$ and $  U_{w'}$
+\end{defn}
+
+\begin{prop}
+	density of crystalline.
+\end{prop}
+
+
+
 \subsection{Emerton's Functor of ordinary parts}
 
 On the other hand,
