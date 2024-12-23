@@ -801,6 +801,11 @@ generalizaing \cite[Prop 2.22]{ger}.
 	\]
 \end{proof}
 
+\begin{rem}
+	The map \eqref{eq:wt_indep} is equivariant 
+	with respect to $Q_0=Q\cap K_p$. 
+\end{rem}
+
 \subsection{Hecke algebras and Galois representations}
 
 For a dominant weight $\wt{k}\in (\Z^n)^{\Sigma}$ let
@@ -903,28 +908,44 @@ such that  $k_{\sigma,j}>k_{\sigma,j+1}$.
 	for unramified characters  $\chi_1$ and $\chi_2$.
 	In this latter case
 	the  $\Iw^P(p^{1,0})$-invariant subspace is one-dimensional, with
-	 \[
-		U_1=q\chi_1(\varpi)+\chi_2(\varpi),\quad
-		U_2=\chi_1\chi_2(\varpi)\quad
-		U_3=q^{-1}\chi_1\chi_2\chi_2(\varpi)
-	\]
-	Thus 
-	\begin{gather}
-		\val(\chi_2(\varpi_w))=\sum_{\sigma\in I_w}k_{\sigma,1}+1\\
-		\val(\chi_1(\varpi_w))=\sum_{\sigma\in I_w}
-		k_{\sigma,3}+k_{\sigma,2}-k_{\sigma,1}-1
-		\sum_{\sigma\in I_w}(k_{\sigma,2}-k_{\sigma,1})+
-		\sum_{\sigma\in I_w}(k_{\sigma,1}-k_{\sigma,3})+1
-	\end{gather}
-	but the last leads to contradiction when $\wt{k}$
+	the normalized Hecke operators acting as
+	\begin{align*}
+		(w_0\wt{k})^{-1}(\alpha_w^{(1)})
+		[\Iw^P(p^{1,0})\alpha_w^{(1)}\Iw^P(p^{1,0})]&=
+		(w_0\wt{k})^{-1}(\alpha_w^{(1)})
+		(q_w\chi_1(\varpi_w)+\chi_2(\varpi_2))\\
+		(w_0\wt{k})^{-1}(\alpha_w^{(2)})
+		[\Iw^P(p^{1,0})\alpha_w^{(2)}\Iw^P(p^{1,0})]&=
+		(w_0\wt{k})^{-1}(\alpha_w^{(1)})
+		\chi_1\chi_2(\varpi_w)\\
+		(w_0\wt{k})^{-1}(\alpha_w^{(3)})
+		[\Iw^P(p^{1,0})\alpha_w^{(3)}\Iw^P(p^{1,0})]&=
+		(w_0\wt{k})^{-1}(\alpha_w^{(1)})
+		q_w^{-1}\chi_1\chi_2\chi_2(\varpi_w)
+	\end{align*}
+	where the first eigenvalue is $p$-integral
+	and the latter two are $p$-unit, which implies that
+	\begin{align*}
+		\val_w(\chi_2(\varpi_w))&=
+		1+\sum_{\sigma\in I_w}k_{\sigma,1}
+		&\Longrightarrow
+		\val_w((w_0\wt{k})^{-1}(\alpha_w^{(1)})\chi_2(\varpi_2))=
+		1+\sum_{\sigma\in I_w}(k_{\sigma,1}-k_{\sigma,3})>0\\
+		\val_w(\chi_1(\varpi_w))&=
+		-1+\sum_{\sigma\in I_w}
+		(k_{\sigma,3}+k_{\sigma,2}-k_{\sigma,1})
+		&\Longrightarrow
+		\val_w((w_0\wt{k})^{-1}(\alpha_w^{(1)})q_w\chi_1(\varpi_w))=
+		\sum_{\sigma\in I_w}(k_{\sigma,2}-k_{\sigma,2})<0
+	\end{align*}
+	which leads to a contradiction when $\wt{k}$
 	is sufficiently regular.
-
 	The case when
 	$P=\begin{psmallmatrix}
 	*&*&*\\
 	&*&*\\
 	&*&*
-	\end{psmallmatrix}$ follows using inner involution.
+	\end{psmallmatrix}$ is similar.
 \end{proof}
 
 \begin{prop}
