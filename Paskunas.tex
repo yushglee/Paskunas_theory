@@ -67,6 +67,7 @@
 \newcommand{\GG}{\mathbf G} 
 \newcommand{\Iw}{\textnormal{Iw}} 
 
+\DeclareMathOperator{\Spec}{Spec}
 
 \newcommand{\bw}{\overline{w}}
 %%% Block theory
@@ -1006,8 +1007,196 @@ and  $\Ord_P(S(U^p,E/\oo))\in \aMod_M(\oo)\cap \laMod_{G}(\oo)$.
 \end{defn}
 
 
+\subsection{compatibility}
+
+Let $S(U^p,E/\oo)=S^{w'-\ord}(U^p,E/\oo)$
+with action of $\GL_2(\Qp)\cong \GL_2(K_w)$
+and prime-to-$w$ Hecke algebra $\TT$. 
+Define
+\begin{align*}
+	M(U^p)=S(U^p,E/\oo)^{\vee}&\cong 
+	\Hom_{\oo}(S(U^p,\oo)\\
+	S(U^p)=\Hom_{\oo}(E/\oo,S(U^p,E/\oo))&\cong
+	\Hom_{\oo}^{\cts}(M(U^p),\oo)\cong 
+	\varprojlim_{r}S(U^p,\oo/\varpi^r)
+\end{align*}
+Let $\rho_\fm\colon G_\K\to \TT_\fm$
+be localization of Galois pseudo-representation,
+we assume the following 
+\begin{equation}\tag{assump}\label{cond:gen}
+	\rho_\fm\equiv \delta_1+\delta_2\mod \fm,\quad
+	\delta_1\delta_2^{-1}\vert_{\Gp=D_w}
+	\neq 1,\omega^{\pm}
+\end{equation}
+
+Let $\fp\subset \TT_\fm$ be a prime ideal such that 
+\[
+\begin{tikzcd}
+	\rho_\fp\colon G_\K\arrow[dr]\arrow[rr]
+	&& \TT_\fm[\frac{1}{p}]/\fp=E\\
+	& \TT_{\wt{k}}(U^pU_p,E)\arrow[ur]
+\end{tikzcd}
+\]
+We have that $\rho_\fp$ is crystalline, and 
+the associated Weil-Deligne representation 
+is $\Fr_w$ acting as  $\varphi$ on 
+\[
+	D=(\rho_\fp\otimes_{\Qp}B_{\cris})^{\Gp}=
+	\Rec(\pi_\fp|\cdot|^{-1/2})
+\]
+where $\pi_\fp\chi_1\boxtimes\chi_2\sim
+\nInd_B^G(\chi_1\otimes\chi_2)$ and
+ \begin{enumerate}[label=(\alph*)]
+	\item $\det(X-\Fr\vert_{\rho_\fp})=
+		\det(X-\varphi\vert_D)=
+		(X-p^{1/2}\chi_1(p))(X-p^{1/2}\chi_2(p))$
+	\item The Hodge-Tate weights are $k_1+1, k_2$
+	\item  $\psi_\fp\coloneqq \det \rho_\fp$ 
+		has Hodge-Tate weight $k_1+k_2+1$.
+\end{enumerate}
+For example,
+if $\pi_\fp$ is ordinary
+with  $U_w^{(1)}$ and $U_w^{(2)}$ acting as
+$u^{(1)}$ and $u^{(2)}$ respectively, then 
+$p^{1/2}\chi_1(p)=u^{(1)}p^{k_2}$ and
+$p^{1/2}\chi_2(p)=\frac{u^{(1)}}{u^{(1)}}p^{k_1+1}$, and
+\[
+	\rho_{\fp}\vert_{\Gp}\sim
+	\begin{pmatrix}
+		\psi_1&*\\*\epsilon^{-1}\psi_2
+	\end{pmatrix}
+	\quad
+	\begin{aligned}
+		\psi_1\circ Art\colon 
+		x\in \Zp^\times\mapsto x^{-k_2}\,
+		p\mapsto u^{(1)}\\
+		\psi_2\circ Art\colon 
+		x\in \Zp^\times\mapsto x^{-k_1}\,
+		p\mapsto \frac{u^{(2)}}{u^{(1)}}\\
+	\end{aligned}
+\]
+\begin{rem}
+	If we identify the cyclotomic character
+	$\epsilon$ with $\epsilon\circ Art$,
+	then  $\epsilon(x)=x\cdot |x|$.
+\end{rem}
+
+\begin{prop}
+	If $\rho$ is crystalline and 
+	$\det \rho=\zeta\epsilon^{-1}$,
+	with $D(\rho)=\Rec(\pi|\cdot|^{-1/2})$.
+	Let $\rho'=\rho(\epsilon)$
+	with Hodge-Tate weights
+	$\{-a,-a-b\}$, then 
+	 \[
+		\pi=\Ind(\psi_1'\otimes\psi_2'|\cdot|^{-1})
+		\quad D(\rho')=\psi_1'+\psi_2'
+	\]
+	With $\pi\otimes W_{-a,1-a-b}^*\to S_\zeta(U^p)_E$,
+	the unitary completion of which 
+	lies in $\Irr_\fn$, where  $\fn$ 
+	corresponds to the prime of $R^{\zeta\epsilon}$
+	corresponding to $\rho'$.
+\end{prop}
+
+For example, suppose 
+$\rho=\psi_1+\psi_2$ is reducible,
+of Hodge-Tate weights 
+$w$ and  $w+k-1$ respectively. Then
+\[
+	D(\rho')=\psi_1'+\psi_2'=
+	\psi_1(\epsilon|\cdot|^{-1})^w|\cdot|+
+	\psi_2(\epsilon|\cdot|^{-1})^{w+k-1}|\cdot|
+	\Longrightarrow
+	\pi=\Ind
+	( \psi_1\epsilon^w|\cdot|^{1-w}\otimes
+	\psi_2\epsilon^{w+k-1}|\cdot|^{1-w-k})
+\]
+And as the Hodge-Tate weights of $\rho'$
+are  $\{w+k-2,w-1\}$,
+we want to consider the unitary completion 
+of  $\pi\otimes W_{w+k-2,w}^*$,
+which is $\Ind(\psi_2'\otimes\psi_1'\epsilon^{-1})_{\cont}$.
+Note that
+\[
+	\omega_\pi
+	=(\psi_1\psi_2\epsilon)
+	(\epsilon|\cdot|^{-1})^{2w+k-2}=
+	=\zeta (\epsilon|\cdot|^{-1})^{2w+k-2}=
+	\psi_1\psi_2\epsilon^{2w+k-1}
+	|\cdot|^{2-w-k}
+	\Longrightarrow
+	\omega_\pi
+	(\epsilon|\cdot|^{-1})^{-(2w+k-2)}=\zeta
+\]
+\[
+	\WD(\rho)=\psi_1\varepsilon^w||^{-w}+
+	\psi_2\varepsilon^{w+k-1}||^{1-k-w}
+\]
+Then $\pi_v$ is isomorphic to the un-normalized induction
+$\Ind(\mu_1\otimes\mu_2||^{-1})_{\sm}$, where
+\begin{align*}
+	\mu_1&=\psi_1\varepsilon^{w}||^{1-w} &
+	\val_p(\mu_1(p))&=w-1=(w+k-2)-(k-1)\\
+	\mu_2&=\psi_2\varepsilon^{w+k-1}||^{2-k-w} &
+	\val_p(\mu_2(p))&=w+k-2
+\end{align*}
+Since $(\Sym^{k-2}\otimes\det{}^w)^*\cong \Sym^{(k-1)-1}\otimes\det{}^{2-k-w}$
+and $\varepsilon(x)=x|x|$,
+by \cite[Thm 12.3]{pask}, 
+the universal unitary completion
+of $\pi_v\otimes(\Sym^{k-2}\otimes\det{}^w)^*$
+is isomorphic to $\Ind_B^G(\psi)_{\cont}$, where
+\[
+	\psi(\smat{a&*\\&d})=\mu_2(a)a^{2-k-w}\mu_1(d)|d|^{-1}d^{(k-1)+(2-k-w)-1}
+	=\psi_2\varepsilon(a)\psi_1(d)
+\]
+Note that indeed 
+$\Ind(\psi_2\varepsilon\otimes\psi_1)_{cont}=
+\Ind((\psi_2\varepsilon)\otimes(\psi_1\varepsilon)\varepsilon^{-1})$.
 
 
+\begin{prop}
+	Statement on compatibility
+\end{prop}
+
+Fix $\zeta\colon \Gp\to E^\times$
+crystalline of Hodge-Tate weight  $w_0$
+such that  $\zeta\epsilon^{-1}=\psi_\fp$,
+then there exists $\xi_\fp$
+crystalline of Hodge-Tate weight  
+$w_\fp=\frac{w_0-(k_1+k_2)}{2}$
+such that $\zeta\epsilon^{-1}\psi_\fp^{-1}=\xi_\fp^{2}$.
+
+Starting with $D(\rho_\fp)=psi_1+\psi_2$
+with Hodge-Tate weights  $k_1+1,k_2$, 
+then  $\rho_\fp'=\rho_\fp(\epsilon\xi_\fp)$
+has  $\det\rho_\fp'=\zeta\epsilon$
+and of Hodge-Tate weights
+ \[
+	k_1'=\frac{k_1+w_0-k_2}{2},
+	k_2'-1=\frac{k_2+w_0-k_1}{2}-1
+\]
+Let $\rho_\fp'\equiv \chi_1+\chi_2$
+and  $\pi_1=\Ind(\chi_1\otimes\chi_2\omega^{-1})$
+and $\pi_2=\Ind(\chi_2\otimes\chi_1\omega^{-1})$,
+the block we consider is  $\B=\{\pi_1,\pi_2\}$.
+
+We have  $\pi_\fp\otimes W_{\wt{k}}^*\to S(U^p)_{E,\fm}$,
+after tensor we get 
+$\pi_\fp\otimes W_{\wt{k}}^*(\xi_\fp)\to S(U^p)'_{E,\fm}$
+with 
+\[
+	\pi_\fp\otimes W_{\wt{k}}^*(\xi_\fp)=
+	\pi_\fp(\xi_\fp(\epsilon|\cdot|^{-1})^{w_\fp})
+	\otimes
+	(W_{\wt{k}}(\epsilon|\cdot|^{-1})^{w_{\fp}})^*
+\]
+which are $W_{\wt{k}'}^*$ 
+and associated to 
+$D(\rho_\fp')=
+D(\rho_\fp\epsilon)(\xi_\fp(\epsilon|\cdot|^{-1})^{w_\fp})$
+respectively.
 
 \subsection{compatibility}
 
@@ -1069,29 +1258,29 @@ S_\psi(U^p)_E^{\alg}=
 
 
 \begin{lem}
-$\Ord_P(S_\psi(U^p,E/\oo))=S_\psi^{\ord}(U^p,E/\oo)$
+$\Ord_P(S(U^p,E/\oo))=S(U^p,E/\oo)$
 \end{lem}
 \begin{proof}
 Let $K(r)\equiv\smat{1&\\&1}$ 
 and $I_r\equiv\smat{1&*\\&1}=K(r)N_0$, then
 \[
-S_\psi(U^p,E/\oo)^{N_0}=\varinjlim_{I_r}
-S_\psi(U^pI_r,E/\oo)
+S(U^p,E/\oo)^{N_0}=\varinjlim_{I_r}
+S(U^pI_r,E/\oo)
 \]
 Consider then 
 \[
-\Ord_{P}(S_\psi(U^p,E/\oo))\coloneqq
-\Hom_{Z_M^+}(Z_M, S_\psi(U^p,E/\oo)^{N_{0}})_{Z_M-fin}
-\hookrightarrow S_\psi(U^p,E/\oo)^{N_0}\quad
+\Ord_{P}(S(U^p,E/\oo))\coloneqq
+\Hom_{Z_M^+}(Z_M, S(U^p,E/\oo)^{N_{0}})_{Z_M-fin}
+\hookrightarrow S(U^p,E/\oo)^{N_0}\quad
 \phi\mapsto \phi(1)
 \]
 \begin{enumerate}[label=(\alph*)]
 \item given $\phi$ as above, 
-	then  $Im(\phi)\subset S_\psi(U^p,E/\oo)^{N_0}$ 
+	then  $\Image(\phi)\subset S(U^p,E/\oo)^{N_0}$ 
 	is a $Z_M$-finite subspace on which 
 	$U_p$ is invertible.
-\item conversely, any  $f(g)\in S_\psi^{\ord}(U^p,E/\oo)
-	=\varinjlim S_\psi^{\ord}(U^pI_r,E/\oo)$ 
+\item conversely, any  $f(g)\in S(U^p,E/\oo)
+	=\varinjlim S(U^pI_r,E/\oo)$ 
 	generates a  $Z_M$-finite subspace,
 	can use which to construct $\phi$
 	with  $\phi(1)=f(g)$.
@@ -1106,7 +1295,7 @@ $\Lambda=\oo\llbracket \GG^{2r+2} \rrbracket$.
 $\Lambda'=\oo\llbracket \GG^{2r} \rrbracket$.
 Let $R_{\fm}\times \Lambda'$
 act on 
-$M=\Hom(P\hat{\otimes})\Lambda', M(U^p)_\fm)$.
+$M=\Hom(P\hat{\otimes}_{\oo}\Lambda', M(U^p)_\fm)$.
 We are in the following set up:
 \begin{align*}
 	\Lambda\rightarrow R\times \Lambda' \to \TT
@@ -1117,7 +1306,8 @@ We are in the following set up:
 \end{align*}
 And by previous results,
 there exists $\lambda\colon \TT\to \Lambda$
-and morphism $\Theta\colon M_2\to \Lambda$ 
+and a nonzero $\Lambda$-algebra 
+morphism $\Theta\colon M_2\to \Lambda$ 
 such that 
 \[
 	\Theta(T\cdot m)=\lambda(T)\cdot \Theta(m).
@@ -1125,15 +1315,12 @@ such that
 Let $\wp=\ker\lambda\subset \TT$,
 and $\fq\subset \ker(\TT\to \End(M_1))$
 is some ideal containing  $x=x_{\red}$.
-Let $S_2=\ker(\Theta)\subset M_2$.
-We need the following assumptions
+Let $S_2=\ker(\Theta)\subset M_2$ 
+and make the following assumptions.
 \begin{enumerate}[label=(\alph*)]
-	\item $\Theta$ is surjective?
 	\item $\fq M_2/\fq S_2$ is $\Lambda$-torsion.
-	\item  $\TT$ is reduced
-	\item $R\times \Lambda'\to \Lambda$
-		is of codimension two.
-	\item $\TT$ acts faithfully(flat) on  $M$.
+	\item $\TT$ is reduced
+	\item $\TT$ acts faithfully on $M$.
 \end{enumerate}
 
 \begin{lem}
@@ -1145,7 +1332,16 @@ then there exists an exact sequence
 \end{equation}
 \end{lem}
 \begin{proof}
-	We start with the commutative diagram
+Since the image of the injection 
+$\fq M^{\red}=\fq M/xM\hookrightarrow M^{\red}=M/xM$
+is $\fq M_2$ and
+\[
+	\Image(\fq S^{\red}\to M^{\red})=\fq S+xM/xM=\fq S_2,
+\]
+we have $\fq M^{\red}/\fq S^{\red}=\fq M_2/\fq S_2$.
+The exact sequence in question now follows from 
+the isomorphism and applying the snake lemma to 
+the commutative diagram
 \[
 \begin{tikzcd}
 	S\arrow[r,"x"] \arrow[d]
@@ -1153,154 +1349,153 @@ then there exists an exact sequence
 	& \fq S^{\red} \arrow[r] \arrow[d] & 0\\
 	M\arrow[r,"x"]
 	& \fq M \arrow[r]
-	& \fq M^{\red} \arrow[r] & 0\\
+	& \fq M^{\red} \arrow[r] & 0
 \end{tikzcd}
-\Longrightarrow
-M/S\to \fq M/\fq S\to \fq M^{\red}/\fq S^{\red}
-\to 0
 \]
-Note that $\fq M^{\red}=\fq M/xM$ 
-inject into $M^{\red}=M/xM$ and 
-the image of $S^{\red}=S/xS$ into $M^{\red}$ 
-is $S+xM/xM=M_1\oplus S_2$, thus
-\[
-	Im(\fq S^{\red}\to M^{\red})=\fq S+xM/xM=\fq S_2
-\]
-we conclude that $\fq M^{\red}/\fq S^{\red}=\fq M_2/\fq S_2$.
 \end{proof}
-
-We see that among the modules in \eqref{eq:fund},
-$\Theta(M/S)=\Theta(M_2/S_2)\subset \Lambda$,
-$\fq\otimes_{\TT}M/S\twoheadleftarrow \fq M/\fq S$,
-so all $\TT$-actions
-factors through  $\lambda\colon \TT\to \Lambda$.
-Let  $\Lambda_\wp\cong K_\Lambda$
-be the field of fraction.
-Note that 
+Note that since 
+$\Theta\colon M/S\cong M_2/S_2\hookrightarrow \Lambda$,
+the $\TT$-actions on \eqref{eq:fund}
+all factor through  $\lambda\colon \TT\to \Lambda$.
+Let $K=K_\Lambda=\Lambda_\wp$
+be the field of fraction of $\Lambda$.
+As $\fq M_2/\fq S_2$ is a $\Lambda$-torsion module,
+taking the tensor
 $\otimes_{\TT}\TT_{\wp}=
 \otimes_\Lambda(\Lambda\otimes_\TT\TT_\wp)=
-\otimes_\Lambda K_\Lambda$,
-by the exact sequence \eqref{eq:fund}
-and the  $\Lambda$-torsion of $\fq M_2/\fq S_2$,
-we get 
+\otimes_\Lambda K$ 
+to the exact sequence then results in the surjection
 \[
-	K_\Lambda\twoheadleftarrow (\fq M/\fq S)_{\wp}
+	K_\Lambda\twoheadrightarrow (\fq M/\fq S)_{\wp}
 	= \fq M_\wp/\fq S_\wp
 \]
-From which,
-we see that the injectivity of \eqref{eq:fund}
-is equivalent to that  
-$\fq M_\wp/\fq S_\wp\neq 0$.
+From which 
+we see that \eqref{eq:fund} is injective
+if $\fq M_\wp/\fq S_\wp\neq 0$.
 
 
 \begin{lem}
-	There is an injection 
-	$T_\wp\hookrightarrow \End_{K\llbracket x\rrbracket}
-	(M_\wp)$
-	and is finite over $K\llbracket x\rrbracket$.
+	The localization $\TT_\wp$
+	is finite over $K\llbracket x\rrbracket$.
 \end{lem}
 \begin{proof}
-	Let $R_\wp$ be the localization 
-	at the prime 
-	$\ker(R\times \Lambda'\hookrightarrow \Lambda)$,
-	then by dimension counting
-	$R_\wp\cong K\llbracket x,y\rrbracket$
-	where  $K=K_\Lambda$.
+	Let $R_\wp$ be the localization at 
+	$\ker(R\times \Lambda'\to \TT
+	\xrightarrow{\lambda}\Lambda)$,
+	which contains $K\llbracket x\rrbracket$
+	as a subring.
 	Thus
 	\[
-	R_\wp\cong K\llbracket x,y\rrbracket
-	\longrightarrow T_\wp
+	K\llbracket x\rrbracket\hookrightarrow
+	R_\wp \longrightarrow T_\wp
 	\text{ acts on } M_\wp
 	\]
-	Thus $K\llbracket x\rrbracket$
-	inject into  $\TT_\wp$,
-	since  $x\neq 0$ in  $\TT_\wp$
-	and the latter is reduced
-	(so the image is not nilpotent),
-	and  $\TT_\wp$ acts faithfully on  $M_\wp$.
-
-	Now, combine that
-	$M_\wp$ is finite over $\TT_\wp$,
-	so that  $M_\wp$ is compact,
-	and that  $\dim_K M_\wp/xM_\wp<\infty$,
-	we have that 
+	In fact, the composition
+	$K\llbracket x\rrbracket\to \TT_\wp$
+	is injective 
+	since  $x\neq 0$ acts nontrivially on $M_\wp$
+	and $\TT_\wp$ is reduced and thus 
+	without nilpotent elements.
+	Now, 
+	that  $M_\wp$ is finite over  $\TT_\wp$
+	implies that  $M_\wp$ is a compact  $\TT_\wp$-module;
+	and moreover 
+	$\dim_K M_\wp/xM_\wp=(M_1\oplus M_2)_K<\infty$.
+	Thus
 	$M_\wp$ is finite over $K\llbracket x\rrbracket$
-	by the topological Nakayama lemma.
-	And the lemma follows.
+	by the topological Nakayama lemma,
+	from which the lemma follows as
+	$\TT_\wp\hookrightarrow 
+	\End_{K\llbracket x\rrbracket}(M_\wp)$.
 \end{proof}
 
-Write $\TT=\TT_\wp$ and  $M=M_\wp$,
-recall that  $K\llbracket x\rrbracket\to \TT$
-is finite, the latter acts flattly on  $M$. 
-Put
- \[
-	\TT\hookrightarrow \tilde{\TT}=\prod_{ht \fq_i=0}
-	\TT/\fq_i\quad
-	M\hookrightarrow M\otimes_\TT\tilde{\TT}=
-	\prod_{ht \fq_i=0}
-	M/\fq_i M
+\begin{prop}
+	We have the fundamental exact sequence
+	\begin{equation}
+		0\to M/S\xrightarrow{x}
+		\fq M/\fq S\to \fq M_2/\fq S_2 \to 0
+	\end{equation}
+\end{prop}
+\begin{proof}
+	Let $\TT, \mathbb{M}$ and  $\mathbb{S}$
+	denote  $\TT_\wp, M_\wp$ and $S_\wp$.
+	For each minimal prime $\fq_i\subset\TT$,
+	let $\TT_i$ be the integral closure
+	of  $K\llbracket x\rrbracket$
+	in the finite extension
+	$\textnormal{Frac}(\TT/\fq_i)/K((x))$.
+	Then each $\TT_i$ is a discrete valuation ring and
+\[
+	\TT\hookrightarrow 
+	\prod_{\fq_i:\text{ minimal}}\TT/\fq_i\hookrightarrow
+	\tilde{\TT}\coloneqq\prod_i \TT_i
 \]
-here the first injective follows from reducedness
-of $\TT$.
+As each $\fq\TT_i$ is a principal ideal,
+we have $\fq\tilde{\TT}\cong \TT$ and 
+\[
+	(\fq \mathbb{M}/\fq \mathbb{S})\otimes_\TT
+	\tilde{\TT}\cong
+	\fq\mathbb{M}\otimes_\TT\tilde{\TT}/
+	\fq\mathbb{S}\otimes_\TT\tilde{\TT}=
+	\mathbb{M}\otimes_\TT\fq\tilde{\TT}/
+	\mathbb{S}\otimes_\TT\fq\tilde{\TT} \cong 
+	\mathbb{M}\otimes_\TT\tilde{\TT}/
+	\mathbb{S}\otimes_\TT\tilde{\TT}\cong
+	(\mathbb{M}/\mathbb{S})\otimes_\TT\tilde{\TT}=
+	K\otimes_{\lambda,\TT}\tilde{\TT}.
+\]
+The last ring is nonzero since 
+$\tilde{\TT}$ is integral over $\TT$
+and the maximal ideal of  $ \tilde{\TT}$ 
+restricts to that of $\TT$.
+\end{proof}
 
-The field of fraction of  $\TT/\fq_i$
-is a finite extension over  $K(x))$,
-let $\TT_i$ be the integral closure of  
-$K\llbracket x\rrbracket$,
-which contains  $\TT/\fq_i$, thus
- \[
-	\TT\hookrightarrow \tilde{\TT}\hookrightarrow
-	\TT'=\prod_i \TT_i \text{ product of d.v.r}\\
-	M\hookrightarrow M'=M\otimes_\TT\TT'=
-	\prod_i M/\fq_i\otimes_\TT\TT_i
-\]
+\subsection{Euler systems}
 
-Let $S=S_\wp$, then 
- \[
-	M\otimes\TT'/S\otimes\TT'\cong 
-	K\otimes_{\TT,\lambda}\TT'=
-	\prod_i K\otimes_{\TT}\TT_i
-\]
-This is nonzero since finite (integral) maps are surjective 
-in spectrum level
+
+\begin{equation*}
+\begin{tikzcd}[column sep=tiny]
+& M_{N\ell}/S_{N\ell}\arrow{dd} \arrow[rd,"\sim"]\arrow[rr]
+&& \fq_{N\ell}\otimes M_{N\ell}/S_{N\ell}
+	\arrow[rd,twoheadrightarrow]\arrow[rr]\arrow[dd]
+&& \fq_{N\ell}^{\red}M_{N\ell}/S_{N\ell}\arrow[dd]\arrow[rd]\\
+0 \arrow[crossing over]{rr} 
+&& \Lambda_{N\ell}
+	\arrow[crossing over]{dd} \arrow[crossing over]{rr} 
+&& \fq_{N\ell}M_{N\ell}/\fq_{N\ell}S_{N\ell}
+	\arrow[crossing over]{dd}\arrow[crossing over]{rr} 
+&& \fq_{N\ell}M_{N\ell}^{\ord}/\fq_{N\ell}S^{\ord}_{N\ell}
+	\arrow{dd} \arrow[rr] && 0\\
+& M_{N}/S_{N}\arrow{rr}\arrow[rd,"\sim"]
+&& \fq_{N}\otimes M_{N}/S_{N}
+	\arrow{rr} \arrow[rd,twoheadrightarrow]
+&& \fq_{N}^{\red}M_{N}/S_{N} \arrow[rd]& & & \\
+0 \arrow[crossing over]{rr} 
+&& \Lambda_{N} \arrow[crossing over]{rr} 
+&& \fq_{N}M_{N}/\fq_{N}S_{N}\arrow[crossing over]{rr} 
+&& \fq_{N}M_{N}^{\ord}/\fq_{N}S_{N}^{\ord} \arrow[rr] && 0
+\arrow[from=2-3,to=4-3,crossing over]
+\arrow[from=2-5,to=4-5,crossing over]
+\end{tikzcd}
+\end{equation*}
+
 \[
 \begin{tikzcd}
-	& Spec(K) \arrow[d]\\
-	Spec \TT_i \arrow[r,twoheadrightarrow] &
-	Spec \TT
+0&
+H^1(K,\Lambda_N(\delta)) \arrow[r]\arrow[d,"res_p"]&
+H^1(K,\fq_N\otimes \Lambda_N(\delta)) \arrow[r]&
+H^1(K,\fq_N^{\red}\otimes \Lambda_N(\delta))\\
+&H^1(K_w,\Lambda_N(\delta))
 \end{tikzcd}
 \]
-Now
-\[
-	\fq M\otimes_\TT\TT'=
-	M\otimes_\TT\fq \TT'=
-	M\otimes_\TT\prod_i\fq \TT_i=
-	\prod_i(M/\fq_i)\otimes_\TT\fq \TT_i=
-\]
-Therefore we see that 
-\begin{multline}
-	\fq M/\fq S\otimes_\TT \TT'
-	\cong \fq M\otimes_\TT\TT'/ \fq S\otimes_\TT\TT'
-	\cong \prod_i
-	(M/\fq_i M)/(S/\fq_i S)\otimes_\TT \fq\TT_i
-	\\\cong \prod_i
-	(M/\fq_i M)/(S/\fq_i S)\otimes_\TT \TT_i
-	\cong M\otimes\TT'/S\otimes\TT'
-\end{multline}
-which we have shown to be nonzero;
-the second to last isomorphism follows from that 
-each $\fq\TT_i$ is a principal ideal in the dvr $\TT_i$.
-We thus conclude that 
-$\fq M/\fq S\neq 0$.
+Here $H^1(K_w,\Lambda_N(\delta))=H_{Iw}^1(\Qp,\oo())$
+is free and crystalline?
 
-Note that 
-\[
-	\fq M/\fq S\otimes_\TT\TT'\cong
-	M\otimes_\TT\fq\TT'/ S\otimes_\TT\fq\TT' \cong 
-	M\otimes_\TT\TT'/ S\otimes_\TT\TT'\cong
-	M/S\otimes_\TT\TT'
-\]
-
+Let $x=x_{\red}=x(\sigma_0,\tau_0)$
+for $\sigma_0,\tau_0\in \Gp$
+and  $y(\sigma)=\delta_2^{-1}(\sigma)x(\sigma,\tau_0)$,
+then $res_p(y^{\red})=0$
+and $res_\ell(y)=0$ if  $\ell\nmid Np$.
 
 \section{Previous results}
 
@@ -1994,46 +2189,6 @@ then $\Pi$ is the universal unitary completion
 of  $\pi\otimes(\Sym^{b-1}\otimes \det^a)$
 
 
-\subsection{computation}
-
-Let $\rho$ be the Galois representation
-associated to  $\pi$, that satisfies
-\[
-	\WD(\rho_v)=\Rec(\pi_v||^{-1/2})
-\]
-and let $\B$ be the block associated to the reduction
-of  $\rho\otimes\varepsilon$.
-
-If $\mtr\rho_v=\psi_1+\psi_2$ is reducible,
-where $\psi_i$ are respectively of weight
-$w$ and  $w+k-1$
-then 
-\[
-	\WD(\rho)=\psi_1\varepsilon^w||^{-w}+
-	\psi_2\varepsilon^{w+k-1}||^{1-k-2}
-\]
-Then $\pi_v$ is isomorphic to the un-normalized induction
-$\Ind(\mu_1\otimes\mu_2||^{-1})_{\sm}$, where
-\begin{align*}
-	\mu_1&=\psi_1\varepsilon^{w}||^{1-w} &
-	\val_p(\mu_1(p))&=w-1=(w+k-2)-(k-1)\\
-	\mu_2&=\psi_2\varepsilon^{w+k-1}||^{2-k-w} &
-	\val_p(\mu_2(p))&=w+k-2
-\end{align*}
-Since $(\Sym^{k-2}\otimes\det{}^w)^*\cong \Sym^{(k-1)-1}\otimes\det{}^{2-k-w}$
-and $\varepsilon(x)=x|x|$,
-by \cite[Thm 12.3]{pask}, 
-the universal unitary completion
-of $\pi_v\otimes(\Sym^{k-2}\otimes\det{}^w)^*$
-is isomorphic to $\Ind_B^G(\psi)_{\cont}$, where
-\[
-	\psi(\smat{a&*\\&d})=\mu_2(a)a^{2-k-w}\mu_1(d)|d|^{-1}d^{(k-1)+(2-k-w)-1}
-	=\psi_2\varepsilon(a)\psi_1(d)
-\]
-Note that indeed 
-$\Ind(\psi_2\varepsilon\otimes\psi_1)_{cont}=
-\Ind((\psi_2\varepsilon)\otimes(\psi_1\varepsilon)\varepsilon^{-1})$.
-
 \subsection{finite condition}
 
 Let $G$ be a  $p$-adic analytic group
@@ -2057,8 +2212,8 @@ and  $V\in Mod_G(A)$, define
 
 \begin{rem}
 	If $G=G_1\times G_2$ and  $G_2\subset Z=Z_G$,
-	then  $(A[G]-fg + G-adm)$ 
-	implies  $(A[G_1]-fg + G_1-adm)$ 
+	then  $(A[G]-fg + G-\adm)$ 
+	implies  $(A[G_1]-fg + G_1-\adm)$ 
 	Thus when
 	$G=\prod\GL_2(\Qp)\times T$,
 	then locally admissible 
