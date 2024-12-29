@@ -100,6 +100,7 @@
 \DeclareMathOperator{\WD}{WD}
 \DeclareMathOperator{\rec}{rec}
 \DeclareMathOperator{\Rec}{Rec}
+\DeclareMathOperator{\Art}{Art}
 
 \newcommand{\cont}{\textnormal{cont}}
 \newcommand{\cts}{\textnormal{cts}}
@@ -611,7 +612,7 @@ See also \cite[Lem 2.10]{ger} for the proof when $P=B$.
 	\cite[Def 2.13]{ger}.
 \end{defn}
 
-\begin{lem}
+\begin{lem}\label{lem:control}
 	For $M$ as in the definition,
 	the inclusions below are isomorphisms.
 	\begin{align*}
@@ -681,13 +682,13 @@ generalizaing \cite[Prop 2.22]{ger}.
 	\Ind_{B_w\cap Q_w}^{Q_w}(\omega_0 k_\sigma)$
 	and $\pi_{\wt{k}}$ be the algebraic representation 
 	of $M$ given by
-	\[
+	\begin{equation}\label{eq:algrepn}
 		\pi_{\wt{k}}=\bigotimes_{\sigma\in \Sigma}
 		\pi_{k_\sigma}\quad
 		m=(m_w)\mapsto 
 		\otimes_{w\in \Sigma_p}\otimes_{\sigma\in I_w}
 		\pi_{k_\sigma}(m_w).
-	\]
+	\end{equation}
 \end{defn}
 
 \begin{prop}
@@ -852,11 +853,14 @@ generalizaing \cite[Prop 2.22]{ger}.
 	\]
 \end{proof}
 
-\begin{cor}
+\begin{cor}\label{cor:wt_indep}
 	Define $S_{\wt{k}}^{P-\ord}(U^p,A)$ 
 	as $\lim_{b\to \infty}
 	S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),A)$.
-	We have an isomorphism
+	We have the following isomorphism
+	that are equivariant with respect to the 
+	Hecke operators and the $Q_0$-action 
+	defined in previous proposition.
 	\[
 		\epsilon_{\wt{k}} \colon 
 		S_{\wt{k}}^{P-\ord}(U^p,E/\oo)\cong 
@@ -866,7 +870,7 @@ generalizaing \cite[Prop 2.22]{ger}.
 \end{cor}
 \begin{proof}
 This follows immediately from the previous proposition
-after taking the direct limit.
+after taking the injective limit.
 \end{proof}
 
 
@@ -877,11 +881,11 @@ local Langlands.
 First we note that 
 when $\{U_p\}$ is the filtered system of 
 all the compact open subgroups in $K_p$,
-\[
+\begin{equation}\label{eq:complete}
 	S(U^p,E/\oo)\coloneqq
 	\varinjlim_{U_p}S(U^pU_p,E/\oo)\in 
 	\Mod^{\adm}_{G_p}(\oo)
-\]
+\end{equation}
 is a smooth admissible $G_p$-representation
 through right translation.
 Let $P=QU$ be a parabolic subgroup 
@@ -917,7 +921,7 @@ $Q$-representation by
 \cite[Thm 3.3.3]{emeI}.
 
 
-\begin{prop}
+\begin{prop}\label{prop:inj}
 	Assume  $U^p$ is sufficiently small in the sense
 	that  $U^pK_p$ satisfies \eqref{cond:small}.
 	Then the restriction of
@@ -1008,74 +1012,109 @@ $Q$-representation by
 	the proposition follows.
 \end{proof}
 
+\subsection{Completed homology and cohomology}
 
-\begin{defn}
-	We define the $P$-ordinary completed homology and cohomology by
-	\begin{equation*}
-		M(U^p)=\Hom_\oo(\Ord_P(S(U^p,E/\oo)),E/\oo),\qquad
-		S(U^p)=\Hom_\oo(E/\oo, \Ord_P(S(U^p,E/\oo))).
-	\end{equation*}
-	We also write $S(U^p)_E=S(U^p)\otimes_\oo E$.
-	It is immediately that 
-	$M(U^p)\in \fC_{G}(\oo)$,
-	It is also easily verified that 
-	\[
-		M(U^p)\cong \Hom_\oo(S(U^p),\oo),\qquad
-		S(U^p)\cong \Hom_\oo^{\cts}(M(U^p),\oo),
-	\]
-	here $\Phi\in \Hom_\oo(M(U^p),\oo)$ 
-	is continuous if 
-	$\Phi \mod p^n$ factors through
-	$S(U^pU_p,E/\oo)^\vee$ for some $U_p$
-	for any positive integer $n$
-	($U_p$ depedents on  $n$).
-\end{defn}
+We assume from now on that 
+$U^p$ is such that $U^pK_p$ is sufficiently small.
+Let  $S(U^p,E/\oo)$ be as in \eqref{eq:complete}
+and $P=QU\subset G_p$ be a parabolic subgroup, 
+recall that 
+$\Ord_P(S(U^p,E/\oo)\in \Mod_{Q}^{\adm}(\oo)$.
+We define the $P$-ordinary completed homology and cohomology by
+\begin{equation}
+	M(U^p)=\Hom_\oo(\Ord_P(S(U^p,E/\oo)),E/\oo),\qquad
+	S(U^p)=\Hom_\oo(E/\oo, \Ord_P(S(U^p,E/\oo))).
+\end{equation}
+Let $\Hom_\oo^{\cts}(M(U^p),\oo)$
+be the set of homomorphism
+$\Phi\in \Hom_\oo(M(U^p),\oo)$ 
+such that for any positive integer $r$,
+there exists $b$ sufficiently large so that 
+the reduction of $\Phi$ modulo $\varpi^r$
+factors through
+the Pontryagin dual of 
+$S^{P-\ord}(U^p\Iw^P(p^{b,b}),E/\oo)\subset \Ord_P(S(U^p,E/\oo)$. 
+It can be verified that 
+\[
+	M(U^p)\cong \Hom_\oo(S(U^p),\oo),\qquad
+	S(U^p)\cong \Hom_\oo^{\cts}(M(U^p),\oo).
+\]
+ 
+Write $S(U^p)_E=S(U^p)\otimes_\oo E$,
+which is an  $E$-Banach space
+with $S(U^p)$ as a unit ball.
+We define the subspace $S^{\alg}(U^p)_E$ 
+of algebraic vectors for 
+$Q_0=Q\cap K_p$ as the image of 
+\[
+\bigoplus_{\wt{k}}\Hom_{E[Q_0]}(\pi_{\wt{k}}^*(E), S(U^p)_E)
+\otimes_E \pi_{\wt{k}}^*(E)\rightarrow S(U^p)_E
+\]
+where $\wt{k}$ ranges through all dominant weights.
 
-\begin{prop}
-Assume that $\psi(a_v)=\sigma(a_v)^w$
-for  $a_v\in \oo_v^\times$,
-then $S_\psi(U^p)_E^{\alg}\subset S_\psi(U^p)_E$
-is dense.
+\begin{prop}\label{prop:density}
+	The subspace $S^{\alg}(U^p)_E$
+	is dense in $S(U^p)_E$
 \end{prop}
 \begin{proof}
-	Reduced to $C_\psi(K_p,E)$ use the  $K_p$-injective properties.
+	Since $\Ord_P(S(U^p,E/\oo))$ is an injective object
+	in $\Mod_{Q_0}^{\sm}(\oo)$
+	by Proposition \ref{prop:inj},
+	we may follow the strategy of 
+	\cite[Prop 3.2.9]{pan}
+	and use \cite[Cor 3.2.6]{pan}
+	to reduce the statement to that of
+	$\mathcal{C}(Q_0,E)$,
+	the space of continuous  $E$-valued
+	functions on $Q_0$.
+	The density result then follows from
+	\cite[Prop 6.A.17]{pask}.
 \end{proof}
-\[
-S_\psi(U^p)_E^{\alg}=
-\Image\left(
-	\bigoplus_{\lambda}\Hom_{E[K\times T_0]}(W_{\lambda,E}^*, 
-	S_\psi(U^p)_E)
-	\otimes_EW_{\lambda,E}^*\xrightarrow{ev}
-	S_\psi(U^p)_E
-\right)
-\]
 
-\begin{lem}
-	Let $S_{\lambda,\psi}^{P-\ord}(U^pK_p)_E
-	\coloneqq \Hom_{\oo[Z_M^+]}
-	(\oo[Z_M], S_{\lambda,\psi}(U^pK_p,\oo))\otimes_\oo E$,
-	then
+\begin{lem}\label{lem:wt_indep}
+	Write $S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,c}),E)=
+	S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,c}),\oo)\otimes_\oo E$,
+	then there exists a Hecke-equivariant
 	\[
-		\Hom_{\oo[M_0]}(\pi_\lambda^*, S_\psi(U^p)_E)\cong
-		S_{\lambda,\psi}^{P-\ord}(U^pK_p,E)
+	S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,1}),E)\cong 
+	\Hom_{\oo[Q_0]}(\pi_{\wt{k}}^*(\oo), S(U^p)_E)
 	\]
 \end{lem}
 \begin{proof}
-	We first note that 
-	$S_\psi(U^p)\colon \varprojlim_{n}\Ord_PS_\psi(U^p, \oo/p^n)$,
-	thus 
+	By corollary \ref{cor:wt_indep},
+	there exists a $Q_0 $-isomorphism
 	\[
-		\Hom_{\oo[M_0]}(\pi_\lambda^\vee(\oo),S_\psi(U^p)\cong
-		\varprojlim_{n}\Hom_{\oo[M_0]}(\pi^\vee(\oo/p^n),
-		\Ord_PS_\psi(U^p,\oo/p^n))
+		\Hom_\oo(E/\oo, S_{\wt{k}}^{P-\ord}(U^p,E/\oo))\cong 
+		\Hom_\oo(E/\oo,
+		\Hom_{\oo}(\pi_{\wt{k}}^*(\oo),
+		S^{P-\ord}(U^p,E/\oo)))=
+		\Hom_{\oo}(\pi_{\wt{k}}^*(\oo), S(U^p))
 	\]
-	which induces an element in 
-	$\varprojlim_n S_{\psi,\lambda}^{P-\ord}(U^pH_{n,n},\oo/p^n)^{M_0}
-	=\varprojlim_n S_{\psi,\lambda}^{P-\ord}(U^pH_{n,0},\oo/p^n)$,
-	which gives rises to a $P$-ordinary form in 
-	$S_{\psi,\lambda}^{P-\ord}(U^pH_{n,0},\oo)$.
+	and 
+	$\Hom_{\oo[Q_0]}(\pi_{\wt{k}}^*(\oo), S(U^p))$
+	is the  $Q_0$-invariant subspace of the right hand side.
+
+	On the other hand, as 
+	$\Hom_\oo(E/\oo, S_{\wt{k}}^{P-\ord}(U^p,E/\oo))\cong
+	\varprojlim_r S_{\wt{k}}^{P-\ord}(U^p,\oo/(\varpi^r))=
+	S_{\wt{k}}^{P-\ord}(U^p,\oo)$,
+	the  $Q_0$-invariant subspace of the left hand side
+	is isomorphic to 
+	$S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,1}),\oo)$
+	by lemma \ref{lem:control}.
+	The claimed result now follows by
+	taking the $Q_0$-invariant subspaces 
+	of the above isomorphism and $\otimes_\oo E$.
 \end{proof}
 
+\begin{rem}
+	The results in this subsection
+	can be seen as generalizing 
+	\cite[Prop 3.2.9]{pan},
+	which deals with the case 
+	when $n=2$ and $P=G_p$,
+	in which the  $P$-ordinary condition is empty.
+\end{rem}
 
 
 \subsection{Hecke algebras and Galois representations}
@@ -1150,50 +1189,215 @@ for some $j=1, \ldots, n$, and is equal to 0 otherwise.
 
 From now on,
 we fix a place $w\in \Sigma_p$ and
-assume we are in one of the following two situations
-\begin{enumerate}[label=(\Roman*)]
-	\item $n=3$, $P_{w'}=B_{w'}$ for $w'\neq w$ and $P_w$ is
-		maximal proper parabolic.
-	\item $n=2$, $P_{w'}=B_{w'}$ for $w'\neq w$ and $P_w=G_w$.
-\end{enumerate}
-
+assume that we are in the following situation
+\[
+	n=2, 
+	P_{w'}=B_{w'} \text{ for } w'\neq w \text{ and }
+	P_w=G_w
+\]
 Following \cite{ger},
 we say a dominant weight $\wt{k}$ is sufficiently regular
-if for each $w\in \Sigma_p$ and $1\leq j<n$,
-there exists  $\sigma\in I_w$
-such that  $k_{\sigma,j}>k_{\sigma,j+1}$.
+(for $w'\neq w$)
+if for each $w'\in \Sigma_p$  and $w'\neq w$,
+there exists  $\sigma\in I_{w'}$
+such that  $k_{\sigma,1}>k_{\sigma,2}$.
+The following lemma is a restatement 
+of \cite[Cor 2.33]{ger}
+and \cite[Lem 2.31]{ger} in the our situation.
+
+\begin{lem}
+	Let $\pi$ be an irreducible constituent of 
+	$S_{\wt{k}}(\bar{Q}_p)$ and suppose 
+	$\pi\cap S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,1}),E)\neq 0$
+	\begin{enumerate}[label=(\alph*)]
+		\item If $\wt{k}$ is sufficiently regular,
+			then $r_\pi$ is crystalline  at $w'\in \Sigma_p$
+			and  $w'\neq w$;
+			and there exists characters
+			 $\psi_i\colon G_{\K_{w'}}\to E^{\times}$ such that
+		\[
+			r_\pi\vert_{G_{\K_{w'}}}\sim
+			\begin{pmatrix}
+				\psi_1 &*\\&\epsilon^{-1}\psi_2
+			\end{pmatrix}\quad
+			\begin{aligned}
+			\psi_1\circ \Art&\colon & 
+			&\varpi_{w'}\mapsto u_{w'}^{(1)}&
+			&x \mapsto 
+			\prod_{\sigma\in I_{w'}}
+			\iota_p(\sigma(x))^{-k_{2,\sigma}}\,
+			x\in \oo_{w'}^\times \\
+			\psi_1\circ \Art&\colon & 
+			&\varpi_{w'}\mapsto (u_{w'}^{(2)})/(u_{w'}^{(1)})&
+			&x\mapsto 
+			\prod_{\sigma\in I_{w'}}
+			\iota_p(\sigma(x))^{-k_{1,\sigma}}\,
+			x\in \oo_{w'}^\times\\
+			\end{aligned}
+		\]
+		where $u_{w'}^{(j)}$ are the eigenvalues of 
+		$U_{\wt{k},w'}^{(j)}$ on 
+		$\pi\cap S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,1}),E)\neq 0$.
+	\item The representation $r_\pi$ is crystalline at $w$.
+	If furthermore $\pi\cap S_{\wt{k}}^{B-\ord}(U^p\Iw(p^{0,1}),E)\neq 0$,
+	then $r_\pi\vert_{G_{\K_w}}$ is conjugate
+	to an upper triangular representation as above.
+	\end{enumerate}
+\end{lem}
 
 \begin{defn}
-	Hecke algebra 
-	generated by $T$ and $  U_{w'}$
+	When $M$ is a finite $\oo$-module 
+	or the Pontryagin dual of which,
+	let $\TT_{\wt{k}}(U^p\Iw^P(p^{b,c}),M)$
+	be the $\oo$-subalgebra
+	of $\End_{\oo}(S^{P-\ord}_{\wt{k}}(U^p\Iw^P(p^{b,c}),M))$
+	generated by $T_w^{(j)}$ and $U_{\wt{k},w'}^{(j)}$
+	and $U_{\wt{k},w}^{(2)}$ and $\langle u\rangle$.
+	We also define 
+	\[
+		\TT_{\wt{k}}(U^p,E/\oo)=\varprojlim_b
+		\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),E/\oo)\quad
+		\TT_{\wt{k}}(U^p,\oo)=\varprojlim_b
+		\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)
+	\]
+	In particular,
+	$\TT_{\wt{k}}(U^p\Iw^P(p^{b,c}),\oo)$
+	are reduced finite flat  $\oo $-algebras
+	by \cite[Lem 2.14]{ger}.
+	Consequently 
+	$\TT_{\wt{k}}(U^p,\oo)$,
+	which is isomorphic to $\TT_{\wt{k}}(U^p,E/\oo)$
+	by \cite[Lem 2.17]{ger},
+	is also reduced 
+	and acts faithfully
+	on $S_{\wt{k}}^{P-\ord}(U^p,E/\oo)$.
+	We write 
+	$\TT_{\wt{k}}(U^p,E/\oo)=\TT(U^p,E/\oo)$
+	when $\wt{k}$ is the trivial weight. 
 \end{defn}
+By lemma \ref{lem:wt_indep}, 
+there exists homomorphisms 
+$\TT(U^p,\oo)\to \TT_{\wt{k}}(U^p\Iw^P(p^{0,1}),\oo)$.
+Thus for $\pi$ such that
+$\pi\cap S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,1}),\oo)\neq 0$,
+we may define the prime ideal $\fp_\pi\subset \TT(U^p,\oo)$
+associated to the Hecke-eigensystem
+$\lambda_\pi\colon \TT_{\wt{k}}(U^p\Iw^P(p^{0,1}),\oo)$.
 
-\begin{prop}
-	density of crystalline.
-\end{prop}
 
+Since $\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)$ is reduced,
+when  $\pi$ goes through 
+irreducible constituents of $S_{\wt{k}}(\bar{\Q}p)$
+such that
+$\pi\cap S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),\oo)\neq 0$,
+we have
+\[
+	\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)\hookrightarrow
+	\prod_{\pi}
+	\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)/\wp_{\pi}
+\]
+Since for each $\pi$ as above,
+the associated Galois representation
+$r_{\pi}$ satisfies 
+$\mtr(r_{\pi})(\Fr_w)=\lambda_{\pi}(T_w^{(1)})$.
+By Chebotarev density, there thus exists 
+a pseudo-representation
+\[
+	\Psi_{\wt{k}}(U^p\Iw^P(p^{b,b}))\colon G_{\K}
+	\to \TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)\quad
+	\Fr_w\mapsto T_w^{(1)}
+\]
+Taking the inverse limit, 
+we obtain the big Galois pseudo-representation
+\[
+	\Psi\colon G_{\K}\to 
+	\TT(U^p,\oo) \quad
+\]
+Furthermore, by Lemma \ref{prop:density},
+the prime ideals $\wp_\pi$
+such that
+$\pi\cap S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,1}),\oo)\neq 0$
+are dense in $\TT(U^p,\oo)$
+and the associated $r_\pi$
+are all reducible at  $w'\in \Sigma_p$ for  $w'\neq w$
+Thus  $\Psi$ is  also reducible at all $w'\in \Sigma_p$.
 
-\subsection{compatibility}
+\subsection{local-global compatibility}
 
-Let $S(U^p,E/\oo)=S^{w'-\ord}(U^p,E/\oo)$
-with action of $\GL_2(\Qp)\cong \GL_2(K_w)$
-and prime-to-$w$ Hecke algebra $\TT$. 
-Define
-\begin{align*}
-	M(U^p)=S(U^p,E/\oo)^{\vee}&\cong 
-	\Hom_{\oo}(S(U^p,\oo)\\
-	S(U^p)=\Hom_{\oo}(E/\oo,S(U^p,E/\oo))&\cong
-	\Hom_{\oo}^{\cts}(M(U^p),\oo)\cong 
-	\varprojlim_{r}S(U^p,\oo/\varpi^r)
-\end{align*}
-Let $\rho_\fm\colon G_\K\to \TT_\fm$
-be localization of Galois pseudo-representation,
-we assume the following 
-\begin{equation}\tag{assump}\label{cond:gen}
+Follow the notation in the previous subsection.
+We further assume that the fixed place  $w\in \Sigma_p$ 
+is such that $\K_w\cong \Qp$.
+Write $\TT=\TT(U^p,\oo)$ for short a
+and fix a maximal ideal $\fm\subset \TT$.
+Let  $\TT_{\fm}$ be the localization
+and $\Psi_\fm\colon G_{\K}\to \TT_{\fm}$
+by the push-forward of the 
+Galois pseudo-representation.
+we assume that $\Psi_\fm$
+is residually reducible 
+and generic at  $w$ in the following sense.
+\begin{equation}\tag{gen}\label{cond:gen}
 	\rho_\fm\equiv \delta_1+\delta_2\mod \fm,\quad
 	\delta_1\delta_2^{-1}\vert_{\Gp=D_w}
 	\neq 1,\omega^{\pm}
 \end{equation}
+
+Let $\chi_1,\chi_2\colon \Gp\to \mathbb{F}^\times$
+be characters such that 
+$\Psi_\fm\epsilon\vert_{\Gp}\equiv \chi_1+\chi_2$
+modulo $\fm$
+and let  $\B_\fm$
+be the Block of  $\GL_2(\Qp)$-representations
+associated to 
+\[
+	\pi_1=\Ind(\chi_1\otimes\chi_2\omega^{-1}) \text{ and }
+	\pi_2=\Ind(\chi_2\otimes\chi_1\omega^{-1}) 
+\]
+We also let $R_\fm$
+be the universal pseudo-deformation 
+of  $\chi_1+\chi_2$.
+Recall that $R_\fm$
+is isomorphic to a Power series ring of five variables
+over  $\oo$.
+
+\begin{defn}
+	\[
+		\det \Psi_\fm\circ \Art\colon \Qp^\times\to
+		\oo\llbracket F,T\rrbracket\quad
+		p\mapsto F=U_w^{(2)},
+		x\mapsto x^{-1}\langle u\rangle
+	\]
+	Let $\zeta$ be a crystalline character of $\Gp$
+	such that  $\det\Psi_\fm\equiv \zeta\epsilon^{-1}$ 
+	modulo the maximal ideal of
+	$\oo\llbracket F,T\rrbracket$
+	and  define 
+	\[
+		\langle \xi_\fm\rangle \coloneqq
+		\zeta\epsilon\cdot 
+		(\det\Psi_\fm)^{-1}\colon 
+		\Gp\to \oo\llbracket F,T\rrbracket^{\times}
+	\]
+	Then $R_{\fm}\cong \oo\llbracket F,T\rrbracket \hat{\otimes}
+	R_{\fm}^{\zeta\epsilon}$.
+	We let $\Ord_P(S(U^p,E/\oo))'_{\fm}$ 
+	be the localization 
+	$\Ord_P(S(U^p,E/\oo))_{\fm}(\langle \xi_\fm\rangle^{})$
+	with twisted $\GL_2(\Qp)$ action,
+	which has central character $\zeta\circ \Art$.
+\end{defn}
+
+\begin{prop}
+	$M(U^p)_{\fm}'\in \fC_\zeta(\oo)^{\B_{\fm}}$
+\end{prop}
+\begin{cor}
+	$\TT(U^p,\oo)$ is finite over
+	 $R_\fm \hat{\otimes}_{\oo} \Lambda^{w'}$,
+	 hence Noetherian;
+	 $\Hom(P_\fm, M(U^p)_{\fm}')$ 
+	 is finite faithful $\TT$-module.
+\end{cor}
+
 
 Let $\fp\subset \TT_\fm$ be a prime ideal such that 
 \[
@@ -1229,14 +1433,14 @@ $p^{1/2}\chi_2(p)=\frac{u^{(1)}}{u^{(1)}}p^{k_1+1}$, and
 \[
 	\rho_{\fp}\vert_{\Gp}\sim
 	\begin{pmatrix}
-		\psi_1&*\\*\epsilon^{-1}\psi_2
+		\psi_1&*\\&\epsilon^{-1}\psi_2
 	\end{pmatrix}
 	\quad
 	\begin{aligned}
-		\psi_1\circ Art\colon 
+		\psi_1\circ \Art\colon 
 		x\in \Zp^\times\mapsto x^{-k_2}\,
 		p\mapsto u^{(1)}\\
-		\psi_2\circ Art\colon 
+		\psi_2\circ \Art\colon 
 		x\in \Zp^\times\mapsto x^{-k_1}\,
 		p\mapsto \frac{u^{(2)}}{u^{(1)}}\\
 	\end{aligned}
@@ -1334,7 +1538,7 @@ crystalline of Hodge-Tate weight
 $w_\fp=\frac{w_0-(k_1+k_2)}{2}$
 such that $\zeta\epsilon^{-1}\psi_\fp^{-1}=\xi_\fp^{2}$.
 
-Starting with $D(\rho_\fp)=psi_1+\psi_2$
+Starting with $D(\rho_\fp)=\psi_1+\psi_2$
 with Hodge-Tate weights  $k_1+1,k_2$, 
 then  $\rho_\fp'=\rho_\fp(\epsilon\xi_\fp)$
 has  $\det\rho_\fp'=\zeta\epsilon$
