@@ -75,6 +75,7 @@
 \newcommand{\aMod}{\textnormal{Mod}^{\textnormal{adm}}}
 \newcommand{\laMod}{\textnormal{Mod}^{\textnormal{l.adm}}}
 \newcommand{\lfMod}{\textnormal{Mod}^{\textnormal{lfin}}}
+\newcommand{\fgMod}{\textnormal{Mod}^{\textnormal{fg.aug}}}
 \newcommand{\Ban}{\textnormal{Ban}^{\textnormal{adm.fl}}}
 \DeclareMathOperator{\Mod}{\textnormal{Mod}}
 \DeclareMathOperator{\Rep}{Rep}
@@ -371,70 +372,116 @@ where the first component corresponds to $\K_w$.
 Then $m=(m_w,m_{\bw})\in M_n(\K\otimes_\F\F_v)=M_n(\F_v)\times M_n(\F_v)$ 
 denotes an element in $m\in M_n(\K\otimes_\F\F_v)$ and its components.
 
+\subsection{Representations of $p$-adic groups}
+
+Let $\oo$ be the ring of integers of a finite extension $E$
+over  $\Qp$.
+When $G$ is a $p$-adic analytic group,
+let $\Mod_G(\oo)$ be the category
+of all $\oo[G]$-modules.
+We refer the readers to \cite[\S 2]{emeI} and \cite[\S 2]{pask}
+for the notations and definitions of the following subcategories.
+\[
+\begin{tikzcd}
+	\fgMod_{G}(\oo) \arrow[r,leftrightarrow] &
+	\laMod_{G}(\oo) \arrow[r,hookrightarrow] &
+	\aMod_{G}(\oo) \arrow[r,hookrightarrow] &
+	\Mod^{\sm}_{G}(\oo) \\
+					       &&
+	\lfMod_{G}(\oo) \arrow[ru,hookrightarrow] &
+\end{tikzcd}
+\]
+
+
 
 \section{Modular forms on definite unitary groups}
-
-In this section
-we recall from \cite{ger} the relevant
-results on algebraic modular forms 
-of definite unitary group
-and the associated Galois representations.
-We then incorporate concepts from local p-adic Langlands
-into the results.
 
 Let $G$ be the definite unitary group over $\F$,
 such that for any $\F$-algebra $R$
 \[
     G(R)=\{g\in \GL_{n}(\K\otimes_\F R) \mid gg^*=\id_n\}.
 \]
-Let $g_v=(g_w,g_{\bw})\in G(\F_v)$
-when $v=w\bw$ is place of $F$ that is split in $\K$.
-Then the map $g_v\mapsto g_w$ is an isomorphism
+In this section we recall from \cite{ger}
+the notion of algebraic modular forms on $G$
+and results on the associated Galois representation.
+Some results from \textit{loc.cit}
+regarding Hida theory of ordinary forms
+are generalized
+to that of $P$-ordinary forms,
+for a more general parabolic subgroup $P$,
+after incorporating Emerton's functor in \cite{emeI}
+We then introduce 
+the big Hecke algebra acting on 
+the completed cohomology of $P$-ordinary forms,
+which admits a Galois pseudo-representation
+of $\Gal_\K$.
+Borrowing from the idea in \cite{pan},
+we can deduce a density result
+of crystalline points in the Hecke algebra,
+which is crucial for checking 
+the local-global compatibility in the next section.
+
+
+\subsection{Algebraic modular forms}
+
+When $v=w\bw$ is place of $F$ that is split in $\K$,
+the group $G(\F_v)$ is a subgroup 
+of  $\GL_n(\F_v\otimes_\F\K)\cong \GL_n(\K_w)\times\GL_n(\K_{\bw})$.
+Write $g_v=(g_w,g_{\bw})\in G(\F_v)$,
+the map $g_v\mapsto g_w$ then defines an isomorphism
 $\iota_w\colon G(\F_v)\cong \GL_n(\F_v)$
 such that 
 $\iota_w(g_v)=\iota_{\bw}(g_v)^{-\intercal}$.
-In particular, when $w\in \Sigma_p$ and  $w\mid v\in S_p$,
-we identify $G(\F_v)$ with 
-$G_{w}\coloneqq\GL_n(\K_w)=\GL_n(\F_v)$ 
-via the isomorphisms $\iota_w$, and define 
+In particular,
+for each $v\in S_p$
+let  $w\mid v$ be such that  $w\in \Sigma_p$
+and write $G_{w}\coloneqq\GL_n(\K_w)$,
+we identify $G(\F_v)$ with $G_w$ 
+via $\iota_w$ and define 
 \[
 	G_p\coloneqq\prod_{w\in \Sigma_p}G_w,\quad
 	K_p\coloneqq\prod_{w\in \Sigma_p}K_w,\quad
-	K_w\coloneqq\GL_n(\oo_v).
+	K_w\coloneqq\GL_n(\oo_w).
 \]
 
 Let $B_n\subset \GL_n$ be the subgroup of
 upper trigiangular matrices
-and $T_n\subset B_n$ be the diagonal torus.
+and $B_n=T_nN_n$ be the Levi decomposition,
+where $T_n$ is the diagonal torus.
 We identify the set of algebraic characters $X^*(T_n)$
 with  $\Z^n$.
-Following \cite[Defn 2.3]{ger},
-when $\wt{k}=(k_\sigma)\in (\Z^n)^{\Sigma}$ 
-is a dominant weight, 
-we let $\xi_{\wt{k}}$ be the algebraic representation 
-of $G_p$ given by 
-\[
-	\xi_{\wt{k}}=\bigotimes_{\sigma\in \Sigma}
-	\Ind_{B_n}^{\GL_n}(w_0k_{\sigma})\quad
-	g=(g_w)\mapsto 
-	\otimes_{w\in \Sigma_p}
-	\otimes_{\sigma\in I_w}\xi_{k_\sigma}(g_w)
-\]
-where $w_0$ is the longest element in the Weyl group of
-$\GL_n$ and  
-$\xi_{k_\sigma}\coloneqq\Ind_{B_n}^{\GL_n}(w_0k_{\sigma})$
-is the algebraic representation of highest weight $k_\sigma$.
+The Weyl group $W_n$ of $\GL_n$
+then acts on  $\Z^n$ by
+$(wk)(t)=k(w^{-1}tw)$.
+Let $w_0\in W_n$ denote the longest element.
 
-Let $E$ be a sufficiently large
-finite extension over  $\Qp$
+Following \cite[Def 2.3]{ger},
+we say  $k=(k_1,\cdots,k_n)\in \Z^n$
+is a dominant weight if $k_1\geq \cdots\geq k_n$.
+In which case
+$\xi_k\coloneqq \Ind_{B_n}^{\GL_n}(w_0k)$
+is the algebraic representation 
+of $\GL_n$ of highest weight $k$.
+More generally,
+we say $\wt{k}=(k_\sigma)\in (\Z^n)^{\Sigma}$
+is a dominant 
+if $k_\sigma=(k_{\sigma,1},\cdots,k_{\sigma,n})$
+is a dominant weight for each $\sigma\in \Sigma$.
+When this is the case,
+and $\oo$ is the ring of integers  
+of a finite extension $E$ over  $\Qp$
 that contains $\iota_p(\sigma(\K))$
 for all  $\sigma\in I_\K$,
-and $\oo$ be the ring of integers of $E$.
-Let $W_{\wt{k}}$ and $M_{\wt{k}}$
-be the spaces over $E$ and $\oo$ 
-on which $\xi_{\wt{k}}$ act respectively.
-Then $W_{\wt{k}}=M_{\wt{k}}\otimes_{\oo}E$
-and $K_p$ acts on $M_{\wt{k}}$ via $\xi_{\wt{k}}$.
+we let $\xi_{\wt{k}}$ denote 
+the algebraic $G_p$-representation over $\oo$ given by
+\begin{equation}\label{def:algrep}
+	\xi_{\wt{k}}=\bigotimes_{\sigma\in \Sigma}
+	\Ind_{B_n}^{\GL_n}(w_0k_{\sigma}),\quad
+	\xi_{\wt{k}}(g)=
+	\otimes_{w\in \Sigma_p}
+	\otimes_{\sigma\in I_w}\xi_{k_\sigma}(g_w)\,
+	\text{ for } g=(g_w)\in G_p.
+\end{equation}
 
 \begin{rem}
 	In previous work, 
@@ -446,66 +493,142 @@ and $K_p$ acts on $M_{\wt{k}}$ via $\xi_{\wt{k}}$.
 
 
 
-When $U=\prod_{v\in\finite}U_v\subset G(\A_f)$
-is an open compact subgroup, 
-let $U^p=\prod_{v\notin S_p}U_v$ and 
-$U_p=\prod_{v\in S_p}U_v$.
-\begin{defn}
-Let $\wt{k}\in (\Z^n)^{\Sigma}$ be a dominant weight
-and $U$ be an open compact subgroup 
-such that $U_p\subset K_p$.
-When $M$ is an $\oo$-module,
-we define the space of modular forms
-of weight $\wt{k}$ and level $U$ as 
+
+\begin{defn}\label{def:algform}
+Let $M_{\wt{k}}$ be the finite free $\oo$-module
+on which $K_p$ acts by $\xi_{\wt{k}}$
+if $\wt{k}\in (\Z^n)^{\Sigma}$ is dominant. 
+For any $\oo$-module $M$ and any function
+$f\colon G(\F)\backslash G(\A_f)\to M\otimes_{\oo}M_{\wt{k}}$,
+let $k=(k^p,k_p)\in G(\A_f^p)\times K_p$ acts on $f$ by 
+$(k\cdot f)(g)=\xi_{\wt{k}}(k_p)\cdot f(gk)$.
+We say $f$ is an algebraic modular form of 
+weight $\wt{k}$ and coefficients in $M$
+if $f$ is invariant by some open compact subgroup
+$U\subset G(\A_f^p)\times K_p$.
+Let $S_{\wt{k}}(M)$
+denote the space of such modular forms.
+Then for $U$ as above we 
+denote the subspace of forms
+of level $U$ by
 \begin{equation}
 S_{\wt{k}}(U,M)=
+S_{\wt{k}}(M)^U=
 \left\{ f: G(\F)\backslash G(\A_f)/U^p 
 \rightarrow M\otimes_{\oo}M_{\wt{k}}
 \mid f(gu)=\xi_{\wt{k}}(u_p)^{-1}\cdot f(g), u\in U\right\} 
 \end{equation}
-We will write $S(U,M)$ for $S_{\wt{k}}(U,M)$
-when $\wt{k}$ is the trivial weight.
+Note that when $M$ is an  $E$-module,
+the above action can be extended 
+to  $G(\A_f)$
+and the notation  $S_{\wt{k}}(U,M)$
+makes sense for any open compact subgroup
+$U\subset G(\A_f)$.
+
+We will omit $\wt{k}$ 
+when $\xi_{\wt{k}}$ is the trivial representation
+and simply write
+$S(M)$ and  $S(U,M)$.
 \end{defn}
 
 
-Since $\GG(\F)\backslash \GG(\A_f)/U$ is a finite set,
+Since $\GG(\F)\backslash \GG(\A_f)/U$ is a finite set
+for any open compact subgroup $U\subset G(\A_f)$,
 any modular form $f\in S_{\wt{k}}(U,M)$ 
 is determined by its values on a finite set of points.
-Furthermore, when $U$ 
-is sufficiently small in the following sense
-\begin{equation}\label{cond:small}\tag{\text{small}}
+Throughout the section,
+we fix an open compact subgroup 
+$U^p\subset G(\A_f^p)$ satisfying 
+\begin{equation}\label{cond:small}\tag{$U^p$-\text{small}}
 	\GG(\A_f)=\bigsqcup_{i\in I}
 	\GG(\F)t_i U,\quad
 	\GG(\F)\cap t_iUt_i^{-1}=\{1\} \text{ for all } i\in I
+	\text{ for } U=U^pK_p
 \end{equation}
-then a modular form determines and is determined by
-its values at the representatives $\{t_i\}$.
-In other word  $S_{\wt{k}}(U,M)$ is
+Then the space $S_{\wt{k}}(U^pU_p,M)$ is
 isomorphic to a finite direct sum of 
-$M\otimes_{\oo}M_{\wt{k}}$.
+$M\otimes_{\oo}M_{\wt{k}}$
+for any open compact subgroup $U^p\subset K_p$,
+where the isomorphism
+is given by 
+evaluating at a set of representatives
+for  $G(\F)\backslash G(\A_f)/U^pU_p$.
+
+\subsection{Emerton's functor of ordinary parts}
+
+Only in this subsection,
+let $G$ denote a  $p$-adic reductive group,
+$P$ be a parabolic subgroup,
+with Levi decomposition $P=QU$.
+We briefly recall the functor
+of ordinary parts 
+$\Ord_P\colon \Mod_G^{\sm}(\oo)\to \Mod_Q^{\sm}(\oo)$
+defined in \cite{emeI}.
+Fix an open compact subgroup $P_0\subset P$.
+Let  $Q_0=P_0\cap Q$ and $U_0=P_0\cap U$
+and define $Z_Q^+=Z_Q\cap Q^+$,
+where  $Z_Q$ is the center of $Q$ and
+\[
+	Q^+=\{m\in Q\mid mU_0m^{-1}\subset U_0\}.
+\]
+If  $V$ is a $P$-representation of over $\oo$
+and  $m\in Q^+$,
+as in \cite[Def 3.1.3]{emeI} we define
+\begin{equation}\label{def:hUm}
+	 h_{U}(m)\colon V^{U_0}\to V^{U_0}\quad
+	 h_{U}(m)(v)=\sum_{u\in N_0/m U_0 m^{-1}}um\cdot v
+\end{equation}
+We now recall the definition of the functor
+and refer to \cite[Def 3.1.3]{emeI}
+for the notations in below.
+\begin{equation}\label{def:OrdP}
+	\Ord_P\colon \Mod_G^{\sm}(\oo)\to \Mod_Q^{\sm}(\oo)
+	\Ord_P(V)=\Hom_{\oo[Z_Q^+]}(\oo[Z_Q], V^{U_0})_{Z_Q-\fin}.
+\end{equation}
+Here $Z_Q^+$ acts by translation on the left; 
+by $h_U$ on the right.
+And the action of $Q=Z_Q\cdot Q^+$ is induced by 
+havig $Z_Q$ act by translation on the left and 
+$Q^+$ act by $h_U$ on the right.
 
 \subsection{Hecke operators and $P$-ordinary forms}
 
-We now fix an open compact subgroup $U$ as above
-such that $U_p=K_p$.
-For $w\in \Sigma_p$ let $B_w=B_n(\K_w)$
-and  $B=\prod_{w\in \Sigma_p}B_w$.
-When $c\geq b\geq 0$ with  $c>0$, 
-We define $\Iw(w^{b,c})\subset K_w$
-as the subgroup of elements
-that are upper triangular modulo $\varpi_w^c$ and 
-upper triangular unipotent modulo $\varpi_w^b$.
-Write $\Iw(p^{b,c})=\prod_{v\in S_p}\Iw(w^{b,c})$.
-We recall 
-the Hecke operators 
-acting on $S_{\wt{k}}(U^p\Iw(p^{b,c}),M)$,
-defined in \cite[\S 2.3]{ger}
-as the following double-coset operators.
+We now return to the previous settings,
+so $G$ is the definite unitary group over $\F$
+and  $U^p$ satisfies \eqref{cond:small}.
+Let $R=R(U^p)$ be a finite set of
+finite places of $\F$ containing $S_p$ such that
+$\iota_w^{-1}(\GL_n(\oo_w))\subset U^p$
+when  $v\notin R$
+and  $v=w\bw$ is split in  $\K$.
 
-If $v=w\bw\nmid p$ is split in  $\K$
-and  $\iota_w(U_v)=\GL_n(\oo_v)$, 
-for $1\leq j\leq n$
-\begin{equation}
+Recall that $B_n=T_nN_n$ is the Levi decomposition
+for the group of upper triangular matrices in  $\GL_n$.
+We put $B=\prod_{w\in \Sigma_p}B_w$
+for $B_w=B_n(\K_w)$,
+which admits decompositions 
+$B=TN$ and  $B_w=T_wN_w$
+where the subgroup  $T, N, T_w, N_w$ are defined similarly.
+Given integers $c\geq b\geq 0$ with  $c>0$, 
+we define 
+the open compact subgroup 
+$\Iw(p^{b,c})=\prod_{w\in \Sigma_p}\Iw(w^{b,c})$, where 
+for each $w\in \Sigma_p$
+\begin{equation}\label{def:Iwahori}
+	\Iw(w^{b,c})=\{
+	k\in K_w\mid 
+	\iota_w(k) \text{ mod } \varpi_w^c \in B_n(\oo/\varpi_w^c)
+	\text{ and }
+	\iota_w(k) \text{ mod } \varpi_w^b \in N_n(\oo/\varpi_w^b)
+	\}.
+\end{equation}
+In \cite{ger},
+the Hecke operators on $S_{\wt{k}}(U^p\Iw(p^{b,c}),M)$
+are defined as the following double-coset operators.
+
+If $v=w\bw$ is split in  $\K$ and $v\neq R$,
+for $1\leq j\leq n$ let 
+\begin{equation}\label{def:hecke_away_p}
 	T_w^{(j)}=
 	\left[\iota_w^{-1}\left(
 	\GL_n(\oo_v)
@@ -523,55 +646,67 @@ $\alpha_w^{(j)}=\iota_w^{-1}
 \left(\begin{smallmatrix}
 \varpi_v\id_{j}&\\&\id_{n-j} 
 \end{smallmatrix}\right)$ for $1\leq j\leq n$,
-and $u\in \iota_w^{-1}(T_n(\oo_w))$, then 
-\begin{equation}
+and $u\in \iota_w^{-1}(T_n(\oo_w))$, define
+\begin{equation}\label{def:hecke_at_p}
 	U_{\wt{k},w}^{(j)}=
 	(w_0\wt{k})^{-1}(\alpha_{w}^{(j)})\cdot
 	[\Iw(p^{b,c})\alpha_w^{(j)}\Iw(p^{b,c})]
 	\text{ and }
-	\langle u\rangle= [\Iw(p^{b,c})u\Iw(p^{b,c})].
+	\langle u\rangle= (w_0\wt{k})^{-1}(u)\cdot 
+	[\Iw(p^{b,c})u\Iw(p^{b,c})].
 \end{equation}
-Note that if $B=TN$ is the Levi decomposition
-and  $N_0\coloneqq N\cap K_p$,
-then the $\alpha_w^{(j)}$ and $u$ above belong to 
-\[
-	T^+=\{z\in T\mid zN_0z^{-1}\subset N_0\}
-\]
-In particular a set of representatives for $N_0/zN_0z^{-1}$ 
-is also a set of representatives for $\Iw(p^{b,c})/z\Iw(p^{b,c})z^{-1}$.
-If we let $m\in T^+N_0$ acts on  $S_{\wt{k}}(U^p\Iw(p^{b,c}),M)$ via 
-\begin{equation}\label{eq:eme_action}
-	m\cdot f(g)=(w_0\wt{k})^{-1}(m)\cdot \xi_{\wt{k}}(m)f(gm),\quad
-	f\in S_{\wt{k}}(U^p\Iw(p^{b,c}),M)
+Here $w_0\wt{k}$ is viewed as an algebraic character of $T$ 
+using the same recipe as in \eqref{def:algrep}.
+\begin{rem}
+	Our definition of $\langle u\rangle$
+	is different from that of \cite{ger}
+	by the factor $(w_0\wt{k})^{-1}(u)$.
+\end{rem}
+Put $B_0=B\cap K_p$,
+and $T^+, N_0$ be as in last subsection.
+Then $N_0T^+$ is a monoid
+and we can define the following action of which
+on  $S_{\wt{k}}(U^p\Iw(p^{b,c}),M)$
+extending the trivial action of $N_0$
+\begin{equation}\label{def:T_act}
+	(nt\cdot f)(g)=(w_0\wt{k})^{-1}(t)\xi_{\wt{k}}(nt)\cdot f(gnt).
 \end{equation}
-then $U_{\wt{k},w}^{(j)}=h_T(\alpha_w^{(j)})$ and $\langle u\rangle=h_T(u)$,
-where $h_T(z)$ for $z\in T^+$ are as defined in 
-\cite[Def 3.1.3]{emeI}.
-
+The same formula \eqref{def:hUm}
+then defines an endomorphism $h_N(t)$
+for $S_{\wt{k}}(U^p\Iw(p^{b,c}),M)$
+for $t\in T^+$.
+In particular we have
+$U_{\wt{k},w}^{(j)}=h_N(\alpha_{w}^{(j)})$ and $\langle u\rangle= h_N(u)$
+for $\alpha_w^{(j)}$ and $u$ as in \eqref{def:hecke_at_p}. 
 
 
 More generally, 
-for each $w\in \Sigma_p$ let $P_w\subset G_w$
-be a standard parabolic subgroup containing $B_w$
-and $P=\prod_{w\in \Sigma_p}P_w$.
-Let $P=QU$ be the Levi decompositions and define
-$\Iw^P(p^{b,c})=\prod_{v\in S_p}\Iw^P(w^{b,c})$, where
-\[
-	\Iw^P(w^{b,c})=
-	\{
-	k\in K_w\mid 
-	k\text{ mod } \varpi_w^c \in P\,\text{ and }
-	k\text{ mod } \varpi_w^c \in U
-	\}.
-\]
-Put $U_0=U\cap K_p$
-and let $T+U_0$ acts on  $S_{\wt{k}}(U^p\Iw^P(p^{b,c}),M)$
-as in \eqref{eq:eme_action},
-we also define
-the Hecke operators 
-$U_{\wt{k},w}^{(j)}=h_Q(\alpha_w^{(j)})$
-and $\langle u\rangle=h_Q(u)$
-acting on $S_{\wt{k}}(U^p\Iw^P(p^{b,c}),M)$.
+we may pick a standard parabolic subgroup
+$P_w\supset B_w$ for each  $w\in \Sigma_p$
+and let  $P_w=Q_wU_w$ be the Levi decomposition.
+We then put $P=\prod_{w\in \Sigma_p}P_w, P_0=P\cap K_p$,
+and define the subgroups $Q,U, Q_0, U_0$ similarly.
+For $w\in \Sigma_p$,
+let  $\Iw^P(w^{b,c})$ 
+be defined as in \eqref{def:Iwahori}
+upon replacing $B_n$ and $N_n$
+with $P_w$ and  $U_w$.
+
+\begin{defn}\label{def:hecke}
+Let $\Iw^P(p^{b,c})=\prod_{w\in \Sigma_p}\Iw^P(w^{b,c})$
+for integers  $c\geq b\geq 0$ with $c>0$
+and define the action of $U_0T^+$ 
+on $S_{\wt{k}}(U^p\Iw^P(p^{b,c}),M)$
+extending the trivial action of $U^0$ as in \eqref{def:T_act}.
+We define the Hecke operators $T_w^{(j)}$
+as in \eqref{def:hecke_away_p}; and 
+$U_{\wt{k},w}^{(j)}=h_U(\alpha_w^{(j)}),\langle u\rangle=h_U(u)$,
+for $\alpha_w^{(j)}$ and $u$ as in \eqref{def:hecke_at_p}.
+We also define $U_P$
+as the product of all  $U_{\wt{k},w}^{(j)}$
+for which $\alpha_w^{(j)}\in Z_Q$.
+\end{defn}
+
 
 \begin{lem}
 The Hecke operators defined above commutes with each other
@@ -586,40 +721,57 @@ and the equivariance is clear.
 For the Hecke operators at  $w\in \Sigma_p$,
 the commutivity follows from \cite[Lem 3.1.4]{emeI},
 and the equivariance follows from 
-that of the action \eqref{eq:eme_action}.
+that of the action \eqref{def:T_act}.
 See also \cite[Lem 2.10]{ger} for the proof when $P=B$.
 \end{proof}
 
 
-
-\begin{defn}
-	Givne $P=QU$ be as above,
-	$Z_Q$ be the center of $Q$,
-	and $U_P$ be the product of all  $U_{\wt{k},w}^{(j)}$
-	such that 
-	$\alpha_{w}^{(j)}\in Z_Q^+\coloneqq Z_Q\cap T^+$.
-	When $M$ is either a finite  $\oo$-module
-	or the Pontryagin dual of which,
-	we define the space of $P$-ordinary modular forms
-	\[
+When $M$ is either a finite  $\oo$-module
+or the Pontryagin dual of which,
+the operator $e_P\coloneqq\lim_{n\to \infty}(U_P)^{n!}$
+converges to an idempotent 
+on $S_{\wt{k}}(U^p\Iw^P(p^{b,c}),M)$.
+We then define the space of $P$-ordinary forms by
+\[
 	S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,c}),M)\coloneqq
-		e_PS_{\wt{k}}(U^p\Iw^P(p^{b,c}),M),\quad
-		e_P\coloneqq\lim_{n\to \infty}(U_P)^{n!}
-	\]
-	Note that
-	$S_{\wt{k}}^{B-\ord}(U^p\Iw(p^{b,c}),M)$ 
-	is the space of ordinary forms as defined in 
-	\cite[Def 2.13]{ger}.
+	e_PS_{\wt{k}}(U^p\Iw^P(p^{b,c}),M)
+\]
+and $S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,c}),E)\coloneqq 
+S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,c}),\oo)\otimes_{\oo}E$.
+Alternatively,
+$S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,c}),M)$
+can be defined as the subspace on which the action of
+any  $U_{\wt{k},w}^{(j)}$ such that 
+$\alpha_w^{(j)}\in Z_Q$ is invertible.
+Note that when $P=B$ the definition coincides with 
+that of ordinary forms in \cite[Def 2.13]{ger}.
+
+\begin{defn}\label{def:ord_hecke}
+	We let $\TT_{\wt{k}}(U^p\Iw^P(p^{b,c}),M)$
+	be the $\oo$-subalgebra in 
+	$\End_{\oo}S_{\wt{k}}(U^p\Iw^P(p^{b,c}),M)$
+	generated by all
+	$T_w^{(j)}$, for $1\leq j\leq n$,
+	and $(T_w^{(n)})^{-1}$ at $w\mid v\notin R$;
+	and all $U_{\wt{k},w}^{(j)}$ 
+	for which $\alpha_w^{(j)}$  belongs to  $Z_Q$
+	and all $\langle u\rangle$.
+	We also define 
+	$\TT_{\wt{k}}(U^p\Iw^P(p^{b,c}),E)\cong
+	\TT_{\wt{k}}(U^p\Iw^P(p^{b,c}),\oo)\otimes_{\oo}E$,
+	which acts faithfully on 
+	$S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,c}),E)$.
 \end{defn}
 
 \begin{lem}\label{lem:control}
-	For $M$ as in the definition,
+	For $M$ as in the definition
 	the inclusions below are isomorphisms.
 	\begin{align*}
 	&S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),M)\hookrightarrow	
-	S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,c}),M)\quad c\geq b\geq 1\\
+	S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,c}),M)\quad 
+	\text{ for } c\geq b\geq 1\\
 	&S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,1}),M)\hookrightarrow	
-	S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,c}),M)\quad c\geq 1
+	S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,c}),M)\quad \text{ for } c\geq 1
 	\end{align*}
 \end{lem}
 \begin{proof}
@@ -635,15 +787,14 @@ See also \cite[Lem 2.10]{ger} for the proof when $P=B$.
 \end{proof}
 
 \begin{lem}
-	For $M$ as above and $b\geq 1$ we have the inclusions 
+	For $b\geq 1$,
+	the inclusion below is equivariant
+	for any Hecke operator in 
+	Definition \ref{def:ord_hecke}.
 	\begin{equation*}
 		S_{\wt{k}}^{B-\ord}(U^p\Iw(p^{b,b}),M)\subset
 		S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),M)
 	\end{equation*}
-	which are equivariant with repsect to 
-	the operators $T_w^{(j)}, \langle u\rangle$,
-	and $U_{\wt{k},w}^{(j)}$ 
-	such that $\alpha_w^{(j)}\in Z_Q^+$.
 \end{lem}
 \begin{proof}
 	Since $\Iw^P(p^{b,b})\subset \Iw(p^{b,b})$,
@@ -661,58 +812,46 @@ See also \cite[Lem 2.10]{ger} for the proof when $P=B$.
 		\id_j&X\\&\id_{n-j}
 	\end{pmatrix},\quad
 	X \text{ runs through a set of representatives of }
-	M_{j,n-j}(\oo_w)\mod \varpi_w.
+	M_{j,n-j}(\oo_w/\varpi_w)
 	\]
 	as given in \cite[Lem 2.10]{ger}, is also
 	a set of representatives for 
 	$U_0/\alpha U_0\alpha^{-1}$.
 \end{proof}
 
+\subsection{Weights independence}
 
-We now formulate a weight independence results 
-for $P$-ordinary forms
-generalizaing \cite[Prop 2.22]{ger}.
+Let $P\subset G_p$ be a parabolic subgroup 
+as in last subsection.
+When $\wt{k}=(k_\sigma)\in (\Z^n)^{\Sigma}$ is dominant,
+let $\pi_{k_{\sigma}}$
+denote the algebraic $Q_w$-representation
+$\Ind_{B_w\cap Q_w}^{Q_w}(\omega_0 k_\sigma)$
+when $\sigma\in I_w$
+and let  $\pi_{\wt{k}}$
+be the $Q$-representation
+as defined by \eqref{def:algrep},
+which we extend to $P$ via the projection  $P=QU\to Q$.
+The following proposition
+is a generalization of \cite[Prop 2.22]{ger}
+to $P$-ordinary forms.
 
-\begin{defn}
-	Let $P_w=Q_wU_w$ be the Levi decomposition  
-	for each  $w\in \Sigma_p$.
-	For a dominant weight 
-	$\wt{k}=(k_\sigma)\in (\Z^n)^{\Sigma}$,
-	let $\pi_{k_\sigma}=
-	\Ind_{B_w\cap Q_w}^{Q_w}(\omega_0 k_\sigma)$
-	and $\pi_{\wt{k}}$ be the algebraic representation 
-	of $M$ given by
-	\begin{equation}\label{eq:algrepn}
-		\pi_{\wt{k}}=\bigotimes_{\sigma\in \Sigma}
-		\pi_{k_\sigma}\quad
-		m=(m_w)\mapsto 
-		\otimes_{w\in \Sigma_p}\otimes_{\sigma\in I_w}
-		\pi_{k_\sigma}(m_w).
-	\end{equation}
-\end{defn}
-
-\begin{prop}
-	Let $A=\varpi^{-r}\oo/\oo$,
-	where $\varpi\in\oo$ be a uniformizer,
-	and $\pi_{\wt{k}}^*$ be the contragredient of 
-	$\pi_{\wt{k}}$.
-	When $b$ satisfies
-	$\iota_p\circ\sigma(\varpi_w^b)\in (\varpi^r)$
-	for all  $w\in \Sigma_p$ and $\sigma\in I_w$,
-	there exists an isomorphism
+\begin{lem}
+	Let $\pi_{\wt{k}}^*$ be the contragredient
+	representation and
+	$\varpi$ be a uniformizer of $\oo$,
+	For $b\geq 1$ let $A=\varpi^{-b}\oo/\oo$,
+	then there exists an isomorphism
 	\[
 		\epsilon_{\wt{k}} \colon 
 		S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),A)\cong 
 		\Hom_{\oo}(\pi_{\wt{k}}^*(\oo),
 		S^{P-\ord}(U^p\Iw^P(p^{b,b}),A)).
 	\]
-	Moreover, the isomorphism is 
-	equivariant with respect to $T_w^{(j)}$,
-	$U_{\wt{k},w}^{(j)}$
-	for those $\alpha_w^{(j)}\in \Z_Q^+$,
-	and the action of 
-	$Q_0\coloneqq Q\cap K_p$
-	where $u\in Q_0$ act by 
+	Moreover, the isomorphism is equivariant 
+	with respect to all the Hecke operators
+	in Definition \ref{def:ord_hecke}
+	and the following action of $u\in Q_0$
 	\begin{align*}
 	&u\cdot F(g)=\xi_{\wt{k}}(u)\cdot F(gu),\quad
 	F(g)\in S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),A)\\
@@ -721,12 +860,13 @@ generalizaing \cite[Prop 2.22]{ger}.
 	\phi\in \Hom_{\oo}(\pi_{\wt{k}}^*(\oo),
 	S^{P-\ord}(U^p\Iw^P(p^{b,b}),A))
 	\end{align*}
-\end{prop}
+\end{lem}
 
 \begin{proof}
-	Fix an isomorphism 
-	$\xi_{\wt{k}}\cong \Ind_{P}^{G_p}\pi_{\wt{k}}$
-	and let $ev\colon \xi_{\wt{k}}\to \pi_{\wt{k}}$
+	By inductions in steps
+	we can fix an isomorphism 
+	$\xi_{\wt{k}}\cong \Ind_{P}^{G_p}\pi_{\wt{k}}$.
+	Let $ev\colon \xi_{\wt{k}}\to \pi_{\wt{k}}$
 	be the evaluation at the identity.
 	For $F(g)\in S_{\wt{k}}(U^p\Iw^P(p^{b,b}),A)$,
 	we define 
@@ -738,16 +878,15 @@ generalizaing \cite[Prop 2.22]{ger}.
 	v^*\mapsto [g\mapsto v^*(ev(F(g)))].
 	\end{equation}
 	By the assumption on $b$,
-	the action of $\Iw^P(p^{b,b})$ on $\pi_{\wt{k}}(A)$,
-	which factors through $U(A)$,
+	the action of $\Iw^P(p^{b,b})$ on 
+	$A\otimes_{\oo}\pi_{\wt{k}}(\oo)$
 	is trivial.
 	Thus the function defined above is indeed 
 	a modular form
 	of trivial weight.
 	It is also straightforward to verify
 	that the map is equivariant with respect
-	to the  $Q_0$-actions 
-	and the above-mentioned Hecke operators.
+	to the Hecke operators and the $Q_0$-action.
 
 
 	To construct the reversed map,
@@ -853,82 +992,142 @@ generalizaing \cite[Prop 2.22]{ger}.
 	\]
 \end{proof}
 
-\begin{cor}\label{cor:wt_indep}
-	Define $S_{\wt{k}}^{P-\ord}(U^p,A)$ 
-	as $\lim_{b\to \infty}
-	S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),A)$.
-	We have the following isomorphism
-	that are equivariant with respect to the 
+
+Let $S_{\wt{k}}^{P-\ord}(U^p,E/\oo)=
+\varinjlim_{b}
+S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),E/\oo)$
+be the injective limit under inclusions
+and define 
+\[
+	\TT_{\wt{k}}(U^p,E/\oo)=
+	\varprojlim_{b}
+	\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),E/\oo)
+\]
+Since $S_{\wt{k}}^{P-\ord}(U^p,E/\oo)$
+is also the injective limit of 
+$S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),\varpi^{-b}\oo/\oo)$
+and $\pi_{\wt{k}}^*(\oo)$ is finite over $\oo$,
+the following proposition
+follows immediately from the previous lemma.
+
+\begin{prop}\label{prop:wt_indep}
+	There exists the following isomorphism
+	which is equivariant with respect to the 
 	Hecke operators and the $Q_0$-action 
-	defined in previous proposition.
+	defined in previous lemma.
 	\[
 		\epsilon_{\wt{k}} \colon 
 		S_{\wt{k}}^{P-\ord}(U^p,E/\oo)\cong 
 		\Hom_{\oo}(\pi_{\wt{k}}^*(\oo),
 		S^{P-\ord}(U^p,E/\oo)).
 	\]
-\end{cor}
-\begin{proof}
-This follows immediately from the previous proposition
-after taking the injective limit.
-\end{proof}
+	In particular, this isomorphism 
+	induces the following surjective homomorphism
+	between the Hecke algebras
+	\[
+		\varphi_{\wt{k}}\colon 
+		\TT(U^p,E/\oo)\twoheadrightarrow
+		\TT_{\wt{k}}(U^p,E/\oo).
+	\]
+\end{prop}
 
 
-\subsection{Emerton's Functor of ordinary parts}
+\subsection{Completed homology and cohomology}
 
-We now incorporate the language from $p$-adic
-local Langlands. 
-First we note that 
-when $\{U_p\}$ is the filtered system of 
-all the compact open subgroups in $K_p$,
+Recall that when $\wt{k}$ is the trivial weight,
+the action of $K_p$
+on  $S(M)$ as in Definition \ref{def:algrep} 
+for any  $\oo$-module $M$
+is simply the right translation,
+which extends to $G_p$
+and coincides with that of $N_0T^+$ in \eqref{def:T_act}.
+In particular,
+when $U^p$ satisfies \eqref{cond:small}
+and $\{U_p\}$ is the filtered system of 
+all the compact open subgroups in $K_p$
+and for $A=E/\oo$ or  $\oo/\varpi^{r}$, we have
 \begin{equation}\label{eq:complete}
-	S(U^p,E/\oo)\coloneqq
-	\varinjlim_{U_p}S(U^pU_p,E/\oo)\in 
-	\Mod^{\adm}_{G_p}(\oo)
+	S(U^p,A)\coloneqq
+	\varinjlim_{U_p}S(U^pU_p,A)\in 
+	\Mod^{\adm}_{G_p}(\oo).
 \end{equation}
-is a smooth admissible $G_p$-representation
-through right translation.
-Let $P=QU$ be a parabolic subgroup 
-as in the previous subsection
-and $Q^+=\{m\in Q\mid mU_0m^{-1}\subset U_0\}$ 
-so that $Z_Q^+=Z_Q\cap Q^+$.
-The functor of ordinary parts
-$ \Ord_P\colon \Mod^{\sm}_{G_p}(\oo)\to \Mod^{\sm}_Q(\oo)$
-is defined in \cite{emeI} as
-\[
-	\Ord_P(V)=\Hom_{\oo[Z_Q^+]}(\oo[Z_Q], V^{U_0})_{Z_Q-\fin}.
-\]
-Here $Z_Q^+$ acts by translation on the left; 
-by $h_Q$ on the right.
-And the action of $Q=Z_Q\cdot Q^+$ is induced by 
-havig $Z_Q$ act by translation on the left and 
-$Q^+$ act by $h_Q$ on the right.
+Moreover, Let $P=QU$ be a parabolic subgroup 
+as in the previous subsection.
 Since 
 \[
 	S(U^p,E/\oo)^{U_0}=
-	\varinjlim_{b}\varinjlim_r
-	S(U^p\Iw^P(p^{b,b}),\varpi^{-r}\oo/\oo)
+	\varinjlim_{b}
+	S(U^p\Iw^P(p^{b,b}),\varpi^{-b}\oo/\oo)
 \]
 is the injective limits of finite $\oo$-modules,
-the $P$-ordinary part
-$\Ord_P(S(U^p,E/\oo))$ actually 
-coincides with  $S^{P-\ord}(U^p,E/\oo)$
-defined previously following 
-\cite[Lem 3.1.5]{emeI} and \cite[Prop 3.2.4]{emeI}.
-Furthermore, 
-$\Ord_P(S(U^p,E/\oo))$ is a smooth admissible
-$Q$-representation by
-\cite[Thm 3.3.3]{emeI}.
+It follows from \cite[Lem 3.1.5]{emeI} and \cite[Prop 3.2.4]{emeI}
+that $S^{P-\ord}(U^p,E/\oo)\cong \Ord_P(S(U^p,E/\oo))$,
+where the latter is an object in $\aMod_Q(\oo)$
+by \cite[Thm 3.3.3]{emeI}.
+We define the $P$-ordinary completed homology and cohomology by
+\begin{align}
+	M(U^p)&=
+	\Ord_P(S(U^p,E/\oo))^\vee
+	\coloneqq \Hom_\oo(\Ord_P(S(U^p,E/\oo)),E/\oo)\\
+	S(U^p)&=\Hom_\oo(E/\oo, \Ord_P(S(U^p,E/\oo)))
+	\cong \varprojlim_r \Ord_P(S(U^p,\oo/\varpi^{r}))
+\end{align}
+Let $\Hom_\oo^{\cts}(M(U^p),\oo)$
+be the set of
+$\Phi\in \Hom_\oo(M(U^p),\oo)$ 
+such that for any positive integer $r$,
+there exists $b$ sufficiently large so that 
+the reduction of $\Phi$ modulo $\varpi^r$
+factors through
+the Pontryagin dual of 
+$S^{P-\ord}(U^p\Iw^P(p^{b,b}),E/\oo)\subset \Ord_P(S(U^p,E/\oo)$. 
+It can be verified that 
+\[
+	M(U^p)\cong \Hom_\oo(S(U^p),\oo),\qquad
+	S(U^p)\cong \Hom_\oo^{\cts}(M(U^p),\oo).
+\]
+From the above isomorhisms we see that
+$\TT(U^p,E/\oo)$ acts faithfully
+on  $M(U^p)$, and  $S(U^p)$.
+In fact, 
+let $S_{\wt{k}}^{P-\ord}(U^p,\oo)
+=\varinjlim_{b}S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),\oo)$
+and 
+$\TT_{\wt{k}}(U^p,\oo)=\varprojlim_bS_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),\oo)$.
+Then there exists an isomorphism of $\oo$-algebras 
+$\TT(U^p,\oo)\cong \TT(U^p,E/\oo)$
+as in \cite[Lem 2.17]{ger},
+which also coincides with the fact that
+$S^{P-\ord}(U^p,\oo)$ is dense in $S(U^p)$.
+
+\begin{defn}\label{def:big_hecke}
+	From now on, let $\TT(U^p,\oo)$
+	be the big $P$-ordinary Hecke algebra 
+	acting faithfully on each of 
+	$S^{P-\ord}(U^p,E/\oo), \Ord_P(S(U^p,E/\oo)), M(U^p)$
+	and $S(U^p)$. 
+	We still denote 
+	\[
+		\varphi_{\wt{k}}\colon \TT(U^p,\oo)\twoheadrightarrow
+		\TT_{\wt{k}}(U^p,\oo)
+	\]
+	for the surjective homomorphism of $\oo$-algebras
+	induced by Proposition \ref{prop:wt_indep}.
+	Moreover, 
+	let $S(U^p)_E\coloneqq S(U^p)\otimes_{\oo}E$
+	be the $E$-Banach space $G_p$-representation with 
+	the unit ball $S(U^p)$. 
+	We also define $\TT(U^p,E)=\TT(U^p,\oo)\otimes_{\oo}E$,
+	which acts faithfully on $S(U^p)_E$.
+\end{defn}
 
 
-\begin{prop}\label{prop:inj}
-	Assume  $U^p$ is sufficiently small in the sense
-	that  $U^pK_p$ satisfies \eqref{cond:small}.
-	Then the restriction of
-	$\Ord_P(S(U^p,E/\oo))$ to $Q_0=Q\cap K_p$ 
+\begin{lem}\label{lem:inj}
+	The restriction of
+	$\Ord_P(S(U^p,E/\oo))$ to $Q_0$ 
 	is an injective object
 	in $\Mod^{\sm}_{Q_0}(\oo)$.
-\end{prop}
+\end{lem}
 \begin{proof}
 	Following the strategy of the proof of 
 	\cite[Prop 3.2.4]{pan}, 
@@ -1012,54 +1211,23 @@ $Q$-representation by
 	the proposition follows.
 \end{proof}
 
-\subsection{Completed homology and cohomology}
-
-We assume from now on that 
-$U^p$ is such that $U^pK_p$ is sufficiently small.
-Let  $S(U^p,E/\oo)$ be as in \eqref{eq:complete}
-and $P=QU\subset G_p$ be a parabolic subgroup, 
-recall that 
-$\Ord_P(S(U^p,E/\oo)\in \Mod_{Q}^{\adm}(\oo)$.
-We define the $P$-ordinary completed homology and cohomology by
-\begin{equation}
-	M(U^p)=\Hom_\oo(\Ord_P(S(U^p,E/\oo)),E/\oo),\qquad
-	S(U^p)=\Hom_\oo(E/\oo, \Ord_P(S(U^p,E/\oo))).
-\end{equation}
-Let $\Hom_\oo^{\cts}(M(U^p),\oo)$
-be the set of homomorphism
-$\Phi\in \Hom_\oo(M(U^p),\oo)$ 
-such that for any positive integer $r$,
-there exists $b$ sufficiently large so that 
-the reduction of $\Phi$ modulo $\varpi^r$
-factors through
-the Pontryagin dual of 
-$S^{P-\ord}(U^p\Iw^P(p^{b,b}),E/\oo)\subset \Ord_P(S(U^p,E/\oo)$. 
-It can be verified that 
-\[
-	M(U^p)\cong \Hom_\oo(S(U^p),\oo),\qquad
-	S(U^p)\cong \Hom_\oo^{\cts}(M(U^p),\oo).
-\]
- 
-Write $S(U^p)_E=S(U^p)\otimes_\oo E$,
-which is an  $E$-Banach space
-with $S(U^p)$ as a unit ball.
-We define the subspace $S^{\alg}(U^p)_E$ 
-of algebraic vectors for 
-$Q_0=Q\cap K_p$ as the image of 
-\[
-\bigoplus_{\wt{k}}\Hom_{E[Q_0]}(\pi_{\wt{k}}^*(E), S(U^p)_E)
-\otimes_E \pi_{\wt{k}}^*(E)\rightarrow S(U^p)_E
-\]
-where $\wt{k}$ ranges through all dominant weights.
 
 \begin{prop}\label{prop:density}
-	The subspace $S^{\alg}(U^p)_E$
-	is dense in $S(U^p)_E$
+
+
+The subspace $S^{\alg}(U^p)_E$ 
+of $Q_0$-algebraic vectors, defined as
+\[
+\Image\left(\bigoplus_{\wt{k}}\Hom_{E[Q_0]}(\pi_{\wt{k}}^*(\oo), S(U^p)_E)
+\otimes_E \pi_{\wt{k}}^*(E)\rightarrow S(U^p)_E\right)
+\]
+where $\wt{k}$ ranges through all dominant weights,
+is dense in the $E$-Banach space $S(U^p)_E$.
 \end{prop}
 \begin{proof}
 	Since $\Ord_P(S(U^p,E/\oo))$ is an injective object
 	in $\Mod_{Q_0}^{\sm}(\oo)$
-	by Proposition \ref{prop:inj},
+	by Lemma \ref{lem:inj},
 	we may follow the strategy of 
 	\cite[Prop 3.2.9]{pan}
 	and use \cite[Cor 3.2.6]{pan}
@@ -1068,21 +1236,19 @@ where $\wt{k}$ ranges through all dominant weights.
 	the space of continuous  $E$-valued
 	functions on $Q_0$.
 	The density result then follows from
-	\cite[Prop 6.A.17]{pask}.
+	\cite[Prop 6.A.17]{Pask14}.
 \end{proof}
 
-\begin{lem}\label{lem:wt_indep}
-	Write $S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,c}),E)=
-	S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,c}),\oo)\otimes_\oo E$,
-	then there exists a Hecke-equivariant
+\begin{prop}\label{prop:wt_space}
+	There exists a Hecke-equivariant isomorphism
 	\[
 	S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,1}),E)\cong 
 	\Hom_{\oo[Q_0]}(\pi_{\wt{k}}^*(\oo), S(U^p)_E)
 	\]
-\end{lem}
+\end{prop}
 \begin{proof}
-	By corollary \ref{cor:wt_indep},
-	there exists a $Q_0 $-isomorphism
+	By Proposition \ref{prop:wt_indep},
+	there exists an isomorphism
 	\[
 		\Hom_\oo(E/\oo, S_{\wt{k}}^{P-\ord}(U^p,E/\oo))\cong 
 		\Hom_\oo(E/\oo,
@@ -1090,792 +1256,251 @@ where $\wt{k}$ ranges through all dominant weights.
 		S^{P-\ord}(U^p,E/\oo)))=
 		\Hom_{\oo}(\pi_{\wt{k}}^*(\oo), S(U^p))
 	\]
-	and 
+	that is equivariant with respect to 
+	the Hecke operators and 
+	the $Q_0$-actions defined.
+	Taking the subspaces of $Q_0$-invariant subspaces.
+	This gives
 	$\Hom_{\oo[Q_0]}(\pi_{\wt{k}}^*(\oo), S(U^p))$
-	is the  $Q_0$-invariant subspace of the right hand side.
+	on the right hand side.
 
-	On the other hand, as 
+	On the other hand, since
 	$\Hom_\oo(E/\oo, S_{\wt{k}}^{P-\ord}(U^p,E/\oo))\cong
 	\varprojlim_r S_{\wt{k}}^{P-\ord}(U^p,\oo/(\varpi^r))=
 	S_{\wt{k}}^{P-\ord}(U^p,\oo)$,
-	the  $Q_0$-invariant subspace of the left hand side
-	is isomorphic to 
-	$S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,1}),\oo)$
-	by lemma \ref{lem:control}.
+	the $Q_0$-invariant subspace 
+	on the left hand side
+	is $S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,1}),\oo)$
+	by Lemma \ref{lem:control}.
 	The claimed result now follows by
-	taking the $Q_0$-invariant subspaces 
-	of the above isomorphism and $\otimes_\oo E$.
+	tensoring both subspaces with $E$.
 \end{proof}
 
 \begin{rem}
-	The results in this subsection
-	can be seen as generalizing 
-	\cite[Prop 3.2.9]{pan},
+	The above results generalize
+	\cite[Prop 3.2.9]{pan} and 
+	\cite[\S 3.2.10]{pan},
 	which deals with the case 
 	when $n=2$ and $P=G_p$,
-	in which the  $P$-ordinary condition is empty.
+	in which the $P$-ordinary condition is empty.
 \end{rem}
 
 
 \subsection{Hecke algebras and Galois representations}
 
-For a dominant weight $\wt{k}\in (\Z^n)^{\Sigma}$ let
-\[
-	S_{\wt{k}}(\bar{\Q}_p)=\varinjlim_{U}
-	S_{\wt{k}}(U,\bar{\Q}_p)\quad
-	U\subset G(\A_f) \text{ open compact subgroup}.
-\]
-Let $g\in G(\A_f)$ acts on
-$f(x)\in S_{\wt{k}}(\bar{Q}_p)$ via 
-$g\cdot f(x)=\xi_{\wt{k}}(g_p)\cdot f(xg)$,
-so that $S_{\wt{k}}(U,\bar{Q}_p)=S_{\wt{k}}(\bar{Q}_p)^U$.
-By \cite[Prop 3.3.2]{CHT},
-if $\mathcal{A}$ is 
+
+Recall taht for a dominant $\wt{k}\in (\Z^n)^{\Sigma}$,
+the space $S_{\wt{k}}(\bar{\Q}_p)$
+admits the $G(\A_f)$-action defined in 
+Definition \ref{def:algform}.
+Let $\mathcal{A}$ be
 the space of automorphic forms on $G(\A)$, 
-and $\xi_{\wt{k}}^*(\C)$ is viewed as an
-$G(\A_\infty)$-representation
-via the inclusions
+and $\xi_{\wt{k}}^*(\C)$ be the
+$G(\A_\infty)$-representation over $\C$
+defined by the inclusions
 $G(\F_\sigma)\subset \GL_n(\F_\sigma\otimes \K)=\GL_n(\C)$
-for each $\sigma\in \Sigma$, then
+for each $\sigma\in \Sigma$.
+By \cite[Prop 3.3.2]{CHT},
 there exists an $G(\A_f)$-equivariant isomorphism
 \[
-	\iota\colon S_{\wt{k}}(\bar{Q}_p)\otimes_{\iota,\bar{Q}_p}\C
+	\iota\colon S_{\wt{k}}(\bar{\Q}_p)\otimes_{\iota,\bar{Q}_p}\C
 	\rightarrow \Hom_{G(\A_\infty)} (\xi_{\wt{k}}^*(\C), \mathcal{A})\quad
 	\iota(F)\colon v^*\mapsto 
-	[g\mapsto \xi_{\wt{k}}(g_\infty)\xi_{\wt{k}}(g_p)\cdot F(g_f)]
+	[g\mapsto \xi_{\wt{k}}(g_\infty)\xi_{\wt{k}}(g_p)\cdot F(g_f)].
 \]
 
 
 \begin{prop}\cite[Prop.2.27]{ger}
 	Let $\pi$ be an irreducible constituent of the
-	$G(\A_f)$-representation $S_{\wt{k}}(\bar{Q}_p)$,
+	$G(\A_f)$-representation $S_{\wt{k}}(\bar{\Q}_p)$,
 	then there exist a unique 
 	continuous semisimple representation
 	\[
-	r_\pi: G_\K \rightarrow \GL_n(\bar{\Q}_p)\quad
+	r_\pi: \Gal_\K \rightarrow \GL_n(\bar{\Q}_p)\quad
 	\text{ satisfying }
-	r_\pi^c \cong r_\pi^{\vee} \epsilon_p^{1-n}
+	r_\pi^c \cong r_\pi^{\vee} \epsilon^{1-n}
 	\]
-	where $\epsilon_p$ is the cyclotomic character,
+	where $\epsilon$ is the $p$-th cyclotomic character,
 	with the following properties.
 \begin{enumerate}[label=(\alph*)]
-\item If $v=w\bw$ is a prime-to-$p$ place that is split in $\K$,
-let $\pi_w$ be the $\GL_n(\K_w)$-representation
+\item Let $v=w\bw$ be a prime-to-$p$ place that is split in $\K$
+and $\pi_w$ be the $\GL_n(\K_w)$-representation
 induced by $\iota_w\colon G(\F_v)\cong \GL_n(\K_w)$, then
 \[
-\WD\left(\left.r_\pi\right|_{G_{\K_w}}\right)^{\mathrm{ss}} \cong
-\Rec(\pi_w|\cdot|^{\frac{1-n}{2}})^{\mathrm{ss}}
+\WD\left(\left.r_\pi\right|_{D_w}\right)^{\mathrm{ss}} \cong
+\Rec(\pi_w|\cdot|^{\frac{1-n}{2}})^{\mathrm{ss}}.
 \]
-Moreover, $r_\pi$ is unramified at $w$ and $\bw$ if $\pi_v$ is unramified.
-\item If $v=w\bw$ and  $w\in \Sigma_p$.
-The representation $r_\pi$ is potentially semistable at $w$ and  $\bw$;
-and crystalline if $\pi_v$ is unramified.
-In this latter case, 
-and the characteristic polynomial of $\Fr_w$, the geometric Frobenius,
-on $\WD\left(D_{\mathrm{cris }}\left(\left.r_\pi\right|_{G_{F_w}}\right)\right)$
+Moreover, $r_\pi$ is unramified at $w$ if $\pi_v$ is unramified.
+\item Let $v=w\bw$ with $v\in S_p$ and define $\pi_w$ as above.
+The representation $r_\pi$ is potentially semistable at $w$ and  $\bw$.
+Moreover $r_\pi$ is crystalline at $w$ 
+if $\pi_v$ is unramified,
+in which case 
+the characteristic polynomial of the geometric Frobenius $\Fr_w$
+on $\WD\left(D_{\mathrm{cris }}\left(\left.r_\pi\right|_{D_w}\right)\right)$
 coincides with that of $\Rec(\pi_w|\cdot|^{\frac{1-n}{2}})^{\mathrm{ss}}$.
 \item 
 Let $k_{\sigma,j}=-k_{\sigma c, n-j+1}$
 for $\sigma\notin \Sigma$.
-If $\sigma\in I_w$ for $w\in S_p^\K$, then
-\[
-\dim_{\bar{\Q}_p}\operatorname{gr}^i
-\left(r_\pi \otimes_{\sigma, \K_w} B_{\dR}\right)^{G_{\K_w}}=1
-\]
-when $i=k_{\sigma, j}+n-j$ 
-for some $j=1, \ldots, n$, and is equal to 0 otherwise.
+If $w\mid p$ and  $\sigma\in I_w$, then 
+$\dim_{\bar{\Q}_p}\operatorname{gr}^i
+\left(r_\pi \otimes_{\sigma, \K_w} B_{\dR}\right)^{D_w}=1$
+exactly when $i=k_{\sigma, j}+n-j$ 
+for $j=1, \ldots, n$ and is equal to 0 otherwise.
 \end{enumerate}
 \end{prop}
 
 From now on,
-we fix a place $w\in \Sigma_p$ and
-assume that we are in the following situation
-\[
-	n=2, 
-	P_{w'}=B_{w'} \text{ for } w'\neq w \text{ and }
-	P_w=G_w
-\]
+we restrict ourselves to the following situation
+\begin{equation}\label{cond:parabolic}\tag{P}
+	n=2,\, 
+	P_w=G_w \text{ for a fixed }w\in \Sigma,\,
+	P_{w'}=B_{w'} \text{ for } w'\neq w.
+\end{equation}
+By \cite[Lem 2.14]{ger}, 
+the Hecke algebras
+$\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)$
+are finite flat reduced $\oo$-algebras.
+\begin{defn}
+	Let $\fp\subset \TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)$
+	be a height-one prime ideal.
+	By abuse of notation, 
+	we also let $\fp$ denote the induced minimal prime
+	in $\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),E)$.
+	The quotient $\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),E)/\fp$
+	is isomorphic to a finite extension $E_{\fp}$ of $E$.
+	Let 
+	$\lambda_\pi\colon \TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),E)\to E_\pi$
+	denote the associated homomorphism.
+
+	Let $S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),E)_{\fp}$
+	be the localization at $\fp$.
+	We say an irreducible component $\pi$ as above
+	belongs to  $\fp$ if 
+	$\pi\cap S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),E)_{\fp}\neq 0$.
+	The proposition then implies that
+	$r_\pi$ satisfies
+	\begin{equation}\label{eq:Gal_hecke_away_p}
+		\mtr(r_\pi(\Fr_w))=\lambda_\fp(T_w^{(1)}),\quad
+		\det(r_\pi(\Fr_w))=q_w\lambda_\fp(T_w^{(2)}),\,
+	\end{equation}
+	for $v=w\bw$ that is split in  $\K$ and $v\notin R$. 
+	By Chebotarev's density theorem,
+	this implies that $r_\pi$ is defined over  $E_{\fp}$
+	and independent of the choice of $\pi$.
+	Thus we also write $r_\fp=r_\pi$.
+\end{defn}
+
+
+
+
 Following \cite{ger},
 we say a dominant weight $\wt{k}$ is sufficiently regular
 (for $w'\neq w$)
 if for each $w'\in \Sigma_p$  and $w'\neq w$,
 there exists  $\sigma\in I_{w'}$
 such that  $k_{\sigma,1}>k_{\sigma,2}$.
-The following lemma is a restatement 
-of \cite[Cor 2.33]{ger}
-and \cite[Lem 2.31]{ger} in the our situation.
 
 \begin{lem}
-	Let $\pi$ be an irreducible constituent of 
-	$S_{\wt{k}}(\bar{Q}_p)$ and suppose 
-	$\pi\cap S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,1}),E)\neq 0$
+	Let $r_{\fp}$ be the Galois representation
+	associated to a minimal prime
+	$\fp\subset \TT_{\wt{k}}(U^p\Iw^P(p^{0,1}),E)$.
 	\begin{enumerate}[label=(\alph*)]
-		\item If $\wt{k}$ is sufficiently regular,
-			then $r_\pi$ is crystalline  at $w'\in \Sigma_p$
-			and  $w'\neq w$;
-			and there exists characters
-			 $\psi_i\colon G_{\K_{w'}}\to E^{\times}$ such that
-		\[
-			r_\pi\vert_{G_{\K_{w'}}}\sim
-			\begin{pmatrix}
-				\psi_1 &*\\&\epsilon^{-1}\psi_2
-			\end{pmatrix}\quad
-			\begin{aligned}
-			\psi_1\circ \Art&\colon & 
-			&\varpi_{w'}\mapsto u_{w'}^{(1)}&
-			&x \mapsto 
-			\prod_{\sigma\in I_{w'}}
-			\iota_p(\sigma(x))^{-k_{2,\sigma}}\,
-			x\in \oo_{w'}^\times \\
-			\psi_1\circ \Art&\colon & 
-			&\varpi_{w'}\mapsto (u_{w'}^{(2)})/(u_{w'}^{(1)})&
-			&x\mapsto 
-			\prod_{\sigma\in I_{w'}}
-			\iota_p(\sigma(x))^{-k_{1,\sigma}}\,
-			x\in \oo_{w'}^\times\\
-			\end{aligned}
-		\]
-		where $u_{w'}^{(j)}$ are the eigenvalues of 
-		$U_{\wt{k},w'}^{(j)}$ on 
-		$\pi\cap S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,1}),E)\neq 0$.
-	\item The representation $r_\pi$ is crystalline at $w$.
-	If furthermore $\pi\cap S_{\wt{k}}^{B-\ord}(U^p\Iw(p^{0,1}),E)\neq 0$,
-	then $r_\pi\vert_{G_{\K_w}}$ is conjugate
-	to an upper triangular representation as above.
+	\item The representation $r_\fp$ is crystalline at $w'\neq w$
+	if $\wt{k}$ is sufficiently regular.
+	Moreover, $r_\fp\vert_{D_{w'}}$ 
+	fits into the exact sequence
+	$0\to \psi_1\to r_{\fp}\vert_{D_{w'}} \to \epsilon^{-1}\psi_2\to 0$
+	for characters $\psi_i\colon D_{w'}\to E_{\fp}^{\times}$
+	\begin{equation}\label{eq:Gal_hecke_at_p}
+	\begin{aligned}
+		\psi_1\circ \Art_{w'}(\varpi_{w'})&=
+		\lambda_{\fp}(U_{\wt{k},w'}^{(1)}) &
+		\psi_1\circ \Art_{w'}(x)&=
+		\lambda_{\fp}
+		(\langle 
+		\iota_{w'}^{-1}
+		(\begin{smallmatrix}
+			x&\\&1
+		\end{smallmatrix})
+		\rangle)\, \text{ for }x\in \oo_{w'}^{\times}\\
+		\psi_2\circ \Art_{w'}(\varpi_{w'})&=
+		\lambda_{\fp}(U_{\wt{k},w'}^{(2)})/
+		\lambda_{\fp}(U_{\wt{k},w'}^{(1)}) &
+		\psi_1\circ \Art_{w'}(x)&=
+		\lambda_{\fp}
+		(\langle 
+		\iota_{w'}^{-1}
+		(\begin{smallmatrix}
+			1&\\&x
+		\end{smallmatrix})
+		\rangle)\, \text{ for }x\in \oo_{w'}^{\times}
+	\end{aligned}
+	\end{equation}
+	\item The representation $r_\fp$ is crystalline at $w$.
+	If furthermore $\fp$ extends
+	to a prime ideal in the $B$-ordinary Hecke algebra
+	$\TT(U^p\Iw(p^{0,1}),E)$,
+	then $r_\pi\vert_{D_w}$ 
+	admits an exact sequence as above.
 	\end{enumerate}
 \end{lem}
-
-\begin{defn}
-	When $M$ is a finite $\oo$-module 
-	or the Pontryagin dual of which,
-	let $\TT_{\wt{k}}(U^p\Iw^P(p^{b,c}),M)$
-	be the $\oo$-subalgebra
-	of $\End_{\oo}(S^{P-\ord}_{\wt{k}}(U^p\Iw^P(p^{b,c}),M))$
-	generated by $T_w^{(j)}$ and $U_{\wt{k},w'}^{(j)}$
-	and $U_{\wt{k},w}^{(2)}$ and $\langle u\rangle$.
-	We also define 
-	\[
-		\TT_{\wt{k}}(U^p,E/\oo)=\varprojlim_b
-		\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),E/\oo)\quad
-		\TT_{\wt{k}}(U^p,\oo)=\varprojlim_b
-		\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)
-	\]
-	In particular,
-	$\TT_{\wt{k}}(U^p\Iw^P(p^{b,c}),\oo)$
-	are reduced finite flat  $\oo $-algebras
-	by \cite[Lem 2.14]{ger}.
-	Consequently 
-	$\TT_{\wt{k}}(U^p,\oo)$,
-	which is isomorphic to $\TT_{\wt{k}}(U^p,E/\oo)$
-	by \cite[Lem 2.17]{ger},
-	is also reduced 
-	and acts faithfully
-	on $S_{\wt{k}}^{P-\ord}(U^p,E/\oo)$.
-	We write 
-	$\TT_{\wt{k}}(U^p,E/\oo)=\TT(U^p,E/\oo)$
-	when $\wt{k}$ is the trivial weight. 
-\end{defn}
-By lemma \ref{lem:wt_indep}, 
-there exists homomorphisms 
-$\TT(U^p,\oo)\to \TT_{\wt{k}}(U^p\Iw^P(p^{0,1}),\oo)$.
-Thus for $\pi$ such that
-$\pi\cap S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,1}),\oo)\neq 0$,
-we may define the prime ideal $\fp_\pi\subset \TT(U^p,\oo)$
-associated to the Hecke-eigensystem
-$\lambda_\pi\colon \TT_{\wt{k}}(U^p\Iw^P(p^{0,1}),\oo)$.
+\begin{proof}
+This is a restatement of \cite[Cor 2.33]{ger}
+for $w'\neq w$.
+For the fixed place  $w\in \Sigma$,
+note that $\pi_w$ is unramified 
+by definition
+for any $\pi$ belonging to $\fp$.
+We then combine the corollary with \cite[Lem 2.31]{ger} to obtain 
+the result.
+\end{proof}
 
 
-Since $\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)$ is reduced,
-when  $\pi$ goes through 
-irreducible constituents of $S_{\wt{k}}(\bar{\Q}p)$
-such that
-$\pi\cap S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{b,b}),\oo)\neq 0$,
-we have
+Since the Hecke algebra 
+$\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)$
+is reduced the homomorphisms
 \[
-	\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)\hookrightarrow
-	\prod_{\pi}
-	\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)/\wp_{\pi}
+	\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)\to 
+	\TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),E)
+	\xrightarrow{\prod_{\fp}\lambda_{\fp}}
+	\prod_{\fp}E_{\fp}
 \]
-Since for each $\pi$ as above,
-the associated Galois representation
-$r_{\pi}$ satisfies 
-$\mtr(r_{\pi})(\Fr_w)=\lambda_{\pi}(T_w^{(1)})$.
-By Chebotarev density, there thus exists 
-a pseudo-representation
+where $\fp$ goes through all height-one primes,
+is injective.
+By the relation \eqref{eq:Gal_hecke_away_p}
+and Chebotarev's density theorem,
+the pseudo-representations  $r_{\fp}$
+lift to a pseudo-representation
 \[
-	\Psi_{\wt{k}}(U^p\Iw^P(p^{b,b}))\colon G_{\K}
+	\Psi_{\wt{k}}\colon \Gal_{\K}
 	\to \TT_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)\quad
-	\Fr_w\mapsto T_w^{(1)}
+	\Psi_{\wt{k}}(\Fr_w)=T_w^{(1)}
 \]
-Taking the inverse limit, 
-we obtain the big Galois pseudo-representation
-\[
-	\Psi\colon G_{\K}\to 
-	\TT(U^p,\oo) \quad
-\]
-Furthermore, by Lemma \ref{prop:density},
-the prime ideals $\wp_\pi$
-such that
-$\pi\cap S_{\wt{k}}^{P-\ord}(U^p\Iw^P(p^{0,1}),\oo)\neq 0$
-are dense in $\TT(U^p,\oo)$
-and the associated $r_\pi$
-are all reducible at  $w'\in \Sigma_p$ for  $w'\neq w$
-Thus  $\Psi$ is  also reducible at all $w'\in \Sigma_p$.
+that are compatible among different levels of $\Iw^P(p^{b,b})$.
+By abuse of notation,
+we let 
+$\Psi_{\wt{k}}\colon \Gal_{\K} \to \TT_{\wt{k}}(U^p,\oo)$
+denote the big Galois pseudo-representation 
+obtained through the inverse limit.
 
-\subsection{local-global compatibility}
-
-Follow the notation in the previous subsection.
-We further assume that the fixed place  $w\in \Sigma_p$ 
-is such that $\K_w\cong \Qp$.
-Write $\TT=\TT(U^p,\oo)$ for short a
-and fix a maximal ideal $\fm\subset \TT$.
-Let  $\TT_{\fm}$ be the localization
-and $\Psi_\fm\colon G_{\K}\to \TT_{\fm}$
-by the push-forward of the 
-Galois pseudo-representation.
-we assume that $\Psi_\fm$
-is residually reducible 
-and generic at  $w$ in the following sense.
-\begin{equation}\tag{gen}\label{cond:gen}
-	\rho_\fm\equiv \delta_1+\delta_2\mod \fm,\quad
-	\delta_1\delta_2^{-1}\vert_{\Gp=D_w}
-	\neq 1,\omega^{\pm}
-\end{equation}
-
-Let $\chi_1,\chi_2\colon \Gp\to \mathbb{F}^\times$
-be characters such that 
-$\Psi_\fm\epsilon\vert_{\Gp}\equiv \chi_1+\chi_2$
-modulo $\fm$
-and let  $\B_\fm$
-be the Block of  $\GL_2(\Qp)$-representations
-associated to 
-\[
-	\pi_1=\Ind(\chi_1\otimes\chi_2\omega^{-1}) \text{ and }
-	\pi_2=\Ind(\chi_2\otimes\chi_1\omega^{-1}) 
-\]
-We also let $R_\fm$
-be the universal pseudo-deformation 
-of  $\chi_1+\chi_2$.
-Recall that $R_\fm$
-is isomorphic to a Power series ring of five variables
-over  $\oo$.
-
-\begin{defn}
-	\[
-		\det \Psi_\fm\circ \Art\colon \Qp^\times\to
-		\oo\llbracket F,T\rrbracket\quad
-		p\mapsto F=U_w^{(2)},
-		x\mapsto x^{-1}\langle u\rangle
-	\]
-	Let $\zeta$ be a crystalline character of $\Gp$
-	such that  $\det\Psi_\fm\equiv \zeta\epsilon^{-1}$ 
-	modulo the maximal ideal of
-	$\oo\llbracket F,T\rrbracket$
-	and  define 
-	\[
-		\langle \xi_\fm\rangle \coloneqq
-		\zeta\epsilon\cdot 
-		(\det\Psi_\fm)^{-1}\colon 
-		\Gp\to \oo\llbracket F,T\rrbracket^{\times}
-	\]
-	Then $R_{\fm}\cong \oo\llbracket F,T\rrbracket \hat{\otimes}
-	R_{\fm}^{\zeta\epsilon}$.
-	We let $\Ord_P(S(U^p,E/\oo))'_{\fm}$ 
-	be the localization 
-	$\Ord_P(S(U^p,E/\oo))_{\fm}(\langle \xi_\fm\rangle^{})$
-	with twisted $\GL_2(\Qp)$ action,
-	which has central character $\zeta\circ \Art$.
+\begin{defn}\label{def:big_Gal}
+Let $\Psi\colon \Gal_{\K}\to \TT(U^p,\oo)$	
+denote the big Galois pseudo-representation
+when $\wt{k}$ is the trivial weight.
+Note that by the relation \eqref{eq:Gal_hecke_away_p}
+and Chebotarev's density theorem again,
+the composition of $\Psi$
+with the surjection
+$\varphi_{\wt{k}}\colon 
+\TT(U^p,\oo)\to \TT_{\wt{k}}(U^p,\oo)$
+is precisely  $\Psi_{\wt{k}}$.
 \end{defn}
 
-\begin{prop}
-	$M(U^p)_{\fm}'\in \fC_\zeta(\oo)^{\B_{\fm}}$
-\end{prop}
-\begin{cor}
-	$\TT(U^p,\oo)$ is finite over
-	 $R_\fm \hat{\otimes}_{\oo} \Lambda^{w'}$,
-	 hence Noetherian;
-	 $\Hom(P_\fm, M(U^p)_{\fm}')$ 
-	 is finite faithful $\TT$-module.
-\end{cor}
-
-
-Let $\fp\subset \TT_\fm$ be a prime ideal such that 
-\[
-\begin{tikzcd}
-	\rho_\fp\colon G_\K\arrow[dr]\arrow[rr]
-	&& \TT_\fm[\frac{1}{p}]/\fp=E\\
-	& \TT_{\wt{k}}(U^pU_p,E)\arrow[ur]
-\end{tikzcd}
-\]
-We have that $\rho_\fp$ is crystalline, and 
-the associated Weil-Deligne representation 
-is $\Fr_w$ acting as  $\varphi$ on 
-\[
-	D=(\rho_\fp\otimes_{\Qp}B_{\cris})^{\Gp}=
-	\Rec(\pi_\fp|\cdot|^{-1/2})
-\]
-where $\pi_\fp\chi_1\boxtimes\chi_2\sim
-\nInd_B^G(\chi_1\otimes\chi_2)$ and
- \begin{enumerate}[label=(\alph*)]
-	\item $\det(X-\Fr\vert_{\rho_\fp})=
-		\det(X-\varphi\vert_D)=
-		(X-p^{1/2}\chi_1(p))(X-p^{1/2}\chi_2(p))$
-	\item The Hodge-Tate weights are $k_1+1, k_2$
-	\item  $\psi_\fp\coloneqq \det \rho_\fp$ 
-		has Hodge-Tate weight $k_1+k_2+1$.
-\end{enumerate}
-For example,
-if $\pi_\fp$ is ordinary
-with  $U_w^{(1)}$ and $U_w^{(2)}$ acting as
-$u^{(1)}$ and $u^{(2)}$ respectively, then 
-$p^{1/2}\chi_1(p)=u^{(1)}p^{k_2}$ and
-$p^{1/2}\chi_2(p)=\frac{u^{(1)}}{u^{(1)}}p^{k_1+1}$, and
-\[
-	\rho_{\fp}\vert_{\Gp}\sim
-	\begin{pmatrix}
-		\psi_1&*\\&\epsilon^{-1}\psi_2
-	\end{pmatrix}
-	\quad
-	\begin{aligned}
-		\psi_1\circ \Art\colon 
-		x\in \Zp^\times\mapsto x^{-k_2}\,
-		p\mapsto u^{(1)}\\
-		\psi_2\circ \Art\colon 
-		x\in \Zp^\times\mapsto x^{-k_1}\,
-		p\mapsto \frac{u^{(2)}}{u^{(1)}}\\
-	\end{aligned}
-\]
-\begin{rem}
-	If we identify the cyclotomic character
-	$\epsilon$ with $\epsilon\circ Art$,
-	then  $\epsilon(x)=x\cdot |x|$.
-\end{rem}
-
-\begin{prop}
-	If $\rho$ is crystalline and 
-	$\det \rho=\zeta\epsilon^{-1}$,
-	with $D(\rho)=\Rec(\pi|\cdot|^{-1/2})$.
-	Let $\rho'=\rho(\epsilon)$
-	with Hodge-Tate weights
-	$\{-a,-a-b\}$, then 
-	 \[
-		\pi=\Ind(\psi_1'\otimes\psi_2'|\cdot|^{-1})
-		\quad D(\rho')=\psi_1'+\psi_2'
-	\]
-	With $\pi\otimes W_{-a,1-a-b}^*\to S_\zeta(U^p)_E$,
-	the unitary completion of which 
-	lies in $\Irr_\fn$, where  $\fn$ 
-	corresponds to the prime of $R^{\zeta\epsilon}$
-	corresponding to $\rho'$.
-\end{prop}
-
-For example, suppose 
-$\rho=\psi_1+\psi_2$ is reducible,
-of Hodge-Tate weights 
-$w$ and  $w+k-1$ respectively. Then
-\[
-	D(\rho')=\psi_1'+\psi_2'=
-	\psi_1(\epsilon|\cdot|^{-1})^w|\cdot|+
-	\psi_2(\epsilon|\cdot|^{-1})^{w+k-1}|\cdot|
-	\Longrightarrow
-	\pi=\Ind
-	( \psi_1\epsilon^w|\cdot|^{1-w}\otimes
-	\psi_2\epsilon^{w+k-1}|\cdot|^{1-w-k})
-\]
-And as the Hodge-Tate weights of $\rho'$
-are  $\{w+k-2,w-1\}$,
-we want to consider the unitary completion 
-of  $\pi\otimes W_{w+k-2,w}^*$,
-which is $\Ind(\psi_2'\otimes\psi_1'\epsilon^{-1})_{\cont}$.
-Note that
-\[
-	\omega_\pi
-	=(\psi_1\psi_2\epsilon)
-	(\epsilon|\cdot|^{-1})^{2w+k-2}=
-	=\zeta (\epsilon|\cdot|^{-1})^{2w+k-2}=
-	\psi_1\psi_2\epsilon^{2w+k-1}
-	|\cdot|^{2-w-k}
-	\Longrightarrow
-	\omega_\pi
-	(\epsilon|\cdot|^{-1})^{-(2w+k-2)}=\zeta
-\]
-\[
-	\WD(\rho)=\psi_1\varepsilon^w||^{-w}+
-	\psi_2\varepsilon^{w+k-1}||^{1-k-w}
-\]
-Then $\pi_v$ is isomorphic to the un-normalized induction
-$\Ind(\mu_1\otimes\mu_2||^{-1})_{\sm}$, where
-\begin{align*}
-	\mu_1&=\psi_1\varepsilon^{w}||^{1-w} &
-	\val_p(\mu_1(p))&=w-1=(w+k-2)-(k-1)\\
-	\mu_2&=\psi_2\varepsilon^{w+k-1}||^{2-k-w} &
-	\val_p(\mu_2(p))&=w+k-2
-\end{align*}
-Since $(\Sym^{k-2}\otimes\det{}^w)^*\cong \Sym^{(k-1)-1}\otimes\det{}^{2-k-w}$
-and $\varepsilon(x)=x|x|$,
-by \cite[Thm 12.3]{pask}, 
-the universal unitary completion
-of $\pi_v\otimes(\Sym^{k-2}\otimes\det{}^w)^*$
-is isomorphic to $\Ind_B^G(\psi)_{\cont}$, where
-\[
-	\psi(\smat{a&*\\&d})=\mu_2(a)a^{2-k-w}\mu_1(d)|d|^{-1}d^{(k-1)+(2-k-w)-1}
-	=\psi_2\varepsilon(a)\psi_1(d)
-\]
-Note that indeed 
-$\Ind(\psi_2\varepsilon\otimes\psi_1)_{cont}=
-\Ind((\psi_2\varepsilon)\otimes(\psi_1\varepsilon)\varepsilon^{-1})$.
-
-
-\begin{prop}
-	Statement on compatibility
-\end{prop}
-
-Fix $\zeta\colon \Gp\to E^\times$
-crystalline of Hodge-Tate weight  $w_0$
-such that  $\zeta\epsilon^{-1}=\psi_\fp$,
-then there exists $\xi_\fp$
-crystalline of Hodge-Tate weight  
-$w_\fp=\frac{w_0-(k_1+k_2)}{2}$
-such that $\zeta\epsilon^{-1}\psi_\fp^{-1}=\xi_\fp^{2}$.
-
-Starting with $D(\rho_\fp)=\psi_1+\psi_2$
-with Hodge-Tate weights  $k_1+1,k_2$, 
-then  $\rho_\fp'=\rho_\fp(\epsilon\xi_\fp)$
-has  $\det\rho_\fp'=\zeta\epsilon$
-and of Hodge-Tate weights
- \[
-	k_1'=\frac{k_1+w_0-k_2}{2},
-	k_2'-1=\frac{k_2+w_0-k_1}{2}-1
-\]
-Let $\rho_\fp'\equiv \chi_1+\chi_2$
-and  $\pi_1=\Ind(\chi_1\otimes\chi_2\omega^{-1})$
-and $\pi_2=\Ind(\chi_2\otimes\chi_1\omega^{-1})$,
-the block we consider is  $\B=\{\pi_1,\pi_2\}$.
-
-We have  $\pi_\fp\otimes W_{\wt{k}}^*\to S(U^p)_{E,\fm}$,
-after tensor we get 
-$\pi_\fp\otimes W_{\wt{k}}^*(\xi_\fp)\to S(U^p)'_{E,\fm}$
-with 
-\[
-	\pi_\fp\otimes W_{\wt{k}}^*(\xi_\fp)=
-	\pi_\fp(\xi_\fp(\epsilon|\cdot|^{-1})^{w_\fp})
-	\otimes
-	(W_{\wt{k}}(\epsilon|\cdot|^{-1})^{w_{\fp}})^*
-\]
-which are $W_{\wt{k}'}^*$ 
-and associated to 
-$D(\rho_\fp')=
-D(\rho_\fp\epsilon)(\xi_\fp(\epsilon|\cdot|^{-1})^{w_\fp})$
-respectively.
 
 
 
-
-\subsection{fundamental exact sequence}
-
-Let $r=\#\Sigma_p-1$ and  
-$\Lambda=\oo\llbracket \GG^{2r+2} \rrbracket$.
-$\Lambda'=\oo\llbracket \GG^{2r} \rrbracket$.
-Let $R_{\fm}\times \Lambda'$
-act on 
-$M=\Hom(P\hat{\otimes}_{\oo}\Lambda', M(U^p)_\fm)$.
-We are in the following set up:
-\begin{align*}
-	\Lambda\rightarrow R\times \Lambda' \to \TT
-	&\text{ acts on } M\\
-	\TT^{\red} &\text{ acts on }
-	M^{\red}=M_1\oplus M_2
-	\text{ which is finite(free) over }\Lambda
-\end{align*}
-And by previous results,
-there exists $\lambda\colon \TT\to \Lambda$
-and a nonzero $\Lambda$-algebra 
-morphism $\Theta\colon M_2\to \Lambda$ 
-such that 
-\[
-	\Theta(T\cdot m)=\lambda(T)\cdot \Theta(m).
-\]
-Let $\wp=\ker\lambda\subset \TT$,
-and $\fq\subset \ker(\TT\to \End(M_1))$
-is some ideal containing  $x=x_{\red}$.
-Let $S_2=\ker(\Theta)\subset M_2$ 
-and make the following assumptions.
-\begin{enumerate}[label=(\alph*)]
-	\item $\fq M_2/\fq S_2$ is $\Lambda$-torsion.
-	\item $\TT$ is reduced
-	\item $\TT$ acts faithfully on $M$.
-\end{enumerate}
-
-\begin{lem}
-Let $S=\ker(M\to M^{\red}=M_1\oplus M_2\to M_2
-\xrightarrow{\Theta}\Lambda)$, 
-then there exists an exact sequence
-\begin{equation}\label{eq:fund}
-	M/S\to \fq M/\fq S\to \fq M_2/\fq S_2 \to 0
-\end{equation}
-\end{lem}
-\begin{proof}
-Since the image of the injection 
-$\fq M^{\red}=\fq M/xM\hookrightarrow M^{\red}=M/xM$
-is $\fq M_2$ and
-\[
-	\Image(\fq S^{\red}\to M^{\red})=\fq S+xM/xM=\fq S_2,
-\]
-we have $\fq M^{\red}/\fq S^{\red}=\fq M_2/\fq S_2$.
-The exact sequence in question now follows from 
-the isomorphism and applying the snake lemma to 
-the commutative diagram
-\[
-\begin{tikzcd}
-	S\arrow[r,"x"] \arrow[d]
-	& \fq S \arrow[r] \arrow[d]
-	& \fq S^{\red} \arrow[r] \arrow[d] & 0\\
-	M\arrow[r,"x"]
-	& \fq M \arrow[r]
-	& \fq M^{\red} \arrow[r] & 0
-\end{tikzcd}
-\]
-\end{proof}
-Note that since 
-$\Theta\colon M/S\cong M_2/S_2\hookrightarrow \Lambda$,
-the $\TT$-actions on \eqref{eq:fund}
-all factor through  $\lambda\colon \TT\to \Lambda$.
-Let $K=K_\Lambda=\Lambda_\wp$
-be the field of fraction of $\Lambda$.
-As $\fq M_2/\fq S_2$ is a $\Lambda$-torsion module,
-taking the tensor
-$\otimes_{\TT}\TT_{\wp}=
-\otimes_\Lambda(\Lambda\otimes_\TT\TT_\wp)=
-\otimes_\Lambda K$ 
-to the exact sequence then results in the surjection
-\[
-	K_\Lambda\twoheadrightarrow (\fq M/\fq S)_{\wp}
-	= \fq M_\wp/\fq S_\wp
-\]
-From which 
-we see that \eqref{eq:fund} is injective
-if $\fq M_\wp/\fq S_\wp\neq 0$.
-
-
-\begin{lem}
-	The localization $\TT_\wp$
-	is finite over $K\llbracket x\rrbracket$.
-\end{lem}
-\begin{proof}
-	Let $R_\wp$ be the localization at 
-	$\ker(R\times \Lambda'\to \TT
-	\xrightarrow{\lambda}\Lambda)$,
-	which contains $K\llbracket x\rrbracket$
-	as a subring.
-	Thus
-	\[
-	K\llbracket x\rrbracket\hookrightarrow
-	R_\wp \longrightarrow T_\wp
-	\text{ acts on } M_\wp
-	\]
-	In fact, the composition
-	$K\llbracket x\rrbracket\to \TT_\wp$
-	is injective 
-	since  $x\neq 0$ acts nontrivially on $M_\wp$
-	and $\TT_\wp$ is reduced and thus 
-	without nilpotent elements.
-	Now, 
-	that  $M_\wp$ is finite over  $\TT_\wp$
-	implies that  $M_\wp$ is a compact  $\TT_\wp$-module;
-	and moreover 
-	$\dim_K M_\wp/xM_\wp=(M_1\oplus M_2)_K<\infty$.
-	Thus
-	$M_\wp$ is finite over $K\llbracket x\rrbracket$
-	by the topological Nakayama lemma,
-	from which the lemma follows as
-	$\TT_\wp\hookrightarrow 
-	\End_{K\llbracket x\rrbracket}(M_\wp)$.
-\end{proof}
-
-\begin{prop}
-	We have the fundamental exact sequence
-	\begin{equation}
-		0\to M/S\xrightarrow{x}
-		\fq M/\fq S\to \fq M_2/\fq S_2 \to 0
-	\end{equation}
-\end{prop}
-\begin{proof}
-	Let $\TT, \mathbb{M}$ and  $\mathbb{S}$
-	denote  $\TT_\wp, M_\wp$ and $S_\wp$.
-	For each minimal prime $\fq_i\subset\TT$,
-	let $\TT_i$ be the integral closure
-	of  $K\llbracket x\rrbracket$
-	in the finite extension
-	$\textnormal{Frac}(\TT/\fq_i)/K((x))$.
-	Then each $\TT_i$ is a discrete valuation ring and
-\[
-	\TT\hookrightarrow 
-	\prod_{\fq_i:\text{ minimal}}\TT/\fq_i\hookrightarrow
-	\tilde{\TT}\coloneqq\prod_i \TT_i
-\]
-As each $\fq\TT_i$ is a principal ideal,
-we have $\fq\tilde{\TT}\cong \TT$ and 
-\[
-	(\fq \mathbb{M}/\fq \mathbb{S})\otimes_\TT
-	\tilde{\TT}\cong
-	\fq\mathbb{M}\otimes_\TT\tilde{\TT}/
-	\fq\mathbb{S}\otimes_\TT\tilde{\TT}=
-	\mathbb{M}\otimes_\TT\fq\tilde{\TT}/
-	\mathbb{S}\otimes_\TT\fq\tilde{\TT} \cong 
-	\mathbb{M}\otimes_\TT\tilde{\TT}/
-	\mathbb{S}\otimes_\TT\tilde{\TT}\cong
-	(\mathbb{M}/\mathbb{S})\otimes_\TT\tilde{\TT}=
-	K\otimes_{\lambda,\TT}\tilde{\TT}.
-\]
-The last ring is nonzero since 
-$\tilde{\TT}$ is integral over $\TT$
-and the maximal ideal of  $ \tilde{\TT}$ 
-restricts to that of $\TT$.
-\end{proof}
-
-\subsection{Euler systems}
-
-
-\begin{equation*}
-\begin{tikzcd}[column sep=tiny]
-& M_{N\ell}/S_{N\ell}\arrow{dd} \arrow[rd,"\sim"]\arrow[rr]
-&& \fq_{N\ell}\otimes M_{N\ell}/S_{N\ell}
-	\arrow[rd,twoheadrightarrow]\arrow[rr]\arrow[dd]
-&& \fq_{N\ell}^{\red}M_{N\ell}/S_{N\ell}\arrow[dd]\arrow[rd]\\
-0 \arrow[crossing over]{rr} 
-&& \Lambda_{N\ell}
-	\arrow[crossing over]{dd} \arrow[crossing over]{rr} 
-&& \fq_{N\ell}M_{N\ell}/\fq_{N\ell}S_{N\ell}
-	\arrow[crossing over]{dd}\arrow[crossing over]{rr} 
-&& \fq_{N\ell}M_{N\ell}^{\ord}/\fq_{N\ell}S^{\ord}_{N\ell}
-	\arrow{dd} \arrow[rr] && 0\\
-& M_{N}/S_{N}\arrow{rr}\arrow[rd,"\sim"]
-&& \fq_{N}\otimes M_{N}/S_{N}
-	\arrow{rr} \arrow[rd,twoheadrightarrow]
-&& \fq_{N}^{\red}M_{N}/S_{N} \arrow[rd]& & & \\
-0 \arrow[crossing over]{rr} 
-&& \Lambda_{N} \arrow[crossing over]{rr} 
-&& \fq_{N}M_{N}/\fq_{N}S_{N}\arrow[crossing over]{rr} 
-&& \fq_{N}M_{N}^{\ord}/\fq_{N}S_{N}^{\ord} \arrow[rr] && 0
-\arrow[from=2-3,to=4-3,crossing over]
-\arrow[from=2-5,to=4-5,crossing over]
-\end{tikzcd}
-\end{equation*}
-
-\[
-\begin{tikzcd}
-0&
-H^1(K,\Lambda_N(\delta)) \arrow[r]\arrow[d,"res_p"]&
-H^1(K,\fq_N\otimes \Lambda_N(\delta)) \arrow[r]&
-H^1(K,\fq_N^{\red}\otimes \Lambda_N(\delta))\\
-&H^1(K_w,\Lambda_N(\delta))
-\end{tikzcd}
-\]
-Here $H^1(K_w,\Lambda_N(\delta))=H_{Iw}^1(\Qp,\oo())$
-is free and crystalline?
-
-Let $x=x_{\red}=x(\sigma_0,\tau_0)$
-for $\sigma_0,\tau_0\in \Gp$
-and  $y(\sigma)=\delta_2^{-1}(\sigma)x(\sigma,\tau_0)$,
-then $res_p(y^{\red})=0$
-and $res_\ell(y)=0$ if  $\ell\nmid Np$.
-
-\section{Previous results}
-
-Let $\chi$ be a character of $\A_{\K}^\times/\K^\times$
-such that $\chi\mid_{\A_\F^\times}=\qch_{\K/\F}$
-is the quadratic character associated to $\K/\F$.
-Put $\chi_\circ=\chi|\cdot|_{\K}^{1/2}$ and $\chi^0=\bar{\chi}_\circ$.
-We assumed the following condition.
-\begin{equation}\label{cond:chi}\tag{$\chi$}
-    \frac{L(\frac{1}{2},\chi)}{\Omega_\infty^{\Sigma}}\not\equiv 0\text{ mod } \fm
-    \text{ and } \chi_\circ
-    \text{ satisfies the conditions of \cite[Theorem A]{Hsieh12}}.
-\end{equation}
-
-Let $\fc$ be the conductor of $\chi$ and $\fs=\fs^c$ be a prime-to-$p\fc$
-idea of $\K$ consists only of split primes.
-Let $\K_{p^n\fs}$ be the ray class group of conductor $p^n\fs$ over $\K$,
-$\K_{p^\infty\fs}=\bigcup_{n}\K_{p^n\fs}$,
-and $\fG_{\fs}^-$ be the Galois group of the maximal pro-$p$ anticyclotomic
-subextension in $\K_{p^\infty\fs}$.
-We denote by $\fX_{\fs}^-$
-the set of characters of $\fG_{\fs}^-$
-which are $p$-adic avatars of 
-algebraic Hecke characters $\eta$ such that 
-\begin{enumerate}
-    \item $\eta$ has infinity type $k\geq 0$.
-    \item $\eta$ is ramified only at places dividing $p\fs$.
-    \item the prime-to-$p$ part of the conductor of $\tilde{\eta}$ divides $\fs$.
-\end{enumerate}
-We can construct a Hida family $\euF^\circ_{\fs}\in \M(K(\fn),\Lambda_{\fs}^-)$
-of level $\fn=\fc\fs$ over $\Lambda_{\fs}^-=R\llbracket \fG_{\fs}^-\rrbracket$ for 
-a sufficiently large $p$-adic ring $R$,
-which interpolates the $p$-adic modular form
-associated to the pull-back theta lifts of $\eta$ when $\eta\in \fX_{\fs}^-$.
-
-\begin{thm}\label{thm:intro1}
-    Under the assumption \eqref{cond:chi}
-    and suppose $p$ is ``large enough'' with respect to $\K$ and $\fc$,
-    the Hida family $\euF^\circ_{\fs}$
-    can be shown to be primitive inside $\M(K(\fn),\Lambda_{\fs}^-)$.
-\end{thm}
-
-Therefore
-\begin{align*}
-    U_w\theta^\square_{\Phi'}(\eta,\bnu)(g)&=
-    (\chi^{-1}|\cdot|_\K^{-1/2})_w(\varpi_w)
-    \theta^\square_{\Phi'}(\eta,\bnu)((\varpi_w,\varpi_w^{-1})g)
-    =(\chi_\circ^{-1}\tilde{\eta})_w(\varpi_w)
-    \theta^\square_{\Phi'}(\eta,\bnu)(g)\\
-    T_w\theta^\square_{\Phi'}(\eta,\bnu)(g)&=
-    (\chi_\circ^{-1}\tilde{\eta})_w(\varpi_w)
-    \theta^\square_{\Phi'}(\eta,\bnu)(g)
-\end{align*}
-Since $\chi_\circ$ and $\eta$ has infinity type $\Sigma^c$ and $k$ respecitvely,
-\begin{align}
-    U_wf^\circ(\eta)&=
-    \wt{k}(\varpi_w,1)
-    (\chi_\circ^{-1}\tilde{\eta})_w(\varpi_w)f^\circ(\eta)=
-    \hat{\chi}_\circ^{-1}(\varpi_w)\tilde{\hat{\eta}}(\varpi_w)f^\circ(\eta)\\
-    T_wf^\circ(\eta)&=
-    (q_w\chi_\circ(\varpi_w)
-    +\chi_\circ^{-1}\tilde{\eta}(\varpi_w))
-    f^\circ(\eta)
-\end{align}
-has a $p$-unit as an eigenvalue when $w\in \Sigma_p$.
-Note that the formula also holds when $w\mid \fs$.
-
-
-where $\rho_{\wt{k}}(g_\infty)=\rho^{\wt{k}}(g_\infty^{-\intercal})
-\coloneqq \rho^{\bwt{k}}(g_\infty^{-\intercal},\id_2)$
-for $\wt{k}\coloneqq (k,0)$
-
-
-
-\begin{thm}\label{thm:intro2}
-    Put $\mathcal{L}_\fn=\B_\fn(\euF^\circ_{\fs},U_\fs^{-1}\euF^\circ_{\fs})
-    \in \Lambda_{\fs}^-$
-    where $U_\fs$ is some Hecke action defined above $\fs$. Then
-    \begin{equation*}
-        \frac{1}{\Omega_p^{2k+4}}
-        \int_{\fG_{\fn}}\hat{\eta}\,\mathcal{L}_\fn=
-    C(\eta,\chi,\K)
-    \frac{(2\pi i)^{k}\Gamma(k+2)L(1,\chi^{-2}\tilde{\eta})}{\Omega_\infty^{k+2\Sigma}}
-    \prod_{w\mid p\fs}
-    \varepsilon(1,(\chi^{2}\tilde{\eta}^{-1})_w,\psi_w)
-    \frac{1-(\chi^{-2}\tilde{\eta})^{-1}_w(\varpi_v)}
-    {1-(\chi^{-2}\tilde{\eta})_w(\varpi_v)q_v^{-1}}
-    \end{equation*}
-    up to powers of $2$
-    when $\hat{\eta}\in \fX^+_{\fs}$.
-    Here $C(\eta,\chi,\K)$ is a scalar depending on $\eta,\chi$ and $\K$
-    which is a $p$-unit when \eqref{cond:chi} is satisfied 
-    and $p$ is ``large enough''
-    with respect to $\K$ and $\fc$. 
-\end{thm}
-
-\section{Pask\={u}nas' theory}
+\section{Results from p-adic local Langlands}
 
 In this section,
 $G$ denotes  $\GL_2(\Qp)$, 
@@ -2583,6 +2208,570 @@ and  $B_i=\oo[G/N_i]$, then
 	\cong \varprojlim
 	A[G/N_i]
 \]
+
+
+
+\subsection{local-global compatibility}
+
+Follow the notation in the previous subsection.
+We further assume that the fixed place  $w\in \Sigma_p$ 
+is such that $\K_w\cong \Qp$.
+Write $\TT=\TT(U^p,\oo)$ for short a
+and fix a maximal ideal $\fm\subset \TT$.
+Let  $\TT_{\fm}$ be the localization
+and $\Psi_\fm\colon G_{\K}\to \TT_{\fm}$
+by the push-forward of the 
+Galois pseudo-representation.
+we assume that $\Psi_\fm$
+is residually reducible 
+and generic at  $w$ in the following sense.
+\begin{equation}\tag{gen}\label{cond:gen}
+	\rho_\fm\equiv \delta_1+\delta_2\mod \fm,\quad
+	\delta_1\delta_2^{-1}\vert_{\Gp=D_w}
+	\neq 1,\omega^{\pm}
+\end{equation}
+
+Let $\chi_1,\chi_2\colon \Gp\to \mathbb{F}^\times$
+be characters such that 
+$\Psi_\fm\epsilon\vert_{\Gp}\equiv \chi_1+\chi_2$
+modulo $\fm$
+and let  $\B_\fm$
+be the Block of  $\GL_2(\Qp)$-representations
+associated to 
+\[
+	\pi_1=\Ind(\chi_1\otimes\chi_2\omega^{-1}) \text{ and }
+	\pi_2=\Ind(\chi_2\otimes\chi_1\omega^{-1}) 
+\]
+We also let $R_\fm$
+be the universal pseudo-deformation 
+of  $\chi_1+\chi_2$.
+Recall that $R_\fm$
+is isomorphic to a Power series ring of five variables
+over  $\oo$.
+
+\begin{defn}
+	\[
+		\det \Psi_\fm\circ \Art\colon \Qp^\times\to
+		\oo\llbracket F,T\rrbracket\quad
+		p\mapsto F=U_w^{(2)},
+		x\mapsto x^{-1}\langle u\rangle
+	\]
+	Let $\zeta$ be a crystalline character of $\Gp$
+	such that  $\det\Psi_\fm\equiv \zeta\epsilon^{-1}$ 
+	modulo the maximal ideal of
+	$\oo\llbracket F,T\rrbracket$
+	and  define 
+	\[
+		\langle \xi_\fm\rangle \coloneqq
+		\zeta\epsilon\cdot 
+		(\det\Psi_\fm)^{-1}\colon 
+		\Gp\to \oo\llbracket F,T\rrbracket^{\times}
+	\]
+	Then $R_{\fm}\cong \oo\llbracket F,T\rrbracket \hat{\otimes}
+	R_{\fm}^{\zeta\epsilon}$.
+	We let $\Ord_P(S(U^p,E/\oo))'_{\fm}$ 
+	be the localization 
+	$\Ord_P(S(U^p,E/\oo))_{\fm}(\langle \xi_\fm\rangle^{})$
+	with twisted $\GL_2(\Qp)$ action,
+	which has central character $\zeta\circ \Art$.
+\end{defn}
+
+\begin{prop}
+	$M(U^p)_{\fm}'\in \fC_\zeta(\oo)^{\B_{\fm}}$
+\end{prop}
+\begin{cor}
+	$\TT(U^p,\oo)$ is finite over
+	 $R_\fm \hat{\otimes}_{\oo} \Lambda^{w'}$,
+	 hence Noetherian;
+	 $\Hom(P_\fm, M(U^p)_{\fm}')$ 
+	 is finite faithful $\TT$-module.
+\end{cor}
+
+
+Let $\fp\subset \TT_\fm$ be a prime ideal such that 
+\[
+\begin{tikzcd}
+	\rho_\fp\colon G_\K\arrow[dr]\arrow[rr]
+	&& \TT_\fm[\frac{1}{p}]/\fp=E\\
+	& \TT_{\wt{k}}(U^pU_p,E)\arrow[ur]
+\end{tikzcd}
+\]
+We have that $\rho_\fp$ is crystalline, and 
+the associated Weil-Deligne representation 
+is $\Fr_w$ acting as  $\varphi$ on 
+\[
+	D=(\rho_\fp\otimes_{\Qp}B_{\cris})^{\Gp}=
+	\Rec(\pi_\fp|\cdot|^{-1/2})
+\]
+where $\pi_\fp\chi_1\boxtimes\chi_2\sim
+\nInd_B^G(\chi_1\otimes\chi_2)$ and
+ \begin{enumerate}[label=(\alph*)]
+	\item $\det(X-\Fr\vert_{\rho_\fp})=
+		\det(X-\varphi\vert_D)=
+		(X-p^{1/2}\chi_1(p))(X-p^{1/2}\chi_2(p))$
+	\item The Hodge-Tate weights are $k_1+1, k_2$
+	\item  $\psi_\fp\coloneqq \det \rho_\fp$ 
+		has Hodge-Tate weight $k_1+k_2+1$.
+\end{enumerate}
+For example,
+if $\pi_\fp$ is ordinary
+with  $U_w^{(1)}$ and $U_w^{(2)}$ acting as
+$u^{(1)}$ and $u^{(2)}$ respectively, then 
+$p^{1/2}\chi_1(p)=u^{(1)}p^{k_2}$ and
+$p^{1/2}\chi_2(p)=\frac{u^{(1)}}{u^{(1)}}p^{k_1+1}$, and
+\[
+	\rho_{\fp}\vert_{\Gp}\sim
+	\begin{pmatrix}
+		\psi_1&*\\&\epsilon^{-1}\psi_2
+	\end{pmatrix}
+	\quad
+	\begin{aligned}
+		\psi_1\circ \Art\colon 
+		x\in \Zp^\times\mapsto x^{-k_2}\,
+		p\mapsto u^{(1)}\\
+		\psi_2\circ \Art\colon 
+		x\in \Zp^\times\mapsto x^{-k_1}\,
+		p\mapsto \frac{u^{(2)}}{u^{(1)}}\\
+	\end{aligned}
+\]
+\begin{rem}
+	If we identify the cyclotomic character
+	$\epsilon$ with $\epsilon\circ Art$,
+	then  $\epsilon(x)=x\cdot |x|$.
+\end{rem}
+
+\begin{prop}
+	If $\rho$ is crystalline and 
+	$\det \rho=\zeta\epsilon^{-1}$,
+	with $D(\rho)=\Rec(\pi|\cdot|^{-1/2})$.
+	Let $\rho'=\rho(\epsilon)$
+	with Hodge-Tate weights
+	$\{-a,-a-b\}$, then 
+	 \[
+		\pi=\Ind(\psi_1'\otimes\psi_2'|\cdot|^{-1})
+		\quad D(\rho')=\psi_1'+\psi_2'
+	\]
+	With $\pi\otimes W_{-a,1-a-b}^*\to S_\zeta(U^p)_E$,
+	the unitary completion of which 
+	lies in $\Irr_\fn$, where  $\fn$ 
+	corresponds to the prime of $R^{\zeta\epsilon}$
+	corresponding to $\rho'$.
+\end{prop}
+
+For example, suppose 
+$\rho=\psi_1+\psi_2$ is reducible,
+of Hodge-Tate weights 
+$w$ and  $w+k-1$ respectively. Then
+\[
+	D(\rho')=\psi_1'+\psi_2'=
+	\psi_1(\epsilon|\cdot|^{-1})^w|\cdot|+
+	\psi_2(\epsilon|\cdot|^{-1})^{w+k-1}|\cdot|
+	\Longrightarrow
+	\pi=\Ind
+	( \psi_1\epsilon^w|\cdot|^{1-w}\otimes
+	\psi_2\epsilon^{w+k-1}|\cdot|^{1-w-k})
+\]
+And as the Hodge-Tate weights of $\rho'$
+are  $\{w+k-2,w-1\}$,
+we want to consider the unitary completion 
+of  $\pi\otimes W_{w+k-2,w}^*$,
+which is $\Ind(\psi_2'\otimes\psi_1'\epsilon^{-1})_{\cont}$.
+Note that
+\[
+	\omega_\pi
+	=(\psi_1\psi_2\epsilon)
+	(\epsilon|\cdot|^{-1})^{2w+k-2}=
+	=\zeta (\epsilon|\cdot|^{-1})^{2w+k-2}=
+	\psi_1\psi_2\epsilon^{2w+k-1}
+	|\cdot|^{2-w-k}
+	\Longrightarrow
+	\omega_\pi
+	(\epsilon|\cdot|^{-1})^{-(2w+k-2)}=\zeta
+\]
+\[
+	\WD(\rho)=\psi_1\varepsilon^w||^{-w}+
+	\psi_2\varepsilon^{w+k-1}||^{1-k-w}
+\]
+Then $\pi_v$ is isomorphic to the un-normalized induction
+$\Ind(\mu_1\otimes\mu_2||^{-1})_{\sm}$, where
+\begin{align*}
+	\mu_1&=\psi_1\varepsilon^{w}||^{1-w} &
+	\val_p(\mu_1(p))&=w-1=(w+k-2)-(k-1)\\
+	\mu_2&=\psi_2\varepsilon^{w+k-1}||^{2-k-w} &
+	\val_p(\mu_2(p))&=w+k-2
+\end{align*}
+Since $(\Sym^{k-2}\otimes\det{}^w)^*\cong \Sym^{(k-1)-1}\otimes\det{}^{2-k-w}$
+and $\varepsilon(x)=x|x|$,
+by \cite[Thm 12.3]{pask}, 
+the universal unitary completion
+of $\pi_v\otimes(\Sym^{k-2}\otimes\det{}^w)^*$
+is isomorphic to $\Ind_B^G(\psi)_{\cont}$, where
+\[
+	\psi(\smat{a&*\\&d})=\mu_2(a)a^{2-k-w}\mu_1(d)|d|^{-1}d^{(k-1)+(2-k-w)-1}
+	=\psi_2\varepsilon(a)\psi_1(d)
+\]
+Note that indeed 
+$\Ind(\psi_2\varepsilon\otimes\psi_1)_{cont}=
+\Ind((\psi_2\varepsilon)\otimes(\psi_1\varepsilon)\varepsilon^{-1})$.
+
+
+\begin{prop}
+	Statement on compatibility
+\end{prop}
+
+Fix $\zeta\colon \Gp\to E^\times$
+crystalline of Hodge-Tate weight  $w_0$
+such that  $\zeta\epsilon^{-1}=\psi_\fp$,
+then there exists $\xi_\fp$
+crystalline of Hodge-Tate weight  
+$w_\fp=\frac{w_0-(k_1+k_2)}{2}$
+such that $\zeta\epsilon^{-1}\psi_\fp^{-1}=\xi_\fp^{2}$.
+
+Starting with $D(\rho_\fp)=\psi_1+\psi_2$
+with Hodge-Tate weights  $k_1+1,k_2$, 
+then  $\rho_\fp'=\rho_\fp(\epsilon\xi_\fp)$
+has  $\det\rho_\fp'=\zeta\epsilon$
+and of Hodge-Tate weights
+ \[
+	k_1'=\frac{k_1+w_0-k_2}{2},
+	k_2'-1=\frac{k_2+w_0-k_1}{2}-1
+\]
+Let $\rho_\fp'\equiv \chi_1+\chi_2$
+and  $\pi_1=\Ind(\chi_1\otimes\chi_2\omega^{-1})$
+and $\pi_2=\Ind(\chi_2\otimes\chi_1\omega^{-1})$,
+the block we consider is  $\B=\{\pi_1,\pi_2\}$.
+
+We have  $\pi_\fp\otimes W_{\wt{k}}^*\to S(U^p)_{E,\fm}$,
+after tensor we get 
+$\pi_\fp\otimes W_{\wt{k}}^*(\xi_\fp)\to S(U^p)'_{E,\fm}$
+with 
+\[
+	\pi_\fp\otimes W_{\wt{k}}^*(\xi_\fp)=
+	\pi_\fp(\xi_\fp(\epsilon|\cdot|^{-1})^{w_\fp})
+	\otimes
+	(W_{\wt{k}}(\epsilon|\cdot|^{-1})^{w_{\fp}})^*
+\]
+which are $W_{\wt{k}'}^*$ 
+and associated to 
+$D(\rho_\fp')=
+D(\rho_\fp\epsilon)(\xi_\fp(\epsilon|\cdot|^{-1})^{w_\fp})$
+respectively.
+
+
+
+
+\subsection{fundamental exact sequence}
+
+Let $r=\#\Sigma_p-1$ and  
+$\Lambda=\oo\llbracket \GG^{2r+2} \rrbracket$.
+$\Lambda'=\oo\llbracket \GG^{2r} \rrbracket$.
+Let $R_{\fm}\times \Lambda'$
+act on 
+$M=\Hom(P\hat{\otimes}_{\oo}\Lambda', M(U^p)_\fm)$.
+We are in the following set up:
+\begin{align*}
+	\Lambda\rightarrow R\times \Lambda' \to \TT
+	&\text{ acts on } M\\
+	\TT^{\red} &\text{ acts on }
+	M^{\red}=M_1\oplus M_2
+	\text{ which is finite(free) over }\Lambda
+\end{align*}
+And by previous results,
+there exists $\lambda\colon \TT\to \Lambda$
+and a nonzero $\Lambda$-algebra 
+morphism $\Theta\colon M_2\to \Lambda$ 
+such that 
+\[
+	\Theta(T\cdot m)=\lambda(T)\cdot \Theta(m).
+\]
+Let $\wp=\ker\lambda\subset \TT$,
+and $\fq\subset \ker(\TT\to \End(M_1))$
+is some ideal containing  $x=x_{\red}$.
+Let $S_2=\ker(\Theta)\subset M_2$ 
+and make the following assumptions.
+\begin{enumerate}[label=(\alph*)]
+	\item $\fq M_2/\fq S_2$ is $\Lambda$-torsion.
+	\item $\TT$ is reduced
+	\item $\TT$ acts faithfully on $M$.
+\end{enumerate}
+
+\begin{lem}
+Let $S=\ker(M\to M^{\red}=M_1\oplus M_2\to M_2
+\xrightarrow{\Theta}\Lambda)$, 
+then there exists an exact sequence
+\begin{equation}\label{eq:fund}
+	M/S\to \fq M/\fq S\to \fq M_2/\fq S_2 \to 0
+\end{equation}
+\end{lem}
+\begin{proof}
+Since the image of the injection 
+$\fq M^{\red}=\fq M/xM\hookrightarrow M^{\red}=M/xM$
+is $\fq M_2$ and
+\[
+	\Image(\fq S^{\red}\to M^{\red})=\fq S+xM/xM=\fq S_2,
+\]
+we have $\fq M^{\red}/\fq S^{\red}=\fq M_2/\fq S_2$.
+The exact sequence in question now follows from 
+the isomorphism and applying the snake lemma to 
+the commutative diagram
+\[
+\begin{tikzcd}
+	S\arrow[r,"x"] \arrow[d]
+	& \fq S \arrow[r] \arrow[d]
+	& \fq S^{\red} \arrow[r] \arrow[d] & 0\\
+	M\arrow[r,"x"]
+	& \fq M \arrow[r]
+	& \fq M^{\red} \arrow[r] & 0
+\end{tikzcd}
+\]
+\end{proof}
+Note that since 
+$\Theta\colon M/S\cong M_2/S_2\hookrightarrow \Lambda$,
+the $\TT$-actions on \eqref{eq:fund}
+all factor through  $\lambda\colon \TT\to \Lambda$.
+Let $K=K_\Lambda=\Lambda_\wp$
+be the field of fraction of $\Lambda$.
+As $\fq M_2/\fq S_2$ is a $\Lambda$-torsion module,
+taking the tensor
+$\otimes_{\TT}\TT_{\wp}=
+\otimes_\Lambda(\Lambda\otimes_\TT\TT_\wp)=
+\otimes_\Lambda K$ 
+to the exact sequence then results in the surjection
+\[
+	K_\Lambda\twoheadrightarrow (\fq M/\fq S)_{\wp}
+	= \fq M_\wp/\fq S_\wp
+\]
+From which 
+we see that \eqref{eq:fund} is injective
+if $\fq M_\wp/\fq S_\wp\neq 0$.
+
+
+\begin{lem}
+	The localization $\TT_\wp$
+	is finite over $K\llbracket x\rrbracket$.
+\end{lem}
+\begin{proof}
+	Let $R_\wp$ be the localization at 
+	$\ker(R\times \Lambda'\to \TT
+	\xrightarrow{\lambda}\Lambda)$,
+	which contains $K\llbracket x\rrbracket$
+	as a subring.
+	Thus
+	\[
+	K\llbracket x\rrbracket\hookrightarrow
+	R_\wp \longrightarrow T_\wp
+	\text{ acts on } M_\wp
+	\]
+	In fact, the composition
+	$K\llbracket x\rrbracket\to \TT_\wp$
+	is injective 
+	since  $x\neq 0$ acts nontrivially on $M_\wp$
+	and $\TT_\wp$ is reduced and thus 
+	without nilpotent elements.
+	Now, 
+	that  $M_\wp$ is finite over  $\TT_\wp$
+	implies that  $M_\wp$ is a compact  $\TT_\wp$-module;
+	and moreover 
+	$\dim_K M_\wp/xM_\wp=(M_1\oplus M_2)_K<\infty$.
+	Thus
+	$M_\wp$ is finite over $K\llbracket x\rrbracket$
+	by the topological Nakayama lemma,
+	from which the lemma follows as
+	$\TT_\wp\hookrightarrow 
+	\End_{K\llbracket x\rrbracket}(M_\wp)$.
+\end{proof}
+
+\begin{prop}
+	We have the fundamental exact sequence
+	\begin{equation}
+		0\to M/S\xrightarrow{x}
+		\fq M/\fq S\to \fq M_2/\fq S_2 \to 0
+	\end{equation}
+\end{prop}
+\begin{proof}
+	Let $\TT, \mathbb{M}$ and  $\mathbb{S}$
+	denote  $\TT_\wp, M_\wp$ and $S_\wp$.
+	For each minimal prime $\fq_i\subset\TT$,
+	let $\TT_i$ be the integral closure
+	of  $K\llbracket x\rrbracket$
+	in the finite extension
+	$\textnormal{Frac}(\TT/\fq_i)/K((x))$.
+	Then each $\TT_i$ is a discrete valuation ring and
+\[
+	\TT\hookrightarrow 
+	\prod_{\fq_i:\text{ minimal}}\TT/\fq_i\hookrightarrow
+	\tilde{\TT}\coloneqq\prod_i \TT_i
+\]
+As each $\fq\TT_i$ is a principal ideal,
+we have $\fq\tilde{\TT}\cong \TT$ and 
+\[
+	(\fq \mathbb{M}/\fq \mathbb{S})\otimes_\TT
+	\tilde{\TT}\cong
+	\fq\mathbb{M}\otimes_\TT\tilde{\TT}/
+	\fq\mathbb{S}\otimes_\TT\tilde{\TT}=
+	\mathbb{M}\otimes_\TT\fq\tilde{\TT}/
+	\mathbb{S}\otimes_\TT\fq\tilde{\TT} \cong 
+	\mathbb{M}\otimes_\TT\tilde{\TT}/
+	\mathbb{S}\otimes_\TT\tilde{\TT}\cong
+	(\mathbb{M}/\mathbb{S})\otimes_\TT\tilde{\TT}=
+	K\otimes_{\lambda,\TT}\tilde{\TT}.
+\]
+The last ring is nonzero since 
+$\tilde{\TT}$ is integral over $\TT$
+and the maximal ideal of  $ \tilde{\TT}$ 
+restricts to that of $\TT$.
+\end{proof}
+
+\section{Euler systems}
+
+
+\subsection{Deformation}
+
+Ribet's lemma 
+and cocycles from 
+generically irreducible representations.
+
+\subsection{construction}
+
+
+\begin{equation*}
+\begin{tikzcd}[column sep=tiny]
+& M_{N\ell}/S_{N\ell}\arrow{dd} \arrow[rd,"\sim"]\arrow[rr]
+&& \fq_{N\ell}\otimes M_{N\ell}/S_{N\ell}
+	\arrow[rd,twoheadrightarrow]\arrow[rr]\arrow[dd]
+&& \fq_{N\ell}^{\red}M_{N\ell}/S_{N\ell}\arrow[dd]\arrow[rd]\\
+0 \arrow[crossing over]{rr} 
+&& \Lambda_{N\ell}
+	\arrow[crossing over]{dd} \arrow[crossing over]{rr} 
+&& \fq_{N\ell}M_{N\ell}/\fq_{N\ell}S_{N\ell}
+	\arrow[crossing over]{dd}\arrow[crossing over]{rr} 
+&& \fq_{N\ell}M_{N\ell}^{\ord}/\fq_{N\ell}S^{\ord}_{N\ell}
+	\arrow{dd} \arrow[rr] && 0\\
+& M_{N}/S_{N}\arrow{rr}\arrow[rd,"\sim"]
+&& \fq_{N}\otimes M_{N}/S_{N}
+	\arrow{rr} \arrow[rd,twoheadrightarrow]
+&& \fq_{N}^{\red}M_{N}/S_{N} \arrow[rd]& & & \\
+0 \arrow[crossing over]{rr} 
+&& \Lambda_{N} \arrow[crossing over]{rr} 
+&& \fq_{N}M_{N}/\fq_{N}S_{N}\arrow[crossing over]{rr} 
+&& \fq_{N}M_{N}^{\ord}/\fq_{N}S_{N}^{\ord} \arrow[rr] && 0
+\arrow[from=2-3,to=4-3,crossing over]
+\arrow[from=2-5,to=4-5,crossing over]
+\end{tikzcd}
+\end{equation*}
+
+\[
+\begin{tikzcd}
+0&
+H^1(K,\Lambda_N(\delta)) \arrow[r]\arrow[d,"res_p"]&
+H^1(K,\fq_N\otimes \Lambda_N(\delta)) \arrow[r]&
+H^1(K,\fq_N^{\red}\otimes \Lambda_N(\delta))\\
+&H^1(K_w,\Lambda_N(\delta))
+\end{tikzcd}
+\]
+Here $H^1(K_w,\Lambda_N(\delta))=H_{Iw}^1(\Qp,\oo())$
+is free and crystalline?
+
+Let $x=x_{\red}=x(\sigma_0,\tau_0)$
+for $\sigma_0,\tau_0\in \Gp$
+and  $y(\sigma)=\delta_2^{-1}(\sigma)x(\sigma,\tau_0)$,
+then $res_p(y^{\red})=0$
+and $res_\ell(y)=0$ if  $\ell\nmid Np$.
+
+\section{Previous results}
+
+Let $\chi$ be a character of $\A_{\K}^\times/\K^\times$
+such that $\chi\mid_{\A_\F^\times}=\qch_{\K/\F}$
+is the quadratic character associated to $\K/\F$.
+Put $\chi_\circ=\chi|\cdot|_{\K}^{1/2}$ and $\chi^0=\bar{\chi}_\circ$.
+We assumed the following condition.
+\begin{equation}\label{cond:chi}\tag{$\chi$}
+    \frac{L(\frac{1}{2},\chi)}{\Omega_\infty^{\Sigma}}\not\equiv 0\text{ mod } \fm
+    \text{ and } \chi_\circ
+    \text{ satisfies the conditions of \cite[Theorem A]{Hsieh12}}.
+\end{equation}
+
+Let $\fc$ be the conductor of $\chi$ and $\fs=\fs^c$ be a prime-to-$p\fc$
+idea of $\K$ consists only of split primes.
+Let $\K_{p^n\fs}$ be the ray class group of conductor $p^n\fs$ over $\K$,
+$\K_{p^\infty\fs}=\bigcup_{n}\K_{p^n\fs}$,
+and $\fG_{\fs}^-$ be the Galois group of the maximal pro-$p$ anticyclotomic
+subextension in $\K_{p^\infty\fs}$.
+We denote by $\fX_{\fs}^-$
+the set of characters of $\fG_{\fs}^-$
+which are $p$-adic avatars of 
+algebraic Hecke characters $\eta$ such that 
+\begin{enumerate}
+    \item $\eta$ has infinity type $k\geq 0$.
+    \item $\eta$ is ramified only at places dividing $p\fs$.
+    \item the prime-to-$p$ part of the conductor of $\tilde{\eta}$ divides $\fs$.
+\end{enumerate}
+We can construct a Hida family $\euF^\circ_{\fs}\in \M(K(\fn),\Lambda_{\fs}^-)$
+of level $\fn=\fc\fs$ over $\Lambda_{\fs}^-=R\llbracket \fG_{\fs}^-\rrbracket$ for 
+a sufficiently large $p$-adic ring $R$,
+which interpolates the $p$-adic modular form
+associated to the pull-back theta lifts of $\eta$ when $\eta\in \fX_{\fs}^-$.
+
+\begin{thm}\label{thm:intro1}
+    Under the assumption \eqref{cond:chi}
+    and suppose $p$ is ``large enough'' with respect to $\K$ and $\fc$,
+    the Hida family $\euF^\circ_{\fs}$
+    can be shown to be primitive inside $\M(K(\fn),\Lambda_{\fs}^-)$.
+\end{thm}
+
+Therefore
+\begin{align*}
+    U_w\theta^\square_{\Phi'}(\eta,\bnu)(g)&=
+    (\chi^{-1}|\cdot|_\K^{-1/2})_w(\varpi_w)
+    \theta^\square_{\Phi'}(\eta,\bnu)((\varpi_w,\varpi_w^{-1})g)
+    =(\chi_\circ^{-1}\tilde{\eta})_w(\varpi_w)
+    \theta^\square_{\Phi'}(\eta,\bnu)(g)\\
+    T_w\theta^\square_{\Phi'}(\eta,\bnu)(g)&=
+    (\chi_\circ^{-1}\tilde{\eta})_w(\varpi_w)
+    \theta^\square_{\Phi'}(\eta,\bnu)(g)
+\end{align*}
+Since $\chi_\circ$ and $\eta$ has infinity type $\Sigma^c$ and $k$ respecitvely,
+\begin{align}
+    U_wf^\circ(\eta)&=
+    \wt{k}(\varpi_w,1)
+    (\chi_\circ^{-1}\tilde{\eta})_w(\varpi_w)f^\circ(\eta)=
+    \hat{\chi}_\circ^{-1}(\varpi_w)\tilde{\hat{\eta}}(\varpi_w)f^\circ(\eta)\\
+    T_wf^\circ(\eta)&=
+    (q_w\chi_\circ(\varpi_w)
+    +\chi_\circ^{-1}\tilde{\eta}(\varpi_w))
+    f^\circ(\eta)
+\end{align}
+has a $p$-unit as an eigenvalue when $w\in \Sigma_p$.
+Note that the formula also holds when $w\mid \fs$.
+
+
+where $\rho_{\wt{k}}(g_\infty)=\rho^{\wt{k}}(g_\infty^{-\intercal})
+\coloneqq \rho^{\bwt{k}}(g_\infty^{-\intercal},\id_2)$
+for $\wt{k}\coloneqq (k,0)$
+
+
+
+\begin{thm}\label{thm:intro2}
+    Put $\mathcal{L}_\fn=\B_\fn(\euF^\circ_{\fs},U_\fs^{-1}\euF^\circ_{\fs})
+    \in \Lambda_{\fs}^-$
+    where $U_\fs$ is some Hecke action defined above $\fs$. Then
+    \begin{equation*}
+        \frac{1}{\Omega_p^{2k+4}}
+        \int_{\fG_{\fn}}\hat{\eta}\,\mathcal{L}_\fn=
+    C(\eta,\chi,\K)
+    \frac{(2\pi i)^{k}\Gamma(k+2)L(1,\chi^{-2}\tilde{\eta})}{\Omega_\infty^{k+2\Sigma}}
+    \prod_{w\mid p\fs}
+    \varepsilon(1,(\chi^{2}\tilde{\eta}^{-1})_w,\psi_w)
+    \frac{1-(\chi^{-2}\tilde{\eta})^{-1}_w(\varpi_v)}
+    {1-(\chi^{-2}\tilde{\eta})_w(\varpi_v)q_v^{-1}}
+    \end{equation*}
+    up to powers of $2$
+    when $\hat{\eta}\in \fX^+_{\fs}$.
+    Here $C(\eta,\chi,\K)$ is a scalar depending on $\eta,\chi$ and $\K$
+    which is a $p$-unit when \eqref{cond:chi} is satisfied 
+    and $p$ is ``large enough''
+    with respect to $\K$ and $\fc$. 
+\end{thm}
 
 
 \bibliographystyle{amsalpha}
