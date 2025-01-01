@@ -77,7 +77,7 @@
 \newcommand{\laMod}{\textnormal{Mod}^{\textnormal{l.adm}}}
 \newcommand{\lfMod}{\textnormal{Mod}^{\textnormal{lfin}}}
 \newcommand{\fgMod}{\textnormal{Mod}^{\textnormal{fg.aug}}}
-\newcommand{\Ban}{\textnormal{Ban}^{\textnormal{adm.fl}}}
+\newcommand{\Ban}{\textnormal{Ban}^{\textnormal{adm}}}
 \DeclareMathOperator{\Mod}{\textnormal{Mod}}
 \DeclareMathOperator{\Rep}{Rep}
 \newcommand{\B}{\mathfrak B} 
@@ -1218,8 +1218,6 @@ $S^{P-\ord}(U^p,\oo)$ is dense in $S(U^p)$.
 
 
 \begin{prop}\label{prop:density}
-
-
 The subspace $S^{\alg}(U^p)_E$ 
 of $Q_0$-algebraic vectors, defined as
 \[
@@ -1366,7 +1364,7 @@ By \cite[Lem 2.14]{ger},
 the Hecke algebras
 $\TT^P_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)$
 are finite flat reduced $\oo$-algebras.
-\begin{defn}
+\begin{defn}\label{def:rep_prime}
 	Let $\fp\subset \TT^P_{\wt{k}}(U^p\Iw^P(p^{b,b}),\oo)$
 	be a height-one prime ideal.
 	By abuse of notation, 
@@ -1670,7 +1668,7 @@ with the center isomorphic to  $R$.
 
 \subsection{Generically reducible block}
 
-Only in this subsection,
+In the next two subsections,
 we let $G$ and  $K$
 denote  $\GL_2(\Qp)$ and $\GL_2(\Zp)$
 respecitvely.
@@ -1749,7 +1747,7 @@ denote the functor of $B$-ordinary
 parts as recalled in \eqref{def:OrdP}.
 The adjunction formula
 in \cite[Thm 4.4.6]{emeI} states that
-\begin{equation}\label{eq:adj}
+\begin{equation}\label{eq:adjunct}
 	\Hom_{\oo[G]}(\Ind_{\bar{B}}^GU,V)
 	\xrightarrow{\Ord}
 	\Hom_{\oo[T]}(\Ord(\Ind_{\bar{B}}^GU),\Ord V)
@@ -1772,7 +1770,7 @@ in $\lfMod_{T,\zeta}(\oo)$.
 Furthermore, the morphism 
 $\iota_1\colon \Ind_{\bar{B}}^G(\tilde{J}_{\chi^s})\to
 \tilde{J}_1$
-induced through the adjunction formula \eqref{eq:adj}
+induced through the adjunction formula \eqref{eq:adjunct}
 by a fixed isomorphism
 $\tilde{J}_{\chi^s}\to \Ord_B(\tilde{J}_1)$
 is injective.
@@ -1802,7 +1800,7 @@ $\iota_i\colon
 \Ind_{\bar{B}}^G(\tilde{J}_{\chi_i})\hookrightarrow 
 \tilde{J}_i$ 
 extend to the exact sequences
-\begin{equation}\label{eq:exact}
+\begin{equation}\label{eq:exact_PPM}
 	0\to \tilde{P}_{2}\xrightarrow{\phi_{12}} 
 	\tilde{P}_{1}\xrightarrow{p_1} \tilde{M}_1\to 0 
 	\text{ and }
@@ -1835,7 +1833,7 @@ with determinant $\zeta\varepsilon$.
 It then follows from \cite[Lem 8.10]{pask} that 
 taking the Colmez functor 
 $\V$ induces the isomorphisms below.
-\begin{equation}\label{eq:end_def}
+\begin{equation}\label{eq:end_deform}
 \begin{split}
 	\End_{\fC_{G}(\oo)}(\tilde{P_2})\cong R_{12}\cong R,\quad
 	\Hom_{\fC_G(\oo)}(\tilde{P}_2, \tilde{P}_1)\cong R\Phi_{12}\\
@@ -1863,11 +1861,11 @@ $ \oo\llbracket x,y\rrbracket$
 of two variables
 by \cite[Prop 3.34]{pask}.
 
-\begin{lem}\label{lem:ker_ord}
+\begin{lem}\label{lem:ker_red}
 	The kernel of the following 
 	surjective homomorphism 
 	is the reducibility ideal $\tau\subset R$.
-	\begin{equation}\label{eq:end_surj}
+	\begin{equation}
 	R\cong 
 	\End_{\fC_G(\oo)}(\tilde{P}_i)
 	\overset{p_i}{\twoheadrightarrow}
@@ -1894,7 +1892,7 @@ Let
 	0  \arrow[l] 
 \end{tikzcd}
 \]
-be the exact sequences in \eqref{eq:exact}.
+be the exact sequences in \eqref{eq:exact_PPM}.
 Take $\Hom(\tilde{P}_j,\cdot)$.
 The adjunction formula implies that
 $\Hom_{\fC_G(\oo)}(\tilde{P}_j,\tilde{M}_i)\cong
@@ -1912,7 +1910,7 @@ Consequently there are isomorphisms
 	\End_{\fC_G(\oo)}(\tilde{P}_1)\cong
 	\Hom_{\fC_G(\oo)}(\tilde{P}_1, \tilde{P}_2)
 \]
-Combined with the isomorphisms in \eqref{eq:end_def},
+Combined with the isomorphisms in \eqref{eq:end_deform},
 we may assume that $\V(\phi_{ij})$ agree with 
 $\Phi_{ij}$ in \eqref{eq:Phi_ij}.
 Thus the image of 
@@ -1923,9 +1921,106 @@ and the lemma follows
 since  $R$ is formally smooth of relative dimension  $3$.
 \end{proof}
 
+\subsection{Univeral unitary completion}
 
+Let $\Ban_{G,\zeta}(E)$
+be the category of admissible 
+$G$-representation with central character $\zeta$
+on $E$-Banach spaces
+as defined in \cite{pask}
+and  $\B$ be the block defined earlier.
+Identify the center of $\C_G(\oo)^\B$ with  $R$,
+then  $R[\frac{1}{p}]$ acts on objects of $\Ban_{G,\zeta}(E)^{\B}$.
+If $\fn\subset R[\frac{1}{p}]$ is a maximal ideal,
+let $\Irr(\fn)$ be the set of
+irreducible representation in  $\Ban_{G,\zeta}(E)^{\B}$
+on which the action of $R[\frac{1}{p}]$ 
+factors through $\fn$.
 
-\subsection{Local-global compatibility}
+On the other hand,
+let $T\colon \Gp\to R$ 
+and $T_\fn\colon \Gp\to R[\frac{1}{p}]/\fn$ 
+denote the universal deformation and 
+the reduction.
+Enlarge $E$ if necessary,
+we assume $R[\frac{1}{p}]/\fn\cong E$.
+Let $r_{\fn}\colon \Gp\to \GL_2(E)$
+be the semisimple Galoi representation
+such that $\mtr r_{\fn}=T_{\fn}$.
+When $r_\fn$ is crystalline,
+the associated Weil-Deligne representation,
+defined by having $\Fr$ acts as $\varphi$
+on  $D(r_\fn)\coloneqq (r_\fn\otimes_{\Qp}B_{\cris})^{\Gp}$,
+is the sum of 
+unramified characters $\chi_1$ and  $\chi_2$.
+We then define the unramified
+$\GL_2(\Qp)$ representation
+$\pi_\fn$
+as the un-normalized induction
+$\Ind_B^G(\chi_1\otimes\chi_2|\cdot|^{-1})$
+(the so-called Hecke correspondence in \cite{pan}).
+
+\begin{rem}
+	The representation 
+	$\Ind_B^G(\chi_1\otimes\chi_2|\cdot|^{-1})$
+	is irreducible under the assumption \eqref{cond:generic}.
+	For otherwise
+	$T_\fn$ would be of the form
+	$\eta+\eta\epsilon$ for some character  $\eta$.
+\end{rem}
+
+\begin{lem}\label{lem:uni_completion}
+	When $r_\fn$ is crystalline 
+	and with 
+	Hodge-Tate weights $\{-l,-l-k\}$,
+	the universal unitary completion of 
+	$\pi_\fn\otimes \pi_{-l,1-l-k}^*(E)$ belongs to 
+	$\Irr(\fn)$.
+\end{lem}
+\begin{proof}
+	When  $r_\fn$ is irreducible,
+	this follows from \cite[Thm. 1.3]{CDP}
+	since 
+	$\pi_{-l,1-l-k}^*$,
+	which is the algebraic representation of $\GL_2$
+	of highest weight  $(l+k-1,l)$,
+	is isomorphic to 
+	$W_{l,k}\coloneqq \Sym^{k-1}\otimes\det^l$.
+	In fact the universal unitary completion
+	is the only elements in $\Irr(\fn)$
+	in this case by \cite[Cor 8.14]{pask}.
+	
+	When  $r_\fn$ is reducible
+	and $T_\fn=\psi_1+\psi_2$
+	for crystalline characters
+	$\psi_i\colon \Gp\to E^\times$,
+	say of Hodge-Tate weights
+	$1-l-k$ and  $-l$ respectively,
+	then $\pi=\Ind_B^G(\chi_1\otimes\chi_2|\cdot|^{-1})$
+	for the charaters
+	\[
+	\chi_1=\psi_1(\epsilon|\cdot|^{-1})^{-l-k},\quad
+	\chi_2=\psi_2(\epsilon|\cdot|^{-1})^{-l}	
+	\]
+	By \cite[Thm 12.3]{pask} the universal unitary completion
+	of $\pi\otimes W_{l,k}$
+	is then $\Ind_B^G(\psi)_{cont}$ for
+	\[
+		\psi( (\begin{smallmatrix}
+			a&b\\&d
+		\end{smallmatrix}))
+		=\chi_2(a)a^l\chi_1(d)|d|^{-1}d^{l+k-1}
+		=\psi_2(a)\psi_1\epsilon^{-1}(d)
+	\]
+	since $\val_p(\chi_2(p))=-l$ and $\varepsilon(a)=a|a|$.
+	And indeed by \cite[Cor 8.15]{pask} we have
+	\[
+	\Irr(\fn)=\{(\Ind_P^G\psi_1\otimes\psi_2\varepsilon^{-1})_{cont},
+	(\Ind_P^G\psi_2\otimes\psi_1\varepsilon^{-1})_{cont}\}.
+	\]
+\end{proof}
+
+\subsection{Local-global compatibility}\label{sub:uni_completion}
 
 We now return to the setting in 
 the beginning of the section.
@@ -1954,56 +2049,156 @@ be the block of $\GL_2(\Qp)$
 representations
 in $\lfMod_{\GL_2(\Qp),\zeta}(\oo)$
 as introduced in Definition \ref{def:block}.
-On the other hand
-we let $R_{\fm}=R$
-denote the universal pseudo-deformation 
-of $\chi_1+\chi_2$,
-and $R_{\fm}^{\epsilon\zeta}$
-be the variant of fixed determinant $\epsilon\zeta$.
+
+To apply the results in the previous subsection,
+we follow Urban and make the following twist.
+Let $\Psi\colon \Gp\to R$ be 
+the universal pseudo-deformation of $\chi_1+\chi_2$.
+Since $\det\Psi\equiv \epsilon\zeta$ modulo the 
+maximal ideal and the residue characteristic is odd,
+the character
+\[
+	\xi=\epsilon\zeta(\det \Psi^u)^{-1}\colon
+	\Gp\to 1+\fm_R
+\]
+admits a character $\xi^{1/2}$ which is the square root of $\xi$.
+Then  $\Psi'\coloneqq \xi^{1/2}\Psi$ has determinant $\epsilon\zeta$
+and induces $R^{\epsilon\zeta}\to R$,
+where $R^{\epsilon\zeta}$ is the universal 
+pseudo-deformation with fixed determinant $\epsilon\zeta$.
+
 By the universal property,
-$R_{\fm}$ admits homomorphism to 
-the Noetherian local $\oo$-algebras
-$\TT^P(U^p,\Iw^P(p^{b,b}),\oo)_{\fm}$
-through $\epsilon\Psi_{\fm}$.
+the pseudo-representations
+$\epsilon\Psi_{\fm}$
+induces homomorphisms of $R$ 
+to the Noetherian local $\oo$-algebras
+$\TT^P(U^p,\Iw^P(p^{b,b}),\oo)_{\fm}$.
 Let $R_{\fm}\to \TT(U^p,\oo)_{\fm}$
 be the homomorphism
-combing from the inverse limit.
+coming from the inverse limit.
 Note that we cannot define the homomorphism
 from the universal property
 since we haven't shown that
 $\TT(U^p,\oo)_{\fm}$ is Noetherian.
-
+Let $\xi_\fm^{1/2}$ be the  composition 
+of $\xi^{1/2}$ with the homomorphism,
+so that 
+\[
+	\xi_\fm\coloneqq(\xi_\fm^{1/2})^2=
+	\epsilon\zeta(\det \epsilon\Psi_\fm)^{-1}
+	=\zeta(\epsilon\det \Psi_\fm)^{-1}\colon
+	\Gp\to 1+\fm\subset \TT(U^p,\oo)_\fm
+\]
+Note that the action of the center $\Qp^\times\subset \GL_2(\Qp)\subset Q$
+on  $\Ord_P(S(U^p,E/\oo))_{\fm}$ factors through  $\TT(U^p,\oo)_\fm$,
+and is precisely given by
+\[
+	\epsilon\det\Psi_\fm\circ \Art\colon\quad
+	p\mapsto U_w^{(2)},\quad
+	x\mapsto h_U(x)\,x\in\Zp^\times
+\]
 
 \begin{defn}
+	Recall that $Q$ is the product 
+	of  $\GL_2(\Qp)$ and the center  $Z_Q$.
+	We let
+	$\Ord_P(S(U^p,E/\oo))_{\fm}'\coloneqq
+	\Ord_P(S(U^p,E/\oo))_{\fm}(\xi_\fm^{1/2})$
+	denote the $\GL_2(\Qp)\times Z_Q$-representation
+	with the same $Z_Q$-action
+	and the $\GL_2(\Qp)$-action 
+	twisted by $\det\circ \xi_\fm^{1/2}$.
+	We also let $M(U^p)_\fm', S(U^p)_\fm'$
+	denote the twisted variant.
+
+	We note that 
+	$\Ord_P(S(U^p,E/\oo))_{\fm}'$
+	is still admissible as  $\GL_2(\Qp)\times Z_Q$-representation.
+	The restriction of which to $\GL_2(\Qp)$
+	is therefore locally admissible,
+	and thus by \cite[Thm 2.3.8]{emeI}
 	\[
-		\det \Psi_\fm\circ \Art\colon \Qp^\times\to
-		\oo\llbracket F,T\rrbracket\quad
-		p\mapsto F=U_w^{(2)},
-		x\mapsto x^{-1}\langle u\rangle
+		\Ord_P(S(U^p,E/\oo))_{\fm}'\in \lfMod_{\GL_2(\Qp),\zeta}(\oo).
 	\]
-	Let $\zeta$ be a crystalline character of $\Gp$
-	such that  $\det\Psi_\fm\equiv \zeta\epsilon^{-1}$ 
-	modulo the maximal ideal of
-	$\oo\llbracket F,T\rrbracket$
-	and  define 
-	\[
-		\langle \xi_\fm\rangle \coloneqq
-		\zeta\epsilon\cdot 
-		(\det\Psi_\fm)^{-1}\colon 
-		\Gp\to \oo\llbracket F,T\rrbracket^{\times}
-	\]
-	Then $R_{\fm}\cong \oo\llbracket F,T\rrbracket \hat{\otimes}
-	R_{\fm}^{\zeta\epsilon}$.
-	We let $\Ord_P(S(U^p,E/\oo))'_{\fm}$ 
-	be the localization 
-	$\Ord_P(S(U^p,E/\oo))_{\fm}(\langle \xi_\fm\rangle^{})$
-	with twisted $\GL_2(\Qp)$ action,
-	which has central character $\zeta\circ \Art$.
 \end{defn}
 
 \begin{prop}
-	$M(U^p)_{\fm}'\in \fC_\zeta(\oo)^{\B_{\fm}}$
+	Let $\fC(\oo)$ be the dual category of 
+	$\lfMod_{\GL_2(\Qp),\zeta}(\oo)$, then 
+	$M(U^p)_{\fm}'\in \fC(\oo)^{\B}$
+	and the $R^{\epsilon\zeta}$-action on which
+	as the center of the category
+	factors through $\TT(U^p,\oo)_\fm$.
 \end{prop}
+
+\begin{proof}
+	For $\fp\subset \TT_{\wt{k}}^P(U^p\Iw^P(p^{0,1}),E)_{\fm}$,
+	the associated representation $r_\pi$ defined 
+	in Definition \ref{def:rep_prime}
+	is crystalline at $D_w\cong \Gp$.
+	Let $\pi_{\fp}$ denote the unramified
+	$\GL_2(\Qp)$-representation 
+	corresponding to the Weil-Deligne representation
+	as in \eqref{eq:Gal_hecke_at_p}.
+	By Proposition \ref{prop:wt_space} there exists
+	a homomorphism between  $\GL_2(\Qp)$-representations
+	\begin{equation}\label{eq:hom_wt}
+		\pi_\fp\otimes \pi_{\wt{k}}^*(E)\to S(U^p)_\fm\otimes_{\oo}\E
+	\end{equation}
+	Use the same argument as \cite[Thm 3.5.5]{pan}
+	and the density result in Proposition \ref{prop:density},
+	it suffices to show that
+	the universal unitary completion of
+	the twisted $\GL_2(\Qp)$-representation
+	of $\pi_{\fp}\otimes\pi_{\wt{k}}^*(E)$
+	belongs to $\Irr(\fn)$.
+	Here $\fn$ is the maximal ideal 
+	of  $R^{\epsilon\zeta}[\frac{1}{p}]$ 
+	which is the pull-back of $\fp$
+	through the homomorphism induced by
+	the pseudo-representation  $\xi_{\fm}^{1/2}\epsilon\Psi_\fm$.
+
+	Recall that $r_\fp$
+	has Hodge-Tate weights  $k_1+1,k_2$,
+	where we write 
+	$k_1=k_{\sigma,1}$ and $k_2=k_{\sigma,2}$
+	for the unique $\sigma\in I_w$.
+	Define $\xi_\fp^{1/2}=\lambda_\fp\circ \xi_\fm^{1/2}$
+	and $\xi_\fp=(\xi_fp^{1/2})^2=\zeta(\epsilon\det r_\fp)^{-1}$.
+	Suppose $\zeta$ has Hodge-Tate weight  $w_0$,
+	then  $w_0-(k_1+k_2)$ is even as  $\xi_\fp\equiv \id$.
+	Therefore  $\xi_{\fp}^{1/2}$
+	is also crystalline,
+	with Hodge-Tate weight $w_{\fp}\coloneqq \frac{1}{2}(w_0-k_1-k_2)$.
+	Let $T\colon \Gp\to R^{\epsilon\zeta}$ 
+	and $T_\fn\colon \Gp\to E$ be as last subsection.
+	By definition  $T_\fn$ is the trace of the
+	representation
+	$\xi_{\fp}^{1/2}\epsilon r_{\fp}$,
+	which has Hodge-Tate weights  $\{k_1',k_2'-1\}$ 
+	for $k_1'=k_1+w_\fp, k_2'=k_2+w_\fp$.
+
+	Since $\pi_\fp$ is also 
+	the representation associated to  
+	$D(\epsilon r_\fp)$ as in last subsection,
+	the representation
+	associated to  $D(\xi_\fp^{1/2}\epsilon r_\fp)$ is
+	$\pi_\fp(\xi_\fp^{1/2}(\epsilon|\cdot|^{-1})^{w_\fp})$.
+	Now, 
+	twisting \eqref{eq:hom_wt} by $\xi_\fm^{1/2}$ gives
+	\[
+		(\pi_{\fp}\otimes \pi_{\wt{k}}^*(E))(\xi_\fp^{1/2})=
+		\pi_\fp(\xi_\fp^{1/2}(\epsilon|\cdot|^{-1})^{w_\fp})
+		\otimes (\pi_{\wt{k}}(\epsilon|\cdot|^{-1})^{w_{\fp}})^* \to 
+		S(U^p)_\fm'\otimes_{\oo}E
+	\]
+	As $(\pi_{\wt{k}}(\epsilon|\cdot|^{-1})^{w_{\fp}})^*$
+	is isomorphic to $\pi_{k_1,k_2}^*(E)$,
+	the claim follows from Lemma \ref{lem:uni_completion}.
+\end{proof}
+
+\subsection{Reducible part of completed homology}
+
 \begin{cor}
 	$\TT(U^p,\oo)$ is finite over
 	 $R_\fm \hat{\otimes}_{\oo} \Lambda^{w'}$,
@@ -2013,225 +2208,6 @@ $\TT(U^p,\oo)_{\fm}$ is Noetherian.
 \end{cor}
 
 
-Let $\fp\subset \TT_\fm$ be a prime ideal such that 
-\[
-\begin{tikzcd}
-	\rho_\fp\colon G_\K\arrow[dr]\arrow[rr]
-	&& \TT_\fm[\frac{1}{p}]/\fp=E\\
-	& \TT_{\wt{k}}(U^pU_p,E)\arrow[ur]
-\end{tikzcd}
-\]
-We have that $\rho_\fp$ is crystalline, and 
-the associated Weil-Deligne representation 
-is $\Fr_w$ acting as  $\varphi$ on 
-\[
-	D=(\rho_\fp\otimes_{\Qp}B_{\cris})^{\Gp}=
-	\Rec(\pi_\fp|\cdot|^{-1/2})
-\]
-where $\pi_\fp\chi_1\boxtimes\chi_2\sim
-\nInd_B^G(\chi_1\otimes\chi_2)$ and
- \begin{enumerate}[label=(\alph*)]
-	\item $\det(X-\Fr\vert_{\rho_\fp})=
-		\det(X-\varphi\vert_D)=
-		(X-p^{1/2}\chi_1(p))(X-p^{1/2}\chi_2(p))$
-	\item The Hodge-Tate weights are $k_1+1, k_2$
-	\item  $\psi_\fp\coloneqq \det \rho_\fp$ 
-		has Hodge-Tate weight $k_1+k_2+1$.
-\end{enumerate}
-For example,
-if $\pi_\fp$ is ordinary
-with  $U_w^{(1)}$ and $U_w^{(2)}$ acting as
-$u^{(1)}$ and $u^{(2)}$ respectively, then 
-$p^{1/2}\chi_1(p)=u^{(1)}p^{k_2}$ and
-$p^{1/2}\chi_2(p)=\frac{u^{(1)}}{u^{(1)}}p^{k_1+1}$, and
-\[
-	\rho_{\fp}\vert_{\Gp}\sim
-	\begin{pmatrix}
-		\psi_1&*\\&\epsilon^{-1}\psi_2
-	\end{pmatrix}
-	\quad
-	\begin{aligned}
-		\psi_1\circ \Art\colon 
-		x\in \Zp^\times\mapsto x^{-k_2}\,
-		p\mapsto u^{(1)}\\
-		\psi_2\circ \Art\colon 
-		x\in \Zp^\times\mapsto x^{-k_1}\,
-		p\mapsto \frac{u^{(2)}}{u^{(1)}}\\
-	\end{aligned}
-\]
-\begin{rem}
-	If we identify the cyclotomic character
-	$\epsilon$ with $\epsilon\circ Art$,
-	then  $\epsilon(x)=x\cdot |x|$.
-\end{rem}
-
-\begin{prop}
-	If $\rho$ is crystalline and 
-	$\det \rho=\zeta\epsilon^{-1}$,
-	with $D(\rho)=\Rec(\pi|\cdot|^{-1/2})$.
-	Let $\rho'=\rho(\epsilon)$
-	with Hodge-Tate weights
-	$\{-a,-a-b\}$, then 
-	 \[
-		\pi=\Ind(\psi_1'\otimes\psi_2'|\cdot|^{-1})
-		\quad D(\rho')=\psi_1'+\psi_2'
-	\]
-	With $\pi\otimes W_{-a,1-a-b}^*\to S_\zeta(U^p)_E$,
-	the unitary completion of which 
-	lies in $\Irr_\fn$, where  $\fn$ 
-	corresponds to the prime of $R^{\zeta\epsilon}$
-	corresponding to $\rho'$.
-\end{prop}
-
-For example, suppose 
-$\rho=\psi_1+\psi_2$ is reducible,
-of Hodge-Tate weights 
-$w$ and  $w+k-1$ respectively. Then
-\[
-	D(\rho')=\psi_1'+\psi_2'=
-	\psi_1(\epsilon|\cdot|^{-1})^w|\cdot|+
-	\psi_2(\epsilon|\cdot|^{-1})^{w+k-1}|\cdot|
-	\Longrightarrow
-	\pi=\Ind
-	( \psi_1\epsilon^w|\cdot|^{1-w}\otimes
-	\psi_2\epsilon^{w+k-1}|\cdot|^{1-w-k})
-\]
-And as the Hodge-Tate weights of $\rho'$
-are  $\{w+k-2,w-1\}$,
-we want to consider the unitary completion 
-of  $\pi\otimes W_{w+k-2,w}^*$,
-which is $\Ind(\psi_2'\otimes\psi_1'\epsilon^{-1})_{\cont}$.
-Note that
-\[
-	\omega_\pi
-	=(\psi_1\psi_2\epsilon)
-	(\epsilon|\cdot|^{-1})^{2w+k-2}=
-	=\zeta (\epsilon|\cdot|^{-1})^{2w+k-2}=
-	\psi_1\psi_2\epsilon^{2w+k-1}
-	|\cdot|^{2-w-k}
-	\Longrightarrow
-	\omega_\pi
-	(\epsilon|\cdot|^{-1})^{-(2w+k-2)}=\zeta
-\]
-\[
-	\WD(\rho)=\psi_1\varepsilon^w||^{-w}+
-	\psi_2\varepsilon^{w+k-1}||^{1-k-w}
-\]
-Then $\pi_v$ is isomorphic to the un-normalized induction
-$\Ind(\mu_1\otimes\mu_2||^{-1})_{\sm}$, where
-\begin{align*}
-	\mu_1&=\psi_1\varepsilon^{w}||^{1-w} &
-	\val_p(\mu_1(p))&=w-1=(w+k-2)-(k-1)\\
-	\mu_2&=\psi_2\varepsilon^{w+k-1}||^{2-k-w} &
-	\val_p(\mu_2(p))&=w+k-2
-\end{align*}
-Since $(\Sym^{k-2}\otimes\det{}^w)^*\cong \Sym^{(k-1)-1}\otimes\det{}^{2-k-w}$
-and $\varepsilon(x)=x|x|$,
-by \cite[Thm 12.3]{pask}, 
-the universal unitary completion
-of $\pi_v\otimes(\Sym^{k-2}\otimes\det{}^w)^*$
-is isomorphic to $\Ind_B^G(\psi)_{\cont}$, where
-\[
-	\psi(\smat{a&*\\&d})=\mu_2(a)a^{2-k-w}\mu_1(d)|d|^{-1}d^{(k-1)+(2-k-w)-1}
-	=\psi_2\varepsilon(a)\psi_1(d)
-\]
-Note that indeed 
-$\Ind(\psi_2\varepsilon\otimes\psi_1)_{cont}=
-\Ind((\psi_2\varepsilon)\otimes(\psi_1\varepsilon)\varepsilon^{-1})$.
-
-
-\begin{prop}
-	Statement on compatibility
-\end{prop}
-
-Fix $\zeta\colon \Gp\to E^\times$
-crystalline of Hodge-Tate weight  $w_0$
-such that  $\zeta\epsilon^{-1}=\psi_\fp$,
-then there exists $\xi_\fp$
-crystalline of Hodge-Tate weight  
-$w_\fp=\frac{w_0-(k_1+k_2)}{2}$
-such that $\zeta\epsilon^{-1}\psi_\fp^{-1}=\xi_\fp^{2}$.
-
-Starting with $D(\rho_\fp)=\psi_1+\psi_2$
-with Hodge-Tate weights  $k_1+1,k_2$, 
-then  $\rho_\fp'=\rho_\fp(\epsilon\xi_\fp)$
-has  $\det\rho_\fp'=\zeta\epsilon$
-and of Hodge-Tate weights
- \[
-	k_1'=\frac{k_1+w_0-k_2}{2},
-	k_2'-1=\frac{k_2+w_0-k_1}{2}-1
-\]
-Let $\rho_\fp'\equiv \chi_1+\chi_2$
-and  $\pi_1=\Ind(\chi_1\otimes\chi_2\omega^{-1})$
-and $\pi_2=\Ind(\chi_2\otimes\chi_1\omega^{-1})$,
-the block we consider is  $\B=\{\pi_1,\pi_2\}$.
-
-We have  $\pi_\fp\otimes W_{\wt{k}}^*\to S(U^p)_{E,\fm}$,
-after tensor we get 
-$\pi_\fp\otimes W_{\wt{k}}^*(\xi_\fp)\to S(U^p)'_{E,\fm}$
-with 
-\[
-	\pi_\fp\otimes W_{\wt{k}}^*(\xi_\fp)=
-	\pi_\fp(\xi_\fp(\epsilon|\cdot|^{-1})^{w_\fp})
-	\otimes
-	(W_{\wt{k}}(\epsilon|\cdot|^{-1})^{w_{\fp}})^*
-\]
-which are $W_{\wt{k}'}^*$ 
-and associated to 
-$D(\rho_\fp')=
-D(\rho_\fp\epsilon)(\xi_\fp(\epsilon|\cdot|^{-1})^{w_\fp})$
-respectively.
-
-
-
-\subsection{unitary completion}
-
-Recall that $R$ is the universal deformation ring
-of the pseudo-representation
-$\chi_1+\chi_2$, with fixed determinant  $\zeta\varepsilon$;
-and that  $R$
-is also isomorphic to the center
-of the category  $\fC_G(\oo)^\B$,
-for  $\B=\{\pi_1,\pi_2\}$ 
-introduced in the previous subsections.
-
-Let $\fn$ be a maximal ideal of  $R[\frac{1}{p}]$
-with residue field  $L$ and 
-$T_\fn\colon \Gp\to L$ 
-be the corresponding pseudo-representation.
-Let  $\Irr(\fn)$
-be the set of irreducible objects in  $\Ban_{G,\zeta}(L)^\B_{\fn}$.
-
-By \cite[Cor 8.15]{pask}, 
-if $T_\fn=\psi_1+\psi_2$,
-where  $\psi_i\colon \Gp\to L^\times$
-are continuous homomorphisms, then  
-\begin{equation}\label{eq:comple1}
-	\Irr(\fn)=\{(\Ind_P^G\psi_1\otimes\psi_2\varepsilon^{-1})_{cont},
-	(\Ind_P^G\psi_2\otimes\psi_1\varepsilon^{-1})_{cont}\}
-\end{equation}
-
-And by \cite[Cor 8.14]{pask}, 
-if $T_\fn$ is irreducible over the residue field $L$, 
-then $\Irr(\fn)=\{\Pi\}$ contains only one irreducible object,
-which satisfies that $\mtr\mathbf{V}(\Pi)=T_\fn$.
-Moreover, by \cite[Thm. 1.3]{CDP},
-when $\mathbf{V}(\Pi)$ is crystalline with Hodge-Tate weights $-a,-a-b$,
-and $\pi$ is the smooth admissible irreducible
-$\GL_2(\Qp)$-representation
-corresponding to the Weil-Deligne representation
-associated to  $D_{\cris}(\mathbf{V}(\Pi)\vert_{\Gp})$
-under the Hecke correspondence
-(if the Weil-Deligne representation is $\psi_1+\psi_2$,
-then $\pi$ is isomorphic to 
-the (un-normalized) induction $\Ind_B^G(\psi_1\otimes\psi_2||^{-1})$,
-then $\Pi$ is the universal unitary completion
-of  $\pi\otimes(\Sym^{b-1}\otimes \det^a)$
-
-
-
-
-\subsection{Reducible part of completed homology}
 
 In this subsection 
 let $N\in\laMod_{G,\zeta}(\oo)$ be an object
@@ -2270,7 +2246,7 @@ and exact sequences
 Denote $\Ext^i_{\laMod_{G,\zeta}(\oo)}$
 by $\Ext^i_G$ for short 
 and apply which
-to the exact sequences in \eqref{eq:exact} gives
+to the exact sequences in \eqref{eq:exact_PPM} gives
 \begin{equation*}
     \begin{tikzcd}[row sep=2ex]
         \Ext^{i-1}_{G}(\pi, N)\arrow[r] &
@@ -2318,10 +2294,10 @@ in the  resolution \eqref{eq:resolution},
 which can be represented by the matrix
 $A=\smat{A_{11} & A_{12}\Phi_{12}\\A_{21}\Phi_{21} & A_{22}}$,
 where $A_{ij}\in M_r(R)$,
-through the isomorphisms in \eqref{eq:end_def}.
+through the isomorphisms in \eqref{eq:end_deform}.
 Denote by $\bar{A}_{ij}\in M_r(R^{\red})$
 the reduction of the matrices modulo $\tau$.
-Lemma \ref{lem:ker_ord} shows that 
+Lemma \ref{lem:ker_red} shows that 
 the resolution induces the right exact sequence
 \begin{equation}\label{eq:exact_ord}
 	\tilde{P}_{\chi_2^\vee}^r\oplus \tilde{P}_{\chi_1^\vee}^r
@@ -2368,12 +2344,12 @@ the resolution induces the right exact sequence
 	$\Hom_{\fC_G(\oo)}(\tilde{P}_2, N^\vee)$
 	has no $\tau$-torsion 
 	under the isomorphism $\End_{\fC_{G}(\oo)}(\tilde{P}_2)\cong R$
-	in \eqref{eq:end_def}.
+	in \eqref{eq:end_deform}.
 \end{cor}
 \begin{proof}
 	Identify the center of $\End_{\fC_{G}(\oo)}(\tilde{P}_\B)$ 
 	with $R$ by the isomorphisms
-	in \eqref{eq:end_def}
+	in \eqref{eq:end_deform}
 	and fix a generator $x$ of the reducibility ideal  $\tau\subset R$.
 	The generator acts by, up to an invertible elements,
 	$\phi_{ij}\circ\phi_{ji}$ on $\tilde{P}_i$.
@@ -2447,6 +2423,7 @@ are isomorphic, as  $R^{\red}$-modules,
 to $\Hom_{\fC_T(\oo)}(\tilde{P}_{\chi_2^\vee}, (\Ord_PN)^\vee)$ and
 $\Hom_{\fC_T(\oo)}(\tilde{P}_{\chi_1^\vee}, (\Ord_PN)^\vee)$ respectively.
 \end{proof}  
+
 
 \subsection{finite condition}
 
