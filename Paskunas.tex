@@ -1242,6 +1242,7 @@ is dense in the $E$-Banach space $S(U^p)_E$.
 	\cite[Prop 6.A.17]{Pask14}.
 \end{proof}
 
+
 \begin{prop}\label{prop:wt_space}
 	There exists a Hecke-equivariant isomorphism
 	\[
@@ -1404,7 +1405,7 @@ if for each $w'\in \Sigma_p$  and $w'\neq w$,
 there exists  $\sigma\in I_{w'}$
 such that  $k_{\sigma,1}>k_{\sigma,2}$.
 
-\begin{lem}
+\begin{lem}\label{lem:galois_at_p}
 	Let $r_{\fp}$ be the Galois representation
 	associated to a minimal prime
 	$\fp\subset \TT^P_{\wt{k}}(U^p\Iw^P(p^{0,1}),E)$.
@@ -1440,7 +1441,20 @@ such that  $k_{\sigma,1}>k_{\sigma,2}$.
 		\rangle)\, \text{ for }x\in \oo_{w'}^{\times}
 	\end{aligned}
 	\end{equation}
-	\item The representation $r_\fp$ is crystalline at $w$.
+	\item The representation $r_\fp$ is 
+	crystalline at $w$, with 
+	\[
+	\det r_\fp\circ \Art_w(\varpi_w)=
+	\lambda_{\fp}(U_{\wt{k},w}^{(2)}),\quad
+	\det r_\fp\circ \Art_w(x)=
+	\lambda_{\fp}
+	(\langle 
+	\iota_{w}^{-1}
+	(\begin{smallmatrix}
+		x&\\&x
+	\end{smallmatrix})
+	\rangle)\, \text{ for }x\in \oo_{w}^{\times}
+	\]
 	If furthermore $\fp$ extends
 	to a prime ideal in the $B$-ordinary Hecke algebra
 	$\TT^P(U^p\Iw(p^{0,1}),E)$,
@@ -2023,12 +2037,9 @@ $\Ind_B^G(\chi_1\otimes\chi_2|\cdot|^{-1})$
 \subsection{Local-global compatibility}\label{sub:uni_completion}
 
 We now return to the setting in 
-the beginning of the section.
-Recall that 
-$\TT^P(U^p,\oo)$ acts faithfully on
-$\Ord_P(S(U^p,E/\oo))\in \Mod_Q^{\adm}(\oo)$
-and $M(U^p)=\Ord_P(S(U^p,E/\oo))$.
-And there exists 
+the beginning of the section,
+in which we have assumed 
+the existence of
 a maximal ideal $\fm\subset \TT^P(U^p,\oo)$ 
 and characters $\bar{\delta}_i$
 such that \eqref{cond:red_gen} holds.
@@ -2050,9 +2061,10 @@ representations
 in $\lfMod_{\GL_2(\Qp),\zeta}(\oo)$
 as introduced in Definition \ref{def:block}.
 
-To apply the results in the previous subsection,
+
+To apply the results in the previous subsections,
 we follow Urban and make the following twist.
-Let $\Psi\colon \Gp\to R$ be 
+Let $\Psi\colon \Gp\to R=R_{\fm}$ be 
 the universal pseudo-deformation of $\chi_1+\chi_2$.
 Since $\det\Psi\equiv \epsilon\zeta$ modulo the 
 maximal ideal and the residue characteristic is odd,
@@ -2063,14 +2075,14 @@ the character
 \]
 admits a character $\xi^{1/2}$ which is the square root of $\xi$.
 Then  $\Psi'\coloneqq \xi^{1/2}\Psi$ has determinant $\epsilon\zeta$
-and induces $R^{\epsilon\zeta}\to R$,
-where $R^{\epsilon\zeta}$ is the universal 
+and induces $R_\fm^{\epsilon\zeta}\to R_\fm$,
+where $R_\fm^{\epsilon\zeta}$ is the universal 
 pseudo-deformation with fixed determinant $\epsilon\zeta$.
 
 By the universal property,
 the pseudo-representations
 $\epsilon\Psi_{\fm}$
-induces homomorphisms of $R$ 
+induces homomorphisms of $R_\fm$ 
 to the Noetherian local $\oo$-algebras
 $\TT^P(U^p,\Iw^P(p^{b,b}),\oo)_{\fm}$.
 Let $R_{\fm}\to \TT(U^p,\oo)_{\fm}$
@@ -2087,46 +2099,63 @@ so that
 	\xi_\fm\coloneqq(\xi_\fm^{1/2})^2=
 	\epsilon\zeta(\det \epsilon\Psi_\fm)^{-1}
 	=\zeta(\epsilon\det \Psi_\fm)^{-1}\colon
-	\Gp\to 1+\fm\subset \TT(U^p,\oo)_\fm
+	\Gp\to 1+\fm\subset \TT(U^p,\oo)_\fm.
 \]
-Note that the action of the center $\Qp^\times\subset \GL_2(\Qp)\subset Q$
-on  $\Ord_P(S(U^p,E/\oo))_{\fm}$ factors through  $\TT(U^p,\oo)_\fm$,
-and is precisely given by
+It follows from the density of crystalline points
+that 
 \[
-	\epsilon\det\Psi_\fm\circ \Art\colon\quad
+	\epsilon\det\Psi_\fm\circ \Art\colon
+	\Qp^\times\to \TT(U^p,\oo)_{\fm}\quad
 	p\mapsto U_w^{(2)},\quad
 	x\mapsto h_U(x)\,x\in\Zp^\times
 \]
+When $\Qp^\times$
+is identified with the center of  $\GL_2(\Qp)$,
+its action on $\Ord_P(S(U^p,E/\oo))_{\fm}$
+through the above
+is simply the usual right translation.
+Let $(\Qp^\times)^\wedge$ be the pro-$p$ completion. 
+We may thus assume that 
+$\xi_{\fm}^{1/2}\circ \Art$
+factors through $\llbracket (\Qp^\times)^\wedge\rrbracket$,
+which acts on any smooth $\Qp^\times$-representation.
 
-\begin{defn}
-	Recall that $Q$ is the product 
-	of  $\GL_2(\Qp)$ and the center  $Z_Q$.
-	We let
-	$\Ord_P(S(U^p,E/\oo))_{\fm}'\coloneqq
-	\Ord_P(S(U^p,E/\oo))_{\fm}(\xi_\fm^{1/2})$
-	denote the $\GL_2(\Qp)\times Z_Q$-representation
-	with the same $Z_Q$-action
-	and the $\GL_2(\Qp)$-action 
-	twisted by $\det\circ \xi_\fm^{1/2}$.
-	We also let $M(U^p)_\fm', S(U^p)_\fm'$
-	denote the twisted variant.
 
-	We note that 
+\begin{defn}\label{def:twist}
+	For any smooth $\GL_2(\Qp)$-representation
+	$V$,
+	we let $V'=V(\xi_{\fm}^{1/2})$
+	denote the twist 
+	by $(\xi_{\fm}^{1/2}\circ\Art)\circ \det$.
+	In particular, 
 	$\Ord_P(S(U^p,E/\oo))_{\fm}'$
-	is still admissible as  $\GL_2(\Qp)\times Z_Q$-representation.
+	has central character $\zeta$.
+
+	Define $Q'=\GL_2(\Qp)\times Z_Q$
+	and note that the natural 
+	homomorphism  $Q'\to Q$
+	is surjective with the kernel
+	isomorphic to the center  $\Qp^\times$
+	of  $\GL_2(\Qp)$.
+	We also view
+	$\Ord_P(S(U^p,E/\oo))_{\fm}'$
+	as an admissible $Q'$-representation,
+	with the usual $Z_Q$-action
+	and twisted $\GL_2(\Qp)$-action.
 	The restriction of which to $\GL_2(\Qp)$
-	is therefore locally admissible,
+	is locally admissible,
 	and thus by \cite[Thm 2.3.8]{emeI}
 	\[
 		\Ord_P(S(U^p,E/\oo))_{\fm}'\in \lfMod_{\GL_2(\Qp),\zeta}(\oo).
 	\]
 \end{defn}
 
+
 \begin{prop}\label{prop:compatibility}
 	Let $\fC(\oo)$ be the dual category of 
 	$\lfMod_{\GL_2(\Qp),\zeta}(\oo)$, then 
 	$M(U^p)_{\fm}'\in \fC(\oo)^{\B}$
-	and the $R^{\epsilon\zeta}$-action on which
+	and the $R_\fm^{\epsilon\zeta}$-action on which
 	as the center of the category
 	factors through $\TT(U^p,\oo)_\fm$.
 \end{prop}
@@ -2153,7 +2182,7 @@ and is precisely given by
 	of $\pi_{\fp}\otimes\pi_{\wt{k}}^*(E)$
 	belongs to $\Irr(\fn)$.
 	Here $\fn$ is the maximal ideal 
-	of  $R^{\epsilon\zeta}[\frac{1}{p}]$ 
+	of  $R_\fm^{\epsilon\zeta}[\frac{1}{p}]$ 
 	which is the pull-back of $\fp$
 	through the homomorphism induced by
 	the pseudo-representation  $\xi_{\fm}^{1/2}\epsilon\Psi_\fm$.
@@ -2170,7 +2199,7 @@ and is precisely given by
 	Therefore  $\xi_{\fp}^{1/2}$
 	is also crystalline,
 	with Hodge-Tate weight $w_{\fp}\coloneqq \frac{1}{2}(w_0-k_1-k_2)$.
-	Let $T\colon \Gp\to R^{\epsilon\zeta}$ 
+	Let $T\colon \Gp\to R_\fm^{\epsilon\zeta}$ 
 	and $T_\fn\colon \Gp\to E$ be as last subsection.
 	By definition  $T_\fn$ is the trace of the
 	representation
@@ -2197,66 +2226,61 @@ and is precisely given by
 	the claim follows from Lemma \ref{lem:uni_completion}.
 \end{proof}
 
-\subsection{Reducible part of completed homology}
-
-
-Let $\fm\subset \TT^P(U^p,\oo)$
-be the maximal ideal satisfying  \eqref{cond:red_gen}
-as before.
-Since $Z_Q$ acts 
-on  $\Ord_P(S(U^p,E/\oo))$
-through the Hecke operators,
-the action 
-factors through  $\TT^P(U^p,\oo)$
-and we let  $\chi\colon Z_Q\to \TT^P(U^p,\oo)/\fm=\fF^\times$
-denote the residue character. 
-
-Let $\B=\{\pi_1,\pi_2\}$ 
-be the block of irreducible $\GL_2(\Qp)$-representation
-defined as before.
-Let $Z_Q$ acts on  $\pi_i$ by  $\chi$.
-By Proposition \ref{prop:compatibility},
-the irreducible subquotients
-of the $\GL_2(\Qp)\times Z_Q$-representation
+On the other hand,
+let $Z_Q\to \TT^p(U^p,\oo)_{\fm}^{\times}$
+be the character
+sending $x\in Z_Q^+$ to $h_U(x)$
+and let 
+$\chi\colon Z_Q\to \TT^P(U^p,\oo)/\fm=\fF^\times$
+denote the residue character modulo $\fm$.
+Let $Z_Q$ acts on $\pi_i\in \B$ by $\chi$.
+Then the irreducible subquotients
 of  $\Ord_P(S(U^p,E/\oo))_{\fm}'$
-are isomorphic to either $\pi_1$ or  $\pi_2$.
+are all isomorphic to either $\pi_1$ or  $\pi_2$
+by previus proposition.
 
 
+\begin{defn}
 
 Let $\lfMod_{Z_Q}(\oo)$
 be the category of $\oo[Z_Q]$-modules
 that are locally of finite length
 and  $\fC_{Z_Q}(\oo)$ be the dual category.
-We denote by $\tilde{P}_\chi$
-the projective envelope of  $\chi^\vee$
-and  $ \tilde{E}_\chi\coloneqq \End_{\fC_{Z_Q}(\oo)}(\tilde{P}_\chi)$.
-After twist, we may assume $\chi$ is the trivial character,
-then the same argument in 
-\cite[Prop 3.34]{pask}
-shows that
-$\tilde{E}_\chi$
+We write 
+$\tilde{J}_\chi\in \lfMod_{Z_Q}(\oo)$ and 
+$\tilde{P}_\chi\in \fC_{Z_Q}(\oo)$
+for the injective and projective envelopes
+for $\chi$ and its Pontryagin dual.
+The same argument in \cite[Prop 3.34]{pask}
+shows that 
+$\tilde{E}_\chi\coloneqq 
+\End_{\fC_{Z_Q}(\oo)}(\tilde{P}_\chi)$
 is the formal power series ring over $\oo$ 
 of relative dimension $\dim\Hom^{\cont}(Z_Q,\fF)$
-and $\tilde{P}_\chi$ is free of rank one over $\tilde{E}_\chi$.
+and $\tilde{P}_\chi$ is free of rank one over 
+$\tilde{E}_\chi$.
+
+\end{defn}
 
 
 \begin{prop}\label{prop:envelope}
-	Let $R_{\fm}\coloneqq R\hat{\otimes}_{\oo}\tilde{E}_\chi$.
-	The $R_{\fm}$-module
-	$\tilde{P}_i\hat{\otimes}_{\oo}\tilde{P}_\chi$
+	Let $\tilde{P}_{i,\chi}=
+	\tilde{P}_i\hat{\otimes}_{\oo}\tilde{P}_\chi$,
+	and $R_{\fm, \chi}=R_\fm^{\epsilon\zeta}
+	\hat{\otimes}_{\oo}\tilde{E}_\chi$.
+	Then $\tilde{P}_{i,\chi}$
 	is the projective envelope
-	of the $\GL_2(\Qp)\times Z_Q$-representations $\pi_i$
-	and $\End_{\GL_2(\Qp)\times Z_Q}
-	(\tilde{P}_i\hat{\otimes}_{\oo}\tilde{P}_\chi)\cong R_{\fm}$.
+	of $\pi_i$ and 
+	$\End_{Q'}(R_{\fm, \chi}) \cong R_{\fm,\chi}$.
 \end{prop}
 \begin{proof}
-	Suppose first that
-	$V\in \Mod_{\GL_2(\Qp)\times Z_Q}(\oo)$
-	is locally admissible
-	and $v\in V$ is an admissible vector.
-	Then  $v$ is  $Z_Q$-finite by \cite[Lem 2.3.5]{emeI}
-	and the $\oo[\GL_2(\Qp)\times Z_Q]-module$
-	generated by $v$ is also finitely-generated over  $\GL_2(\Qp)$
+	When $V\in \Mod_{Q'}(\oo)$
+	is locally admissible and $v\in V$.
+	Then  vector 
+	$v$ is  $Z_Q$-finite by \cite[Lem 2.3.5]{emeI}
+	and the $\oo[Q']-module$
+	generated by $v$ is also 
+	finitely-generated over  $\GL_2(\Qp)$
 	and admissible.
 	Thus it is also of finite length 
 	by \cite[Thm 2.3.8]{emeI}.
@@ -2269,29 +2293,58 @@ and $\tilde{P}_\chi$ is free of rank one over $\tilde{E}_\chi$.
 \end{proof}
 
 \begin{cor}\label{cor:Hecke_Noetherian}
-	The big Hecke algebra
-	$\TT(U^p,\oo)$ is Noetherian
-	and $\mathbf{m}\coloneqq
-	\Hom_{\GL_2(\Qp)\times Z_Q}(\tilde{P}_{\fm},M(U^p)_{\fm}')$
-	is a finite faithful $\TT$-module,
-	where $\tilde{P}_{\fm}\coloneqq (\tilde{P}_{1}\oplus \tilde{P}_{2})
-	\hat{\otimes}_{\oo}\tilde{P}_\chi$.
+	Let $\tilde{P}_{\B,\chi}
+	=\tilde{P}_\B\hat{\otimes}_{\oo}\tilde{P}_\chi$.
+	Then $\mathbf{m}\coloneqq
+	\Hom_{Q'}(\tilde{P}_{\B,\chi},M(U^p)_{\fm}')$
+	is a finite faithful $\TT(U^p,\oo)_{\fm}$-module
+	and the big Hecke algebra
+	$\TT(U^p,\oo)$ is Noetherian.
 \end{cor}
 \begin{proof}
-	Since $\Ord_P(S(U^p,E/\oo))_\fm'$
-	is admissible
-	and all irreducible subquotients of which
-	belong to $\{\pi_1,\pi_2\}$.
-	It follows from 
-	\cite[Prop 4.17]{pask}
-	that $\mathbf{m}$ is finitely-generated
-	over $R_{\fm}$.
-	Since the action of $R_{\fm}$
+	Let $\tilde{E}_{\B,\chi}
+	=\tilde{E}_\B\hat{\otimes}_{\oo}\tilde{E}_\chi$.
+	Since $\Ord_P(S(U^p,E/\oo))_\fm'
+	\in \fC_{Q'}(\oo)^{\B}$
+	for $\B=\{\pi_1,\pi_2\}$,
+	on which $M\to \Hom_{Q'}(\tilde{P}_{\B,\chi},M)$
+	is an anti-equivalence,
+	the action of $\TT(U^p,\oo)_\fm$
+	on $\mathbf{m}$ is still faithful.
+
+	Moreover, $\fm$ is finitely-generated
+	over  $ \tilde{E}_{\B,\chi}$
+	by \cite[Prop 4.17]{pask}.
+	Since $ \tilde{E}_{\B,\chi}$
+	is also finitely-generated
+	over $R_{\fm,\chi}$
+	and the action of which on $\mathbf{m}$
 	factors through $\TT(U^p,\oo)_{\fm}$,
-	which acts faithfully,
-	the big Hecke algebra
+	we conclude that $\mathbf{m}$ 
+	is fintie faithul over $\TT(U^p,\oo)_{\fm}$.
+	As this induces an injective homomorphism
+	of $R_{\fm,\chi}$-algebra
+	$\TT(U^p,\oo)_{\fm}\to 
+	\End_{R_{\fm,\chi}}(\mathbf{m})$,
+	the Hecke algebra
 	is also finite over $R_{\fm}$ and hence Noetherian.
 \end{proof}
+
+
+\subsection{Reducible part of completed homology}
+
+Recall that the reducibility ideal 
+$\tau\subset R^{\epsilon\zeta}=R^{\epsilon\zeta}_{\fm}$
+is a principal ideal.
+Let $R^{\epsilon\zeta,\red}$ be the quotient 
+and denote $R_{\fm,\chi}^{\red}=R^{\epsilon\zeta,\red}
+\hat{\otimes}_{\oo}\tilde{E}_\chi$.
+If $M$ is a  $R_{\fm,\chi}$-module,
+we define the reducible part $M^{\red}$ 
+as the $R_{\fm,\chi}^{\red}$-module
+$M/\tau M$.
+
+
 
 
 
@@ -2299,13 +2352,17 @@ and $\tilde{P}_\chi$ is free of rank one over $\tilde{E}_\chi$.
 	For some non-negative integer $r$
 	there exists a projective resolution 
 	\begin{equation}\label{eq:resolution}
-	0\to \tilde{P}_\fm^r\to \tilde{P}_\fm^r\to M(U^p)_{\fm}'\to 0
+	0\to \tilde{P}_{\B,\chi}^r\to 
+	\tilde{P}_{\B,\chi}^r\to 
+	M(U^p)_{\fm}'\to 0
 	\end{equation}
 \end{lem}
 \begin{proof}
 Identify $\Qp^\times$ with the center of $\GL_2(\Qp)$.
-By \cite[Thm 33]{barthel} and \cite[Thm 19]{barthel}, there exists
-smooth irreducible $\GL_2(\Zp)\Qp^\times$-representations $\sigma_i$
+By \cite[Thm 33]{barthel} and \cite[Thm 19]{barthel}, 
+there exists
+smooth irreducible 
+$\GL_2(\Zp)\Qp^\times$-representations $\sigma_i$
 and exact sequences
 \begin{equation}
 	0\to 
@@ -2313,87 +2370,123 @@ and exact sequences
 	\cInd_{\GL_2(\Zp)\Qp^\times}^{\GL_2(\Qp)}\sigma_i\to
 	\pi_i\to 0
 \end{equation}
-Write $M=M(U^p)_{\fm}'$ for short.
-Let $Z_Q$ acts on above by  $\chi$
-and take $\Ext^i(*,M)$ gives
+Let $Z_Q$ acts on each 
+of the above by $\chi$
+and apply $\Ext^i_{Q'}(*,S')$
+for $S'=\Ord_P(S(U^p,E/\oo))_{\fm}'$.
+We obtain
 \begin{equation*}
     \begin{tikzcd}[row sep=2ex]
-	    \Ext^{i-1}_{G}(\pi, M)\arrow[r] &
-	    \Ext^{i}_{G}(\text{c-ind}_{KZ}^G\sigma, M)\arrow[r] \arrow[d,symbol={=}] &
-	    \Ext^{i}_{G}(\text{c-ind}_{KZ}^G\sigma, M)\arrow[r] \arrow[d,symbol={=}] &
-	    \Ext^{i}_{G}(\pi, M)\\ 
-												 & \Ext^i_K(\sigma ,M) &
-	    \Ext^i_K(\sigma ,M) &
+	    \Ext^{i-1}_{Q'}
+	    (\pi, S')\arrow[r] &
+	    \Ext^{i}_{Q'}(\text{c-ind}_{KZ}^G\sigma, S')
+	    \arrow[r] \arrow[d,symbol={=}] &
+	    \Ext^{i}_{Q'}(\text{c-ind}_{KZ}^G\sigma, S')
+	    \arrow[r] \arrow[d,symbol={=}] &
+	    \Ext^{i}_{Q'}(\pi, S')\\ 
+	 & \Ext^i_{\GL_2(\Zp)\times Z_Q}(\sigma ,S') &
+	    \Ext^i_{\GL_2(\Zp)\times Z_Q}(\sigma ,S') &
     \end{tikzcd}
 \end{equation*}
-Since $M$ is injective as a $K$-representation, 
-the long exact sequence reduces to 
+The same argument in Lemma \ref{lem:inj}
+shows that $S'$ is still 
+an injective $\GL_2(\Zp)$-representation
+after the twist in Definition \ref{def:twist}.
+Therefore the long exact sequence reduces to 
+the following, in which 
+all the terms 
+are finite-dimensional over $\fF$
+since $S'$ is $Q'$-admissible.
 \begin{equation*}
-	0 \to \Hom_G(\pi_i,M)\to \Hom_K(\sigma_i,M)\to \Hom_K(\sigma_i,M)\to \Ext^1_G(\pi_i,M)\to 0
+	0 \to \Hom_{Q'}(\pi_i,S')\to 
+	\Hom_{\GL_2(\Zp)\times Z_Q}(\sigma_i,S')\to 
+	\Hom_{\GL_2(\Zp)\times Z_Q}(\sigma_i,S')\to 
+	\Ext^1_{Q'}(\pi_i,S')\to 0
 \end{equation*}
-It follows that $a_i\coloneqq \dim_k\Hom_G(\pi_i,M(U^p)_{\fm}')=\dim_k \Ext^1_G(\pi_i,M)$,
-which are finite since $M$ is admissible.
 
-Let $\soc(N)=\pi_1^{a_1}\oplus \pi_2^{a_2}$
-be the socle  of $N$,
-the injective envelope 
-$\soc(N)\hookrightarrow \tilde{J}=\tilde{J}_1^{a_1}\oplus \tilde{J}_2^{a_2}$
-in $\laMod_{G,\zeta}(\oo)$
+
+
+Write $a_i\coloneqq \dim_{\fF} \Hom(\pi_i,S')=
+\dim_{\fF} \Ext^1(\pi_i,S')$
+so that $\soc(S')=\pi_1^{a_1}\oplus \pi_2^{a_2}$.
+Let $\tilde{J}_{i,\chi}$ denote 
+the injective envelope of $\pi_i$.
+Then the injective envelope 
+$\soc(S')\hookrightarrow \tilde{J}=\tilde{J}_1^{'a_1}\oplus \tilde{J}_2^{'a_2}$
 factors through an injective morphism 
-$\phi_0\colon N\to \tilde{J}$
-since the inclusion $\soc(N)\hookrightarrow N$
+$\phi_0\colon S'\to \tilde{J}$
+since the inclusion $\soc(S')\hookrightarrow S'$
 is essential.
 Apply the same construction 
 to $\soc(\coker(\phi_0))$
-and use $\dim_k\Hom_G(\pi_i, \coker(\phi_0))=\dim_k\Ext^1_G(\pi_i, N)=a_i$
+and use $\dim_{\fF}\Hom_{Q'}(\pi_i, \coker(\phi_0))=
+\dim_{\fF}\Ext^1_{Q'}(\pi_i, S')=a_i$
 gives another injective morphism
 $\phi_1\colon \coker(\phi_0)\to \tilde{J}$,
-which is also surjective as
-\[
-	\Hom_G(\pi_i,\coker(\phi_1))
-	\cong \Ext^1_G(\phi_i,\coker(\phi_0))
-	\cong \Ext^2_G(\pi, N)=0
-\]
+which is also surjective as 
+$\Hom(\pi_i,\coker(\phi_1))
+\cong \Ext^1(\phi_i,\coker(\phi_0))
+\cong \Ext^2(\pi, S')=0$.
 Now the lemma follows by picking
 $r=\max\{a_1,a_2\}$ and taking the Pontryagin dual.
 \end{proof}
 
-Let $A\colon \tilde{P}_\B^r\to \tilde{P}_\B^r$ denote the morphism
-in the  resolution \eqref{eq:resolution},
-which can be represented by the matrix
+Let $A\colon \tilde{P}_\fm^r\to \tilde{P}_\fm^r$ 
+denote the morphism
+in the  resolution \eqref{eq:resolution}.
+By the isomorphisms \eqref{eq:end_deform}
+and Proposition \ref{prop:envelope},
+the morphism 
+can be represented by a matrix
 $A=\smat{A_{11} & A_{12}\Phi_{12}\\A_{21}\Phi_{21} & A_{22}}$,
-where $A_{ij}\in M_r(R)$,
-through the isomorphisms in \eqref{eq:end_deform}.
-Denote by $\bar{A}_{ij}\in M_r(R^{\red})$
-the reduction of the matrices modulo $\tau$.
-Lemma \ref{lem:ker_red} shows that 
-the resolution induces the right exact sequence
+where $A_{ij}\in M_r(R_{\fm,\chi})$.
+Let $\Ord$ be the functor of ordinary parts
+on the upper triangular Borel subgroup of  $\GL_2(\Qp)$.
+Then  
+$\Ord(\tilde{P}_{i,\chi}^\vee)^\vee\cong 
+\tilde{P}_{\chi_i^\vee,\chi}\coloneqq 
+\tilde{P}_{\chi_i^\vee}\hat{\otimes}_{\oo}
+\tilde{P}_\chi$.
+And $\Ord(A)$
+is represented by the matrix
+$\smat{\tilde{A}_{11} & \\& \tilde{A}_{22}}$,
+where $\bar{A}_{ij}\in M_r(R^{\red}_{\fm,\chi})$ denote 
+the reduction of the matrices by Lemma \ref{lem:ker_red}.
+We apply the right exact $\Ord$ to 
+\eqref{eq:resolution} and obtain
 \begin{equation}\label{eq:exact_ord}
-	\tilde{P}_{\chi_2^\vee}^r\oplus \tilde{P}_{\chi_1^\vee}^r
+	\tilde{P}_{\chi_1^\vee,\chi}^r\oplus 
+	\tilde{P}_{\chi_2^\vee,\chi}^r
 	\xrightarrow{\overline{A}_{11}\oplus\overline{A}_{22}}
-	\tilde{P}_{\chi_2^\vee}^r\oplus \tilde{P}_{\chi_1^\vee}^r
-	\to (\Ord_PN)^\vee\to 0
+	\tilde{P}_{\chi_1^\vee,\chi}^r\oplus 
+	\tilde{P}_{\chi_2^\vee,\chi}^r
+	\to (\Ord S')^\vee\to 0
 \end{equation}
 
 
 \begin{prop}    
-	The sequence \eqref{eq:exact_ord}
-	is also left exaxt;
-	and the matrices $ \bar{A}_{ii}\in M_r(R^{\red})$
-	are injective.
+	The matrices 
+	$\bar{A}_{ii}\in M_r(R^{\red}_{\fm,\chi})$
+	are injective and the sequence above 
+	is also left exaxt.
 \end{prop}
 \begin{proof}
-	The representation $(\Ord_PN)^\vee\in \fC_T(\oo)$
-	is finitely generated over 
-	$\oo\llbracket (1+p\Z_p)\rrbracket\cong \oo\llbracket X\rrbracket$
-	since $\Ord_P$ preserves admissibility.
-	Taking $\Hom_{\fC_T(\oo)}(\tilde{P}_{\chi_i^\vee},\cdot)$
-	to \eqref{eq:exact_ord}
-	gives the exaxt sequence of $\oo\llbracket x,y\rrbracket$-modules
+	We first note that 
+	$\Ord(\Ord_P(S(U^p,E/\oo))=\Ord_B(S(U^p,E/\oo))$
+	is an admissible $T$-representation
+	for the diagonal torus $T\subset G_p$,
+	thus so is $\Ord(S')$.
+	But then the Pontryagin dual 
+	$\Ord(S')^\vee$ is finitely-generated
+	over  $\oo\llbracket T(\oo)^{\wedge}\rrbracket$
+	by \cite[Lem 2.2.11]{emeI}.
+	Apply $\Hom_{T}(\tilde{P}_{\chi_i^\vee,\chi},*)$
+	to the sequence \eqref{eq:exact_ord} shows
 \begin{equation*}
-	\End_{\fC_T(\oo)}(\tilde{P}_{\chi_i^\vee}^r)\to 
-	\End_{\fC_T(\oo)}(\tilde{P}_{\chi_i^\vee}^r)\to 
-	\Hom_{\fC_T(\oo)}(\tilde{P}_{\chi_i^\vee}, (\Ord_PN)^\vee)\to 0
+	\End_{T}(\tilde{P}_{\chi_i^\vee,\chi}^r)\to 
+	\End_{T}(\tilde{P}_{\chi_i^\vee,\chi}^r)\to 
+	\Hom_{T}(\tilde{P}_{\chi_i^\vee,\chi}, ,(\Ord S')^\vee)
+	\to 0
 \end{equation*}
 	We note that the first two terms in which are 
 	isomorphic to $\oo\llbracket x,y\rrbracket^{\oplus r}$;
@@ -2408,7 +2501,6 @@ the resolution induces the right exact sequence
 \end{proof}
 
 \begin{cor}
-	When $N$ satisfies \eqref{cond:adm_inj},
 	the $\End_{\fC_{G}(\oo)}(\tilde{P}_i)$-module
 	$\Hom_{\fC_G(\oo)}(\tilde{P}_2, N^\vee)$
 	has no $\tau$-torsion 
@@ -2416,26 +2508,26 @@ the resolution induces the right exact sequence
 	in \eqref{eq:end_deform}.
 \end{cor}
 \begin{proof}
-	Identify the center of $\End_{\fC_{G}(\oo)}(\tilde{P}_\B)$ 
+	Identify the center of $\End_{\fC_{G}(\oo)}(\tilde{P}_\fm)$ 
 	with $R$ by the isomorphisms
 	in \eqref{eq:end_deform}
 	and fix a generator $x$ of the reducibility ideal  $\tau\subset R$.
 	The generator acts by, up to an invertible elements,
 	$\phi_{ij}\circ\phi_{ji}$ on $\tilde{P}_i$.
-	Thus $\tilde{P}_\B[\tau]=0$,
+	Thus $\tilde{P}_\fm[\tau]=0$,
 	since by definition $\varphi_{ij}\circ\varphi_{ji}$ are injective.
 	Then apply 
 	$\Hom_{\fC_G(\oo)}(\tilde{P}_2,\cdot)$
 	and the snake lemma to the diagram
     \begin{equation*}
     \begin{tikzcd}
-        0 \arrow[r] & \tilde{P}_\B^{\oplus r} 
+        0 \arrow[r] & \tilde{P}_\fm^{\oplus r} 
 	\arrow[d,"x",hookrightarrow] \arrow[r,"A"] & 
-	\tilde{P}_\B^{\oplus r} 
+	\tilde{P}_\fm^{\oplus r} 
 	\arrow[d,"x",hookrightarrow] \arrow[r] & 
 	N^\vee \arrow[d,"x"] \arrow[r] & 0 \\ 
-        0 \arrow[r] & \tilde{P}_\B^{\oplus r}
-	\arrow[r,"A"] & \tilde{P}_\B^{\oplus r}
+        0 \arrow[r] & \tilde{P}_\fm^{\oplus r}
+	\arrow[r,"A"] & \tilde{P}_\fm^{\oplus r}
 	\arrow[r] &N^\vee  \arrow[r] & 0 
     \end{tikzcd}
 \end{equation*}
@@ -2445,14 +2537,13 @@ is trivial by the previous proposition.
 \[
 \Hom_{\fC_G(\oo)}(\tilde{P}_2, N^\vee)[\tau]\cong 
 \ker\left(
-	\Hom_{\fC_G(\oo)}(\tilde{P}_2, \tilde{P}_\B^{\red})^{\oplus r}
+	\Hom_{\fC_G(\oo)}(\tilde{P}_2, \tilde{P}_\fm^{\red})^{\oplus r}
 \xrightarrow{\smat{\bar{A}_{11}& \bar{A}_{12}\Phi_{12}\\& \bar{A}_{22}}}
-\Hom_{\fC_G(\oo)}(\tilde{P}_2, \tilde{P}_\B^{\red})^{\oplus r} \right)
+\Hom_{\fC_G(\oo)}(\tilde{P}_2, \tilde{P}_\fm^{\red})^{\oplus r} \right)
 \]\qedhere
 \end{proof}
 
 \begin{cor}
-	When $N$ satisfies \eqref{cond:adm_inj}, 
 	there exists an isomorphism between $R^{\red}$-modules
     \begin{align}
 	    \Hom_{\fC_{G}(\oo)}(\tilde{P}_2,(N^\vee)^{\red})
@@ -2474,10 +2565,10 @@ is trivial by the previous proposition.
 	    \arrow[r,"\bar{A}_{11}"] \arrow[d]&
 	    \Hom_{G}(\tilde{P}_2, \tilde{P}_2^{\red})^{\oplus r}
 	    \arrow[d] &&\\
-	    0\arrow[r] & \Hom_{G}(\tilde{P}_2, \tilde{P}_\B^{\red})^{\oplus r}
+	    0\arrow[r] & \Hom_{G}(\tilde{P}_2, \tilde{P}_\fm^{\red})^{\oplus r}
 	    \arrow[r] 
 	    \arrow[d] &
-	    \Hom_{G}(\tilde{P}_2, \tilde{P}_\B^{\red})^{\oplus r}
+	    \Hom_{G}(\tilde{P}_2, \tilde{P}_\fm^{\red})^{\oplus r}
 	    \arrow[d] \arrow[r]&
 	    \Hom_{G}(\tilde{P}_2, (N^\vee)^{\red})\arrow[r]&0\\
 	    0\arrow[r] & \Hom_{G}(\tilde{P}_2, \tilde{P}_1^{\red})^{\oplus r}
@@ -2492,112 +2583,6 @@ are isomorphic, as  $R^{\red}$-modules,
 to $\Hom_{\fC_T(\oo)}(\tilde{P}_{\chi_2^\vee}, (\Ord_PN)^\vee)$ and
 $\Hom_{\fC_T(\oo)}(\tilde{P}_{\chi_1^\vee}, (\Ord_PN)^\vee)$ respectively.
 \end{proof}  
-
-
-\begin{rem}
-	If $G=G_1\times G_2$ and  $G_2\subset Z=Z_G$,
-	then  $(A[G]-fg + G-\adm)$ 
-	implies  $(A[G_1]-fg + G_1-\adm)$ 
-	Thus when
-	$G=\prod\GL_2(\Qp)\times T$,
-	then locally admissible 
-	implies locally of finite length
-\end{rem}
-
-In this subsection 
-let $N\in\laMod_{G,\zeta}(\oo)$ be an object
-satisfying the assumption
-\begin{equation}\label{cond:adm_inj}\tag{\text{adm-inj}}
-	N\in \aMod_{G,\zeta}(\oo)\cap \laMod_{G,\zeta}(\oo)^\B
-	\text{ and is injective as a $\GL_2(\Zp)$-representation}.
-\end{equation}
-Here $\B=\{\pi_1,\pi_2\}$ 
-is the block consisting of the two irreducible representations
-introduced previously.
-
-
-
-\section{pseudo-compact}
-
-\begin{defn}
-	A pseudocompact ring $\Lambda$
-	is a complete Hausdorff topological ring 
-	admitting systems of open neighborhood of  $0$
-	consisting of two-sided ideas  $I$
-	for which  $\Lambda/I$ is an Artin ring.
-\end{defn}
-
-\begin{defn}
-	A pseudocompact $\Lambda$-module $M$
-	is a complete Hausdorff topological $\Lambda$-module
-	admitting systems of open neighborhood of  $0$
-	consisting of submodules $N$
-	for which  $M/N$ is of finite length.
-	Which is equivalent to that 
-	$M$ is the inverse limit of 
-	 $\Lambda$-modules of finite length.
-\end{defn}
-
-\begin{defn}
-	Fix a commutative pseudocompact ring $\Omega$.
-	A pseudocompact $\Omega$-algebra  $\Lambda$
-	is a complete Hausdorff topological ring
-	admitting systems of open neighborhood of  $0$
-	consisting of two-sided ideals $I$
-	for which  $\Lambda/I$ is $\Omega$-modules of finite length.
-\end{defn}
-For example, $\Lambda=\oo\llbracket G\rrbracket$
-for profinite group  $G$.
-
-If $A$ is a f.g. right  $\Lambda$-modules, then 
- \[
-	A\hat{\otimes}_\Lambda B\coloneqq
-	\varprojlim(A/U\otimes_{\Lambda}B/V)\cong A\otimes_{\Lambda}B
-\]
-And also $\Omega\llbracket G\rrbracket\hat{\otimes}\Omega\llbracket H\rrbracket
-\cong\Omega\llbracket G\times H\rrbracket$.
-
-Let $E$ be the injective envelope of  $\Omega$ in the category of diescrete 
- $\Omega$-modules, then 
-  \[
- 	\{\text{right pseudocpt $\Lambda$-mod}\}\leftrightarrow
-	\{\text{left discrete $\Lambda$-mod}\}\quad
-	A\to \Hom_{\Omega}(A,E), 
-	\Hom_{\Omega}(C,E)\rightarrow C
- \]
-
-\begin{lem}
-	Let $ \{\Lambda_i,\lambda_{ij}\}$
-	be a  directed partially ordered inverse system of pseudocompact 
-	$\Omega$-algebras. Similarly
-	Let $ \{A_i,\alpha_{ij}\}, \{B_i,\beta_{ij}\}$
-	and define 
-	\[
-		\Lambda=\varprojlim_{i}\Lambda_i,
-		A=\varprojlim_{i}A_i,
-		B=\varprojlim_{i}B_i,
-	\]
-	Then $A \hat{\otimes}_{\Lambda}B\cong 
-	\varprojlim A_i\hat{\otimes}_{\Lambda_i}B_i$
-	if $\lambda_{ij}, \alpha_{ij}, \beta_{ij}$
-	are epimorphisms.
-\end{lem}
-
-For example, let $\Lambda=\Lambda_i=\oo$,
-a valuationring of a finite extension  $E/\Qp$,
-$A=A_i$ a local complete Noetherian  $\oo$-algebra
-with finite residue,
-and  $B=\oo\llbracket G\rrbracket =\varprojlim \oo[G/N_i]$
-and  $B_i=\oo[G/N_i]$, then
-\[
-	A\llbracket G\rrbracket \coloneqq 
-	A\hat{\otimes}_\oo\oo\llbracket G\rrbracket 
-	\cong \varprojlim
-	A\hat{\otimes}_{\oo}\oo[G/N_i]
-	\cong \varprojlim
-	A[G/N_i]
-\]
-
 
 
 \subsection{Fundamental exact sequence}
