@@ -1,5 +1,5 @@
 \documentclass[leqno]{amsart}
-\usepackage{amssymb}
+\usepackage{amssymb,stmaryrd}
 \usepackage{amsmath} 
 \usepackage{enumitem}
 \usepackage{hyperref}
@@ -30,34 +30,9 @@
 \addtolength{\textwidth}{-2in}
 \calclayout
 
-\tikzset{
-  symbol/.style={
-    draw=none,
-    every to/.append style={
-      edge node={node [sloped, allow upside down, auto=false]{$#1$}}}
-  }
-}
-
 \newcommand{\smat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix} \right)}
-
-% double bracket
-\makeatletter
-\newsavebox{\@brx}
-\newcommand{\llangle}[1][]{\savebox{\@brx}{\(\m@th{#1\langle}\)}%
-  \mathopen{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
-\newcommand{\rrangle}[1][]{\savebox{\@brx}{\(\m@th{#1\rangle}\)}%
-  \mathclose{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
-  \newcommand{\llbracket}[1][]{\savebox{\@brx}{\(\m@th{#1[}\)}%
-  \mathopen{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
-\newcommand{\rrbracket}[1][]{\savebox{\@brx}{\(\m@th{#1]}\)}%
-  \mathclose{\copy\@brx\kern-0.5\wd\@brx\usebox{\@brx}}}
-\makeatother
-
-
-
-
-\newcommand{\fF}{\mathbb{F}} % fintie field
 \newcommand{\euF}{\EuScript{F}} %Hida family
+\newcommand{\fF}{\mathbb{F}} % fintie field
 \newcommand{\M}{\mathbf{M}} % modular form
 \newcommand{\bnu}{\boldsymbol{\nu}}
 \newcommand{\wt}[1]{\underline{ #1 }}
@@ -1573,7 +1548,7 @@ Our assumption on $w$ implies that
 $Q$ is the product of  $\GL_2(\Qp)$
 and a torus.
 In this section,
-we follow Urban's idea
+we follow the idea in \cite{urban}
 and show that the localization
 $M(U^p)_{\fm}$ belongs to a block
 of $Q$-representations in the sense of  \cite{pask}
@@ -1625,7 +1600,7 @@ $\rho_{21}=\smat{\chi_1&\\ * &\chi_2}$.
 The trace then induces 
 $\theta\colon R\cong R_{ij}$
 by \cite[Prop B.17]{pask}.
-Since the reduced universal deformation ring
+Since the reducible universal deformation ring
 $R_{\red}$ is formally smooth of 
 relative dimension $4$ over $\oo$,
 the reducibility ideal  $\tau\subset R$ 
@@ -2063,7 +2038,7 @@ as introduced in Definition \ref{def:block}.
 
 
 To apply the results in the previous subsections,
-we follow Urban and make the following twist.
+we follow \cite{urban} and make the following twist.
 Let $\Psi\colon \Gp\to R=R_{\fm}$ be 
 the universal pseudo-deformation of $\chi_1+\chi_2$.
 Since $\det\Psi\equiv \epsilon\zeta$ modulo the 
@@ -2380,9 +2355,9 @@ We obtain
 	    \Ext^{i-1}_{Q'}
 	    (\pi, S')\arrow[r] &
 	    \Ext^{i}_{Q'}(\text{c-ind}_{KZ}^G\sigma, S')
-	    \arrow[r] \arrow[d,symbol={=}] &
+	    \arrow[r] \arrow[d,equal] &
 	    \Ext^{i}_{Q'}(\text{c-ind}_{KZ}^G\sigma, S')
-	    \arrow[r] \arrow[d,symbol={=}] &
+	    \arrow[r] \arrow[d,equal] &
 	    \Ext^{i}_{Q'}(\pi, S')\\ 
 	 & \Ext^i_{\GL_2(\Zp)\times Z_Q}(\sigma ,S') &
 	    \Ext^i_{\GL_2(\Zp)\times Z_Q}(\sigma ,S') &
@@ -2478,10 +2453,11 @@ We apply the right exact $\Ord$ to
 	thus so is $\Ord(S')$.
 	But then the Pontryagin dual 
 	$\Ord(S')^\vee$ is finitely-generated
-	over  $\oo\llbracket T(\oo)^{\wedge}\rrbracket$
+	over  $\Lambda_T\coloneqq
+	\oo\llbracket T(\oo)^{\wedge}\rrbracket$
 	by \cite[Lem 2.2.11]{emeI}.
 	Apply $\Hom_{T}(\tilde{P}_{\chi_i^\vee,\chi},*)$
-	to the sequence \eqref{eq:exact_ord} shows
+	to the \eqref{eq:exact_ord} shows
 \begin{equation*}
 	\End_{T}(\tilde{P}_{\chi_i^\vee,\chi}^r)\xrightarrow{\bar{A}_{ii}}
 	\End_{T}(\tilde{P}_{\chi_i^\vee,\chi}^r)\to 
@@ -2509,7 +2485,7 @@ $M^{\ord}(U^p)_{\fm}$ is the direct sum of
 $M^{\ord}(U^p)_{\fm}^{U_{w}^{(1)}\equiv \chi_i(p)}$,
 the subspace where $U_{w}^{(1)}$ acts residually by $\chi_i(p)$.
 
-\begin{cor}
+\begin{cor}\label{cor:no_torsion}
 	Let $x$ be a generator
 	of $\tau$, then $M(U^p)_{\fm}'$
 	has no $x$-torsion.
@@ -2518,10 +2494,7 @@ the subspace where $U_{w}^{(1)}$ acts residually by $\chi_i(p)$.
 	It suffices to show that
 	$\Hom_{Q'}(\tilde{P}_{j,\chi}, M(U^p)_{\fm}'[x])=0$
 	for $j=1,2$.
-	From the proof of Lemma \ref{lem:ker_red}
-	we may assume $x=\phi_{ij}\circ \phi_{ji}$ is injective
-	on $\tilde{P}_{i,\chi}$ for both $i=1,2$.
-	Apply the snake lemma the diagra
+	Apply the snake lemma to
     \begin{equation*}
     \begin{tikzcd}
         0 \arrow[r] & \tilde{P}_{\B,\chi}^{\oplus r} 
@@ -2534,9 +2507,11 @@ the subspace where $U_{w}^{(1)}$ acts residually by $\chi_i(p)$.
 	\arrow[r] &M(U^p)_{\fm}'  \arrow[r] & 0 
     \end{tikzcd}
 \end{equation*}
-We see that $\Hom_{Q'}(\tilde{P}_{j,\chi}, M(U^p)_{\fm}'[x])$
+Since the $R$-action
+on $\tilde{P}_{i,\chi}$ are faithful for both $i=1,2$,
+we see that $\Hom_{Q'}(\tilde{P}_{j,\chi}, M(U^p)_{\fm}'[x])$
 is isomorphic to the kernel below,
-which is trivial by the proposition.
+which is trivial by the previous proposition.
 \[
 	\ker\left(
 	\Hom_{Q'}(\tilde{P}_{j,\chi}, 
@@ -2548,7 +2523,7 @@ which is trivial by the proposition.
 \end{proof}
 
 
-\begin{cor}
+\begin{cor}\label{cor:fil_by_ord}
 	We have the following exact sequence of
 	$R_{\fm,\chi}^{\red}$-modules
 \begin{equation}
@@ -2556,6 +2531,8 @@ which is trivial by the proposition.
 	\Hom_{Q'}(\tilde{P}_{2,\chi},M(U^p)_{\fm}')^{\red}\to
 	M^{\ord}(U^p)_{\fm}^{U_{w}^{(1)}\equiv \chi_2(p)}\to0.
 \end{equation}
+A similarly exact sequence also exsits
+for $\Hom_{Q'}(\tilde{P}_{1,\chi},M(U^p)_{\fm}')^{\red}$.
 \end{cor}
 \begin{proof}
 	The last step in the proof of the previous corollary
@@ -2591,53 +2568,100 @@ are also free of rank one $R_{\fm,\chi}^{\red}$,
 we obtain the desired result.
 \end{proof}  
 
+\begin{cor}\label{cor:Hecke_finite}
+The Hecke algebra 
+$\TT(U^p,\oo)_{\fm}$ 
+is finite over
+$\oo\llbracket x\rrbracket \hat{\otimes}_{\oo}\Lambda_T
+=\Lambda_T\llbracket x\rrbracket$.
+\end{cor}
+\begin{proof}
+	Consider the natural
+	$\Lambda_T\llbracket x\rrbracket$-action on
+	$\mathbf{m}=\Hom_{Q'}(\tilde{P}_{\B,\chi},
+	M(U^p)_{\fm}')$.
+	Since $M^{\ord}(U^p)_{\fm}$ 
+	is fintie over $\Lambda_T$,
+	by the corollary above 
+	we see that 
+	$\mathbf{m}^{\red}=\mathbf{m}/x\mathbf{m}$ 
+	is finitely-generated over $\Lambda_T$.
+	Moreover $\mathbf{m}$ is a compact 
+	topological space 
+	since it is finite over  
+	the complete Noetherian local ring 
+	$\TT(U^p,\oo)_{\fm}$ 
+	by Corollary \ref{cor:Hecke_Noetherian}.
+	Therefore $\mathbf{m}$
+	is finite over $\Lambda_T\llbracket x\rrbracket$
+	by the topological Nakayama lemma.
+	As $\TT(U^p,\oo)_{\fm}$ acts faithfully
+	on $\mathbf{m}$,
+	we have an injective homomorphism
+	$\TT(U^p,\oo)_{\fm}\hookrightarrow 
+	\End_{\Lambda_T\llbracket x\rrbracket}(\mathbf{m})$,
+	which proves the claim.
+\end{proof}
+
 
 \subsection{Fundamental exact sequence}
 
-
+We are now ready to 
+formulate the fundamental
+exact sequence 
+that generalize \cite[Prop 6.3.5]{urban}.
 To simplify notations,
 we write 
-$M=\Hom_{Q'}(\tilde{P}_{2,\chi},M(U^p)_{\fm}')$,
-$M_1=M^{\ord}(U^p)_{\fm}^{U_{w}^{(1)}\equiv \chi_1(p)}$,
+$\Lambda=\Lambda_T$,
+$R=R_{\fm,\chi}$,
+$\TT=\TT(U^p,\oo)_{\fm}$, and
+$M=\Hom_{Q'}(\tilde{P}_{2,\chi},M(U^p)_{\fm}')$.
+We fix a generator $x$ of the reducibility
+ideal in $R$.
+Note that 
+while $R^{\red}$ and $\TT$
+are  $\Lambda$-algebras,
+the deformation ring $R$ 
+has no natural $\Lambda$-algebra structure.
+We also write
+$M_1=M^{\ord}(U^p)_{\fm}^{U_{w}^{(1)}\equiv \chi_1(p)}$
 and
 $M_2=M^{\ord}(U^p)_{\fm}^{U_{w}^{(1)}\equiv \chi_2(p)}$.
-Aslo write 
-$R_{\fm}=R_{\fm,\chi}$,
-$\Lambda_{\fm}=\oo\llbracket T(\oo)^\wedge\rrbracket$
-and $\TT_{\fm}$ be the image of $\TT(U^p,\oo)_{\fm}$
-in $\End_{R_\fm}(M)$.
-Then $\TT_{\fm}$ and $R_{\fm}$ are $\Lambda_{\fm}$-modules.
-By the above corollary
-and the admissibility of $M^{\ord}(U^p)_{\fm}$
-we see $M^{\red}$ is also a finite $\Lambda_{\fm}$-module.
+Note that $M^{\red}$ is finite over $\Lambda$
+by Corollary \ref{cor:fil_by_ord}.
 
-We now assume that 
-there exists a nonzero homomorphism
-$\lambda\colon \TT_{\fm}\to \Lambda_{\fm}$
-of $\Lambda_{\fm}$-algebras
-and a nonzero homomorphism
-$\Theta\colon M_2\to \Lambda_{\fm}$
-of $\Lambda_{\fm}$-modules such that
-\[
-	\Theta(T\cdot m)=\lambda(T)\cdot \Theta(m)
-	\text{ for } T\in \TT_{\fm}, m\in M_2.
-\]
-Let $\fq\subset \ker(\TT_{\fm}\to \End(M_1))$
-be some ideal containing the image of a generator $x$ 
-of the reducibility ideal in $R_{\fm}$,
-and let $\wp=\ker\lambda\subset \TT_{\fm}$.
-We assume 
-\begin{equation}\label{cond:torsion}
-	\fq M_2/\fq S_2 \text{ is $\Lambda_{\fm}$-torsion for }
-	S_2\coloneqq\ker(\Theta)
-\end{equation}
+
+Let $\lambda\colon \TT\to \Lambda'$
+be a nonzero homomorphism of $\Lambda$-algebras
+to an integral domain $\Lambda'$
+which is a quotient of  $\Lambda$.
+We make the following assumptions
+on $M_2'=M_2\coloneqq_{\Lambda}\Lambda'$.
+\begin{enumerate}[label=(C\roman*)]
+\item The image of $x$ in  $\TT$ belongs to  $\ker(\lambda)$.
+\item There exists a nonzero 
+$\Lambda$-modules homomorphism
+$\Theta\colon M_2'\to \Lambda'$  such that 
+$\Theta(T\cdot m)=\lambda(T)\cdot \Theta(m)$
+for $T\in \TT_{\fm}, m\in M_2'$.
+
+\item There exists an ideal 
+$\fq\subset \ker(\TT\to \End(M_1))$
+containing the image of $x$ under $R\to \TT$
+such that $\fq M_2/\fq S_2$
+is torsion over $\Lambda'$ for 
+$S_2\coloneqq\ker(M_2\to M_2'\xrightarrow{\Theta}\Lambda')$.
+Here the $\Lambda'$-structure comes from the surjective
+map  $\fq\otimes_{\TT}(M_2/S_2)\to \fq M_2/\fq S_2$.
+
+\end{enumerate}
 
 \begin{lem}
-Let $S=\ker(M\to M^{\red}\to M_2
-\xrightarrow{\Theta}\Lambda)$, 
+Let $S=\ker(M\to M^{\red}\to M_2/S_2)$,
 then there exists an exact sequence
 \begin{equation}\label{eq:fund}
-	M/S\xrightarrow{x} \fq M/\fq S\to \fq M_2/\fq S_2 \to 0
+	M/S\xrightarrow{x} \fq M/\fq S\to 
+	\fq M_2/\fq S_2 \to 0
 \end{equation}
 \end{lem}
 \begin{proof}
@@ -2666,18 +2690,20 @@ is injective and
 
 \end{proof}
 
-Since $\Theta\colon M/S\cong M_2/S_2\hookrightarrow \Lambda_{\fm}$,
-the $\TT_{\fm}$-actions on \eqref{eq:fund}
-all factor through  $\lambda\colon \TT_{\fm}\to \Lambda_{\fm}$.
-Let $\mathbb{K}=(\Lambda_{\fm})_\wp$
-be the field of fraction of $\Lambda_{\fm}$
+Let $\wp=\ker(\lambda)$,
+which is a prime ideal of $\TT$
+since $\Lambda'$ is an integral domain.
+Let $\mathbb{K}=(\Lambda')_{\wp}$ 
+be the field of fraction
 and apply 
-$\otimes_{\TT_{\fm}}\TT_{\wp}=
-\otimes_{\Lambda_{\fm}}(\Lambda_{\fm}\otimes_{\TT_{\fm}}\TT_\wp)=
-\otimes_{\Lambda}\mathbb{K}$ 
+$\otimes_{\TT}\TT_{\wp}=
+\otimes_{\Lambda'}(\Lambda'\otimes_{\TT}\TT_\wp)=
+\otimes_{\Lambda'}\mathbb{K}$ 
 to the sequence \eqref{eq:fund}.
-As $\fq M_2/\fq S_2$ is $\Lambda_{\fm}$-torsion, 
-we obtain a surjection
+As $M/S\hookrightarrow \Lambda'$
+and $\fq M_2/\fq S_2$ is $\Lambda'$-torsion, 
+we obtain a surjective homomorphism 
+of $\mathbb{K}$-vector spaces
 \begin{equation}\label{eq:fund_frac}
 	\mathbb{K}\twoheadrightarrow (\fq M/\fq S)_{\wp}
 	= \fq M_\wp/\fq S_\wp\to 0
@@ -2685,57 +2711,41 @@ we obtain a surjection
 
 
 \begin{lem}
-	The localization $\TT_\wp$
-	is finite over $K\llbracket x\rrbracket$.
+	There exists a minimal prime ideal
+	$\fp\subset \TT_{\wp}$
+	such that $\TT_{\wp}/\fp$
+	is an finite ring extension
+	is over $\mathbb{K}\llbracket x\rrbracket$.
+	In particular,
+	the integral closure $\tilde{\TT}$
+	of $\mathbb{K}\llbracket x\rrbracket$
+	in $\textnormal{Frac}(\TT/\fp)$
+	is a discrete valuation ring.
 \end{lem}
 \begin{proof}
-	Let $R_\wp$ be the localization at 
-	$\ker(R\times \Lambda'\to \TT
-	\xrightarrow{\lambda}\Lambda)$,
-	which contains $\mathbb{K}\llbracket x\rrbracket$
-	as a subring.
-	Thus
-	\[
-		\mathbb{K}\llbracket x\rrbracket\hookrightarrow
-	R_\wp \longrightarrow T_\wp
-	\text{ acts on } M_\wp
-	\]
-	In fact, the composition
-	$\mathbb{K}\llbracket x\rrbracket\to \TT_\wp$
-	is injective 
-	since  $x\neq 0$ acts nontrivially on $M_\wp$
-	and $\TT_\wp$ is reduced and thus 
-	without nilpotent elements.
-	Now, 
-	that  $M_\wp$ is finite over  $\TT_\wp$
-	implies that  $M_\wp$ is a compact  $\TT_\wp$-module;
-	and moreover 
-	$\dim_\mathbb{K} M_\wp/xM_\wp=(M_1\oplus M_2)_\mathbb{K}<\infty$.
-	Thus
-	$M_\wp$ is finite over $\mathbb{K}\llbracket x\rrbracket$
-	by the topological Nakayama lemma,
-	from which the lemma follows as
-	$\TT_\wp\hookrightarrow 
-	\End_{\mathbb{K}\llbracket x\rrbracket}(M_\wp)$.
+	It suffices to show that 
+	the image of $x$ in  $\TT_\wp$
+	is not a nilpotent.
+	Since $\TT$ is reduced 
+	by \cite[Lem 2.14]{ger}, 
+	so is $\TT_\wp$,
+	therefore the result follows from that
+	$x$ acts through  $\TT$ nontrivially
+	on  $M$ by Corollary \ref{cor:no_torsion}
 \end{proof}
 
 \begin{prop}
 	The sequence \eqref{eq:fund} is also left exaxt.
 \end{prop}
 \begin{proof}
-	Since $M/S$ is isomorphic to a nonzero submodule in  $\Lambda_{\fm}$,
+	Since $M/S$ is isomorphic to a nonzero submodule 
+	in  $\Lambda'$,
 	by \eqref{eq:fund_frac} it suffices to show that 
 	$\fq M_\wp/\fq S_\wp\neq 0$.
-	Let $\TT, \mathbb{M}$ and  $\mathbb{S}$
-	denote  $\TT_\wp, M_\wp$ and $S_\wp$.
-	For each minimal prime $\fq_i\subset\TT$,
-	let $\TT_i$ be the integral closure
-	of  $\mathbb{K}\llbracket x\rrbracket$
-	in $\textnormal{Frac}(\TT/\fq_i)$.
-	Then each $\TT_i$ is a discrete valuation ring.
-	Define $\tilde{\TT}\coloneqq\prod_i \TT_i$
-	where  $\fq_i$ goes through all minimal primes.
-	As each $\fq\TT_i$ is a principal ideal,
+	Let $\mathbb{M}$ and  $\mathbb{S}$
+	denote  $M_\wp$ and $S_\wp$.
+	As $\fq\tilde{\TT}$ is a principal ideal
+	in the d.v.r. $\tilde{\TT}$,
 	we have $\fq\tilde{\TT}\cong \tilde{\TT}$ and 
 \[
 	(\fq \mathbb{M}/\fq \mathbb{S})\otimes_\TT
@@ -2812,6 +2822,8 @@ then $res_p(y^{\red})=0$
 and $res_\ell(y)=0$ if  $\ell\nmid Np$.
 
 \section{Previous results}
+
+\cite{lee}
 
 Let $\chi$ be a character of $\A_{\K}^\times/\K^\times$
 such that $\chi\mid_{\A_\F^\times}=\qch_{\K/\F}$
