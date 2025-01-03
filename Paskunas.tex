@@ -2483,162 +2483,167 @@ We apply the right exact $\Ord$ to
 	Apply $\Hom_{T}(\tilde{P}_{\chi_i^\vee,\chi},*)$
 	to the sequence \eqref{eq:exact_ord} shows
 \begin{equation*}
-	\End_{T}(\tilde{P}_{\chi_i^\vee,\chi}^r)\to 
+	\End_{T}(\tilde{P}_{\chi_i^\vee,\chi}^r)\xrightarrow{\bar{A}_{ii}}
 	\End_{T}(\tilde{P}_{\chi_i^\vee,\chi}^r)\to 
 	\Hom_{T}(\tilde{P}_{\chi_i^\vee,\chi}, ,(\Ord S')^\vee)
 	\to 0
 \end{equation*}
-	We note that the first two terms in which are 
-	isomorphic to $\oo\llbracket x,y\rrbracket^{\oplus r}$;
-	and the last term is torsion over $\oo\llbracket x,y\rrbracket$,
-	since there is no injective ring homomorphism from
-	$\oo\llbracket x,y\rrbracket$ to $\oo\llbracket X\rrbracket$.
-	It is now clear that $\bar{A}_{ii}$
-	must be injective,
-	for otherwise a contradiction occurs after 
-	tensor with the field of fraction of 
-	$\oo\llbracket x,y\rrbracket$.
+	The two terms on the left 
+	are finite free over $R_{\fm,\chi}^{\red}$
+	while the last term is torsion over which
+	since $\oo\llbracket T(\oo)^{\wedge}\rrbracket$
+	is a power series ring of relative dimension
+	strictly smaller than that of $R_{\fm,\chi}^{\red}$.
+	Passing to the field of fraction of $R_{\fm,\chi}^{\red}$,
+	we see that $\bar{A}_ii$ has to be invertible
+	and the result follows.
 \end{proof}
 
+Let $M^{\ord}(U^p)_\fm$
+denote the Pontryagin dual
+of $\Ord(\Ord_P(S(U^p,E/\oo))_{\fm})=\Ord_B(S(U^p,E/\oo))_{\fm}$,
+on which $\smat{p&\\&1}$ acts by  $U_{w}^{(1)}$.
+Then \eqref{eq:exact_ord}
+implies that 
+$M^{\ord}(U^p)_{\fm}$ is the direct sum of 
+$M^{\ord}(U^p)_{\fm}^{U_{w}^{(1)}\equiv \chi_i(p)}$,
+the subspace where $U_{w}^{(1)}$ acts residually by $\chi_i(p)$.
+
 \begin{cor}
-	the $\End_{\fC_{G}(\oo)}(\tilde{P}_i)$-module
-	$\Hom_{\fC_G(\oo)}(\tilde{P}_2, N^\vee)$
-	has no $\tau$-torsion 
-	under the isomorphism $\End_{\fC_{G}(\oo)}(\tilde{P}_2)\cong R$
-	in \eqref{eq:end_deform}.
+	Let $x$ be a generator
+	of $\tau$, then $M(U^p)_{\fm}'$
+	has no $x$-torsion.
 \end{cor}
 \begin{proof}
-	Identify the center of $\End_{\fC_{G}(\oo)}(\tilde{P}_\fm)$ 
-	with $R$ by the isomorphisms
-	in \eqref{eq:end_deform}
-	and fix a generator $x$ of the reducibility ideal  $\tau\subset R$.
-	The generator acts by, up to an invertible elements,
-	$\phi_{ij}\circ\phi_{ji}$ on $\tilde{P}_i$.
-	Thus $\tilde{P}_\fm[\tau]=0$,
-	since by definition $\varphi_{ij}\circ\varphi_{ji}$ are injective.
-	Then apply 
-	$\Hom_{\fC_G(\oo)}(\tilde{P}_2,\cdot)$
-	and the snake lemma to the diagram
+	It suffices to show that
+	$\Hom_{Q'}(\tilde{P}_{j,\chi}, M(U^p)_{\fm}'[x])=0$
+	for $j=1,2$.
+	From the proof of Lemma \ref{lem:ker_red}
+	we may assume $x=\phi_{ij}\circ \phi_{ji}$ is injective
+	on $\tilde{P}_{i,\chi}$ for both $i=1,2$.
+	Apply the snake lemma the diagra
     \begin{equation*}
     \begin{tikzcd}
-        0 \arrow[r] & \tilde{P}_\fm^{\oplus r} 
+        0 \arrow[r] & \tilde{P}_{\B,\chi}^{\oplus r} 
 	\arrow[d,"x",hookrightarrow] \arrow[r,"A"] & 
-	\tilde{P}_\fm^{\oplus r} 
+	\tilde{P}_{\B,\chi}^{\oplus r} 
 	\arrow[d,"x",hookrightarrow] \arrow[r] & 
-	N^\vee \arrow[d,"x"] \arrow[r] & 0 \\ 
-        0 \arrow[r] & \tilde{P}_\fm^{\oplus r}
-	\arrow[r,"A"] & \tilde{P}_\fm^{\oplus r}
-	\arrow[r] &N^\vee  \arrow[r] & 0 
+	M(U^p)_{\fm}'\arrow[d,"x"] \arrow[r] & 0 \\ 
+        0 \arrow[r] & \tilde{P}_{\B,\chi}^{\oplus r}
+	\arrow[r,"A"] & \tilde{P}_{\B,\chi}^{\oplus r}
+	\arrow[r] &M(U^p)_{\fm}'  \arrow[r] & 0 
     \end{tikzcd}
 \end{equation*}
-results in the following isomorphism,
-whose right-hand-side
-is trivial by the previous proposition.
+We see that $\Hom_{Q'}(\tilde{P}_{j,\chi}, M(U^p)_{\fm}'[x])$
+is isomorphic to the kernel below,
+which is trivial by the proposition.
 \[
-\Hom_{\fC_G(\oo)}(\tilde{P}_2, N^\vee)[\tau]\cong 
-\ker\left(
-	\Hom_{\fC_G(\oo)}(\tilde{P}_2, \tilde{P}_\fm^{\red})^{\oplus r}
-\xrightarrow{\smat{\bar{A}_{11}& \bar{A}_{12}\Phi_{12}\\& \bar{A}_{22}}}
-\Hom_{\fC_G(\oo)}(\tilde{P}_2, \tilde{P}_\fm^{\red})^{\oplus r} \right)
-\]\qedhere
+	\ker\left(
+	\Hom_{Q'}(\tilde{P}_{j,\chi}, 
+	\tilde{P}_{\B,\chi}^{\red})^{\oplus r}
+	\xrightarrow{\smat{\bar{A}_{ii}& \bar{A}_{ij}\Phi_{i}\\& \bar{A}_{jj}}}
+	\Hom_{Q'}(\tilde{P}_{j,\chi}, 
+	\tilde{P}_{\B,\chi}^{\red})^{\oplus r}\right)
+\]
 \end{proof}
 
+
 \begin{cor}
-	there exists an isomorphism between $R^{\red}$-modules
-    \begin{align}
-	    \Hom_{\fC_{G}(\oo)}(\tilde{P}_2,(N^\vee)^{\red})
-	    &\cong
-	    \Hom_{\fC_{T}(\oo)}(\tilde{P}_{\chi_1^\vee}, (\Ord_PN)^\vee)\oplus
-	    \Hom_{\fC_{T}(\oo)}(\tilde{P}_{\chi_2^\vee},(\Ord_PN)^\vee)\\
-	    &\cong
-	    ((\Ord_PN)_{U_p\equiv \chi_2\omega^{-1}})^\vee\oplus
-	    ((\Ord_PN)_{U_p\equiv \chi_1\omega^{-1}})^\vee
-    \end{align}
+	We have the following exact sequence of
+	$R_{\fm,\chi}^{\red}$-modules
+\begin{equation}
+	0\to M^{\ord}(U^p)_{\fm}^{U_{w}^{(1)}\equiv \chi_1(p)}\to
+	\Hom_{Q'}(\tilde{P}_{2,\chi},M(U^p)_{\fm}')^{\red}\to
+	M^{\ord}(U^p)_{\fm}^{U_{w}^{(1)}\equiv \chi_2(p)}\to0.
+\end{equation}
 \end{cor}
 \begin{proof}
-	Denote $\Hom_{\fC_{G}(\oo)}$ by $\Hom_G$ for short.
-	We decompse the resulting sequence of cokernels
-	from the proof of the previous corollary into the following diagram
+	The last step in the proof of the previous corollary
+	gives the following commutative diagram
 \begin{equation*}
     \begin{tikzcd}
-	    0 \arrow[r]& \Hom_{G}(\tilde{P}_2, \tilde{P}_2^{\red})^{\oplus r}
+	    0 \arrow[r]& 
+	    \Hom_{Q'}(\tilde{P}_{2,\chi},\tilde{P}_{1,\chi}^{\red})^{\oplus r}
 	    \arrow[r,"\bar{A}_{11}"] \arrow[d]&
-	    \Hom_{G}(\tilde{P}_2, \tilde{P}_2^{\red})^{\oplus r}
+	    \Hom_{Q'}(\tilde{P}_{2,\chi}, \tilde{P}_{1,\chi}^{\red})^{\oplus r}
 	    \arrow[d] &&\\
-	    0\arrow[r] & \Hom_{G}(\tilde{P}_2, \tilde{P}_\fm^{\red})^{\oplus r}
-	    \arrow[r] 
-	    \arrow[d] &
-	    \Hom_{G}(\tilde{P}_2, \tilde{P}_\fm^{\red})^{\oplus r}
+	    0\arrow[r] & 
+	    \Hom_{Q'}(\tilde{P}_{2,\chi},\tilde{P}_{\B,\chi}^{\red})^{\oplus r}
+	    \arrow[r] \arrow[d] &
+	    \Hom_{Q'}(\tilde{P}_{2,\chi}, \tilde{P}_{\B,\chi}^{\red})^{\oplus r}
 	    \arrow[d] \arrow[r]&
-	    \Hom_{G}(\tilde{P}_2, (N^\vee)^{\red})\arrow[r]&0\\
-	    0\arrow[r] & \Hom_{G}(\tilde{P}_2, \tilde{P}_1^{\red})^{\oplus r}
+	    \Hom_{Q'}(\tilde{P}_{2,\chi}, M(U^p)_{\fm}')^{\red}\arrow[r]&0\\
+	    0\arrow[r] & 
+	    \Hom_{Q'}(\tilde{P}_{2,\chi}, \tilde{P}_{2,\chi}^{\red})^{\oplus r}
 	    \arrow[r,"\bar{A}_{22}"] &
-	    \Hom_{G}(\tilde{P}_2, \tilde{P}_1^{\red})^{\oplus r}&&
+	    \Hom_{Q'}(\tilde{P}_{2,\chi},\tilde{P}_{2,\chi}^{\red})^{\oplus r}&&
     \end{tikzcd}
 \end{equation*}
-But by the exactness of \eqref{eq:exact_ord}
-and the proof of the proposition thereafter,
-the cokernels on the first and last rows
-are isomorphic, as  $R^{\red}$-modules,
-to $\Hom_{\fC_T(\oo)}(\tilde{P}_{\chi_2^\vee}, (\Ord_PN)^\vee)$ and
-$\Hom_{\fC_T(\oo)}(\tilde{P}_{\chi_1^\vee}, (\Ord_PN)^\vee)$ respectively.
+Since $\tilde{P}_{i,\chi}\cong \tilde{M}_i\hat{\otimes}_{\oo}\tilde{P}_{\chi}$,
+by Lemma \ref{lem:ker_red}
+all the terms 
+$\Hom_{Q'}(\tilde{P}_{2,\chi},\tilde{P}_{2,\chi}^{\red})$
+are free of rank one over  $R_{\fm,\chi}^{\red}$.
+Compare the cokernels of the first and last rows
+with \eqref{eq:exact_ord}
+and note that $\tilde{P}_{\chi_i^\vee,\chi}$
+are also free of rank one $R_{\fm,\chi}^{\red}$,
+we obtain the desired result.
 \end{proof}  
 
 
 \subsection{Fundamental exact sequence}
 
-Let $r=\#\Sigma_p-1$ and  
-$\Lambda=\oo\llbracket \GG^{2r+2} \rrbracket$.
-$\Lambda'=\oo\llbracket \GG^{2r} \rrbracket$.
-Let $R_{\fm}\times \Lambda'$
-act on 
-$M=\Hom(P\hat{\otimes}_{\oo}\Lambda', M(U^p)_\fm)$.
-We are in the following set up:
-\begin{align*}
-	\Lambda\rightarrow R\times \Lambda' \to \TT
-	&\text{ acts on } M\\
-	\TT^{\red} &\text{ acts on }
-	M^{\red}=M_1\oplus M_2
-	\text{ which is finite(free) over }\Lambda
-\end{align*}
-And by previous results,
-there exists $\lambda\colon \TT\to \Lambda$
-and a nonzero $\Lambda$-algebra 
-morphism $\Theta\colon M_2\to \Lambda$ 
-such that 
+
+To simplify notations,
+we write 
+$M=\Hom_{Q'}(\tilde{P}_{2,\chi},M(U^p)_{\fm}')$,
+$M_1=M^{\ord}(U^p)_{\fm}^{U_{w}^{(1)}\equiv \chi_1(p)}$,
+and
+$M_2=M^{\ord}(U^p)_{\fm}^{U_{w}^{(1)}\equiv \chi_2(p)}$.
+Aslo write 
+$R_{\fm}=R_{\fm,\chi}$,
+$\Lambda_{\fm}=\oo\llbracket T(\oo)^\wedge\rrbracket$
+and $\TT_{\fm}$ be the image of $\TT(U^p,\oo)_{\fm}$
+in $\End_{R_\fm}(M)$.
+Then $\TT_{\fm}$ and $R_{\fm}$ are $\Lambda_{\fm}$-modules.
+By the above corollary
+and the admissibility of $M^{\ord}(U^p)_{\fm}$
+we see $M^{\red}$ is also a finite $\Lambda_{\fm}$-module.
+
+We now assume that 
+there exists a nonzero homomorphism
+$\lambda\colon \TT_{\fm}\to \Lambda_{\fm}$
+of $\Lambda_{\fm}$-algebras
+and a nonzero homomorphism
+$\Theta\colon M_2\to \Lambda_{\fm}$
+of $\Lambda_{\fm}$-modules such that
 \[
-	\Theta(T\cdot m)=\lambda(T)\cdot \Theta(m).
+	\Theta(T\cdot m)=\lambda(T)\cdot \Theta(m)
+	\text{ for } T\in \TT_{\fm}, m\in M_2.
 \]
-Let $\wp=\ker\lambda\subset \TT$,
-and $\fq\subset \ker(\TT\to \End(M_1))$
-is some ideal containing  $x=x_{\red}$.
-Let $S_2=\ker(\Theta)\subset M_2$ 
-and make the following assumptions.
-\begin{enumerate}[label=(\alph*)]
-	\item $\fq M_2/\fq S_2$ is $\Lambda$-torsion.
-	\item $\TT$ is reduced
-	\item $\TT$ acts faithfully on $M$.
-\end{enumerate}
+Let $\fq\subset \ker(\TT_{\fm}\to \End(M_1))$
+be some ideal containing the image of a generator $x$ 
+of the reducibility ideal in $R_{\fm}$,
+and let $\wp=\ker\lambda\subset \TT_{\fm}$.
+We assume 
+\begin{equation}\label{cond:torsion}
+	\fq M_2/\fq S_2 \text{ is $\Lambda_{\fm}$-torsion for }
+	S_2\coloneqq\ker(\Theta)
+\end{equation}
 
 \begin{lem}
-Let $S=\ker(M\to M^{\red}=M_1\oplus M_2\to M_2
+Let $S=\ker(M\to M^{\red}\to M_2
 \xrightarrow{\Theta}\Lambda)$, 
 then there exists an exact sequence
 \begin{equation}\label{eq:fund}
-	M/S\to \fq M/\fq S\to \fq M_2/\fq S_2 \to 0
+	M/S\xrightarrow{x} \fq M/\fq S\to \fq M_2/\fq S_2 \to 0
 \end{equation}
 \end{lem}
 \begin{proof}
-Since the image of the injection 
-$\fq M^{\red}=\fq M/xM\hookrightarrow M^{\red}=M/xM$
-is $\fq M_2$ and
-\[
-	\Image(\fq S^{\red}\to M^{\red})=\fq S+xM/xM=\fq S_2,
-\]
-we have $\fq M^{\red}/\fq S^{\red}=\fq M_2/\fq S_2$.
-The exact sequence in question now follows from 
-the isomorphism and applying the snake lemma to 
-the commutative diagram
+
+Applying the snake lemma to 
+the commutative diagram below
 \[
 \begin{tikzcd}
 	S\arrow[r,"x"] \arrow[d]
@@ -2649,26 +2654,34 @@ the commutative diagram
 	& \fq M^{\red} \arrow[r] & 0
 \end{tikzcd}
 \]
-\end{proof}
-Note that since 
-$\Theta\colon M/S\cong M_2/S_2\hookrightarrow \Lambda$,
-the $\TT$-actions on \eqref{eq:fund}
-all factor through  $\lambda\colon \TT\to \Lambda$.
-Let $K=K_\Lambda=\Lambda_\wp$
-be the field of fraction of $\Lambda$.
-As $\fq M_2/\fq S_2$ is a $\Lambda$-torsion module,
-taking the tensor
-$\otimes_{\TT}\TT_{\wp}=
-\otimes_\Lambda(\Lambda\otimes_\TT\TT_\wp)=
-\otimes_\Lambda K$ 
-to the exact sequence then results in the surjection
+It then suffices to show that 
+$\fq M^{\red}/\fq S^{\red}=\fq M_2/\fq S_2$.
+This follws from that the natural map from
+$\fq M^{\red}=\fq M/xM$ to $M^{\red}=M/xM$
+is injective and
 \[
-	K_\Lambda\twoheadrightarrow (\fq M/\fq S)_{\wp}
-	= \fq M_\wp/\fq S_\wp
+	\Image(\fq M^{\red}\to M^{\red})=\fq M/xM=\fq M_2,\quad
+	\Image(\fq S^{\red}\to M^{\red})=\fq S+xM/xM=\fq S_2.
 \]
-From which 
-we see that \eqref{eq:fund} is injective
-if $\fq M_\wp/\fq S_\wp\neq 0$.
+
+\end{proof}
+
+Since $\Theta\colon M/S\cong M_2/S_2\hookrightarrow \Lambda_{\fm}$,
+the $\TT_{\fm}$-actions on \eqref{eq:fund}
+all factor through  $\lambda\colon \TT_{\fm}\to \Lambda_{\fm}$.
+Let $\mathbb{K}=(\Lambda_{\fm})_\wp$
+be the field of fraction of $\Lambda_{\fm}$
+and apply 
+$\otimes_{\TT_{\fm}}\TT_{\wp}=
+\otimes_{\Lambda_{\fm}}(\Lambda_{\fm}\otimes_{\TT_{\fm}}\TT_\wp)=
+\otimes_{\Lambda}\mathbb{K}$ 
+to the sequence \eqref{eq:fund}.
+As $\fq M_2/\fq S_2$ is $\Lambda_{\fm}$-torsion, 
+we obtain a surjection
+\begin{equation}\label{eq:fund_frac}
+	\mathbb{K}\twoheadrightarrow (\fq M/\fq S)_{\wp}
+	= \fq M_\wp/\fq S_\wp\to 0
+\end{equation}
 
 
 \begin{lem}
@@ -2679,16 +2692,16 @@ if $\fq M_\wp/\fq S_\wp\neq 0$.
 	Let $R_\wp$ be the localization at 
 	$\ker(R\times \Lambda'\to \TT
 	\xrightarrow{\lambda}\Lambda)$,
-	which contains $K\llbracket x\rrbracket$
+	which contains $\mathbb{K}\llbracket x\rrbracket$
 	as a subring.
 	Thus
 	\[
-	K\llbracket x\rrbracket\hookrightarrow
+		\mathbb{K}\llbracket x\rrbracket\hookrightarrow
 	R_\wp \longrightarrow T_\wp
 	\text{ acts on } M_\wp
 	\]
 	In fact, the composition
-	$K\llbracket x\rrbracket\to \TT_\wp$
+	$\mathbb{K}\llbracket x\rrbracket\to \TT_\wp$
 	is injective 
 	since  $x\neq 0$ acts nontrivially on $M_\wp$
 	and $\TT_\wp$ is reduced and thus 
@@ -2697,38 +2710,33 @@ if $\fq M_\wp/\fq S_\wp\neq 0$.
 	that  $M_\wp$ is finite over  $\TT_\wp$
 	implies that  $M_\wp$ is a compact  $\TT_\wp$-module;
 	and moreover 
-	$\dim_K M_\wp/xM_\wp=(M_1\oplus M_2)_K<\infty$.
+	$\dim_\mathbb{K} M_\wp/xM_\wp=(M_1\oplus M_2)_\mathbb{K}<\infty$.
 	Thus
-	$M_\wp$ is finite over $K\llbracket x\rrbracket$
+	$M_\wp$ is finite over $\mathbb{K}\llbracket x\rrbracket$
 	by the topological Nakayama lemma,
 	from which the lemma follows as
 	$\TT_\wp\hookrightarrow 
-	\End_{K\llbracket x\rrbracket}(M_\wp)$.
+	\End_{\mathbb{K}\llbracket x\rrbracket}(M_\wp)$.
 \end{proof}
 
 \begin{prop}
-	We have the fundamental exact sequence
-	\begin{equation}
-		0\to M/S\xrightarrow{x}
-		\fq M/\fq S\to \fq M_2/\fq S_2 \to 0
-	\end{equation}
+	The sequence \eqref{eq:fund} is also left exaxt.
 \end{prop}
 \begin{proof}
+	Since $M/S$ is isomorphic to a nonzero submodule in  $\Lambda_{\fm}$,
+	by \eqref{eq:fund_frac} it suffices to show that 
+	$\fq M_\wp/\fq S_\wp\neq 0$.
 	Let $\TT, \mathbb{M}$ and  $\mathbb{S}$
 	denote  $\TT_\wp, M_\wp$ and $S_\wp$.
 	For each minimal prime $\fq_i\subset\TT$,
 	let $\TT_i$ be the integral closure
-	of  $K\llbracket x\rrbracket$
-	in the finite extension
-	$\textnormal{Frac}(\TT/\fq_i)/K((x))$.
-	Then each $\TT_i$ is a discrete valuation ring and
-\[
-	\TT\hookrightarrow 
-	\prod_{\fq_i:\text{ minimal}}\TT/\fq_i\hookrightarrow
-	\tilde{\TT}\coloneqq\prod_i \TT_i
-\]
-As each $\fq\TT_i$ is a principal ideal,
-we have $\fq\tilde{\TT}\cong \TT$ and 
+	of  $\mathbb{K}\llbracket x\rrbracket$
+	in $\textnormal{Frac}(\TT/\fq_i)$.
+	Then each $\TT_i$ is a discrete valuation ring.
+	Define $\tilde{\TT}\coloneqq\prod_i \TT_i$
+	where  $\fq_i$ goes through all minimal primes.
+	As each $\fq\TT_i$ is a principal ideal,
+	we have $\fq\tilde{\TT}\cong \tilde{\TT}$ and 
 \[
 	(\fq \mathbb{M}/\fq \mathbb{S})\otimes_\TT
 	\tilde{\TT}\cong
@@ -2739,11 +2747,11 @@ we have $\fq\tilde{\TT}\cong \TT$ and
 	\mathbb{M}\otimes_\TT\tilde{\TT}/
 	\mathbb{S}\otimes_\TT\tilde{\TT}\cong
 	(\mathbb{M}/\mathbb{S})\otimes_\TT\tilde{\TT}=
-	K\otimes_{\lambda,\TT}\tilde{\TT}.
+	\mathbb{K}\otimes_{\lambda,\TT}\tilde{\TT}.
 \]
 The last ring is nonzero since 
 $\tilde{\TT}$ is integral over $\TT$
-and the maximal ideal of  $ \tilde{\TT}$ 
+and the maximal ideals of  $ \tilde{\TT}$ 
 restricts to that of $\TT$.
 \end{proof}
 
@@ -2764,7 +2772,7 @@ generically irreducible representations.
 & M_{N\ell}/S_{N\ell}\arrow{dd} \arrow[rd,"\sim"]\arrow[rr]
 && \fq_{N\ell}\otimes M_{N\ell}/S_{N\ell}
 	\arrow[rd,twoheadrightarrow]\arrow[rr]\arrow[dd]
-&& \fq_{N\ell}^{\red}M_{N\ell}/S_{N\ell}\arrow[dd]\arrow[rd]\\
+&& \fq_{N\ell}^{\red}\otimes M_{N\ell}/S_{N\ell}\arrow[dd]\arrow[rd]\\
 0 \arrow[crossing over]{rr} 
 && \Lambda_{N\ell}
 	\arrow[crossing over]{dd} \arrow[crossing over]{rr} 
@@ -2775,7 +2783,7 @@ generically irreducible representations.
 & M_{N}/S_{N}\arrow{rr}\arrow[rd,"\sim"]
 && \fq_{N}\otimes M_{N}/S_{N}
 	\arrow{rr} \arrow[rd,twoheadrightarrow]
-&& \fq_{N}^{\red}M_{N}/S_{N} \arrow[rd]& & & \\
+&& \fq_{N}^{\red}\otimes M_{N}/S_{N} \arrow[rd]& & & \\
 0 \arrow[crossing over]{rr} 
 && \Lambda_{N} \arrow[crossing over]{rr} 
 && \fq_{N}M_{N}/\fq_{N}S_{N}\arrow[crossing over]{rr} 
