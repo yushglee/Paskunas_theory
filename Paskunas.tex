@@ -1046,7 +1046,7 @@ that $S^{P-\ord}(U^p,E/\oo)\cong \Ord_P(S(U^p,E/\oo))$,
 where the latter is an object in $\aMod_Q(\oo)$
 by \cite[Thm 3.3.3]{emeI}.
 We define the $P$-ordinary completed homology and cohomology by
-\begin{align}
+\begin{align}\label{eq:completed_coh}
 	M(U^p)&=
 	\Ord_P(S(U^p,E/\oo))^\vee
 	\coloneqq \Hom_\oo(\Ord_P(S(U^p,E/\oo)),E/\oo)\\
@@ -2931,15 +2931,18 @@ Definition \ref{def:lambda_rings}.
 Now, let $\K_{p^n\fs}$ be the ray class field of conductor 
 $p^n\fs$ over $\K$ and 
 $\K_{p^\infty\fs}=\bigcup_{n}\K_{p^n\fs}$.
-We let $\fG_{\fs}^-$ denote
-the Galois group of the maximal pro-$p$ anticyclotomic
+We let $\fG_{\fs}$ denote
+the Galois group of the maximal pro-$p$ 
 subextension in $\K_{p^\infty\fs}$.
+As $p$ is odd, the complex conjugation
+decompose  $\fG_{\fs}$ into
+$\fG_{\fs}^+\times\fG_{\fs}^-$.
 Since we assume that the class number 
 $h_\K$ is prime to  $p$,
 the group $\fG_{\fs}^-$
 is isomorphic to 
 $\Delta_{\fs}\times \oo_{\Sigma_p}^\times$ 
-by the reciprocity map.
+by the reciprocity map of class field theory.
 
 \begin{defn}
 We define a Hida family as a 
@@ -3185,8 +3188,6 @@ for algebraic Hecke characters $\eta$ such that
 \begin{enumerate}
     \item $\eta$ has infinity type $k\geq 0$.
     \item $\eta$ is ramified only at places dividing $p\fs$.
-    \item the prime-to-$p$ part of the conductor of 
-    $\tilde{\eta}$ divides $\fs$.
 \end{enumerate}
 we have chosen Schwartz functions $\varphi$ 
 and define the theta lift 
@@ -3204,9 +3205,12 @@ $\iota(f^\circ(\eta))$ as defined in \eqref{eq:p_to_infty}
 sends the highest weight vector in  $\xi_{\wt{k}}^*$
 to $\theta(\eta)$ up to explicit factors.
 \begin{prop}\cite[Thm 7.6]{lee}
-	Let $\fX_{\fs}^-$ denote
-	the set of characters $ \hat{\eta}$ of $\fG_{\fs}^-$
-	for algebraic  Hecke characters  $\eta$ as above.
+	Let $\fX_{\fs}^-$ be the set of characters
+	on $\fG_{\fs}^-$ consists of 
+	the restrictions to $\fG_{\fs}^-$ of characters 
+	$\hat{\eta}$ of $\fG_{\fs}$
+	that are $p$-adic avatars of 
+	algebraic  Hecke characters  $\eta$ as above.
 	There exists a Hida family 
 	$\euF^\circ_{\fn}\in S^{\ord}_\Lambda(\fn)$
 	such that 
@@ -3225,45 +3229,50 @@ to $\theta(\eta)$ up to explicit factors.
 
 Moreover, by the local computations at splits
 places, we have $\hat{\chi}^{-1}_\circ(\varpi_w)\hat{\eta}(\varpi_w,\varpi_{\bw}^{-1})$
-\begin{align}
-	T_w^{(1)}\cdot &\euF^\circ_{\fn}=q_w^{1/2}
-	(\chi(\varpi_w)+\chi^{-1}(\varpi_w)
+\begin{align*}
+	T_w^{(1)}\cdot &\euF^\circ_{\fn}=
+	(\epsilon^{-1}\hat{\chi}_\circ(\Fr_w)
+	+\hat{\chi}^{-1}_\circ(\Fr_w)\cdot 
 	\langle \Fr_w\rangle \langle \Fr_{\bw}\rangle^{-1})
-	\euF^\circ_{\fn}\\
+	\euF^\circ_{\fn},\\
 	U_{\wt{k}',w}^{(1)}\cdot &\euF^{\circ}_{\fn}=
-	q_w^{1/2}\chi^{-1}(\varpi_w)
-	\langle \Fr_w\rangle \langle \Fr_{\bw}\rangle^{-1})
-	\euF^{\circ}_{\fn}\\
+	\hat{\chi}_\circ^{-1}(\Fr_w)\cdot 
+	\langle \Fr_w\rangle \langle \Fr_{\bw}\rangle^{-1}
+	\euF^{\circ}_{\fn},\quad w\in \Sigma_p\\
 	 &\euF^\circ_{\fn\ell} \mod I_{\ell}=
-	(1-q_\fl^{-1/2}\chi\tilde{\eta}^{-1}(\varpi_\fl)V_\fl)
+	(1-\hat{\chi}_\circ(\Fr_\fl)\cdot 
+	\langle \Fr_\fl\rangle^{-1}
+	\langle \Fr_{\bar{\fl}}\rangle V_\fl)
 	\euF^\circ_{\fn}.
-\end{align}
+\end{align*}
+Note that for $\Fr_w$ depends on the 
+choice of the uniformizer  $\varpi_w$ when  $w\in \Sigma_p$.
+We let 
+$\lambda_{\fn}\colon\TT^{\ord}(\fn,\oo)\to\Lambda_{\fs}$
+denote the associated homomorphism.
 
-\begin{thm}   
-	Put $\mathcal{L}_\fn=
-	B_\fn(\euF\circ_{\fs},U_\fs^{-1}\euF^\circ_{\fs})
-    \in \Lambda_{\fs}$
-    \begin{equation*}
-        \frac{1}{\Omega_p^{2k+4}}
-        \int_{\fG_{\fn}}\hat{\eta}\,\mathcal{L}_\fn=
-    C(\eta,\chi,\K)
-    \frac{(2\pi i)^{k}\Gamma(k+2)L(1,\chi^{-2}\tilde{\eta})}{\Omega_\infty^{k+2\Sigma}}
-    \prod_{w\mid p\fs}
-    \varepsilon(1,(\chi^{2}\tilde{\eta}^{-1})_w,\psi_w)
-    \frac{1-(\chi^{-2}\tilde{\eta})^{-1}_w(\varpi_v)}
-    {1-(\chi^{-2}\tilde{\eta})_w(\varpi_v)q_v^{-1}}
-    \end{equation*}
-    up to powers of $2$
-    when $\hat{\eta}\in \fX^+_{\fs}$.
-    Here $C(\eta,\chi,\K)$ is a scalar depending on $\eta,\chi$ and $\K$
-    which is a $p$-unit when \eqref{cond:chi} is satisfied 
-    and $p$ is ``large enough''
-    with respect to $\K$ and $\fc$. 
-\end{thm}
-
-We say the odd prime $p$ is large 
-with respect to  $\chi, \fc$ and  $\K$
-if the following conditions are satisfied.
+\begin{prop}\cite[Thm 7.7]{lee}   
+Put $\mathcal{L}_\fn=B_\fn
+(\euF^\circ_{\fn},U_\fs^{-1}\cdot\euF^\circ_{\fn})
+\in \Lambda_{\fs}$. 
+When $ \hat{\eta}\in \fX_{\fs}^-$, we have
+\begin{equation*}
+	\frac{1}{\Omega_p^{2k+4}}
+	\int_{\fG_{\fs}^-}\hat{\eta}\,\mathcal{L}_\fn=
+	C(\eta,\chi,\K)
+	\frac{(2\pi i)^{k}\Gamma(k+2)
+	L(1,\chi^{-2}\tilde{\eta})}{\Omega_\infty^{k+2\Sigma}}
+	\prod_{w\mid p\fs}
+	\varepsilon(1,(\chi^{2}\tilde{\eta}^{-1})_w,\psi_w)
+	\frac{1-(\chi^{-2}\tilde{\eta})^{-1}_w(\varpi_v)}
+	{1-(\chi^{-2}\tilde{\eta})_w(\varpi_v)q_v^{-1}}
+\end{equation*}
+up to powers of $2$.
+Here $\Omega_p$ and  $\Omega_\infty$
+are the CM periods associated to  $\K$,
+and $C(\eta,\chi,\K)$ is an explict constant 
+which is a $p$-unit when the following
+conditions are satisfies.
 \begin{gather}
 	\frac{L(0,\chi_0)}{\Omega_\infty^{\Sigma}}
 	\text{ is prime to }p
@@ -3274,6 +3283,64 @@ if the following conditions are satisfied.
 	p\nmid h_\K, \, w_\K, \, (2\pi)^{-2\Sigma}\zeta_\F(2).
 	\label{cond:K}\tag{$\K$}
 \end{gather}
+\end{prop}
+
+\begin{lem}
+Define 
+$P_\ell=(1-\epsilon^{-1}\hat{\chi}_\circ^{-2}(\Fr_\fl)\cdot 
+\langle \Fr_\fl\rangle^{-1}
+\langle \Fr_{\bar{\fl}}\rangle)
+(1-\hat{\chi}_\circ^{-2}(\Fr_\fl)\cdot 
+\langle \Fr_\fl\rangle^{-1}
+\langle \Fr_{\bar{\fl}}\rangle)\in \Lambda_{\fs}$
+when $\ell\nmid \fs$.
+Let $\euF_{\fn\ell}\in S_\Lambda^{\ord}(\fn\ell)$
+be a Hida family that also satisfies
+$\euF_{\fn\ell} \mod I_{\ell}=
+(1-\hat{\chi}_\circ(\Fr_\fl)\cdot 
+\langle \Fr_\fl\rangle^{-1}
+\langle \Fr_{\bar{\fl}}\rangle V_\fl)
+\euF_{\fn}$,
+for some $\euF_{\fn}\in S_\Lambda^{\ord}(\fn)$, then 
+there exists the equaltiy
+\[
+	B_{\fn\ell}(\euF_{\fn\ell}, \euF^{\circ}_{\fn\ell})
+	\text{ mod }I_\ell=
+	(\hat{\chi}_\circ^{-1}(\Fr_\fl)\cdot 
+	\langle \Fr_\fl\rangle
+	\langle \Fr_{\bar{\fl}}\rangle^{-1})
+	P_\ell\cdot B_{\fn}(\euF_{\fn}, \euF^{\circ}_{\fn})
+\]
+In particular, 
+the $p$-adic L-function $\mathcal{L}_\fn$ satisfies 
+$\mathcal{L}_{\fn\ell} \text{ mod }I_\ell=
+P_\ell\cdot \mathcal{L}_\fn$.
+\end{lem}
+
+\begin{proof}
+Let $\alpha$ and  $\beta$ denote 
+$\epsilon^{-1}\hat{\chi}_\circ(\Fr_\fl)$ and 
+$\hat{\chi}_\circ^{-1}(\Fr_\fl)\cdot
+\langle \Fr_\fl\rangle\langle \Fr_{\bar{\fl}}\rangle^{-1}$
+and apply Proposition \ref{prop:pair_at_deff_level}, thus
+\begin{multline*}
+B_{\fn\ell}(\euF_{\fn\ell}, \euF^{\circ}_{\fn\ell})
+\text{ mod }I_\ell=
+B_\fn(\euF, T_\fl^{(1)}\euF^\circ)
+-2(q_\ell+1)\beta^{-1}B_\fn(\euF, T_\fl^{(2)}\euF^\circ)
++\beta^{-2}B_\fn(T_\fl^{(1)}\euF, T_\fl^{(2)}\euF^\circ)
+\\=
+[(\alpha+\beta)-2(q_\fl^{-1}+1)(\alpha)
++q_\fl^{-1}(\alpha+\beta)(\alpha\beta^{-1})]\cdot 
+B_\fn(\euF_{\fn}, \euF^\circ_\fn)=
+(\alpha-\beta)[q_\fl^{-1}(\alpha\beta^{-1})-1]\cdot 
+B_\fn(\euF_{\fn}, \euF^\circ_\fn)
+\end{multline*}
+Now the lemma follows from
+$(\alpha-\beta)(q_\fl^{-1}(\alpha\beta^{-1})-1)
+=\beta(1-(\alpha/\beta))(1-(\alpha/\beta)q_\fl^{-1})
+=\beta\cdot P_\ell$.
+\end{proof}
 
 \subsection{Cocyles from reducible representation}
 
@@ -3334,7 +3401,70 @@ $Z^1(\mathcal{G}\times \mathcal{G},
 (I_\Psi/I_\Psi^2)(\bar{\delta}\boxtimes \bar{\delta}^{-1}))$.
 
 
-\subsection{Construction of classes}
+\subsection{Main construction}
+
+We now have all the ingredient needed 
+for the construction of our Euler systems.
+
+For $U^p=K(\fn)^p$,
+let $\TT(\fn,\oo)$ be the big Hecke algebra
+acting on $M(U^p)$ as defined in \eqref{eq:completed_coh}.
+By Lemma \ref{lem:coh_to_ord},
+there exists a homomorphism
+$\TT(\fn,\oo)\to \TT^{\ord}(\fn,\oo)$.
+By abuse of notation, we write 
+$\lambda_{\fn}\colon \TT_{\fn}\to \TT^{\ord}(\fn,\oo)\to
+\Lambda_{\fs}$ be the composition.
+Let $\Psi\colon \Gal_\K\o \TT_{\fn}$ be the 
+big Galois pseudo-representation, then
+\[
+	\lambda_{\fn}\circ \Psi=
+	\epsilon^{-1}\hat{\chi}_\circ+
+	\hat{\chi}_\circ^{-1}
+\]
+modulo the maximal ideal of $\Lambda_{\fs}$.
+Assume 
+\begin{equation}\label{cond:chi_gen}\tag{$\chi$-gen}
+\epsilon^{-1}\hat{\chi}_\circ^{2}\vert_{D_w}\neq
+\id, \omega^{\pm}.
+\end{equation}
+
+Let $\TT_{\fn}$ be the localization
+of $\TT(\fn,\oo)$ at the maximal ideal 
+associated to $\lambda_{\fn}$ and
+$\Psi_{\fn}$ be the localization
+of $\Psi$ at the maximal ideal associated to $\lambda_{\fn}$.
+We have the commutative diagram
+\[
+\begin{tikzcd}
+	\Gal_K\arrow[d,equal]\arrow[r]  &
+	\TT_{\fn\ell} \arrow[d] \arrow[r] &
+	\Lambda_{\fs\ell} \arrow[d]\\
+	\Gal_K\arrow[r]  &
+	\TT_{\fn} \arrow[r] &
+	\Lambda_{\fs}
+\end{tikzcd}
+\]
+
+\begin{defn}
+We pick $z\in D_w\cong \Gp$ as in the previous subsection
+and dfine $x_\fn(\sigma,\tau)$.
+We may assume  there are 
+$\sigma_0,\tau_0\in D_w$
+such that $ x=x_{\fn}(\sigma_0,\tau_0)$
+is the image of a generator of the reducibility ideal 
+$x$ for the Global pseudo-representation at  $D_w$.
+We define 
+\[
+	q_{\fn}=
+	\{x_\fn(\sigma,\tau)\mid\sigma\in\Gal_K, \tau\in D_w\}
+\]
+Then $\fq_{\fn}\subset \ker(\lambda_{\fn})$
+since $\lambda_\fn\circ \Psi_\fn$ is reducible.
+\end{defn}
+We now let 
+$\TT=\TT_{\fn}$.
+
 
 We let $\Hom_{\Lambda_{\fs}}(S^{\ord}(\fn,\Lambda_\fs),
 \Lambda_{\fs})$
@@ -3343,6 +3473,20 @@ Let  $\Theta=B_{\fn}(*,U_{\fs}^{-1}\euF^{\circ}_\fs)$,
 and $\lambda\colon \TT\to \Lambda_{\fs}$.
 
 
+\[
+\begin{tikzcd}
+&M_{\fn\ell}/S_{\fn\ell}\arrow[r]\arrow[d]&
+\fq_{\fn\ell}\otimes_{\TT_{\fn\ell}}
+	M_{\fn\ell}/S_{\fn\ell}\arrow[r]\arrow[d]&
+\fq_{\fn\ell}^{\red}\otimes_{\TT_{\fn\ell}}
+	M_{\fn\ell}/S_{\fn\ell}\arrow[r]\arrow[d]&0\\
+0\arrow[r]&
+\Lambda_{\fn\ell} \arrow[r]&
+\fq_{\fn\ell}M_{\fn\ell}/\fq_{\fn\ell}S_{\fn\ell} \arrow[r]&
+\fq_{\fn\ell}M^{\ord}_{\fn\ell}/
+\fq_{\fn\ell}S^{\ord}_{\fn\ell} \arrow[r] &0
+\end{tikzcd}
+\]
 
 
 Let $\fq$
@@ -3405,31 +3549,6 @@ such that
 We define $c(\sigma)=\Phi(M(\sigma))\in \Lambda_{\fs}$.
 
 
-As $\euF^\circ_{\fn\ell}\mapsto (1-q_{\fl}^{-1/2}\chi\tilde{\eta}^{-1}(\varpi_{\fl})V_\fl)\euF^\circ_{\fn}$,
-we have
-\begin{multline*}
-	B_{\fn\fl}
-	((1-q_{\fl}^{-1/2}\chi\tilde{\eta}^{-1}(\varpi_{\fl})V_\fl)M_{\fn},U_{\fl\fn}^{-1}
-	(1-q_{\fl}^{-1/2}\chi\tilde{\eta}^{-1}(\varpi_{\fl})V_\fl)\euF^{\circ}_{\fn})=\\
-	U_{\fl}^{-1}(
-	B_{\fn}(M_{\fn}, U_{\fn}^{-1}T_{\fl}^{(1)}\euF^\circ_{\fn})-\\(q_\ell+1)
-	q_{\fl}^{-1/2}\chi\tilde{\eta}^{-1}(\varpi_{\fl})
-	B_{\fn}(M_{fn}, T_\fl^{(2)}\euF^\circ_{\fn})
-	+q_{\fl}^{-1}
-	B_{\fn}(M_{fn}, T_\fl^{(1)}T_\fl^{(2)}\euF^\circ_{\fn})
-\end{multline*}
-
-\begin{multline*}
-	\ell^{1/2}(\alpha+\beta)-2\ell^{-1/2}\beta^{-1}
-	(\alpha\beta)(\ell+1)+
-	\ell^{-1}\beta^{-2}(\alpha\beta)\ell^{1/2}(\alpha+\beta)\\=
-	\ell^{1/2}(\alpha+\beta)-
-	2\alpha(\ell^{1/2}+\ell^{-1/2})+
-	\ell^{-1/2}(\alpha\beta^{-1})(\alpha+\beta)\\=
-	-\ell^{1/2}(\alpha-\beta)+
-	\ell^{-1/2}(\alpha\beta^{-1})(\alpha-\beta)=
-	(\alpha-\beta)(\ell^{-1/2}(\alpha\beta^{-1})-\ell^{1/2})=(\ell^{1/2}\beta)(1-\alpha\beta^{-1}\ell^{-1})(1-\alpha\beta^{-1})
-\end{multline*}
 
 \section{Iwasawa main conjecture}
 
