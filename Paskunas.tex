@@ -2010,7 +2010,8 @@ $\Ind_B^G(\chi_1\otimes\chi_2|\cdot|^{-1})$
 	\]
 \end{proof}
 
-\subsection{Local-global compatibility}\label{sub:uni_completion}
+\subsection{Local-global compatibility}
+\label{sub:compatible}
 
 We now return to the setting in 
 the beginning of the section,
@@ -2606,6 +2607,7 @@ $\oo\llbracket x\rrbracket \hat{\otimes}_{\oo}\Lambda_T
 
 
 \subsection{Fundamental exact sequence}
+\label{sub:fund_exact_sequence}
 
 We are now ready to 
 formulate the fundamental
@@ -2640,12 +2642,13 @@ We make the following assumptions
 on $M_2'=M_2\coloneqq_{\Lambda}\Lambda'$.
 \begin{enumerate}[label=(C\roman*)]
 \item The image of $x$ in  $\TT$ belongs to  $\ker(\lambda)$.
+	\label{cond:C1}
 \item There exists a nonzero 
 $\Lambda$-modules homomorphism
 $\Theta\colon M_2'\to \Lambda'$  such that 
 $\Theta(T\cdot m)=\lambda(T)\cdot \Theta(m)$
 for $T\in \TT_{\fm}, m\in M_2'$.
-
+	\label{cond:C2}
 \item There exists an ideal 
 $\fq\subset \ker(\TT\to \End(M_1))$
 containing the image of $x$ under $R\to \TT$
@@ -2654,6 +2657,7 @@ is torsion over $\Lambda'$ for
 $S_2\coloneqq\ker(M_2\to M_2'\xrightarrow{\Theta}\Lambda')$.
 Here the $\Lambda'$-structure comes from the surjective
 map  $\fq\otimes_{\TT}(M_2/S_2)\to \fq M_2/\fq S_2$.
+	\label{cond:C3}
 
 \end{enumerate}
 
@@ -2964,7 +2968,7 @@ $\TT^{\ord}(\fn,\oo)$
 act on which through the target.
 \end{defn}
 
-\begin{prop}
+\begin{prop}\label{prop:ord_to_dual}
 	There eixsts a Hecke-equivariant surjective 
 	homomorphism 
 	\[
@@ -3285,7 +3289,7 @@ conditions are satisfies.
 \end{gather}
 \end{prop}
 
-\begin{lem}
+\begin{lem}\label{lem:compare_L_diff_level}
 Define 
 $P_\ell=(1-\epsilon^{-1}\hat{\chi}_\circ^{-2}(\Fr_\fl)\cdot 
 \langle \Fr_\fl\rangle^{-1}
@@ -3405,98 +3409,251 @@ $Z^1(\mathcal{G}\times \mathcal{G},
 
 We now have all the ingredient needed 
 for the construction of our Euler systems.
-
-For $U^p=K(\fn)^p$,
-let $\TT(\fn,\oo)$ be the big Hecke algebra
-acting on $M(U^p)$ as defined in \eqref{eq:completed_coh}.
-By Lemma \ref{lem:coh_to_ord},
-there exists a homomorphism
-$\TT(\fn,\oo)\to \TT^{\ord}(\fn,\oo)$.
+When $U^p=K(\fn)^p$,
+let $M(U^p)$ be defined as in \eqref{eq:completed_coh}
+and let $\TT(\fn,\oo)\coloneqq \TT(U^p,\oo)$
+be the big Hecke algebra acting on which.
+By Lemma \ref{lem:coh_to_ord}
+and Proposition \ref{prop:ord_to_dual}
+there exists a surjective homomorphism
+\[
+	M(U^p)\to M^{\ord}(\fn)\to 
+	\Hom_{\Lambda_{fs}}(S_\Lambda^{\ord}(\fn),\Lambda_\fs)
+\]
+Let $\TT(\fn,\oo)\to \TT^{\ord}(\fn,\oo)$
+be the induced homomorphism.
 By abuse of notation, we write 
-$\lambda_{\fn}\colon \TT_{\fn}\to \TT^{\ord}(\fn,\oo)\to
+$\lambda_{\fn}\colon \TT(\fn,\oo)\to \TT^{\ord}(\fn,\oo)\to
 \Lambda_{\fs}$ be the composition.
-Let $\Psi\colon \Gal_\K\o \TT_{\fn}$ be the 
+Let $\Psi\colon \Gal_\K\to \TT(\fn,\oo)$ be the 
 big Galois pseudo-representation, then
 \[
 	\lambda_{\fn}\circ \Psi=
 	\epsilon^{-1}\hat{\chi}_\circ+
 	\hat{\chi}_\circ^{-1}
 \]
-modulo the maximal ideal of $\Lambda_{\fs}$.
-Assume 
+To apply the results from $p$-adic local Langlands
+from \S\ref{sub:compatible},
+we make the generic assumption
 \begin{equation}\label{cond:chi_gen}\tag{$\chi$-gen}
 \epsilon^{-1}\hat{\chi}_\circ^{2}\vert_{D_w}\neq
 \id, \omega^{\pm}.
 \end{equation}
+In particular we let 
+$\chi_1$ and  $\chi_2$ be the 
+characters obtained from 
+modulo 
+$\hat{\chi}_\circ$ and $\epsilon\hat{\chi}_\circ$ 
+respectively with the maximal ideal.
+Note that $\lambda_{\fn}(U_{w}^{(1)})\equiv \chi_2(p)$
+since $\epsilon(p)=1$.
 
-Let $\TT_{\fn}$ be the localization
-of $\TT(\fn,\oo)$ at the maximal ideal 
-associated to $\lambda_{\fn}$ and
-$\Psi_{\fn}$ be the localization
-of $\Psi$ at the maximal ideal associated to $\lambda_{\fn}$.
-We have the commutative diagram
-\[
-\begin{tikzcd}
-	\Gal_K\arrow[d,equal]\arrow[r]  &
-	\TT_{\fn\ell} \arrow[d] \arrow[r] &
-	\Lambda_{\fs\ell} \arrow[d]\\
-	\Gal_K\arrow[r]  &
-	\TT_{\fn} \arrow[r] &
-	\Lambda_{\fs}
-\end{tikzcd}
-\]
 
 \begin{defn}
-We pick $z\in D_w\cong \Gp$ as in the previous subsection
-and dfine $x_\fn(\sigma,\tau)$.
-We may assume  there are 
-$\sigma_0,\tau_0\in D_w$
-such that $ x=x_{\fn}(\sigma_0,\tau_0)$
-is the image of a generator of the reducibility ideal 
-$x$ for the Global pseudo-representation at  $D_w$.
-We define 
-\[
-	q_{\fn}=
-	\{x_\fn(\sigma,\tau)\mid\sigma\in\Gal_K, \tau\in D_w\}
-\]
-Then $\fq_{\fn}\subset \ker(\lambda_{\fn})$
-since $\lambda_\fn\circ \Psi_\fn$ is reducible.
+	Using the notations from 
+	\S\ref{sub:compatible}.
+	Let $\TT_\fn=\TT(\fn,\oo)_\fm$,
+	$M_\fn=\Hom_{Q'}(\tilde{P}_{2,\chi},M(U^p)_{\fm}')$,
+	$M_i=M^{\ord}(U^p)_\fm^{U_{w}^{(1)}\equiv\chi_i(p)}$,
+	and $M_2'=\Hom_{\Lambda_{\fs}}
+	(S^{\ord}_{\Lambda}(\fn),\Lambda_{\fs})_{\fm_2}$,
+	here $\fm_2$ is the maximal ideal
+	of $\TT^{\ord}(\fn,\oo)$ obtained through 
+	$\lambda_\fn$.
+	We define 
+	$\Theta_\fn\colon M_2'\to \Lambda_{\fs}$
+	by $B_\fn(*,U_\fs^{-1}\euF^\circ_\fn)$.
 \end{defn}
-We now let 
-$\TT=\TT_{\fn}$.
 
 
-We let $\Hom_{\Lambda_{\fs}}(S^{\ord}(\fn,\Lambda_\fs),
-\Lambda_{\fs})$
-play the roles of $M_2'$.
-Let  $\Theta=B_{\fn}(*,U_{\fs}^{-1}\euF^{\circ}_\fs)$,
-and $\lambda\colon \TT\to \Lambda_{\fs}$.
+Let $\Psi_{\fn}\colon \Gal_K\to \TT_\fn$ be the localization
+of the pseudo-representation
+and let $R_{\fm}$ be the universal 
+pseudo-deformation of $\chi_1+\chi_2$.
+Note that  $R_\fm$ only depends on  $\chi_\circ$
+and does not depends on the level  $\fn$.
+In particular the pseudo-representations induces
+the commutative diagram
+\[
+\begin{tikzcd}
+	& \TT_{\fn\ell}\arrow[d,"\phi_{\fn\ell}^\ell"]\\
+	R_{\fm}\arrow[r]\arrow[ur]
+	& \TT_{\fn}
+\end{tikzcd}
+\]
+Since the residue characters $\chi_i$ are distinct,
+we may follow the previous subsection,
+pick  $z\in \Gp\cong D_W$ 
+and lift roots $\alpha,\beta\in R_\fm$
+to form functions  $a(\sigma), d(\sigma), x(\sigma,\tau)$
+in  $R_\fm$.
 
+\begin{defn}
+With the above choice of $z$
+we also form the $\TT_\fn$-valued
+function  $x_\fn(\sigma,\tau)$ 
+from the pseudo-representation $\Psi_\fn$,
+using the image of the roots  $\alpha,\beta$ in  $\TT_\fn$.
+Thus the functions $x(\sigma,\tau)$
+and  $x_\fn(\sigma,\tau)$ are compatible 
+among the above diagram.
+Moreover,
+let $\sigma_0,\tau_0\in D_w$
+be such that $ x=x(\sigma_0,\tau_0)$
+is a generator of the reducibility ideal.
+By abuse of notation we let
+$x=x_\fn(\sigma_0,\tau_0)$
+denote the image of which in $\TT_\fn$.
+\end{defn}
 
+\begin{prop}
+
+The ideal 
+$q_{\fn}\coloneqq
+\{x_\fn(\sigma,\tau)\mid\sigma\in\Gal_K, \tau\in D_w\}
+\subset \TT_\fn$
+satisfies \ref{cond:C3}
+in \S\ref{sub:fund_exact_sequence}.
+
+\end{prop}
+
+\begin{proof}
+
+It is obvious by definition
+that $x=x_\fn(\sigma_0,\tau_0)\in \fq_\fn$.
+We also note that 
+$\fq_\fn\subset\ker(\lambda_\fn)$
+since  $\lambda_\fn\circ\Psi_\fn$ is reducible.
+We still have to show that
+$\fq_\fn$ acts trivially on  $M_1$
+and that 
+$\fq_\fn M_{\fn,2}/\fq_\fn S_{\fn,2}$
+is torsion over $\Lambda_{\fs}$.
+
+For the first statement,
+let $\fp\subset \TT_\fn$
+be a prime ideal that 
+factors through  $M_1$. 
+Enlarge $E$ if necessary,
+we may assume  $\textnormal{Frac}(\TT_\fn/\fp)=E$,
+then  $\Psi_\fn\text{ mod }\fp$
+is the trace of a Galois representation  $r_{\fp}$
+as in \eqref{eq:Gal_hecke_at_p}
+that is ordinary at $w$ as well and such that
+\[
+	r_\fp\vert_{D_w}\sim
+	\smat{\psi_1&*\\&\psi_2}
+\]
+where $\epsilon\psi_i\equiv \chi_i$
+and $x(\sigma,\tau)=b(\sigma)c(\tau)$.
+In particular $q_\fn\subset \fp$.
+Since such primes are dense in the image
+of $\TT_{\fn}\to \End(M_1)$,
+we conclude that $\fq_{\fn}$ acts trivially on $M_1$.
+
+On the other hand,
+the bilinear pairing $B_n$ induces
+a homomorphism 
+$S^{\ord}_\Lambda(\fn)\to\Hom_{\Lambda_{\fs}}
+(S^{\ord}_\Lambda(\fn),\Lambda_{\fs})$
+between $\Lambda_{\fs}$-modules.
+Let $F_\fn\in M_2'$ be the image of which
+and $E_{2,\fn}=\Lambda_{\fs}\cdot F_\fn$.
+Since  $\Phi_\fn(F_{\fn})=\mathcal{L}_n$ is nonzero 
+by definition, we have
+\[
+	M_{2,\fn}'/S_{2,\fn}'+E_{2,\fn}'\hookrightarrow
+	\Lambda_{\fs}/\mathcal{L}_{\fn}
+\]
+is $\Lambda_{\fs}$-torsion.
+Let $E_{\fn}\subset M_{\fn}$ be the 
+preimage of $E_{\fn,2}'$,
+then we have $\fq(S_\fn+E_\fn)=\fq S_\fn$, 
+therefore 
+$\fq_{\fn}M_{\fn}\fq_{\fn}S_{\fn}$ is a quotient of
+the following, which is $\Lambda_{\fs}$-torsion.
+\[
+	\fq_\fn\otimes 
+	M_\fn/(S_\fn+E_\fn)\cong 
+	\fq_fn\otimes 
+	M'_\fn/(S'_\fn+E'_\fn)
+\]
+\end{proof}
+
+We can now apply consider the following 
+commutative diagram,
+where the exactness of the second row
+follows from
+Proposition \ref{prop:compatibility}
 \[
 \begin{tikzcd}
 &M_{\fn\ell}/S_{\fn\ell}\arrow[r]\arrow[d]&
 \fq_{\fn\ell}\otimes_{\TT_{\fn\ell}}
-	M_{\fn\ell}/S_{\fn\ell}\arrow[r]\arrow[d]&
+	M_{\fn\ell}/S_{\fn\ell}\arrow[r]\arrow[d,"(1)"]&
 \fq_{\fn\ell}^{\red}\otimes_{\TT_{\fn\ell}}
 	M_{\fn\ell}/S_{\fn\ell}\arrow[r]\arrow[d]&0\\
 0\arrow[r]&
-\Lambda_{\fn\ell} \arrow[r]&
+M_\fn/S_\fn \arrow[r]&
 \fq_{\fn\ell}M_{\fn\ell}/\fq_{\fn\ell}S_{\fn\ell} \arrow[r]&
 \fq_{\fn\ell}M^{\ord}_{\fn\ell}/
 \fq_{\fn\ell}S^{\ord}_{\fn\ell} \arrow[r] &0
 \end{tikzcd}
 \]
 
+\begin{defn}
+	By abuse of notation
+	let $F_\fn$
+	denote the preimage of which in
+	$M_{\fn}/S_{\fn}\cong M'_\fn/S'_\fn$.
+	$y_\fn(\sigma)=\chi_2^{-1}(\sigma)
+	x_{\fn}(\sigma,\tau_0)\otimes
+	F_{\fn}\in 
+	q_{\fn}\otimes_{\TT_{\fn}}M_{\fn}/S_{\fn}$.
+	By definition
+	its image under (1) is sent to $0$
+	on the lower right corner,
+	therefore the image
+	comes from lower left 
+	by the exactness.
+	We let  $c_{\fn}(\sigma)$
+	denote the $\Lambda_{\fs}$-valued
+	class obtained from composing
+	with $\Phi_\fn$.
+\end{defn}
 
-Let $\fq$
-be generated by  $x(\sigma,\tau)$
-for  $\sigma\in \Gal_\K$
-and  $\tau\in \Gp$.
-We pick $\sigma_0, \tau_0\in \Gp$
-such that  $x(\sigma_0,\tau_0)=x$
-is a generator of the reducibility ideal of $R$.
+\begin{thm}
+	The classes $x_{\fn}(\sigma)\in 
+	H^1(\K, \Lambda_{\fs})$
+	form an Euler system when we vary $\fs$,
+	in the sense that 
+	\[
+		\phi_{\fn\ell}^{\ell}\colon
+		H^1(\K,\Lambda_{\fs\ell})\to 
+		H^1(\K,\Lambda_{\fs})\quad
+		x_{\fn\ell}\mapsto
+		P_\ell\cdot x_\fn
+	\]
+	Moreover, it satisfies the following.
+	\begin{enumerate}[label=(\alph*)]
+	\item if $\bw\in \Sigma_p$,
+		then  $res_w(x_\fn)=0$
+	\item for the fixed  $w\in \Sigma_p$,
+		then  $x_\fn(\sigma_0)=\mathcal{L}_\fn$
+	\item unramified at other places.
+	\end{enumerate}
+\end{thm}
 
+\begin{proof}
+
+Let $x'_{\fn}(\sigma)\in M_{\fn}S_{\fn}$.
+Since $F_{\fn\ell}\text{ mod }I_\ell=
+\beta^{-1}V_\fl)F_\fn$,
+we also have 
+$x'_{\fn\ell}(\sigma)\text{ mod }I_\ell
+=x'_\fn(\sigma)$.
+Thus by Lemma \ref{lem:compare_L_diff_level}
+and the diagram below
+we have the norm relation.
 \begin{equation*}
 \begin{tikzcd}[column sep=tiny]
 & M_{\fn\ell}/S_{\fn\ell}\arrow{dd} \arrow[rd,"\sim"]\arrow[rr]
@@ -3523,31 +3680,8 @@ is a generator of the reducibility ideal of $R$.
 \end{tikzcd}
 \end{equation*}
 
-\[
-\begin{tikzcd}
-0&
-H^1(K,\Lambda_N(\delta)) \arrow[r]\arrow[d,"res_p"]&
-H^1(K,\fq_N\otimes \Lambda_N(\delta)) \arrow[r]&
-H^1(K,\fq_N^{\red}\otimes \Lambda_N(\delta))\\
-&H^1(K_w,\Lambda_N(\delta))
-\end{tikzcd}
-\]
-Here $H^1(K_w,\Lambda_N(\delta))=H_{Iw}^1(\Qp,\oo())$
-is free and crystalline?
-
-Let $x=x_{\red}=x(\sigma_0,\tau_0)$
-for $\sigma_0,\tau_0\in \Gp$
-and  $y(\sigma)=\delta_2^{-1}(\sigma)x(\sigma,\tau_0)$,
-then $res_p(y^{\red})=0$
-and $res_\ell(y)=0$ if  $\ell\nmid Np$.
-
-$y_{\fn}(\sigma)\otimes \euF^\circ_{\fn}$
-lifts to $M(\sigma)$
-such that 
- $y_{\fn}(\sigma)\euF^\circ_{\fn}-xM(\sigma)\in 
- \fq_{\fn}S_{\fn}$.
-We define $c(\sigma)=\Phi(M(\sigma))\in \Lambda_{\fs}$.
-
+	
+\end{proof}
 
 
 \section{Iwasawa main conjecture}
