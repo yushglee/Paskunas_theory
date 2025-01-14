@@ -3237,16 +3237,15 @@ places, we have $\hat{\chi}^{-1}_\circ(\varpi_w)\hat{\eta}(\varpi_w,\varpi_{\bw}
 	T_w^{(1)}\cdot &\euF^\circ_{\fn}=
 	(\epsilon^{-1}\hat{\chi}_\circ(\Fr_w)
 	+\hat{\chi}^{-1}_\circ(\Fr_w)\cdot 
-	\langle \Fr_w\rangle \langle \Fr_{\bw}\rangle^{-1})
+	\langle \Fr_w\rangle )
 	\euF^\circ_{\fn},\\
 	U_{\wt{k}',w}^{(1)}\cdot &\euF^{\circ}_{\fn}=
 	\hat{\chi}_\circ^{-1}(\Fr_w)\cdot 
-	\langle \Fr_w\rangle \langle \Fr_{\bw}\rangle^{-1}
+	\langle \Fr_w\rangle
 	\euF^{\circ}_{\fn},\quad w\in \Sigma_p\\
 	 &\euF^\circ_{\fn\ell} \mod I_{\ell}=
 	(1-\hat{\chi}_\circ(\Fr_\fl)\cdot 
-	\langle \Fr_\fl\rangle^{-1}
-	\langle \Fr_{\bar{\fl}}\rangle V_\fl)
+	\langle \Fr_\fl\rangle^{-1} V_\fl)
 	\euF^\circ_{\fn}.
 \end{align*}
 Note that for $\Fr_w$ depends on the 
@@ -3292,18 +3291,15 @@ conditions are satisfies.
 \begin{lem}\label{lem:compare_L_diff_level}
 Define 
 $P_\ell=(1-\epsilon^{-1}\hat{\chi}_\circ^{-2}(\Fr_\fl)\cdot 
-\langle \Fr_\fl\rangle^{-1}
-\langle \Fr_{\bar{\fl}}\rangle)
+\langle \Fr_\fl\rangle^{-1})
 (1-\hat{\chi}_\circ^{-2}(\Fr_\fl)\cdot 
-\langle \Fr_\fl\rangle^{-1}
-\langle \Fr_{\bar{\fl}}\rangle)\in \Lambda_{\fs}$
+\langle \Fr_\fl\rangle^{-1})\in \Lambda_{\fs}$
 when $\ell\nmid \fs$.
 Let $\euF_{\fn\ell}\in S_\Lambda^{\ord}(\fn\ell)$
 be a Hida family that also satisfies
 $\euF_{\fn\ell} \mod I_{\ell}=
 (1-\hat{\chi}_\circ(\Fr_\fl)\cdot 
-\langle \Fr_\fl\rangle^{-1}
-\langle \Fr_{\bar{\fl}}\rangle V_\fl)
+\langle \Fr_\fl\rangle^{-1} V_\fl)
 \euF_{\fn}$,
 for some $\euF_{\fn}\in S_\Lambda^{\ord}(\fn)$, then 
 there exists the equaltiy
@@ -3325,7 +3321,7 @@ P_\ell\cdot \mathcal{L}_\fn$.
 Let $\alpha$ and  $\beta$ denote 
 $\epsilon^{-1}\hat{\chi}_\circ(\Fr_\fl)$ and 
 $\hat{\chi}_\circ^{-1}(\Fr_\fl)\cdot
-\langle \Fr_\fl\rangle\langle \Fr_{\bar{\fl}}\rangle^{-1}$
+\langle \Fr_\fl\rangle$
 and apply Proposition \ref{prop:pair_at_deff_level}, thus
 \begin{multline*}
 B_{\fn\ell}(\euF_{\fn\ell}, \euF^{\circ}_{\fn\ell})
@@ -3430,7 +3426,7 @@ big Galois pseudo-representation, then
 \[
 	\lambda_{\fn}\circ \Psi=
 	\epsilon^{-1}\hat{\chi}_\circ+
-	\hat{\chi}_\circ^{-1}
+	\hat{\chi}_\circ^{-1}\langle\cdot\rangle
 \]
 To apply the results from $p$-adic local Langlands
 from \S\ref{sub:compatible},
@@ -3685,6 +3681,241 @@ we have the norm relation.
 
 
 \section{Iwasawa main conjecture}
+
+Let $\A_{\K,f}^\times=\A_f^\times$
+and $U=\hat{\oo}_\K^\times\subset \A_f^\times$.
+For $V\subset U$, we have
+\[
+	\begin{tikzcd}
+	1\arrow[r]&
+	K^\times\backslash K^\times U/V
+	\arrow[r] \arrow[d]&
+	K^\times\backslash A_f^\times/V
+	\arrow[r] \arrow[d]&
+	K^\times\backslash A_f^\times/U
+	\arrow[r] \arrow[d]&1\\
+	   & \oo_\K^\times\backslash U/V&
+	   \textnormal{Cl}(V)&
+	   H_K&
+	\end{tikzcd}
+\]
+\begin{defn}
+When $\fc$ is an ideal of  $\oo_\F$,
+let  $V=(1+\fc\hat{\oo}_\K)^\times$
+and $V_n=V^pU_n$, where
+$U_n=\prod_{w\mid p}(1+\fp_w^n)$.
+We then put
+$R=R_0=\textnormal{Cl}(V)$,
+$R_n=\textnormal{Cl}(V_n)$,
+$\textnormal{Cl}(V_\infty)=\varprojlim_n\textnormal{Cl}(V_n)$.
+For $R_*$ with  $*=0,n,\infty$,
+define 
+$R_*^+=\ker(1-c)$,
+$R_*^-=R_*/R_*^+$,
+and $\tilde{R}_{*}^-=\ker(1+c)$.
+Thus we have 
+\[
+\begin{tikzcd}
+	R_* \arrow[r,"1-c"]\arrow[d,twoheadrightarrow]&
+	R_*\\
+	R_*^- \arrow[r,hookrightarrow] &
+	\tilde{R}_*^-\arrow[u,hookrightarrow]
+\end{tikzcd}
+\]
+Let $\rec\colon K^\times\backslash \A_f^\times/V_*\cong R_*$ 
+be the reciprocity map, we define 
+the anticyclotomic reciprocity map
+$\rec\colon K^1\backslash \A_f^1/V'_*\cong R_*^-$
+by the diagram
+\[
+\begin{tikzcd}
+K^\times\backslash \A_f^\times/V_*
+\arrow[r,twoheadrightarrow] \arrow[d]
+\arrow[rr,bend left,"1-c"] &
+K^1\backslash \A_f^1/V'_*
+\arrow[r] \arrow[d] &
+K^\times\backslash \A_f^\times/V_*
+\arrow[d]\\
+R_* \arrow[r,twoheadrightarrow] &
+R_*^- \arrow[r] & R^*
+\end{tikzcd}
+\]
+Here $V_*'=\A_f^1\cap K^\times V_*$.
+\end{defn}
+
+When $\chi\colon\K^\times\backslash\A^\times/V_n\to \C^\times$
+is an algebraic Hecke character 
+with infinity type  $\chi_\infty(z)=z^\eta$
+for $\eta=\sum n_\sigma\cdot\sigma\in \Z[I_\K]$.
+We then define 
+$\hat{\chi}\colon \K^\times\backslash\A_f^\times/V_\infty
+\to \oo^\times$ by 
+$ \hat{\chi}(z_f)=\chi(z_f)\cdot z_p^\eta$.
+Let $\psi\colon R_\infty\to \oo^\times$
+be the induced character from the reciprocity map.
+We say  $\psi$ is anticyclotomic if
+$\psi$ factors through $R_\infty^-$.
+
+\begin{lem}
+Let $\psi\colon R_\infty^-\to \C_p^\times$
+be an anticyclotomic character.
+Fix a place $w\mid p$
+and let  $u_w=(1+p)_w\in U$. 
+Pick $t\geq 0$ such that
+$s_0\coloneqq \ord_p(\psi(\rec(u_w))^{p^t}-1)\geq 1$.
+Then for $m>>0$ the set 
+\[
+	\mathcal{L}_m=\{\fp\nmid \fc p\mid
+	\ord_p(\epsilon(\Fr_\fp))\geq 2m,\,
+\ord_p(\psi(\Fr_\fp))=m+(s_0-1)-t\}
+\]
+is an infinite set.
+\end{lem}
+\begin{proof}
+First note that if $\psi(\rec(u_w))=1+x$,
+then  $\psi(\rec(u_w))^{p^t}=(1+x)^{p^t}\equiv 
+1+x^{p^t}\text{ mod }p$, thus such $p$ exists.
+
+Suppose $\fp\nmid \fc p$
+and the image of  $\Fr_\fp$ in  $R_n$ is trivial,
+then  $\fp$ is principal,
+let $\fp=(\varpi_\fp)$ for some  $\varpi_\fp\in \oo_\K$,
+then  $(\varpi_\fp)_{\fp}=u_\fp\coloneqq ((\varpi_\fp)^{\fp})^{-1}\in U$ in $\K^\times\backslash \A_f^\times/V_\infty$
+and  $\psi(\Fr_\fp)=\psi(\rec(u_\fp))$.
+
+Given  $2m$ as above, by continuity there exists
+$m'>>0$ such that 
+\[
+	\ord_p(\epsilon(\rec(u))-1),
+	\ord_p(\psi\rec(u))-1)\geq 2m\quad
+	\text{ for } u\in V_{m'}
+\]
+Let $u_m=(1+p^m, 1-p^m)\in U$,
+where  $1+p^m$ is the component at  $w$,
+$1-p^m$ is the component at  $\bw$.
+If $u_\fp\equiv u_m\text{ mod }V_{m'}$, then
+\[
+\ord_p(\epsilon(\rec(u_m))-1)=\ord_p(p^{2m})=2m\Longrightarrow
+\ord_p(\epsilon(\rec(u_\fp))-1)\geq 2m
+\]
+On the other hand,
+since $\psi$ is anticyclotomic,
+$\psi\circ \rec$ on  $(a,b)\in\oo_w^\times\oo_{\bw}^\times$
+factors through $a/b$.
+Under this map  $u_w\mapsto 1+p$
+and  $u_m\mapsto 1+p^m/1-p^m=(1+p)^k$
+for $k\in \Zp$ with $p^{m-1}\parallel k$. 
+Write $\psi(\rec(u_w))^{p^t}=(1+x), \ord_p(x)=s_0>1$
+and  $k=p^{m-1}q$ for $p\nmid q$.
+Then $(1+x)^q=1+y,\ord_p(y)=s_0$ as well.
+Now observe 
+\[
+	(1+y)^{p^{m}}=\sum_i \binom{p^m}{i}y^i,\quad
+	\ord_p(\binom{p^m}{i}y^i=m-\ord_p(i)+is_0\geq
+	\begin{cases}
+		m+s_0& i\geq 1\\
+		m+2s_0 & i\geq 2
+	\end{cases}
+\]
+Since 
+$\psi(u_m)=\psi(u_w)^k=((\psi(u_w)^{p^t})^q)^{p^{m-1-t}}$,
+we have
+\[
+\ord_p(\psi(\rec(u_m))-1)=m+(s_0-1)-t<2m\quad
+\ord_p(\psi(\rec(u_\fp))-1)=m+(s_0-1)-t.
+\]
+Now the lemma follows since 
+the set of $\fp$ 
+such that  $u_\fp\equiv u_m\text{ mod }V_{m'}$
+is infinite by Chebotarev's density.
+\end{proof}
+
+\begin{defn}
+Let $\Delta_\fc$ denote
+the maximal pro-$p$ quotient of 
+$U/V\cong (\oo_K/\fc)^\times$,
+write  $\Delta_\fc=U/\tilde{V}$.
+Define $\tilde{V}_n=\tilde{V}^Ip\times \tilde{U}_n$
+where $\tilde{U}_n$ is the product of $U_n$
+and the roots of unity in  $\oo_{K,p}^\times$.
+Consider the exact sequence
+\[
+	1\to \oo_\K^\times\backslash U/\tilde{V}_n
+	\to \textnormal{Cl}(\tilde{V}_n)\to H_\K\to 1
+\]
+Let $C_\K=H_\K/T$ be the maximal pro-$p$ quotient
+of $H_K$. There exists  
+$ \tilde{T}\subset \textnormal{Cl}(\tilde{V}_\infty)$
+whose image is $T$.
+Let $G_n$ denote the quotient of  $R_n$
+by the image of  $ \tilde{T}$ in $R_n$, we have
+\[
+	1\to \oo_\K^\times\backslash U/\tilde{V}_n
+	\to G_n\to C_\K\to 1
+\]
+We define $G_*$ and  $G_*^{\pm}$ as above.
+We also define $C_K^{\pm}$.
+Since $p$ is odd, we have
+$G_*^{-}=\tilde{G}_*^-$ and 
+\[
+	1\to (\oo_\K^\times\backslash U/\tilde{V}_n)^-
+	\to G_n^-\to C_\K^-\to 1
+\]
+Since $U/\tilde{V}_n$ is pro-$p$, the map
+\[
+	 (1+c,1-c)\colon 
+	 U/\tilde{V}_n\to 
+	 (U/\tilde{V}_n)^+\times
+	 (U/\tilde{V}_n)^-
+\]
+is an isomorhisms.
+The image of $\oo_\K^\times$ through  $1-c$
+factors through  $W_p$,
+the group of $p$-th powers roots of unity in  $\K$.
+Thus we have
+\[
+	1\to W_p\backslash (\Delta_\fc^-\times (U_1/U_n)^-)
+	\to G_n^-\to C_\K^-\to 1
+\]
+When $\fc=\ell$ is a prime ideal that splits in  $\K$
+we put  $G(\ell)=G_0^-$, thus
+\[
+	1\to W_p\backslash \Delta_\ell^-
+	\to G(\ell)\to C_\K^-\to 1
+\]
+We put $H(\ell)=W_p\backslash \Delta_\ell^-$.
+When  $\fc=\oo_\F$, $v\in S_p$,
+we let $G(v^n)$ be the quotient 
+of $G_n^-$ by the image of 
+$\prod_{w\nmid \ell}\oo_w^\times$ in which.
+Let $v=w\bw$ and 
+$(U_1/U_n)_{w,\bw}$ be the component
+of which above $w$ and  $\bw$, thus
+\[
+	1\to W_p\backslash (U_1/U_n)_{w,\bw}^-
+	\to G(v^n)\to C_\K^-\to 1
+\]
+we similarly denote the kernel by $H(v^n)$.
+At last
+when  $\fc=\ell_1\cdots\ell_r$
+We define $K(\fc v^n)$
+as the product of the groups
+$K(\ell_1),\cdots, K(\ell_r)$ and $K(v^n)$,
+where the extensions corresponds
+to the groups  $G(\ell_1),\cdots,G(\ell_r)$ and $G(v^n)$.
+We then have 
+\[
+	H(\fc v^n)\coloneqq 
+	\Gal(K(\fc v^n)/K(1))\cong 
+	H(\ell_1)\times\cdots\times H(\ell_r)\times H(v^n)
+\]
+where $K(1)$ is the extension corresponding
+to  $C_\K^-$.
+\end{defn}
+
+\subsection{machinery}
+
+
 
 
 \bibliographystyle{amsalpha}
