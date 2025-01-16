@@ -1,11 +1,11 @@
 \documentclass[leqno]{amsart}
-\usepackage{amssymb,stmaryrd}
+\usepackage{amssymb,stmaryrd,amsfonts}
 \usepackage{amsmath} 
 \usepackage{enumitem}
 \usepackage{hyperref}
 \usepackage{mathrsfs}
 \usepackage{color}
-\usepackage{mathtools,caption,bbm,euscript}
+\usepackage{mathtools,caption,euscript}
 \usepackage[table,dvipsnames]{xcolor}
 \usepackage{tikz-cd}
 \usepackage[utf8]{inputenc}
@@ -34,9 +34,9 @@
 \newcommand{\euF}{\EuScript{F}} %Hida family
 \newcommand{\fF}{\mathbb{F}} % fintie field
 \newcommand{\M}{\mathbf{M}} % modular form
-\newcommand{\bnu}{\boldsymbol{\nu}}
+\newcommand{\bnu}{\mathbb{\nu}}
 \newcommand{\wt}[1]{\underline{ #1 }}
-\newcommand{\bwt}[1]{\underline{\boldsymbol { #1 }}}
+\newcommand{\bwt}[1]{\underline{\mathbb { #1 }}}
 \newcommand{\TT}{\mathbb{T}} % Hecke 
 \newcommand{\fG}{\mathfrak{G}}
 \newcommand{\fX}{\mathfrak{X}}
@@ -56,7 +56,7 @@
 \DeclareMathOperator{\Mod}{\textnormal{Mod}}
 \DeclareMathOperator{\Rep}{Rep}
 \newcommand{\B}{\mathfrak B} 
-\newcommand{\fC}{\mathfrak C}
+\newcommand{\fC}{\mathfrak{C}}
 \DeclareMathOperator{\soc}{soc}
 \DeclareMathOperator{\V}{\check{\mathbf{V}}} %Colmez
 
@@ -156,8 +156,8 @@
 \newcommand{\bfp}{\overlin{\mathfrak p}}
 \newcommand{\bfq}{\overline{\mathfrak q}}
 
-\newcommand{\btheta}{\boldsymbol{\theta}}
-\newcommand{\bdelta}{\boldsymbol{\delta}}
+\newcommand{\btheta}{\mathbb{\theta}}
+\newcommand{\bdelta}{\mathbb{\delta}}
 
 
 %%% Categorical
@@ -2770,6 +2770,10 @@ and the maximal ideals of  $ \tilde{\TT}$
 restricts to that of $\TT$.
 \end{proof}
 
+\begin{rem}
+$\TT$ is etale over  $\Lambda\llbracket x\rrbracket$.
+\end{rem}
+
 \section{Euler systems}
 
 Let $\chi_\circ$ be an algebraic Hecke
@@ -3723,7 +3727,7 @@ Thus we have
 \end{tikzcd}
 \]
 Let $\rec\colon K^\times\backslash \A_f^\times/V_*\cong R_*$ 
-be the reciprocity map, we define 
+be the Artin reciprocity map, we define 
 the anticyclotomic reciprocity map
 $\rec\colon K^1\backslash \A_f^1/V'_*\cong R_*^-$
 by the diagram
@@ -3913,9 +3917,53 @@ where $K(1)$ is the extension corresponding
 to  $C_\K^-$.
 \end{defn}
 
+
+
 \subsection{machinery}
 
+Let $\mathscr{V}\colon \Lambda^a\to \Lambda$
+be as in \cite{HT94}.
+Our $L$-function is
+\[
+L(1,\chi^{-2}\tilde{\eta})\prod_{w\in\Sigma}
+(1-\chi^{-2}\tilde{\eta}(\bw))
+(1-\chi^{-2}\tilde{\eta}(\bw)q_w^{-1})
+\]
+Let $\psi=\epsilon\hat{\chi}_0^{-2}$ be associated to 
+$\chi^{-2}$, which is of type $\Sigma-\Sigma^c$
+Then above is 
+\[
+	L(0,\epsilon\psi)\prod_{w\in \Sigma}
+	(1-(\epsilon\psi)^*(\Fr_{\bw}q_w^{-1})
+	(1-\epsilon\psi(\Fr_{\bw})
+\]
+Here  $\lambda^*\coloneqq \lambda^{-c}\epsilon$ 
+and $(\epsilon\psi)^*=\psi$ since  $\psi$
+is anticyclotomic.
+In fact, should view above as
+\[
+	L(0,\epsilon\psi^{-1})\prod_{w\in\Sigma^c}
+	(1-(\epsilon\psi^{-1})^*(\Fr_{\bw}q_w^{-1})
+	(1-\epsilon\psi^{-1}(\Fr_{\bw})
+\]
+Let $\Psi=\psi\langle\rangle$
+then this  $L$-function
+should be $L(\Psi^D,\Sigma^c)=L(\Psi,\Sigma)$
+by functional equation.
+The Euler system we constructed vanishes at  $\Sigma^c$,
+thus the Selmer group of  $X(\Psi^D,\Sigma^c)$
+is bounded. 
 
+
+\cite{Och05}
+\cite{Och08}
+\cite{Hsieh2010}
+\cite{HT93}
+\cite{Hida06}
+\cite{Hida06b}
+\cite{Rubin}
+
+\subsection{Settings}
 
 
 \bibliographystyle{amsalpha}
