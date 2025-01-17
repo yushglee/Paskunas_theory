@@ -3965,6 +3965,225 @@ is bounded.
 
 \subsection{Settings}
 
+For $\fc=\ell_1\cdots\ell_r$
+we have $z_\fc\in H^1(K(\fc),\Lambda(\Psi))$
+for  $\Psi=\psi\langle*\rangle$ anticyclotomic 
+satisfying 
+\[
+	N_{K(\fc\ell)/K(\fc)}z_{\fc\ell}=
+	P_\ell(\Fr_{\bar{\fl}}\cdot z_\fc,\quad
+	P_\ell(X)=(1-\psi(\Fr_{\bar{\fl}})X)
+	(1-\psi(\Fr_{\bar{\fl}})q_\ell^{-1}X)
+\]
+We assume 
+\begin{equation}\label{cond:distinct}\tag{*}
+	\psi\vert_{D_w}\not\equiv1\quad
+	\text{ for some } w\mid p
+\end{equation}
+
+When $\Lambda=\Lambda^{(n)}$ for $n=0$,
+let  $T=\oo(\psi)$ and  $T_m=T/p^mT$.
+
+\subsection{Kolyvagin's derivative}
+Let $p^{n_\ell}=\#H(\ell)=\#(W_p\backslash \Delta_\ell^{-})$
+and $\sigma_\ell\in H(\ell)$ be a generator
+define
+ \[
+	D_\ell=\sum_{i=0}^{p^{n_\ell}-1}i\cdot \sigma_\ell^i\Longrightarrow
+	(\sigma_\ell-1)D_\ell=p^{n_\ell}-N_\ell
+\]
+Pick $m'=min(n_\ell\sim 2m-w_p, s(m+(s_0-1)-t))$,
+note that the latter is the order of $P_\ell(1)$,
+then
+ \[
+	 (\sigma_\ell-1)D_{\fc\ell}z_{\fc\ell}
+	 \overset{\text{mod } p^{n_\ell}}{\equiv}
+	 -P_\ell(\Fr_{\bar{\fl}})D_\fc z_\fc
+	 \overset{\text{induction}}{=}
+	 -P_\ell(1)D_\fc z_\fc=0 \mod p^{m'}
+\]
+\begin{lem}
+For $m'$ as above, 
+\[
+	D_\fc\bar{z}_\fc\in H^1(K(\fc),T_{m'})^{H(\fc)}
+	\cong H^1(K(1),T_{m'})
+\]
+the isomorphism follows from
+$T_{m'}^{H(\fc)}$ for any $\fc$ by the assumption \eqref{cond:distinct}.
+\end{lem}
+
+\subsection{local conditions}
+
+Let $\TT=\text{Map}^{\cts}(\Gal_\K,T)$
+with $\Gal_\K$ action by
+$(g\cdot f)(x)=f(xg)$ and 
+let  $T\to \TT$ be given by  $t\mapsto [x\mapsto x\cdot t]$.
+By the assumption \eqref{cond:distinct},
+\[
+	0\to \TT^{K(\fc)}\to (\TT/T)^{K(\fc)}\to H^1(K(\fc),T)\to 0
+\]
+\begin{defn}
+	There exists $ \hat{z}_\fc\in (\TT/T)^{K(\fc)}$
+	well-defined modulo $\TT^{K(\fc)}$,
+	such that $z_\fc(g)=(g-1)\cdot \hat{z}_\fc\in T$.
+\end{defn}
+\begin{proof}
+	Pick $v\in S_p$.
+	Let $k>0$ be such that 
+	$\Fr_\ell^k\equiv 1$ on $T_{m'}$
+	and $a>0$ be such that 
+	$p^{m'}\mid \ord(\Fr_\ell^k, H(v^a))$.
+	Choose $ \hat{z}_{v^a\fc\ell}$ and $ \hat{z}_{v^a\fc}$,
+	then 
+	\[
+		N_\ell \hat{z}_{v^a\fc\ell}-P_\ell(\Fr_{\bar{\fl}})
+		\hat{z}_{v^a\fc}\in T+\TT^{K(v^a\fc)}
+	\]
+	\begin{enumerate}[label=(\alph*)]
+	\item Since $N_\ell\colon \TT^{K(v^a\fc\ell)}\to \TT^{K(v^a\fc)}$ 
+		is surjective,
+		can modify $ \hat{z}_{v^a\fc\ell}$ so that
+	\[
+		N_\ell \hat{z}_{v^a\fc\ell}-P_\ell(\Fr_{\bar{\fl}})
+		\hat{z}_{v^a\fc}\in T
+	\]
+	\item Pick $\hat{z}_{\fc\ell}=N_{v^a}\hat{z}_{v^a\fc\ell}$ and
+	$\hat{z}_{\fc}=N_{v^a}\hat{z}_{v^a\fc}$ then 
+	$N_\ell \hat{z}_{v^a\fc\ell}-P_\ell(\Fr_{\bar{\fl}})
+	\hat{z}_{v^a\fc}\in N_{v^a}T$.
+	But
+	\[
+		N_{v^a}t=
+		\sum_{K(1)/\langle \Fr_\ell^k\rangle}g
+		\sum_{i=1}^{\ord}\Fr_\ell^{k\cdot i} t\equiv 0
+		\mod p^{m'}
+	\]
+	Therefore
+	$N_\ell \hat{z}_{v^a\fc\ell}-P_\ell(\Fr_{\bar{\fl}})
+	\hat{z}_{v^a\fc}\in N_{v^a}T\subset p^{m'}T\subset p^{m'}\TT$.
+	\end{enumerate}
+\end{proof}
+
+\begin{prop}
+	Let $Q_\ell(X)$ be such that
+	$P_\ell(X)=(1-X)Q_\ell(X)+P_\ell(1)$.
+\end{prop}
+\begin{proof}
+	On one hand we have 
+	$D_{\fc\ell}z_{\fc\ell}(\sigma_\ell)=
+	(\sigma_\ell-1)D_{\fc\ell}\hat{z}_{\fc\ell}
+	\overset{p^{m'}}{\equiv}
+	-P_\ell(\Fr_{\bar{\fl}} D_\fc \hat{z}_\fc$.
+	On the other hand we have 
+	\[
+		Q_\ell(\Fr_{\bar{\fl}})\cdot
+		D_\fc z_\fc(\Fr_{\bar{\fl}})=
+		Q_\ell(\Fr_{\bar{\fl}})(\Fr_{\bar{\fl}}-1)
+		\cdot D_\fc \hat{z}_\fc
+		\overset{p^{m'}}{\equiv}
+		-P_\ell(\Fr_{\bar{\fl}}) D_\fc \hat{z}_\fc
+	\]
+	Consider 
+\[
+	\begin{tikzcd}
+		H^1_{\fc\ell}(K(1), T_{m'}) \arrow[r] &
+		H^1(I_{\bar{\fl}}, T_{m'})^{K_{\bar{\fl}}} \arrow[r]&
+		T_{m'}^{\Fr_{\bar{\fl}}=1}\\
+		H^1_{\fc}(K(1), T_{m'}) \arrow[r]&
+		H^1_{ur}(I_{\bar{\fl}}, T_{m'}) \arrow[r]&
+		T_{m'}/(\Fr_{\bar{\fl}}-1)T_{m'}
+		\arrow[u,"Q_\ell(\Fr_{\bar{\fl}}\equiv Q_\ell(1)"]
+	\end{tikzcd}
+\]
+Note that 
+$Q_\ell(1)=(1-\psi(\Fr_{\bar{\fl}}))+(1-\psi(\Fr_{\bar{\fl}})q_\ell^{-1})
+=2(1-\psi(\Fr_{\bar{\fl}}))$.
+\end{proof}
+
+\begin{lem}\cite[Lem 5.2.1]{Rubin}
+	Given $\kappa\in H^1(\K,T _{m'})$ and $\eta\in H^1(\K,T _{m'}^*)$.
+	Let $L/\K$ be a Galois extension
+	such that $G_L$ acts trivially on $T_{m'}$ and $T_{m'}^*$.
+	Then there exists $\gamma\in G_L$ such that
+	\[
+		\ord(\kappa(\gamma),T_{m'})=
+		\ord( (\kappa)_L, H^1(L,T_{m'}) ) \text{ and }
+		\ord(\eta(\gamma),T_{m'}^*)=
+		\ord( (\eta)_L, H^1(L,T_{m'}^*) ) 
+	\]
+	Note that $H^1(L,T_{m'}^*)=\Hom(G_L,T_{m'}^*)$
+	and similarly for $H^1(L,T_{m'})$.
+\end{lem}
+
+\begin{proof}
+	Let $B_\kappa=\{\gamma\in G_L\mid \}
+	\ord(\kappa(\gamma),T_{m'})<\ord( (\kappa)_L, H^1(L,T_{m'}))$
+	and define $B_\eta$ similarly.
+	Since  $B_\kappa$ and $B_\eta$
+	are proper subgroups of  $G_L$ of index $\geq p>2$,
+	the set $G_L\setminus(B_\kappa\cup B_\eta)$ is nonempty.
+\end{proof}
+
+Assume we are given 
+$C=\{\eta_1,\cdots,\eta_k\}\subset H^1(K,T_{m'}^*)$.
+Let $L=\K(1)\K(T_{m'},T_{m'}^*)$.
+
+Let $\kappa_1=\bar{z}_1\in H^1(\K,T_{m'})$ and apply the above lemma
+to $\kappa_1$ and $\eta_1$ to get  $\gamma\in G_L$.
+Let  $L'$ be the field extension
+associated to  $\ker(\kappa_1)_L$ and $\ker(\eta_1)_L$
+and pick $\ell\in \mathcal{L}_m$ such that
+ $\eta_i\in H^1_{ur}(K_{\bar{\fl}},T_{m'}^*)$ for all $i$
+and  $\Fr_{\bar{\fl}}\equiv \gamma \text{ mod }G_{L'}$.
+Thus 
+\begin{align}
+	\ord( (\kappa_1)_{\bar{\fl}}, H^1_{ur}(K_{\bar{\fl}}, T_{m'})=
+	\ord( (\kappa_1)_{L}, H^1(L, T_{m'})\\
+	\ord( (\eta_1)_{\bar{\fl}}, H^1_{ur}(K_{\bar{\fl}}, T_{m'}^*)=
+	\ord( (\eta_1)_{L}, H^1(L, T_{m'}^*)
+\end{align}
+
+Then let $\kappa_{\ell_1}=D_{\ell_1}\bar{z}_{\ell_1}\in H^1(\K,T_{m'})$
+and apply the Lemma to $\kappa_{\ell_1}$ and $\eta_2$
+to find  $\gamma\in G_L$.
+Let  $L'$ be the field extension
+associated to  $\ker(\kappa_{\ell_1})_L$ and $\ker(\eta_2)_L$
+and pick $\ell_2\in \mathcal{L}_m$ such that
+ $\eta_i\in H^1_{ur}(K_{\bar{\fl}},T_{m'}^*)$ for all $i$
+and  $\Fr_{\bar{\fl}_2}\equiv \gamma \text{ mod }G_{L'}$.
+Thus 
+\begin{align}
+	\ord( (\kappa_{\ell_1})_{\bar{\fl}}, H^1_{ur}(K_{\bar{\fl}}, T_{m'})=
+	\ord( (\kappa_{\ell_1})_{L}, H^1(L, T_{m'})\\
+	\ord( (\eta_2)_{\bar{\fl}}, H^1_{ur}(K_{\bar{\fl}}, T_{m'}^*)=
+	\ord( (\eta_2)_{L}, H^1(L, T_{m'}^*)
+\end{align}
+
+Let $\kappa_{\ell_1\ell_2}=D_{\ell_1\ell_2}\bar{z}_{\ell_1\ell_2}\in
+H^1(\K,T_{m'})$ and appply the lemma to 
+$\kappa(\ell_1\ell_2)$ and  $\eta_3$ and so on.
+
+ \begin{lem}
+	Let $\Omega=\K(1)\K(W,W^*)$, then 
+	$H^1(\Omega/\K, W)=H^1(\Omega/\K, W^*)= W^\K=0$ 
+	by the assumption \eqref{cond:distinct}.
+\end{lem}
+\begin{proof}
+	Consider 
+	$0\to\finite\to W\xrightarrow{\varpi}W\to 0$
+	and let  $L=\ker(\finite(\psi))$.
+	Then  $\#(\Delta=\Gal(L/K))$ is prime to $p$. Thus
+	 \[
+		H^1(\Omega/\K,\finite)=
+		\Hom(\Gal(\Omega/L),\finite)^\Delta=
+		\Hom(\Gal(\Omega/L),\finite^\Delta)=0
+	\]
+	since $\Gal(\Omega/\K))$ is abelian
+	and $\Delta$ acts on  which trivially
+	and $\finite^\Delta=0$.
+\end{proof}
+
+
 
 \bibliographystyle{amsalpha}
 \bibliography{biblio}
