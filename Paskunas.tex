@@ -46,6 +46,12 @@
 \DeclareMathOperator{\Spec}{Spec}
 
 \newcommand{\bw}{\overline{w}}
+\newcommand{\flw}{\bar{\fl}}
+
+
+
+
+
 %%% Block theory
 
 \newcommand{\aMod}{\textnormal{Mod}^{\textnormal{adm}}}
@@ -133,6 +139,12 @@
 \newcommand{\oo}{\mathcal{O}} %ring of integer
 \DeclareMathOperator{\val}{val}
 
+%%% Class Groups
+
+\newcommand{\rg}[1]{\textnormal{Cl}_{#1}} %ray class gp
+\newcommand{\rp}[1]{\mathfrak{C}_{#1}} %pro-p quot
+\newcommand{\rs}[1]{H_{#1}} % sub of prop-p quot
+\newcommand{\rk}[1]{\K({#1})} % ray class field
 
 %%% Fonts
 
@@ -174,6 +186,7 @@
 \DeclareMathOperator{\rank}{rank}
 \DeclareMathOperator{\corank}{corank}
 \DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\res}{res}
 
 
 
@@ -2792,15 +2805,15 @@ which has the infinity type $\Sigma-\Sigma^c$.
 We first recall the space of Hida families
 used in \textit{loc.cit}.
 Let $\fc$ be the conductor of  $\chi_\circ$
-and let $K(\fc)$ be the maximal compact subgroup
+and let $\rk{\fc}$ be the maximal compact subgroup
 of $G(\A_f)$ defined in the beginning of \cite[\S 6]{lee}.
-In particular, the group $K(\fc)$ contains $K_p$
+In particular, the group $\rk{\fc}$ contains $K_p$
 and satisfies \eqref{cond:small}.
 We will vary $\fn=\fc\fs$,
 where $\fs=\bar{\fs}$ is a
 square-free, prime-to-$p\fc$
 ideal of  $\K$ consists only of split primes
-such that  $K(\fc)$
+such that  $\rk{\fc}$
 contains  $\iota_w^{-1}(\GL_2(\oo_w))$
 whenever $w\mid \fs$.
 For each prime $\ell$ of $\F$
@@ -3686,6 +3699,7 @@ we have the norm relation.
 
 \section{Iwasawa main conjecture}
 
+
 Let $\A_{\K,f}^\times=\A_f^\times$
 and $U=\hat{\oo}_\K^\times\subset \A_f^\times$.
 For $V\subset U$, we have
@@ -3761,66 +3775,70 @@ We say  $\psi$ is anticyclotomic if
 $\psi$ factors through $R_\infty^-$.
 
 \begin{lem}
-Let $\psi\colon R_\infty^-\to \C_p^\times$
-be an anticyclotomic character.
-Fix a place $w\mid p$
-and let  $u_w=(1+p)_w\in U$. 
-Pick $t\geq 0$ such that
-$s_0\coloneqq \ord_p(\psi(\rec(u_w))^{p^t}-1)\geq 1$.
-Then for $m>>0$ the set 
+Fix a place $w\in p$ and
+define $u_m=(1+p^m,1-p^m)\in \oo_w\times \oo_{\bw}^\times$,
+$\tau_m=\rec(u_m)\in R_\infty^-$.
+When $\psi\colon R_\infty^-\to \C_p^\times$
+is anticyclotomic,
+given $m>0$,
+there exists  $M$ sufficently large
+and a constant  $s$ independent of  $m$
+such that 
 \[
-	\mathcal{L}_m=\{\fp\nmid \fc p\mid
-	\ord_p(\epsilon(\Fr_\fp))\geq 2m,\,
-\ord_p(\psi(\Fr_\fp))=m+(s_0-1)-t\}
+	\ord_p(q_\fp-1)\geq 2m,\quad
+	\ord_p(\psi(\Fr_\fp))=m+s
 \]
-is an infinite set.
+whenver $\fp$ belongs to 
+$\mathcal{L}_m=
+\{\fp\nmid \fc p\mid \Fr_\fp=\tau_m \text{ in } R_M\}$.
 \end{lem}
 \begin{proof}
-First note that if $\psi(\rec(u_w))=1+x$,
-then  $\psi(\rec(u_w))^{p^t}=(1+x)^{p^t}\equiv 
-1+x^{p^t}\text{ mod }p$, thus such $p$ exists.
+Let $u_w=1+p\in \oo_w^\times$
+and pick $t$ sufficently large so that
+$s'=\ord_p(\psi(\rec(u_w))^{p^t}-1)\geq 1$.
+This is possible since
+$\psi(\rec(u_w))^{p^t}=(1+x)^{p^t}\equiv 
+1+x^{p^t}\text{ mod }p$ if
+$\psi(\rec(u_w))=1+x$.
 
-Suppose $\fp\nmid \fc p$
-and the image of  $\Fr_\fp$ in  $R_n$ is trivial,
-then  $\fp$ is principal,
-let $\fp=(\varpi_\fp)$ for some  $\varpi_\fp\in \oo_\K$,
-then  $(\varpi_\fp)_{\fp}=u_\fp\coloneqq ((\varpi_\fp)^{\fp})^{-1}\in U$ in $\K^\times\backslash \A_f^\times/V_\infty$
-and  $\psi(\Fr_\fp)=\psi(\rec(u_\fp))$.
+Let $M$ be a sufficently large number such that
+\[
+	\ord_p(\epsilon(\rec(u))-1),\,
+	\ord_p(\psi(\rec(u))-1)\geq 2m\quad
+	\text{ for } u\in V_{M}
+\]
+Since 
+$\epsilon(\tau_m)=\epsilon(\rec(u_m))=1-p^{2m}$
+and $\Fr_\fp=\tau_m\red(u)$ for some $u\in V_M$
+when $\fp\in \mathcal{L}_m$, we have 
+\[
+\ord_p(q_\fp^{-1}-1)=
+\ord_p(\epsilon(\Fr_\fp)-1)\geq 2m.
+\]
 
-Given  $2m$ as above, by continuity there exists
-$m'>>0$ such that 
-\[
-	\ord_p(\epsilon(\rec(u))-1),
-	\ord_p(\psi\rec(u))-1)\geq 2m\quad
-	\text{ for } u\in V_{m'}
-\]
-Let $u_m=(1+p^m, 1-p^m)\in U$,
-where  $1+p^m$ is the component at  $w$,
-$1-p^m$ is the component at  $\bw$.
-If $u_\fp\equiv u_m\text{ mod }V_{m'}$, then
-\[
-\ord_p(\epsilon(\rec(u_m))-1)=\ord_p(p^{2m})=2m\Longrightarrow
-\ord_p(\epsilon(\rec(u_\fp))-1)\geq 2m
-\]
 On the other hand,
-since $\psi$ is anticyclotomic,
-$\psi\circ \rec$ on  $(a,b)\in\oo_w^\times\oo_{\bw}^\times$
-factors through $a/b$.
-Under this map  $u_w\mapsto 1+p$
-and  $u_m\mapsto 1+p^m/1-p^m=(1+p)^k$
-for $k\in \Zp$ with $p^{m-1}\parallel k$. 
-Write $\psi(\rec(u_w))^{p^t}=(1+x), \ord_p(x)=s_0>1$
-and  $k=p^{m-1}q$ for $p\nmid q$.
-Then $(1+x)^q=1+y,\ord_p(y)=s_0$ as well.
-Now observe 
+since $\psi$ is anticyclotomic, the character
+$\psi\circ \rec$ on $\oo_w^\times\oo_{\bw}^\times$
+factors through the homomorphism $(a,b)\mapsto a/b$,
+under which
+$u_w\mapsto 1+p$ and
+$u_m\mapsto 1+p^m/1-p^m=(1+p)^k$
+for some $k\in \Zp$ with $p^{m-1}\parallel k$. 
+Write $\psi(\rec(u_w))^{p^t}=(1+x)$, then
 \[
-	(1+y)^{p^{m}}=\sum_i \binom{p^m}{i}y^i,\quad
-	\ord_p(\binom{p^m}{i}y^i=m-\ord_p(i)+is_0\geq
+	(1+x)^{p^{m-1}}=\sum_{i=0}^{p^{m-1}}
+	\binom{p^{m-1}}{i}y^i,\quad
+	\ord_p(\binom{p^m}{i}x^i)=m-\ord_p(i)+is'\geq
 	\begin{cases}
-		m+s_0& i\geq 1\\
-		m+2s_0 & i\geq 2
+		m-1+s'& i\geq 1\\
+		m-1+2s' & i\geq 2
 	\end{cases}
 \]
+which is greater or equal to $m-1+2s'$ when  $i\geq 2$
+since  $is'-\ord_p(i)\geq s'(i-\ord_p(i))\geq 2s'$.
+Thus 
+
+
 Since 
 $\psi(u_m)=\psi(u_w)^k=((\psi(u_w)^{p^t})^q)^{p^{m-1-t}}$,
 we have
@@ -3965,140 +3983,252 @@ is bounded.
 
 \subsection{Settings}
 
-For $\fc=\ell_1\cdots\ell_r$
-we have $z_\fc\in H^1(K(\fc),\Lambda(\Psi))$
+Let $\fc=\ell_1\cdots\ell_r$
+be a square-free product
+of primes $\ell_i$ of  $\F$
+that are split in  $\K$
+and fix a decomposition
+$\ell_i=\fl_i\flw_i$
+for each  $\ell_i$.
+By our construction, we have 
+a class of classes
+$z_\fc\in H^1(\rk{\fc},\Lambda(\Psi))$
 for  $\Psi=\psi\langle*\rangle$ anticyclotomic 
 satisfying 
 \[
-	N_{K(\fc\ell)/K(\fc)}z_{\fc\ell}=
-	P_\ell(\Fr_{\bar{\fl}}\cdot z_\fc,\quad
-	P_\ell(X)=(1-\psi(\Fr_{\bar{\fl}})X)
-	(1-\psi(\Fr_{\bar{\fl}})q_\ell^{-1}X)
+	N_{\rk{\fc\ell}/\rk{\fc}}z_{\fc\ell}=
+	P_\ell(\Fr_{\bar{\fl}})\cdot z_\fc,\quad
+	P_\ell(X)\coloneqq(1-\psi(\Fr_{\flw})X)
+	(1-\psi(\Fr_{\flw})q_\ell^{-1}X)
 \]
-We assume 
-\begin{equation}\label{cond:distinct}\tag{*}
-	\psi\vert_{D_w}\not\equiv1\quad
+Note that here the action of $\Fr_{\flw}$
+on $z_{\fc}$ is the action of $\Gal_\K$
+on  $H^1(\rk{\fc},\Lambda(\Psi))$,
+which factors through  $\rp{\fc p^\infty}$.
+
+In the rest of the subsection,
+we demonstrate how the Euler system above
+bounds the corresponding Selmer group 
+under the following assumption
+that $\psi$ is residually nontrivial
+at some $w\in p$.
+\begin{equation}\label{cond:distinct}\tag{dist}
+	\psi\vert_{I_w}\not\equiv1\quad
 	\text{ for some } w\mid p
 \end{equation}
+
+
+\subsubsection{zero-dimension}
 
 When $\Lambda=\Lambda^{(n)}$ for $n=0$,
 let  $T=\oo(\psi)$ and  $T_m=T/p^mT$.
 
-\subsection{Kolyvagin's derivative}
-Let $p^{n_\ell}=\#H(\ell)=\#(W_p\backslash \Delta_\ell^{-})$
-and $\sigma_\ell\in H(\ell)$ be a generator
-define
- \[
-	D_\ell=\sum_{i=0}^{p^{n_\ell}-1}i\cdot \sigma_\ell^i\Longrightarrow
-	(\sigma_\ell-1)D_\ell=p^{n_\ell}-N_\ell
-\]
-Pick $m'=min(n_\ell\sim 2m-w_p, s(m+(s_0-1)-t))$,
-note that the latter is the order of $P_\ell(1)$,
-then
- \[
-	 (\sigma_\ell-1)D_{\fc\ell}z_{\fc\ell}
-	 \overset{\text{mod } p^{n_\ell}}{\equiv}
-	 -P_\ell(\Fr_{\bar{\fl}})D_\fc z_\fc
-	 \overset{\text{induction}}{=}
-	 -P_\ell(1)D_\fc z_\fc=0 \mod p^{m'}
-\]
+Let $\fc$ be as above.
+For each $\ell\mid\fc$,
+the subgroup  $\rs{\ell}\cong W_p\backslash \Delta_\ell^-$
+is cyclic.
+Let  $\sigma_\ell\in \rs{\ell}$ be a generator
+and put 
+$D_\ell=\sum_{i=0}^{p^{n_\ell}-1}i\cdot \sigma_\ell^i
+\in \Z[\rs{\ell}]$,
+where $p^{n_\ell}\coloneqq \#\rs{\ell}$.
+It is easily seen that 
+$(\sigma_\ell-1)D_\ell=p^{n_\ell}-N_{\rk{\ell}/\rk{\id}}$.
+
 \begin{lem}
-For $m'$ as above, 
-\[
-	D_\fc\bar{z}_\fc\in H^1(K(\fc),T_{m'})^{H(\fc)}
-	\cong H^1(K(1),T_{m'})
-\]
-the isomorphism follows from
-$T_{m'}^{H(\fc)}$ for any $\fc$ by the assumption \eqref{cond:distinct}.
+Let $m$ be a sufficently large integer and
+suppose $\fc=\ell_1\cdots\ell_r$
+with each $\ell_i\in\mathcal{L}_m$.
+Pick $m'=min(n_\ell, 2(m+(s_0-1)-t))$ then
+$D_{\fc}z_{\fc}\text{ mod }p^{m'}\in 
+H^1(\rk{\fc},T_{m'})^{\rk{\id}}$.
 \end{lem}
-
-\subsection{local conditions}
-
-Let $\TT=\text{Map}^{\cts}(\Gal_\K,T)$
-with $\Gal_\K$ action by
-$(g\cdot f)(x)=f(xg)$ and 
-let  $T\to \TT$ be given by  $t\mapsto [x\mapsto x\cdot t]$.
-By the assumption \eqref{cond:distinct},
+\begin{proof}
+We prove this by induction on $r$.
+The case $r=0$, which corresponds to 
+$\fc=\id$, is trivial
+since $z_{\id}\in H^1(\rk{\id},T)$.
+In general
+we show that 
+$(\sigma_\ell-1)D_{\fc\ell}z_{\fc\ell}\equiv 0$
+modulo  $p^{m'}$ for each $\ell\mid \fc$.
+Write $\fc=\fc'\ell$, then
 \[
-	0\to \TT^{K(\fc)}\to (\TT/T)^{K(\fc)}\to H^1(K(\fc),T)\to 0
+	 (\sigma_\ell-1)D_{\fc}z_{\fc}
+	 \overset{\text{mod } p^{n_\ell}}{\equiv}
+	 -P_\ell(\Fr_{\flw})D_{\fc'}z_{\fc'}
+	 \overset{\text{mod } p^{m'}}{\equiv}
+	 -P_\ell(1)D_{\fc'}z_{\fc'}
 \]
-\begin{defn}
-	There exists $ \hat{z}_\fc\in (\TT/T)^{K(\fc)}$
-	well-defined modulo $\TT^{K(\fc)}$,
-	such that $z_\fc(g)=(g-1)\cdot \hat{z}_\fc\in T$.
-\end{defn}
-\begin{proof}
-	Pick $v\in S_p$.
-	Let $k>0$ be such that 
-	$\Fr_\ell^k\equiv 1$ on $T_{m'}$
-	and $a>0$ be such that 
-	$p^{m'}\mid \ord(\Fr_\ell^k, H(v^a))$.
-	Choose $ \hat{z}_{v^a\fc\ell}$ and $ \hat{z}_{v^a\fc}$,
-	then 
-	\[
-		N_\ell \hat{z}_{v^a\fc\ell}-P_\ell(\Fr_{\bar{\fl}})
-		\hat{z}_{v^a\fc}\in T+\TT^{K(v^a\fc)}
-	\]
-	\begin{enumerate}[label=(\alph*)]
-	\item Since $N_\ell\colon \TT^{K(v^a\fc\ell)}\to \TT^{K(v^a\fc)}$ 
-		is surjective,
-		can modify $ \hat{z}_{v^a\fc\ell}$ so that
-	\[
-		N_\ell \hat{z}_{v^a\fc\ell}-P_\ell(\Fr_{\bar{\fl}})
-		\hat{z}_{v^a\fc}\in T
-	\]
-	\item Pick $\hat{z}_{\fc\ell}=N_{v^a}\hat{z}_{v^a\fc\ell}$ and
-	$\hat{z}_{\fc}=N_{v^a}\hat{z}_{v^a\fc}$ then 
-	$N_\ell \hat{z}_{v^a\fc\ell}-P_\ell(\Fr_{\bar{\fl}})
-	\hat{z}_{v^a\fc}\in N_{v^a}T$.
-	But
-	\[
-		N_{v^a}t=
-		\sum_{K(1)/\langle \Fr_\ell^k\rangle}g
-		\sum_{i=1}^{\ord}\Fr_\ell^{k\cdot i} t\equiv 0
-		\mod p^{m'}
-	\]
-	Therefore
-	$N_\ell \hat{z}_{v^a\fc\ell}-P_\ell(\Fr_{\bar{\fl}})
-	\hat{z}_{v^a\fc}\in N_{v^a}T\subset p^{m'}T\subset p^{m'}\TT$.
-	\end{enumerate}
+where the second equivalence follows by induction.
+The lemma thus follows
+since $\ord_p(P_\ell(1))=2(m+(s_0-1)-t)$.
 \end{proof}
+Since the field $\rk{\fc}$
+is unramified at  $p$,
+the assumption \eqref{cond:distinct}
+implies that $T_{m'}^{\rs{\fc}}=0$
+for any integer $m'$. 
+It then follows from the exact sequence below
+that $H^1(\K, T_{m'})\cong 
+H^1(\rk{\fc}, T_{m'})^{\Gal_\K}$.
+\[
+	0\to H^1(\rk{\fc}/\K, T_{m'}^{\rp{\fc}})\to
+	H^1(\K, T_{m'})\to
+	H^1(\rk{\fc}, T_{m'})^{\Gal_\K}\to
+	H^2(\rk{\fc}/\K, T_{m'}^{\rp{\fc}})
+\]
 
-\begin{prop}
-	Let $Q_\ell(X)$ be such that
-	$P_\ell(X)=(1-X)Q_\ell(X)+P_\ell(1)$.
-\end{prop}
-\begin{proof}
-	On one hand we have 
-	$D_{\fc\ell}z_{\fc\ell}(\sigma_\ell)=
-	(\sigma_\ell-1)D_{\fc\ell}\hat{z}_{\fc\ell}
-	\overset{p^{m'}}{\equiv}
-	-P_\ell(\Fr_{\bar{\fl}} D_\fc \hat{z}_\fc$.
-	On the other hand we have 
-	\[
-		Q_\ell(\Fr_{\bar{\fl}})\cdot
-		D_\fc z_\fc(\Fr_{\bar{\fl}})=
-		Q_\ell(\Fr_{\bar{\fl}})(\Fr_{\bar{\fl}}-1)
-		\cdot D_\fc \hat{z}_\fc
-		\overset{p^{m'}}{\equiv}
-		-P_\ell(\Fr_{\bar{\fl}}) D_\fc \hat{z}_\fc
-	\]
-	Consider 
+\begin{defn}
+For $m$ and  $m'$ as above, 
+we let $\kappa_{\fc,m'}\in H^1(\K,T_{m'})$
+denote the classes corresponding to 
+\[
+	N_{\rk{\id}/\K}D_{\fc}z_{\fc}
+	\text{ mod }p^{m'} \in 
+	H^1(\rk{\fc}, T_{m'})^{\Gal_\K}
+\]
+\end{defn}
+When $\ell\in \mathcal{L}_m$
+let $H^1_f(\K_{\flw},T_{m'})$ and
+$H^1_s(\K_{\flw},T_{m'})$ be defined respecitvely
+as the kernel and image of $H^1(\K_{\flw},T_{m'})$ 
+in the exact sequence 
+$0\to H^1(D_{\flw}/I_{\flw},T_{m'})
+\to H^1(D_{\flw},T_{m'})
+\to H^1(I_{\flw},T_{m'})^{D_{\flw}}$.
+By \cite[Lem 1.4.7]{Rubin},
+evaluating the classes at
+$\Fr_{\flw}$ and $\sigma_\ell$ induces isomorphisms
+$H^1_f(\K_{\flw},T_{m'})\cong T_{m'}/(\Fr_{\flw}-1)T_{m'}$
+and
+$H^1_s(\K_{\flw},T_{m'})\cong T_{m'}^{\Fr_{\flw}=1}$.
+We define the finite-singular comparison map
+$\phi_{\flw}^{fs}$ by the commutative diagram
 \[
 	\begin{tikzcd}
-		H^1_{\fc\ell}(K(1), T_{m'}) \arrow[r] &
-		H^1(I_{\bar{\fl}}, T_{m'})^{K_{\bar{\fl}}} \arrow[r]&
-		T_{m'}^{\Fr_{\bar{\fl}}=1}\\
-		H^1_{\fc}(K(1), T_{m'}) \arrow[r]&
-		H^1_{ur}(I_{\bar{\fl}}, T_{m'}) \arrow[r]&
-		T_{m'}/(\Fr_{\bar{\fl}}-1)T_{m'}
-		\arrow[u,"Q_\ell(\Fr_{\bar{\fl}}\equiv Q_\ell(1)"]
+		H^1_s(\K_{\flw}, T_{m'})^{K_{\flw}} \arrow[r]&
+		T_{m'}^{\Fr_{\flw}=1}\\
+		H^1_{f}(\K_{\flw}, T_{m'}) \arrow[r]
+		\arrow[u,"\phi_{\flw}^{fs}"]&
+		T_{m'}/(\Fr_{\flw}-1)T_{m'}
+		\arrow[u,"Q_\ell(\Fr_{\flw})",swap]
 	\end{tikzcd}
 \]
-Note that 
-$Q_\ell(1)=(1-\psi(\Fr_{\bar{\fl}}))+(1-\psi(\Fr_{\bar{\fl}})q_\ell^{-1})
-=2(1-\psi(\Fr_{\bar{\fl}}))$.
+where $Q_\ell(X)$ is the linear factor  such that 
+$P_\ell(X)=(1-X)Q_\ell(X)+P_\ell(1)$.
+Note that since
+$Q_\ell(1)=
+(1-\psi(\Fr_{\flw}))+(1-\psi(\Fr_{\flw})q_\ell^{-1})
+\equiv 2(1-\psi(\Fr_{\flw})) \text{ mod }p^{m'}$,
+we have $\ord_p(Q_\ell(1))=\ord_p(\psi(\Fr_{\flw}-1))
+=m+(s_0-1)-t$ with 
+$m+(s_0-1)-t< m'\leq 2(m+(s_0-1)-t)$.
+Therefore
+the order of $\ker(\phi_{\flw}^{fs})$
+is fixed independent of $\ell$.
+
+
+\begin{prop}
+The Kolyvagin derivatives
+$\kappa_{\fc,m'}$ has the following properties.
+\begin{enumerate}[label=(\alph*)]
+\item When $w\nmid p\fc$ is a finite place of  $\K$,
+then  $\res_w(z_{\fc,m'})\in H^1_f(\K_w,T_{m'})$.
+\item When $\ell\mid\fc$, we have
+$\phi_{\flw}^{fs}(\kappa_{\fc,m'})=\kappa_{\fs\ell,m'}$.
+\end{enumerate}
+\end{prop}
+\begin{proof}
+The first statement is clear when 
+$\psi$ is unramified at $w$.
+In general, since we assume
+that the condcutor of $\psi$ consists
+only of split primes, the 
+image of $D_w$ has infinite image in  $\rp{p^\infty}$
+and the claim follows from
+\cite[Cor 4.6.5]{Rubin},
+if we further assume that
+each divisor $\ell$ of $\fc$
+belongs to  $\mathcal{L}_{mM}$ 
+for some integer $M$ that only depends on  $\psi$.
+
+For the second statement, 
+let $\Gal_\K$ acts on $\tilde{T}=\text{Map}^{\cts}(\Gal_\K,T)$
+via $(g\cdot f)(x)=f(xg)$ and 
+let define $T\to\tilde{T}$ by
+$t\mapsto [x\mapsto x\cdot t]$.
+The assumption \eqref{cond:distinct} implies that
+we have the $\Gal_\K$-equivariant 
+exact sequence
+\[
+	0\to\tilde{T}^{\rk{\fc}}\to (\tilde{T}/T)^{\rk{\fc}}\to 
+	H^1(\rk{\fc},T)\to 0
+\]
+In particular, for each $\fc$
+there exists $ \hat{z}_\fc\in (\tilde{T}/T)^{\rk{\fc}}$
+such that $z_\fc(g)=(g-1)\cdot \hat{z}_\fc$.
+We claim that we can pick the lifts such that
+$N_{\rk{\ell}/\rk{\id}}\hat{z}_{\fc\ell}-P_\ell(\Fr_{\flw})
+\hat{z}_{\fc}\in p^{m'}\tilde{T}$.
+The statement then follows from 
+\begin{align*}
+	D_{\fc\ell}z_{\fc\ell}(\sigma_\ell)=
+	(\sigma_\ell-1)D_{\fc\ell}\hat{z}_{\fc\ell}
+	\overset{p^{m'}}{\equiv}&
+	-P_\ell(\Fr_{\flw}) D_\fc \hat{z}_\fc\\
+	Q_\ell(\Fr_{\flw})\cdot
+	D_\fc z_\fc(\Fr_{\flw})=
+	Q_\ell(\Fr_{\flw})(\Fr_{\flw}-1)
+	\cdot D_\fc \hat{z}_\fc
+	\overset{p^{m'}}{\equiv}&
+	-P_\ell(\Fr_{\flw}) D_\fc \hat{z}_\fc
+\end{align*}
+
+To prove the claim,
+pick $k>0$ such that 
+$\Fr_{\flw}$ acts trivially on $T_{m'}$.
+Since $\Fr_{\flw}$ has infinite order
+in $\rp{p^\infty}$,
+there exists  $v\in S_p$ and  $a>0$
+such that
+$p^{m'}\mid \ord(\Fr_{\flw}^k, \rs{v^a})$.
+Choose lifts
+$\hat{z}_{v^a\fc\ell}$ and $ \hat{z}_{v^a\fc}$
+as above, then
+\[
+	N_{\rk{\ell}/\rk{\id}}
+	\hat{z}_{v^a\fc\ell}-P_\ell(\Fr_{\flw})
+	\hat{z}_{v^a\fc}\in T+\tilde{T}^{\rk{v^a\fc}}
+\]
+In fact, since 
+$N_{\rk{\ell}/\rk{\id}}\colon\tilde{T}^{\rk{v^a\fc\ell}}\to
+\tilde{T}^{\rk{v^a\fc}}$ 
+is surjective,
+we can pick the lifts so that the difference
+lies in $T$.
+Now let 
+$\hat{z}_{\fc\ell}=N_{\rk{v^a}/\rk{\id}}
+\hat{z}_{v^a\fc\ell}$ and
+$\hat{z}_{\fc}=N_{\rk{v^a}/\rk{\id}}\hat{z}_{v^a\fc}$,
+which are lifts of $z_{\fc\ell}$ and $z_{\fc}$.
+Since
+\[
+	N_{\rk{v^a}/\rk{\id}}t=
+	\sum_{\rk{id}/\langle \Fr_\ell^k\rangle}g
+	\sum_{i=1}^{\ord}\Fr_\ell^{k\cdot i} t\equiv 0
+	\mod p^{m'}\quad
+	\text{ for } t\in T
+\]
+we have 
+$N_{\rk{\ell}\rk{\id}}\hat{z}_{\fc\ell}-P_\ell(\Fr_{\flw})
+\hat{z}_{\fc}\in N_{\rk{v^a}/\rk{\id}}T\subset p^{m'}\tilde{T}
 \end{proof}
+
+
+
+
+
 
 \begin{lem}\cite[Lem 5.2.1]{Rubin}
 	Given $\kappa\in H^1(\K,T _{m'})$ and $\eta\in H^1(\K,T _{m'}^*)$.
@@ -4133,13 +4263,13 @@ to $\kappa_1$ and $\eta_1$ to get  $\gamma\in G_L$.
 Let  $L'$ be the field extension
 associated to  $\ker(\kappa_1)_L$ and $\ker(\eta_1)_L$
 and pick $\ell\in \mathcal{L}_m$ such that
- $\eta_i\in H^1_{ur}(K_{\bar{\fl}},T_{m'}^*)$ for all $i$
-and  $\Fr_{\bar{\fl}}\equiv \gamma \text{ mod }G_{L'}$.
+ $\eta_i\in H^1_{ur}(K_{\flw},T_{m'}^*)$ for all $i$
+and  $\Fr_{\flw}\equiv \gamma \text{ mod }G_{L'}$.
 Thus 
 \begin{align}
-	\ord( (\kappa_1)_{\bar{\fl}}, H^1_{ur}(K_{\bar{\fl}}, T_{m'})=
+	\ord( (\kappa_1)_{\flw}, H^1_{ur}(K_{\flw}, T_{m'})=
 	\ord( (\kappa_1)_{L}, H^1(L, T_{m'})\\
-	\ord( (\eta_1)_{\bar{\fl}}, H^1_{ur}(K_{\bar{\fl}}, T_{m'}^*)=
+	\ord( (\eta_1)_{\flw}, H^1_{ur}(K_{\flw}, T_{m'}^*)=
 	\ord( (\eta_1)_{L}, H^1(L, T_{m'}^*)
 \end{align}
 
@@ -4149,13 +4279,13 @@ to find  $\gamma\in G_L$.
 Let  $L'$ be the field extension
 associated to  $\ker(\kappa_{\ell_1})_L$ and $\ker(\eta_2)_L$
 and pick $\ell_2\in \mathcal{L}_m$ such that
- $\eta_i\in H^1_{ur}(K_{\bar{\fl}},T_{m'}^*)$ for all $i$
-and  $\Fr_{\bar{\fl}_2}\equiv \gamma \text{ mod }G_{L'}$.
+ $\eta_i\in H^1_{ur}(K_{\flw},T_{m'}^*)$ for all $i$
+and  $\Fr_{\flw}\equiv \gamma \text{ mod }G_{L'}$.
 Thus 
 \begin{align}
-	\ord( (\kappa_{\ell_1})_{\bar{\fl}}, H^1_{ur}(K_{\bar{\fl}}, T_{m'})=
+	\ord( (\kappa_{\ell_1})_{\flw}, H^1_{ur}(K_{\flw}, T_{m'})=
 	\ord( (\kappa_{\ell_1})_{L}, H^1(L, T_{m'})\\
-	\ord( (\eta_2)_{\bar{\fl}}, H^1_{ur}(K_{\bar{\fl}}, T_{m'}^*)=
+	\ord( (\eta_2)_{\flw}, H^1_{ur}(K_{\flw}, T_{m'}^*)=
 	\ord( (\eta_2)_{L}, H^1(L, T_{m'}^*)
 \end{align}
 
@@ -4170,17 +4300,17 @@ $\kappa(\ell_1\ell_2)$ and  $\eta_3$ and so on.
 \end{lem}
 \begin{proof}
 	Consider 
-	$0\to\finite\to W\xrightarrow{\varpi}W\to 0$
-	and let  $L=\ker(\finite(\psi))$.
+	$0\to\fF\to W\xrightarrow{\varpi}W\to 0$
+	and let  $L=\ker(\fF(\psi))$.
 	Then  $\#(\Delta=\Gal(L/K))$ is prime to $p$. Thus
 	 \[
-		H^1(\Omega/\K,\finite)=
-		\Hom(\Gal(\Omega/L),\finite)^\Delta=
-		\Hom(\Gal(\Omega/L),\finite^\Delta)=0
+		H^1(\Omega/\K,\fF)=
+		\Hom(\Gal(\Omega/L),\fF)^\Delta=
+		\Hom(\Gal(\Omega/L),\fF^\Delta)=0
 	\]
 	since $\Gal(\Omega/\K))$ is abelian
 	and $\Delta$ acts on  which trivially
-	and $\finite^\Delta=0$.
+	and $\fF^\Delta=0$.
 \end{proof}
 
 
