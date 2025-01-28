@@ -3774,7 +3774,7 @@ be the induced character from the reciprocity map.
 We say  $\psi$ is anticyclotomic if
 $\psi$ factors through $R_\infty^-$.
 
-\begin{lem}
+\begin{lem}\label{lem:estimate}
 Fix a place $w\in p$ and
 define $u_m=(1+p^m,1-p^m)\in \oo_w\times \oo_{\bw}^\times$,
 $\tau_m=\rec(u_m)\in R_\infty^-$.
@@ -3818,7 +3818,7 @@ when $\fp\in \mathcal{L}_m$, we have
 
 On the other hand,
 since $\psi$ is anticyclotomic, the character
-$\psi\circ \rec$ on $\oo_w^\times\oo_{\bw}^\times$
+$\psi\circ \rec$ on $\oo_w^\times\times\oo_{\bw}^\times$
 factors through the homomorphism $(a,b)\mapsto a/b$,
 under which
 $u_w\mapsto 1+p$ and
@@ -3837,19 +3837,13 @@ Write $\psi(\rec(u_w))^{p^t}=(1+x)$, then
 which is greater or equal to $m-1+2s'$ when  $i\geq 2$
 since  $is'-\ord_p(i)\geq s'(i-\ord_p(i))\geq 2s'$.
 Thus 
-
-
-Since 
-$\psi(u_m)=\psi(u_w)^k=((\psi(u_w)^{p^t})^q)^{p^{m-1-t}}$,
-we have
 \[
-\ord_p(\psi(\rec(u_m))-1)=m+(s_0-1)-t<2m\quad
-\ord_p(\psi(\rec(u_\fp))-1)=m+(s_0-1)-t.
+\ord_p(\psi(\tau_m)-1)=\ord_p(\psi(\rec(u_w)^{p^t})^{p^{m-1-t}}-1)
+=m-1-t+s'<2m
 \]
-Now the lemma follows since 
-the set of $\fp$ 
-such that  $u_\fp\equiv u_m\text{ mod }V_{m'}$
-is infinite by Chebotarev's density.
+when $m>s\coloneqq s'-1-t$
+and therefore
+$\ord_p(\psi(\Fr_\fp)-1)=m+s$ when  $\fp\in\mathcal{L}_m$.
 \end{proof}
 
 \begin{defn}
@@ -4017,6 +4011,17 @@ at some $w\in p$.
 	\text{ for some } w\mid p
 \end{equation}
 
+We consider $H^1(\K, \Lambda^*(\Psi^D))$. 
+If  $J\subset \Lambda$ is an ideal 
+such that  $\Lambda/J\cong \Lambda^{m}$ for some $m$
+we consider  $H^1(\K,(\Lambda/J)^*(\Psi^D))$ as well.
+We prove inductively on  $m$ that 
+\begin{enumerate}[label=(\alph*)]
+	\item $H^1(\K,(\Lambda/J)^*(\Psi^D))^\vee$ is $\Lambda/J$-torsion
+	\item the characteristic ideal in $\Lambda/J$
+		is bounded by the image of the $L$-function in $\Lambda/J$.
+\end{enumerate}
+
 
 \subsubsection{zero-dimension}
 
@@ -4039,7 +4044,7 @@ $(\sigma_\ell-1)D_\ell=p^{n_\ell}-N_{\rk{\ell}/\rk{\id}}$.
 Let $m$ be a sufficently large integer and
 suppose $\fc=\ell_1\cdots\ell_r$
 with each $\ell_i\in\mathcal{L}_m$.
-Pick $m'=min(n_\ell, 2(m+(s_0-1)-t))$ then
+Pick $m'=min(n_\ell, 2(m+s))$ then
 $D_{\fc}z_{\fc}\text{ mod }p^{m'}\in 
 H^1(\rk{\fc},T_{m'})^{\rk{\id}}$.
 \end{lem}
@@ -4062,7 +4067,7 @@ Write $\fc=\fc'\ell$, then
 \]
 where the second equivalence follows by induction.
 The lemma thus follows
-since $\ord_p(P_\ell(1))=2(m+(s_0-1)-t)$.
+since $\ord_p(P_\ell(1))=2(m+s)$.
 \end{proof}
 Since the field $\rk{\fc}$
 is unramified at  $p$,
@@ -4122,11 +4127,21 @@ $Q_\ell(1)=
 (1-\psi(\Fr_{\flw}))+(1-\psi(\Fr_{\flw})q_\ell^{-1})
 \equiv 2(1-\psi(\Fr_{\flw})) \text{ mod }p^{m'}$,
 we have $\ord_p(Q_\ell(1))=\ord_p(\psi(\Fr_{\flw}-1))
-=m+(s_0-1)-t$ with 
-$m+(s_0-1)-t< m'\leq 2(m+(s_0-1)-t)$.
+=m+s$ with 
+$m+s< m'\leq 2(m+s)$.
 Therefore
 the order of $\ker(\phi_{\flw}^{fs})$
 is fixed independent of $\ell$.
+\begin{rem}
+Let $p^{w_p}=\#\mu_{p^\infty}(\K)$.
+If we further assume that the prime divisors
+$\ell\mid\fc$ are choosen such that
+$\mu_{p^\infty}(\K)$ has distinc images in $\Delta_\ell^-$,
+then we have  $n_\ell\geq 2m-w_p$.
+The kernel above is nontrivial only when 
+$n_\ell=m'<2(m+s)$, in which case the order 
+is bounded by the constant $p^{2s+w_p}$.
+\end{rem}
 
 
 \begin{prop}
@@ -4139,6 +4154,7 @@ then  $\res_w(z_{\fc,m'})\in H^1_f(\K_w,T_{m'})$.
 $\phi_{\flw}^{fs}(\kappa_{\fc,m'})=\kappa_{\fs\ell,m'}$.
 \end{enumerate}
 \end{prop}
+
 \begin{proof}
 The first statement is clear when 
 $\psi$ is unramified at $w$.
@@ -4222,97 +4238,122 @@ Since
 \]
 we have 
 $N_{\rk{\ell}\rk{\id}}\hat{z}_{\fc\ell}-P_\ell(\Fr_{\flw})
-\hat{z}_{\fc}\in N_{\rk{v^a}/\rk{\id}}T\subset p^{m'}\tilde{T}
+\hat{z}_{\fc}\in N_{\rk{v^a}/\rk{\id}}T\subset p^{m'}\tilde{T}$
 \end{proof}
 
 
-
-
-
-
-\begin{lem}\cite[Lem 5.2.1]{Rubin}
-	Given $\kappa\in H^1(\K,T _{m'})$ and $\eta\in H^1(\K,T _{m'}^*)$.
-	Let $L/\K$ be a Galois extension
-	such that $G_L$ acts trivially on $T_{m'}$ and $T_{m'}^*$.
-	Then there exists $\gamma\in G_L$ such that
-	\[
-		\ord(\kappa(\gamma),T_{m'})=
-		\ord( (\kappa)_L, H^1(L,T_{m'}) ) \text{ and }
-		\ord(\eta(\gamma),T_{m'}^*)=
-		\ord( (\eta)_L, H^1(L,T_{m'}^*) ) 
-	\]
-	Note that $H^1(L,T_{m'}^*)=\Hom(G_L,T_{m'}^*)$
-	and similarly for $H^1(L,T_{m'})$.
-\end{lem}
-
-\begin{proof}
-	Let $B_\kappa=\{\gamma\in G_L\mid \}
-	\ord(\kappa(\gamma),T_{m'})<\ord( (\kappa)_L, H^1(L,T_{m'}))$
-	and define $B_\eta$ similarly.
-	Since  $B_\kappa$ and $B_\eta$
-	are proper subgroups of  $G_L$ of index $\geq p>2$,
-	the set $G_L\setminus(B_\kappa\cup B_\eta)$ is nonempty.
-\end{proof}
-
-Assume we are given 
+Assume we are given a collection of classes
 $C=\{\eta_1,\cdots,\eta_k\}\subset H^1(K,T_{m'}^*)$.
-Let $L=\K(1)\K(T_{m'},T_{m'}^*)$.
-
-Let $\kappa_1=\bar{z}_1\in H^1(\K,T_{m'})$ and apply the above lemma
-to $\kappa_1$ and $\eta_1$ to get  $\gamma\in G_L$.
-Let  $L'$ be the field extension
-associated to  $\ker(\kappa_1)_L$ and $\ker(\eta_1)_L$
-and pick $\ell\in \mathcal{L}_m$ such that
- $\eta_i\in H^1_{ur}(K_{\flw},T_{m'}^*)$ for all $i$
-and  $\Fr_{\flw}\equiv \gamma \text{ mod }G_{L'}$.
-Thus 
-\begin{align}
-	\ord( (\kappa_1)_{\flw}, H^1_{ur}(K_{\flw}, T_{m'})=
+Let $R_M$ be the class group corresponding to $m$ 
+in Lemma \ref{lem:estimate}
+and let $L$ be the corresponding field extension over  $\K$.
+By the defining property of $R_M$,
+we see  $G_L$ acts trivially on both  $T_{m'}$ and $T_{m'}^*$.
+Apply \cite[Lem 5.2.1]{Rubin}
+to the classes $\kappa_{\id}=\bar{z}_{\id}\in H^1(\K,T_{m'})$
+and $\eta_1$, 
+there exists  $\gamma\in G_L$ such that
+\begin{align*}
+	\ord(\kappa(\gamma\tau_m),T_{m'}/(\psi(\tau_m)-1)T_{m'})&\geq
+	\ord( (\kappa)_L, H^1(L,T_{m'}) )\\
+	\ord(\eta(\gamma\tau_m),T_{m'}^*/(\psi(\tau_m)-1)T_{m'}^*)&\geq
+	\ord( (\eta)_L, H^1(L,T_{m'}^*) ) 
+\end{align*}
+Let $L'=\ker(\kappa_1)_L\cap \ker(\eta_1)_L$.
+We then pick $\ell_1\in \mathcal{L}_m$ such that
+$\eta_i\in H^1_{ur}(K_{\flw_1},T_{m'}^*)$ for all $i$
+and $\Fr_{\flw_1}$ is conjugate to $\gamma\tau_m$ in  $\Gal(L'/\K)$.
+We thus have
+\begin{align*}
+	\ord( (\kappa_1)_{\flw_1}, H^1_{ur}(K_{\flw_1}, T_{m'})\geq
 	\ord( (\kappa_1)_{L}, H^1(L, T_{m'})\\
-	\ord( (\eta_1)_{\flw}, H^1_{ur}(K_{\flw}, T_{m'}^*)=
+	\ord( (\eta_1)_{\flw_1}, H^1_{ur}(K_{\flw_1}, T_{m'}^*)\geq
 	\ord( (\eta_1)_{L}, H^1(L, T_{m'}^*)
-\end{align}
-
-Then let $\kappa_{\ell_1}=D_{\ell_1}\bar{z}_{\ell_1}\in H^1(\K,T_{m'})$
-and apply the Lemma to $\kappa_{\ell_1}$ and $\eta_2$
-to find  $\gamma\in G_L$.
-Let  $L'$ be the field extension
-associated to  $\ker(\kappa_{\ell_1})_L$ and $\ker(\eta_2)_L$
-and pick $\ell_2\in \mathcal{L}_m$ such that
- $\eta_i\in H^1_{ur}(K_{\flw},T_{m'}^*)$ for all $i$
-and  $\Fr_{\flw}\equiv \gamma \text{ mod }G_{L'}$.
-Thus 
-\begin{align}
-	\ord( (\kappa_{\ell_1})_{\flw}, H^1_{ur}(K_{\flw}, T_{m'})=
+\end{align*}
+We apply the same procedure then to
+$\kappa_{\ell_1}=D_{\ell_1}\bar{z}_{\ell_1}\in H^1(\K,T_{m'})$
+and $\eta_2$,
+we can pick $\ell_2\in \mathcal{L}_m$ such that
+$\eta_i\in H^1_{ur}(K_{\flw_2},T_{m'}^*)$ for all $i$ and
+\begin{align*}
+	\ord( (\kappa_{\ell_1})_{\flw_2}, H^1_{ur}(K_{\flw_2}, T_{m'})\geq
 	\ord( (\kappa_{\ell_1})_{L}, H^1(L, T_{m'})\\
-	\ord( (\eta_2)_{\flw}, H^1_{ur}(K_{\flw}, T_{m'}^*)=
+	\ord( (\eta_2)_{\flw_2}, H^1_{ur}(K_{\flw_2}, T_{m'}^*)\geq
 	\ord( (\eta_2)_{L}, H^1(L, T_{m'}^*)
-\end{align}
+\end{align*}
+We proceed further and get a collection 
+$\Sigma=\{\ell_1,\cdots,\ell_k\}$ of primes in $\mathcal{L}_m$
+such that the classes  $\eta_i$ are unramified
+at all places  $\flw_i$ and that
+\begin{align*}
+	\ord( (\kappa_{\fc_{i-1}})_{\flw_i}, H^1_{ur}(K_{\flw_i}, T_{m'})\geq
+	\ord( (\kappa_{\fc_{i-1}})_{L}, H^1(L, T_{m'})\\
+	\ord( (\eta_i)_{\flw_i}, H^1_{ur}(K_{\flw_i}, T_{m'}^*)\geq
+	\ord( (\eta_i)_{L}, H^1(L, T_{m'}^*)
+\end{align*}
+where $\fc_{i-1}\coloneqq \ell_1\cdots\ell_{i-1}$, for all $1\leq i\leq k$.
 
-Let $\kappa_{\ell_1\ell_2}=D_{\ell_1\ell_2}\bar{z}_{\ell_1\ell_2}\in
-H^1(\K,T_{m'})$ and appply the lemma to 
-$\kappa(\ell_1\ell_2)$ and  $\eta_3$ and so on.
-
- \begin{lem}
-	Let $\Omega=\K(1)\K(W,W^*)$, then 
-	$H^1(\Omega/\K, W)=H^1(\Omega/\K, W^*)= W^\K=0$ 
-	by the assumption \eqref{cond:distinct}.
+\begin{lem}
+	Let $\Omega/\K$ be the extension corresponding
+	to $R_{\infty}$, then the cohomology groups
+	$W^\K$, $H^1(\Omega/\K, W)$ and $H^1(\Omega/\K, W^*)$ 
+	are all trivial under the assumption \eqref{cond:distinct}.
 \end{lem}
 \begin{proof}
-	Consider 
-	$0\to\fF\to W\xrightarrow{\varpi}W\to 0$
-	and let  $L=\ker(\fF(\psi))$.
-	Then  $\#(\Delta=\Gal(L/K))$ is prime to $p$. Thus
-	 \[
+	Consider the finite extension $L=\ker(\fF(\psi))$
+	and let $\Delta=\Gal(L/\K)$.
+	Then  $p\nmid \#\Delta$ 
+	and $\fF^\Delta=0$ by the assumption  \ref{cond:distinct}.
+	As the conjugation action of $\Delta$ acts trivially
+	on the abelian group $\Gal(\Omega/\K)$, we have
+	\[
 		H^1(\Omega/\K,\fF)=
 		\Hom(\Gal(\Omega/L),\fF)^\Delta=
 		\Hom(\Gal(\Omega/L),\fF^\Delta)=0
 	\]
-	since $\Gal(\Omega/\K))$ is abelian
-	and $\Delta$ acts on  which trivially
-	and $\fF^\Delta=0$.
+	By the exact sequence
+	$0\to\fF\to W\xrightarrow{\varpi}W\to 0$
+	this implies that $H^1(\Omega/K,W)$
+	has no nontrivial $\varpi$-torsion, 
+	which is possible only if  $H^1(\Omega,W)=0$.
+	The same argument works also for $H^1(\Omega,W^*)$.
 \end{proof}
 
+Now, given a postive integer $n$,
+we pick  $m$ sufficiently large so that
+\[
+p^{m'}> p^n+(k+1)p^{w_p+2s}+\textnormal{ind}(z_{\id})
+\]
+By the lemma above,dd
+if we define $d_i=\ord(\kappa_{\fc_{i},m'}, H^1(\K,T_{m'}))$, then
+\[
+	d_i=\ord(\kappa_{\fc_{i},m'}, H^1(\K,T_{m'}))=
+	\ord( (\kappa_{\fc_{i},m'})_\Omega, H^1(\Omega,T_{m'}))
+\]
+We have $d_0=p^{m'}-\textnormal{ind}(z_{\id})>p^n+(k+1)p^{w_p+2s}$.
+And for $0\leq i\leq k$ we have
+\[
+	d_i\geq 
+	\ord( (\kappa_{\fc_i,m'})_{\flw_i}, H^1_s(\K_{\flw_i}, T_{m'}))\geq
+	\ord( (\kappa_{\fc_{i-1},m'})_{\flw_i}, H^1_f(\K_{\flw_i}, T_{m'}))-p^{w_p+2s}\geq 
+	d_{i-1}-p^{w_p+2s}.
+\]
+In particular $d_i\geq p^n$ for all  $i$.
+
+Pick  $\kappa_i\in H^1(\K, T_{n})$ whose image 
+is $p^{d_i-n}\kappa_{\fc_i,m'}$
+and let $A^{(i)}\subset H^1(\K,T_{n})$
+be the submodule generated by $\kappa_0,\cdots,\kappa_i$.
+Then 
+\[
+	\ord(\textnormal{loc}_\Sigma(A^{(i)})/\textnormal{loc}_\Sigma(A^{(i-1)}))
+	\geq p^n+d_{i-1}-d_{i}
+\]
+and therefore
+$\ord(\textnormal{loc}_\Sigma(S^{\Sigma\cup \Sigma_p}(\K, T_{n})) 
+\geq kn+d_0-d_{k}\geq kn-\textnormal{ind}(z)$.
+Therefore $\ord(\coker(\textnormal{loc}_\Sigma))\leq \textnormal{ind}(z)$
+as desired.
 
 
 \bibliographystyle{amsalpha}
