@@ -1,15 +1,10 @@
 \documentclass[leqno]{amsart}
-\usepackage{amssymb,stmaryrd,amsfonts}
 \usepackage{amsmath} 
-\usepackage{enumitem}
-\usepackage{hyperref}
-\usepackage{mathrsfs}
-\usepackage{color}
-\usepackage{mathtools,caption,euscript}
+\usepackage{amssymb,mathtools,stmaryrd}
+\usepackage{mathrsfs,euscript}
+\usepackage{hyperref,tikz-cd,enumitem}
 \usepackage[table,dvipsnames]{xcolor}
-\usepackage{tikz-cd}
 \usepackage[utf8]{inputenc}
-\usepackage[OT2,T1]{fontenc}
 \hypersetup{
  colorlinks=true,
  linkcolor=DarkOrchid,
@@ -17,102 +12,32 @@
  citecolor=olive,
  urlcolor=orange,
  pdftitle={Pask\={u}nas' theory},
- %pdfpagemode=FullScreen,
- }
-\usepackage{booktabs}
-%[label=(\alph*)]
-%[label=(\Alph*)]
-%[label=(\roman*)]
-%[label={(\bfseries R\arabic*)}]
-
+}
 
 \setlength{\textwidth}{\paperwidth}
 \addtolength{\textwidth}{-2in}
 \calclayout
 
-\newcommand{\smat}[1]{\left( \begin{smallmatrix} #1 \end{smallmatrix} \right)}
-\newcommand{\euF}{\EuScript{F}} %Hida family
-\newcommand{\fF}{\mathbb{F}} % fintie field
-\newcommand{\M}{\mathbf{M}} % modular form
-\newcommand{\bnu}{\mathbb{\nu}}
-\newcommand{\wt}[1]{\underline{ #1 }}
-\newcommand{\bwt}[1]{\underline{\mathbb { #1 }}}
-\newcommand{\TT}{\mathbb{T}} % Hecke 
-\newcommand{\fG}{\mathfrak{G}}
-\newcommand{\fX}{\mathfrak{X}}
-\newcommand{\GG}{\mathbf G} 
-\newcommand{\Iw}{\textnormal{Iw}} 
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
 
-\DeclareMathOperator{\Spec}{Spec}
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
 
-\newcommand{\bw}{\overline{w}}
-\newcommand{\flw}{\bar{\fl}}
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{ack}{Acknowledgement}
 
+%%%%%%%%%% COMMONLY USED COMMAND %%%%%%%%%%%%%%%%
 
-
-
-
-%%% Block theory
-
-\newcommand{\lfMod}{\textnormal{Mod}^{\textnormal{lfin}}}
-\newcommand{\aMod}{\textnormal{Mod}^{\textnormal{adm}}}
-\newcommand{\laMod}{\textnormal{Mod}^{\textnormal{l.adm}}}
-\newcommand{\fgMod}{\textnormal{Mod}^{\textnormal{fg.aug}}}
-\newcommand{\Ban}{\textnormal{Ban}^{\textnormal{adm}}}
-\DeclareMathOperator{\Mod}{\textnormal{Mod}}
-\DeclareMathOperator{\Rep}{Rep}
-\newcommand{\B}{\mathfrak B} 
-\newcommand{\fC}{\mathfrak{C}}
-\DeclareMathOperator{\soc}{soc}
-\DeclareMathOperator{\V}{\check{\mathbf{V}}} %Colmez
-
-
-%%% p_adic Hodge
-
-\newcommand{\Gp}{\mathcal{G}_{\Qp}} %Galois group over \Qp
-\newcommand{\Fr}{\textnormal{Fr}} %geometric Frobenius
-\newcommand{\frob}{\textnormal{frob}} %arithmetic Frobenius
-\newcommand{\dR}{\textnormal{dR}}
-\newcommand{\pst}{\textnormal{pst}}
-\newcommand{\cris}{\textnormal{cris}}
-
-\DeclareMathOperator{\Gal}{Gal}
-
-\DeclareMathOperator{\Ord}{Ord}
-\DeclareMathOperator{\Irr}{Irr}
-\DeclareMathOperator{\WD}{WD}
-\DeclareMathOperator{\rec}{rec}
-\DeclareMathOperator{\Rec}{Rec}
-\DeclareMathOperator{\Art}{Art}
-
-\newcommand{\cont}{\textnormal{cont}}
-\newcommand{\cts}{\textnormal{cts}}
-\newcommand{\alg}{\textnormal{alg}}
-\newcommand{\sm}{\textnormal{sm}}
-\newcommand{\adm}{\textnormal{adm}}
-\newcommand{\ps}{\textnormal{ps}}
-\newcommand{\red}{\textnormal{red}}
-\newcommand{\fin}{\textnormal{fin}}
-\newcommand{\an}{\textnormal{an}}
-\newcommand{\ord}{\textnormal{ord}}
-
-
-%%% Linear algebraic groups
-\DeclareMathOperator{\GL}{GL}
-\DeclareMathOperator{\SL}{SL}
-\DeclareMathOperator{\gl}{\mathfrak{gl}}
-\DeclareMathOperator{\mtr}{tr}
-\DeclareMathOperator{\diag}{diag}
-\DeclareMathOperator{\Ad}{Ad}
-\DeclareMathOperator{\vol}{vol}
-\DeclareMathOperator{\Sym}{Sym}
-
-\DeclareMathOperator{\Lie}{Lie}
-
-\newcommand{\bs}{\mathcal{S}}
+\newcommand{\smat}[1]{\left(\begin{smallmatrix} #1 \end{smallmatrix}\right)}
 \newcommand{\id}{\mathbf{1}}
+\newcommand{\oo}{\mathcal{O}} 
+\newcommand{\eo}{\EuScript{O}}
+\newcommand{\fF}{\mathbb{F}} % residue field
 
-%%% Adelic rings
 \newcommand{\Q}{{\mathbf{Q}}}
 \newcommand{\Z}{{\mathbf{Z}}}
 \newcommand{\Qp}{\mathbf{Q}_p}
@@ -124,35 +49,63 @@
 \newcommand{\A}{\mathbf A}
 \newcommand{\dd}{\mathfrak{d}} %different
 \newcommand{\DD}{\mathcal{D}}  %discriminant
-\DeclareMathOperator{\Nr}{\mathsf{N}} %norm
-\DeclareMathOperator{\Tr}{Tr} %trace
-
 \newcommand{\arch}{\mathbf{a}}
 \newcommand{\finite}{\mathbf{h}}
+\DeclareMathOperator{\Nr}{N}
+\DeclareMathOperator{\Tr}{Tr}
 
-\newcommand{\F}{{\mathbf{F}}} %global field
-\newcommand{\K}{{\mathbf{K}}} %global quadratic
-\newcommand{\kk}{F} %local field
-\newcommand{\E}{E} %local quadratic
-\newcommand{\qch}{\epsilon} % quadratic character of K/F
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\cInd}{c-Ind}
+\DeclareMathOperator{\nInd}{n-Ind}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\corank}{corank}
 
-\newcommand{\oo}{\mathcal{O}} %ring of integer
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Ad}{Ad}
+
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\gl}{\mathfrak{gl}}
+\DeclareMathOperator{\mtr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\chr}{char} 
+
+\DeclareMathOperator{\vol}{vol}
 \DeclareMathOperator{\val}{val}
 
-%%% Class Groups
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\Fitt}{Fitt}
+\DeclareMathOperator{\depth}{depth}
+\DeclareMathOperator{\length}{length}
 
-\newcommand{\rg}[1]{\textnormal{Cl}_{#1}} %ray class gp
-\newcommand{\rp}[1]{\mathfrak{C}_{#1}} %pro-p quot
-\newcommand{\rs}[1]{H_{#1}} % sub of prop-p quot
-\newcommand{\rk}[1]{\K({#1})} % ray class field
+\DeclareMathOperator{\Gal}{Gal}
+\DeclareMathOperator{\WD}{WD}
+\DeclareMathOperator{\Rec}{Rec}
+\DeclareMathOperator{\rec}{rec}
+\DeclareMathOperator{\Art}{Art}
+\newcommand{\Fr}{\textnormal{Fr}} %geometric Frobenius
+\newcommand{\frob}{\textnormal{frob}} %arithmetic Frobenius
+\newcommand{\dR}{\textnormal{dR}}
+\newcommand{\pst}{\textnormal{pst}}
+\newcommand{\st}{\textnormal{st}}
+\newcommand{\cris}{\textnormal{cris}}
 
-%%% Fonts
-
-\newcommand{\oeu}{\EuScript{O}}
-\newcommand{\eeu}{\EuScript{E}}
-\newcommand{\feu}{\EuScript{F}}
-\newcommand{\geu}{\EuScript{G}}
-\newcommand{\keu}{\EuScript{K}}
+\newcommand{\cont}{\textnormal{cont}}
+\newcommand{\cts}{\textnormal{cts}}
 
 \newcommand{\fa}{\mathfrak{a}}
 \newcommand{\fc}{\mathfrak{c}}
@@ -165,47 +118,58 @@
 \newcommand{\ff}{\mathfrak{f}}
 \newcommand{\fp}{\mathfrak{p}}
 \newcommand{\fq}{\mathfrak{q}}
-\newcommand{\bfp}{\overlin{\mathfrak p}}
-\newcommand{\bfq}{\overline{\mathfrak q}}
 
-\newcommand{\btheta}{\mathbb{\theta}}
-\newcommand{\bdelta}{\mathbb{\delta}}
+%%%%%%%%%% MORE SPECIFIC COMMAND %%%%%%%%%%%%%%%%
 
+\newcommand{\bs}{\mathcal{S}} %Bruhat-Shwartz
 
-%%% Categorical
-\DeclareMathOperator{\End}{End}
-\DeclareMathOperator{\Aut}{Aut}
-\DeclareMathOperator{\Hom}{Hom}
-\DeclareMathOperator{\Ext}{Ext}
-\DeclareMathOperator{\Tor}{Tor}
-\DeclareMathOperator{\Ind}{Ind}
-\DeclareMathOperator{\cInd}{c-Ind}
-\DeclareMathOperator{\nInd}{n-Ind}
-\DeclareMathOperator{\coker}{coker}
-\DeclareMathOperator{\Image}{Im}
-\DeclareMathOperator{\rank}{rank}
-\DeclareMathOperator{\corank}{corank}
-\DeclareMathOperator{\Res}{Res}
-\DeclareMathOperator{\res}{res}
+%%% p-adic local Langlands
 
+\DeclareMathOperator{\Mod}{\textnormal{Mod}}
+\DeclareMathOperator{\lfMod}{\textnormal{Mod}^{\textnormal{lfin}}}
+\DeclareMathOperator{\laMod}{\textnormal{Mod}^{\textnormal{l.adm}}}
+\DeclareMathOperator{\aMod}{\textnormal{Mod}^{\textnormal{adm}}}
+\DeclareMathOperator{\fgMod}{\textnormal{Mod}^{\textnormal{fg.aug}}}
+\DeclareMathOperator{\fC}{\mathfrak{C}} %dual category
+\DeclareMathOperator{\Ban}{\textnormal{Ban}^{\textnormal{adm}}}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\V}{\check{\mathbf{V}}} %Colmez's functor
+\DeclareMathOperator{\Ord}{Ord} %Emerton's functor
+\DeclareMathOperator{\Irr}{Irr}
+\DeclareMathOperator{\soc}{soc}
 
+\newcommand{\Gp}{\mathcal{G}_{\Qp}} %Galois group over \Qp
+\newcommand{\B}{\mathfrak B} %Paskunas' Block
 
+\newcommand{\alg}{\textnormal{alg}}
+\newcommand{\sm}{\textnormal{sm}}
+\newcommand{\adm}{\textnormal{adm}}
+\newcommand{\fin}{\textnormal{fin}}
+\newcommand{\ps}{\textnormal{ps}}
+\newcommand{\red}{\textnormal{red}}
 
-\newtheorem{thm}{Theorem}[section]
-\newtheorem{lem}[thm]{Lemma}
-\newtheorem{prop}[thm]{Proposition}
-\newtheorem{cor}[thm]{Corollary}
+%%% Number Fields
 
+\newcommand{\F}{{\mathbf{F}}} %global totally real
+\newcommand{\K}{{\mathbf{K}}} %global CM
+\newcommand{\qch}{\epsilon} % quadratic character of K/F
+\newcommand{\bw}{\overline{w}}
+\newcommand{\flw}{\bar{\fl}}
 
-\theoremstyle{definition}
-\newtheorem{defn}[thm]{Definition}
+\newcommand{\fG}{\mathfrak{G}}
+\newcommand{\fX}{\mathfrak{X}}
+\newcommand{\rg}[1]{\textnormal{Cl}_{#1}} %ray class gp
+\newcommand{\rp}[1]{\mathfrak{C}_{#1}} %pro-p quot
+\newcommand{\rs}[1]{H_{#1}} % sub of prop-p quot
+\newcommand{\rk}[1]{\K({#1})} % ray class field
 
+%%% Modular Forms
 
-\theoremstyle{remark}
-\newtheorem{rem}[thm]{Remark}
-\newtheorem{ack}{Acknowledgement}
-
-
+\newcommand{\wt}[1]{\underline{ #1 }}
+\newcommand{\Iw}{\textnormal{Iw}} %Iwahori subgroup
+\newcommand{\TT}{\mathbb{T}} % Hecke algebra
+\newcommand{\euF}{\EuScript{F}} %Hida family
+\newcommand{\ord}{\textnormal{ord}} %ordinary
 
 
 \begin{document}
@@ -248,14 +212,14 @@ Given a place $v$ of $\F$, archimedean or finite,
 let $w\mid v$ denote a place $w$ of $\K$ above $v$.
 Then $\K_w$ and $\F_v$ are respectively
 the completions of the fields $\K$ and $\F$ at $w$ and $v$.
-When $v\in \fin$ we denote by $\oo_w$ and $\oo_v$ 
+When $v\in \finite$ we denote by $\oo_w$ and $\oo_v$ 
 the rings of integers of $\K_w$ and $\F_v$.
 Let $|\cdot|_v$ be the norm on $\F_v$,
 which is the usual absolute value when $v\in \arch$
 and $q_v=|\varpi_v|_v^{-1}$,
 for any choice of uniformizer $\varpi_v$ in $\oo_v$,
 is the cardinality of the residue field $\oo_v/(\varpi_v)$
-when $v\in \fin$.
+when $v\in \finite$.
 For $w\mid v$, define $|a|_w=|\Nr_{\K_w/\F_v}(a)|_v$.
 
 
@@ -266,7 +230,7 @@ Let $\qch_{\K/\F}$ denote
 the quadratic character on $\A_\F^\times/\F^\times$
 associated to $\K/\F$ by the global class field theory,
 $\qch_v$ denote the component on $\F_v^\times$ 
-when $v\in \fin$.
+when $v\in \finite$.
 If $\eta$ is a character of $\A_\K^1/\K^1$, 
 we denote
 by $\tilde{\eta}(\alpha)\coloneqq \eta(\alpha/\alpha^c)$
@@ -522,7 +486,7 @@ $S(M)$ and  $S(U,M)$.
 \end{defn}
 
 
-Since $\GG(\F)\backslash \GG(\A_f)/U$ is a finite set
+Since $G(\F)\backslash G(\A_f)/U$ is a finite set
 for any open compact subgroup $U\subset G(\A_f)$,
 any modular form $f\in S_{\wt{k}}(U,M)$ 
 is determined by its values on a finite set of points.
@@ -530,9 +494,9 @@ Throughout the section,
 we fix an open compact subgroup 
 $U^p\subset G(\A_f^p)$ satisfying 
 \begin{equation}\label{cond:small}\tag{$U^p$-\text{small}}
-	\GG(\A_f)=\bigsqcup_{i\in I}
-	\GG(\F)t_i U,\quad
-	\GG(\F)\cap t_iUt_i^{-1}=\{1\} \text{ for all } i\in I
+	G(\A_f)=\bigsqcup_{i\in I}
+	G(\F)t_i U,\quad
+	G(\F)\cap t_iUt_i^{-1}=\{1\} \text{ for all } i\in I
 	\text{ for } U=U^pK_p
 \end{equation}
 Then the space $S_{\wt{k}}(U^pU_p,M)$ is
@@ -2162,7 +2126,7 @@ which acts on any smooth $\Qp^\times$-representation.
 	By Proposition \ref{prop:wt_space} there exists
 	a homomorphism between  $\GL_2(\Qp)$-representations
 	\begin{equation}\label{eq:hom_wt}
-		\pi_\fp\otimes \pi_{\wt{k}}^*(E)\to S(U^p)_\fm\otimes_{\oo}\E
+		\pi_\fp\otimes \pi_{\wt{k}}^*(E)\to S(U^p)_\fm\otimes_{\oo}E
 	\end{equation}
 	Use the same argument as \cite[Thm 3.5.5]{pan}
 	and the density result in Proposition \ref{prop:density},
@@ -3213,7 +3177,7 @@ for algebraic Hecke characters $\eta$ such that
 we have chosen Schwartz functions $\varphi$ 
 and define the theta lift 
 $\theta(\eta)$ via the pull-back
-$\theta^\square_\varphi(g,\bnu)$.
+$\theta^\square_\varphi(g,\mathbb{\nu})$.
 By the integral structure of Shimura varieties
 of $\mathrm{U}(2,2)$,
 we also showed that 
@@ -3419,7 +3383,6 @@ $Z^1(\mathcal{G}\times \mathcal{G},
 
 
 \subsection{Main construction}
-
 We now have all the ingredient needed 
 for the construction of our Euler systems.
 When $U^p=K(\fn)^p$,
@@ -4149,7 +4112,7 @@ The Kolyvagin derivatives
 $\kappa_{\fc,m'}$ has the following properties.
 \begin{enumerate}[label=(\alph*)]
 \item When $w\nmid p\fc$ is a finite place of  $\K$,
-then  $\res_w(z_{\fc,m'})\in H^1_f(\K_w,T_{m'})$.
+then  $loc_w(z_{\fc,m'})\in H^1_f(\K_w,T_{m'})$.
 \item When $\ell\mid\fc$, we have
 $\phi_{\flw}^{fs}(\kappa_{\fc,m'})=\kappa_{\fs\ell,m'}$.
 \end{enumerate}
