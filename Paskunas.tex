@@ -54,9 +54,9 @@
 
 %%% Block theory
 
+\newcommand{\lfMod}{\textnormal{Mod}^{\textnormal{lfin}}}
 \newcommand{\aMod}{\textnormal{Mod}^{\textnormal{adm}}}
 \newcommand{\laMod}{\textnormal{Mod}^{\textnormal{l.adm}}}
-\newcommand{\lfMod}{\textnormal{Mod}^{\textnormal{lfin}}}
 \newcommand{\fgMod}{\textnormal{Mod}^{\textnormal{fg.aug}}}
 \newcommand{\Ban}{\textnormal{Ban}^{\textnormal{adm}}}
 \DeclareMathOperator{\Mod}{\textnormal{Mod}}
@@ -225,7 +225,7 @@ Throughout the article, $\F$ is a totally real field
 and $\K$ is a totally imaginary quadratic extension over $\F$.
 Denote by $\arch=\Hom(\F, \C)$ 
 the set of archimedean places of $\F$,
-and by $\fin$ the set of finite places of $\F$.
+and by $\finite$ the set of finite places of $\F$.
 Let $\dd_\K$ and $\dd_{\K/\F}$ denote respectively 
 the absolute and the relative ideals of different in $\K$,
 recall that $\dd_\K=\dd_{\K/\F}\dd_\F$,
@@ -3588,7 +3588,7 @@ the following, which is $\Lambda_{\fs}$-torsion.
 \[
 	\fq_\fn\otimes 
 	M_\fn/(S_\fn+E_\fn)\cong 
-	\fq_fn\otimes 
+	\fq_{\fn}\otimes 
 	M'_\fn/(S'_\fn+E'_\fn)
 \]
 \end{proof}
@@ -3648,7 +3648,7 @@ M_\fn/S_\fn \arrow[r]&
 	\]
 	Moreover, it satisfies the following.
 	\begin{enumerate}[label=(\alph*)]
-	\item if $\bw\in \Sigma_p$,
+		\item if $\bw\in \Sigma_p\setminus\{w_0\}$,
 		then  $res_w(x_\fn)=0$
 	\item for the fixed  $w\in \Sigma_p$,
 		then  $x_\fn(\sigma_0)=\mathcal{L}_\fn$
