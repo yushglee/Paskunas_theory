@@ -1894,5 +1894,90 @@ and  $B_i=\oo[G/N_i]$, then
 
 \bibliographystyle{amsalpha}
 \bibliography{biblio}
+
+\newpage
+
+
+
+We start by recalling some facts about 
+anticyclotomic extensions and their Galois groups.
+For a prime-to-$p$ ideal $\fs=\fs^c$ as above
+let $V=V_\fs=(1+\fs\widehat{\oo}_\K)^\times$,
+by class field theory
+$\Cl(V)\coloneqq \K^\times\backslash\A_{\K,f}^\times/V$
+is isomorphic to the ray class group of conductor $\fs$
+and fits into the exact sequence
+\[
+	1\to \oo_\K^\times\backslash U/V
+	\to \Cl(V)\to \Cl_\K\to 1
+\]
+for $U=\widehat{\oo}_\K^\times$.
+Let $\tilde{V}\subset V$
+be the open compact subgroup
+such that $U/\tilde{V}$
+is isomorphic to the maximal pro-$p$ quotient
+$\Delta_\fs$ of $(\oo_\K/\fs)^\times$.
+Then the maximal pro-$p$ quotient $G_\fs$ of 
+$\Cl(\tilde{V})$ fits into an exact sequence
+\[
+	1\to \oo_\K^\times\backslash \Delta_\fs
+	\to G_\fs\to C_\K\to 1
+\]
+where $C_\K$ is the maximal pro-$p$ quotient
+of the class group $\Cl_\K$.
+As $\fs=\fs^c$,
+each group above admits the action 
+of the complex conjugation.
+Let the supscript $\pm$
+denote the subgroups on which 
+the complex conjugation 
+takes a group element
+to itself or the inverse,
+and let the subscript $a$
+(which stands for anticyclotomic)
+denote the quotient by the $+$part.
+As $p$ is odd,
+we have $1-c\colon G_\fs^a\cong G_\fs^-$
+and similary for $\oo_\K^\times\backslash \Delta_\fs$
+and $C_\K$.
+If particular,
+if we fix a splitting $\fs=\ff\ff^c$
+with $\ff+\ff^c=\oo_\K$,
+then $(1-c)\Delta_\fs^-$ is isomorphic to $\Delta_\ff$,
+the maximal pro-$p$ quotient of $(\oo_\K/\ff)^\times$,
+and the $(1-c)\oo_\K^\times$-action on which 
+factors through the usual action of $W_p$,
+the group of $p$-power roots of unity in $\K$.
+Therefore we have the exact sequence
+\[
+    1\to W_p\backslash \Delta_\ff\to G_\fs^a\to C_\K^a\to 1.
+\]
+
+Now, for any ideal 
+$\fa=\prod_{w\in\Sigma_p}\fp_w^{n_w}$
+divisible only by primes in $\Sigma_p$
+and $\fs=\fs^c$ as above
+we write $\tilde{V}_\fa=\tilde{V}^p\times U_\fa$
+for $U_\fa=(1+\fa\fa^c\oo_{\K,p})^\times$.
+Let $G_{\fs\fa}$
+be the maximal pro-$p$ quotient of $\Cl(\tilde{V}_\fa)$,
+then the same procedure as above gives
+the exact sequence
+\[
+    1\to W_p\backslash(\Delta_\ff\times\Delta_\fa)\to 
+    G_{\fs\fa}^a\to C_\K^a\to 1
+\]
+where $\Delta_\fa$ is the product over $w\in\Sigma_p$
+of $(1+\varpi_w\oo_w)/(1+\varpi_w^{n'_w}\oo_w)$
+for $n'_w=\max\{n_w,1\}$.
+Then $\fG_\fs^a$ is isomorphic to $\varprojlim G_{\fs\fa}^a$,
+where $\fa$ goes through all ideals as above,
+and fits into the exact sequence
+\[
+    1\to W_p\backslash(\Delta_\ff\times U_1)\to 
+    \fG_{\fs}^a\to C_\K^a\to 1
+\]
+where $U_1\coloneq\prod_{w\in\Sigma_p}(1+\varpi_w\oo_w)$.
+
 \end{document}
 

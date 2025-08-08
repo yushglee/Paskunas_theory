@@ -1,0 +1,1871 @@
+\documentclass[leqno]{amsart}
+\usepackage{amsmath} 
+\usepackage{amssymb,mathtools,stmaryrd}
+\usepackage{mathrsfs,euscript}
+\usepackage[table,dvipsnames]{xcolor}
+\usepackage{hyperref,tikz-cd,enumitem}
+\usepackage[utf8]{inputenc}
+\hypersetup{
+ colorlinks=true,
+ linkcolor=DarkOrchid,
+ filecolor=blue,
+ citecolor=olive,
+ urlcolor=orange,
+ pdftitle={Pask\={u}nas' theory},
+}
+\pagestyle{plain}
+
+\setlength{\textwidth}{\paperwidth}
+\addtolength{\textwidth}{-2in}
+\calclayout
+
+\newtheorem{thm}{Theorem}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem{cor}[thm]{Corollary}
+\newtheorem*{conj}{Conjecture}
+
+
+
+\theoremstyle{definition}
+\newtheorem{defn}[thm]{Definition}
+
+\theoremstyle{remark}
+\newtheorem{rem}[thm]{Remark}
+\newtheorem{ack}{Acknowledgement}
+
+%%%%%%%%%% COMMONLY USED COMMAND %%%%%%%%%%%%%%%%
+
+\newcommand{\smat}[1]{\left(\begin{smallmatrix} #1 \end{smallmatrix}\right)}
+\newcommand{\id}{\mathbf{1}}
+\newcommand{\oo}{\mathcal{O}} 
+\newcommand{\eo}{\EuScript{O}}
+\newcommand{\fF}{\mathbb{F}} % residue field
+
+\newcommand{\Q}{{\mathbf{Q}}}
+\newcommand{\Z}{{\mathbf{Z}}}
+\newcommand{\Qp}{\mathbf{Q}_p}
+\newcommand{\Zp}{\mathbf{Z}_p}
+\newcommand{\Ql}{\mathbf{Q}_\ell}
+\newcommand{\Zl}{\mathbf{Z}_\ell}
+\newcommand{\R}{\mathbf R}
+\newcommand{\C}{\mathbf C}
+\newcommand{\A}{\mathbf A}
+\newcommand{\dd}{\mathfrak{d}} %different
+\newcommand{\DD}{\mathcal{D}}  %discriminant
+\newcommand{\Cl}{Cl} %class_group
+\newcommand{\arch}{\mathbf{a}}
+\newcommand{\finite}{\mathbf{h}}
+\DeclareMathOperator{\Nr}{N}
+\DeclareMathOperator{\Tr}{Tr}
+
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\Ext}{Ext}
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ind}{Ind}
+\DeclareMathOperator{\cInd}{c-Ind}
+\DeclareMathOperator{\nInd}{n-Ind}
+\DeclareMathOperator{\Res}{Res}
+\DeclareMathOperator{\Cor}{Cor}
+\DeclareMathOperator{\Image}{Im}
+\DeclareMathOperator{\coker}{coker}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\corank}{corank}
+
+\DeclareMathOperator{\Sym}{Sym}
+\DeclareMathOperator{\Ad}{Ad}
+
+\DeclareMathOperator{\Lie}{Lie}
+\DeclareMathOperator{\GL}{GL}
+\DeclareMathOperator{\SL}{SL}
+\DeclareMathOperator{\UU}{U}
+\DeclareMathOperator{\gl}{\mathfrak{gl}}
+\DeclareMathOperator{\mtr}{tr}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\chr}{char} 
+
+\DeclareMathOperator{\vol}{vol} %volume
+\DeclareMathOperator{\val}{val} %valuation
+\DeclareMathOperator{\ind}{ind} %index
+\DeclareMathOperator{\odr}{ord} %order
+
+\DeclareMathOperator{\Spec}{Spec}
+\DeclareMathOperator{\Supp}{Supp}
+\DeclareMathOperator{\Ass}{Ass}
+\DeclareMathOperator{\Ann}{Ann}
+\DeclareMathOperator{\Der}{Der}
+\DeclareMathOperator{\Fitt}{Fitt}
+\DeclareMathOperator{\depth}{depth}
+\DeclareMathOperator{\length}{length}
+\DeclareMathOperator{\Inj}{Inj}
+\DeclareMathOperator{\Isom}{Isom}
+
+\DeclareMathOperator{\Gal}{\mathcal{G}}
+\DeclareMathOperator{\WD}{WD}
+\DeclareMathOperator{\Rec}{Rec}
+\DeclareMathOperator{\rec}{rec}
+\DeclareMathOperator{\Art}{Art}
+\newcommand{\Fr}{\textnormal{Fr}} %geometric Frobenius
+\newcommand{\frob}{\textnormal{frob}} %arithmetic Frobenius
+\newcommand{\dR}{\textnormal{dR}}
+\newcommand{\pst}{\textnormal{pst}}
+\newcommand{\st}{\textnormal{st}}
+\newcommand{\cris}{\textnormal{cris}}
+
+\newcommand{\cont}{\textnormal{cont}}
+\newcommand{\cts}{\textnormal{cts}}
+
+\newcommand{\fa}{\mathfrak{a}}
+\newcommand{\fc}{\mathfrak{c}}
+\newcommand{\ff}{\mathfrak{f}}
+\newcommand{\fg}{\mathfrak{g}}
+\newcommand{\fk}{\mathfrak{k}}
+\newcommand{\fl}{\mathfrak{l}}
+\newcommand{\fm}{\mathfrak{m}}
+\newcommand{\fn}{\mathfrak{n}}
+\newcommand{\fp}{\mathfrak{p}}
+\newcommand{\fq}{\mathfrak{q}}
+\newcommand{\fs}{\mathfrak{s}}
+\newcommand{\ft}{\mathfrak{t}}
+
+%%%%%%%%%% MORE SPECIFIC COMMAND %%%%%%%%%%%%%%%%
+
+\newcommand{\bs}{\mathcal{S}} %Bruhat-Shwartz
+
+%%% p-adic local Langlands
+
+\DeclareMathOperator{\Mod}{\textnormal{Mod}}
+\DeclareMathOperator{\fC}{\mathfrak{C}} %dual category
+\DeclareMathOperator{\Ban}{\textnormal{Ban}_{G,\zeta}^{\adm}}
+\DeclareMathOperator{\Rep}{Rep}
+\DeclareMathOperator{\V}{\check{\mathbf{V}}} %Colmez's functor
+\DeclareMathOperator{\Ord}{Ord} %Emerton's functor
+\DeclareMathOperator{\Irr}{Irr}
+\DeclareMathOperator{\soc}{soc}
+
+\newcommand{\Gp}{\mathcal{G}_{\Qp}} %Galois group over \Qp
+\newcommand{\B}{\mathfrak B} %Paskunas' Block
+
+\newcommand{\sm}{\textnormal{sm}}
+\newcommand{\adm}{\textnormal{adm}}
+\newcommand{\ladm}{\textnormal{ladm}}
+\newcommand{\lfin}{\textnormal{lfin}}
+\newcommand{\ps}{\textnormal{ps}}
+\newcommand{\red}{\textnormal{red}}
+
+\newcommand{\xx}{x_\textnormal{red}}
+
+%%% Number Fields
+
+\newcommand{\F}{{\mathcal{F}}} %global totally real
+\newcommand{\K}{{\mathcal{K}}} %global CM
+\newcommand{\qch}{\epsilon} % quadratic character of K/F
+\newcommand{\bw}{{\overline{w}}}
+\newcommand{\bl}{{\bar{\fl}}}
+
+\newcommand{\cG}{\mathcal{G}}
+\newcommand{\fG}{\mathfrak{G}}
+\newcommand{\fX}{\mathfrak{X}}
+
+
+%%% Modular Forms
+
+\newcommand{\wt}[1]{\underline{ #1 }}
+\newcommand{\Iw}{\textnormal{Iw}} %Iwahori subgroup
+\newcommand{\TT}{\mathbb{T}} % Hecke algebra
+\newcommand{\euF}{\EuScript{F}} %Hida family
+\newcommand{\I}{\mathcal{I}} %lCN flat over Lambda
+\newcommand{\ord}{\textnormal{ord}} %ordinary
+
+
+%%% Galois cohomology
+
+\DeclareMathOperator{\loc}{loc} 
+\DeclareMathOperator{\Sel}{Sel} 
+\DeclareMathOperator{\car}{char} 
+\newcommand{\lin}[1]{\mathcal{L}^{(#1)}} 
+\newcommand{\Lda}[1]{\Lambda^{(#1)}} 
+
+\begin{document}
+\title{Anticyclotomic Euler systems for CM fields}
+\author[Y-S.~Lee]{Yu-Sheng Lee\\
+Department of Mathematics, University  of Michigan, Ann Arbor}
+\address{Department of Mathematics, University  of Michigan, Ann Arbor, MI 48109, USA}
+\email{yushglee@umich.edu}
+\date{}
+
+\begin{abstract}
+    The article surveys the author's preprint \cite{lee2} on
+    a construction of an anticyclotomic Euler systems
+    for characters of CM fields and its application 
+    toward the Iwasawa main conjecture.
+\end{abstract}
+
+\maketitle
+\setcounter{tocdepth}{1}
+
+\section*{Introduction}
+
+Let $\K$ be a CM field with maximal totally real subfield $\F$.
+Fix an odd prime $p>0$ which is unramified in $\F$.
+We assume that $\K/\F$ is ordinary at $p$ in the sense that
+every prime of $\F$ above $p$ splits in $\K$.
+Under this assumption we can then fix a CM type,
+which is a subset $\Sigma\subset \Hom(\K,\C)$
+such that if $S_p^\K$ denote the set of primes of $\K$ above $p$
+and $\Sigma_p\subset S_p^\K$ is the subset of primes
+induced by embeddings in $\Sigma$,
+through a fixed choice of embeddings
+$\iota_\infty\colon \K\to \C$ and
+$\iota_p\colon \K\to \C_p$, then we have
+\[
+    \Hom(\K,\C)=\Sigma\sqcup \Sigma^c,\quad
+    S_p^\K=\Sigma_p\sqcup \Sigma_p^c
+\]
+where $\Sigma^c=c\circ \Sigma$ and $\Sigma_p^c=c\circ \Sigma_p^c$
+for the complex multiplication $c\in Gal(\K/\F)$.
+
+Given a finite order character $\psi$
+of the absolute Galois group $\Gal_\K$ of $\K$.
+The Iwasawa-Greenberg main conjecture 
+relates the following two objects associated to $\psi$.
+On the one hand, 
+by class field theory, the Galois group of
+the maximal pro-$p$ abelian extension which is unramified 
+away $p$ has a free part $W$ of $\Zp$-rank $d+1-\delta$,
+where $d=[\F:\Q]$ and $\delta$ is the Leopoldt defect.
+We let $\widetilde{K}/\K$ denote the extension such that 
+$Gal(\widetilde{K}/\K)\cong W$.
+Define $\Lambda_W=\oo\llbracket W\rrbracket$,
+where $\oo$ is the ring of integers of a sufficiently large
+field extension $E$ over $\Qp$,
+and let $\Gal_\K$ acts on 
+the Pontryagin dual $\Lambda_W^*$ of which through
+$\psi_\Lambda=\psi\langle*\rangle$, where 
+$\langle*\rangle\colon \Gal_\K\to W\to \Lambda^\times$
+is the tautological character. 
+Consider the Selmer group
+\[
+    \Sel(\psi_\Lambda,\Sigma_p)=\ker
+    \big\{
+    H^1(\K, \Lambda_W^*(\psi_\Lambda))\to \prod_{w\notin \Sigma_p}
+    H^1(I_w, \Lambda_W^*(\psi_\Lambda))
+    \big\}
+\]
+where $w$ ranges through all finite primes of $\K$
+outside $\Sigma_p$
+and $I_w$ is the inertia group at $w$.
+Then the Pontryagin dual 
+$X(\Lambda_W)\coloneqq \Sel(\psi,\Sigma_p)^\vee$
+is a finitely generated torsion $\Lambda$-module,
+for which we can consider the characteristic ideal
+$F(\Lambda_W)\coloneqq \car_{\Lambda_W}(X(\Lambda_W))$.
+
+On the other hand, fix a CM type $\Sigma$ as above.
+By the work Katz \cite{Katz1978} 
+and Hida-Tilouine \cite{HT93} there exists 
+a $p$-adic L-function
+$L_p(\psi,\Sigma_p)\in \Lambda_W$ 
+that interpolates the algebraic part
+of the $L$-value $L(0,\psi\alpha)$,
+when $\alpha$ is a character of $W$ such that
+the $L$-value is critical in the sense of Deligne's conjecture.
+
+\begin{conj}
+The characteristic ideal $F(\Lambda_W)$
+is generated by $L(\psi,\Sigma_p)$ in $\Lambda_W$.
+\end{conj}
+
+
+The conjecture can also be formulated for
+subextensions in $\widetilde{K}/\K$.
+But unless the subextension contains the 
+cyclotomic $\Zp$-extension,
+the Pontryagin dual of the Selmer group defined above
+could fail to be torsion.
+
+In particular, the case when 
+$\psi$ is anticyclotomic and
+$\widetilde{\K}^a\subset \widetilde{K}$ is the maximal 
+anticyclotomic subextension is considered
+in \cite{HT93} and \cite{HT94}.
+Here $\widetilde{\K}^a$ is anticyclotomic in the sense that 
+$c\in Gal(\K/\F)$ acts by the inversion on $W^-=\Gal(\widetilde{K}^a/\K)$.
+In this case $W^-$ has the $\Zp$-rank $d=[\F:\Q]$.
+And we say $\psi$ is anticyclotomic if 
+$\psi(\gamma^c)=\psi^{-1}(\gamma)$ for $\gamma\in\Gal_\K$.
+Using the CM congruences between modulars forms,
+it is shown in \textit{loc.cit.}
+that the characteristic ideal $F(\Lambda_{W}^-)$
+belongs to the ideal generated by $L_p(\psi,\Sigma_p)$,
+the projection of the Katz-Hida-Tilouine $p$-adic $L$-function
+to the anticyclotomic space $\oo\llbracket W^-\rrbracket$.
+Furthermore, assume that
+\begin{itemize}
+    \item The order of $\psi$ is coprime to $p$.
+    \item The prime-to-$p$ part of the conductor of $\psi$
+    is a product of primes that splits in $\K$.
+    \item The restriction $\psi\vert_{D_w}$ is nontrivial
+    at the decomposition group $D_w$ of each $w\in\Sigma_p$.
+    \item The restriction of $\psi$ to 
+    the absolute Galois group of $\K(\sqrt{(-1)^{(p-1)/2}p})$
+    is nontrivial.
+\end{itemize}
+Then the crucial torsion property is obtained in
+\cite[Thm.5.33]{Hida06b} by relating the Selmer group to 
+Galois deformation problems
+and the full main conjecture 
+is proved in \cite{Hida06}.
+
+In \cite{lee2}, we consider the same anticyclotomic main conjecture under
+a different set of assumptions on $\psi$.
+One of the main result is as follows.
+
+\begin{thm}\label{thm:main}
+
+Assume there exists a place $w_0\in\Sigma_p$ of degree one and that
+\begin{equation}\label{cond:K2in}\tag{$\K$}
+\K/\F \text{ is generic in the sense of \cite{Rohrlich}
+and every prime of $\F$ above $2$ splits in $\K$}.
+\end{equation}
+Identify the decomposition group $D_{w_0}$
+with the absolute Galois group $\Gp$ of $\Qp$
+and let $\omega\colon \Gp\to (\Z/p\Z)^\times$ be the Teichmuller character.
+Suppose $\psi$ is ramified only at primes that split in $\K$ and
+\begin{enumerate}[label=($\psi$\arabic*)]
+\item  The restriction $\psi\vert_{\Gp}$ is not congruent
+to the trivial character $\id$ or $\omega^{\pm1}$.
+\label{cond:psi1in}
+\item The restriction $\psi\vert_{D_w}$ is nontrivial
+at the decomposition group $D_w$ of each $w\in\Sigma_p$.
+\label{cond:psi2in}
+\end{enumerate}
+Then $X(\Lambda^-)$ is torsion
+and we have $(L_p(\psi,\Sigma_p))\subset F(\Lambda_W^-)$
+in $E\llbracket W\rrbracket$.
+
+\end{thm}
+
+Our proof does not rely on global Galois deformation problems
+and instead follows from the construction of 
+an anticyclotomic Euler system associated to $\psi$.
+Then the general machinery from \cite{Rubin}
+allows us to bound the size
+of the Selmer group from above and obtain the theorem.
+This is the reason that the inclusion relation
+we obtained is opposite to that of \cite{HT94},
+
+
+
+\subsection*{Congruences and Euler systems}
+
+Our construction of the Euler system
+follows from Urban's approach in \cite{urban},
+which uses Eisenstein congruences 
+to reproduce the Euler system of cyclotomic units.
+The idea of using congruences relations to construct cohomology classes
+dates back to the proof of the converse of
+Herbrand-Ribet theorem in \cite{Ribet1976}
+and is also the main ingredient of \cite{HT93}.
+
+The usual strategy goes as follows.
+Let $\lambda\coloneqq \TT^{\ord}\to \Lambda_W$
+be a Hecke eigensystem
+of the big ordinary Hecke algebra $\TT^{\ord}$
+such that the associated Galois representation is reducible.
+In favorable cases, one can find a different eigensystem
+$\lambda'$ with irreducible Galois representation and such that
+$\lambda$ is congruent to $\lambda'$ modulo some ideal $J$.
+Then one can construct 
+a nontrivial cohomology class over the quotient $\Lambda_W/J$.
+
+
+While the strategy has succeeded in many cases,
+we cannot construct Euler systems,
+which are integral classes that value in $\Lambda_W$.
+The insight of Urban's method is that we should add more variables
+to the Hecke algebra by consider a larger space of $p$-adic modular forms.
+In our case, this is done by allowing modular forms
+that are not ordinary at $w_0$.
+Then under our assumptions the resulting Hecke algebra
+has an extra variable coming from the reducibility ideal
+of the local deformation at $w_0$.
+
+\subsection{Outlines of the article}
+
+In the first section we will review 
+the theory of Hecke algebras and the associated Galois representations 
+for the space of modular forms over a definite unitary group.
+In particular, we introduce the larger Hecke algebra $\TT$
+acting on modular forms that are possibly non-ordinary at $w_0$.
+
+In the second section, we explain 
+that the Hecke algebra $\TT$ has the expected dimension
+by borrowing techniques from $p$-adic local Langlands.
+We then formulate an exact sequence that will be fundamental 
+when we apply a generalization of Ribet's lemma in our setting.
+
+The actual construction is done in the last section,
+using the eigensystem constructed by the author in previous work.
+We then explain the properties of the resulting Euler
+system and  sketch the proof of our main theorem.
+
+
+
+\subsection{Notations}
+
+Let $\K$, $\F$, and $p$ be as in the introduction
+and let $\epsilon=\epsilon_{cyc}$ denote 
+the $p$-th cyclotomic character.
+We assume that $\K/\F$ is ordinary 
+and fix a CM type $\Sigma$.
+Let $\arch$ and $\finite$ denote respectively
+the set of archimedean and finite places of $\F$.
+Write $I_\K=\Hom(\K,\bar{\Q})$ and 
+let $c\in \Gal(\K/\F)$ be the complex conjugation.
+For $\sigma\in I_\K$
+we define $\sigma_p\coloneqq\iota_p\circ \sigma$,
+which determines a place of $\K$ above $p$.
+Conversely, if $w\in S_p^\K$,
+we let $I_w$ denote the set of $\sigma\in I_\K$
+such that $\sigma_p$ induces $w$.
+If $L$ is a non-archimedean local field,
+we normalize the Artin reciprocity map $\Art_L$
+so that a uniformizer is sent to the geometric Frobenius.
+
+
+
+We let $\A=\A_\F$ and $\A_\K$ be the ring of adeles
+and let $|\cdot|_\F$ and $|\cdot|_\K$ denote the norm on which.
+If $\kappa=\sum_{\sigma\in \Sigma} 
+a_\sigma\sigma+b_\sigma\sigma c\in \Z[\I]$,
+for $\alpha_\infty=(\alpha_\sigma)_{\sigma\in\Sigma}
+\in \A_{\K,\infty}^\times$
+and $\alpha_p=(\alpha_w,\alpha_{\bw})_{w\in\Sigma_p}\in 
+\prod_{w\mid p}\K_w^\times$ we define 
+\[
+    \alpha_\infty^\kappa=
+    \prod_{\sigma\in \Sigma} 
+    (\alpha_\sigma)^{a_\sigma}(\bar{\alpha}_\sigma)^{b_\sigma}\in \C^\times,\quad
+    \alpha_p^\kappa=
+    \prod_{w\in \Sigma_p}
+    \prod_{\sigma\in I_w}
+    \sigma_p(\alpha_w)^{a_\sigma}\sigma_p(\alpha_{\bw})^{b_\sigma}
+    \in \C_p^\times.
+\]
+where we identity $\sigma\in\I$ 
+with embeddings into $\C$ and $\C_p^\times$ 
+by composition with the fixed choice of embeddings 
+$\iota_\infty$ and $\iota_p$.
+We will sometimes
+let $\Sigma$ denote the formal sum $\sum_{\sigma\in\Sigma}\sigma$
+and similarly for $\Sigma^c$
+
+
+We say a Hecke character $\chi$ of $\K^\times$ is algebraic of
+the infinity type $\kappa$ if
+$\chi_\infty(\alpha)=\alpha^\kappa$.
+When this is the case we define the $p$-adic avatar 
+$\hat{\chi}\colon \A_\K^\times\to \bar{\Z}_p^\times$  of $\chi$ by
+$\hat{\chi}(\alpha)=
+\chi(\alpha)\alpha_\infty^{-\kappa}\cdot \alpha_p^{\kappa}$.
+ 
+
+When $R$ is an $\F$-algebra and 
+$m=(m_{ij})\in \text{M}_{r,s}(\K\otimes_\F R)$,
+we denote by 
+$m^\intercal=(m_{ji}), 
+m^c=(m^c_{ij})$, and
+$m^*=(m^c_{ji})$
+respectively the transpose, conjugate, and conjugate-transpose of $m$.
+
+
+
+
+\section{Modular forms on definite unitary groups}
+
+Let $G$ be the definite unitary group over $\F$
+such that for any $\F$-algebra $R$
+\begin{equation*}
+    G(R)=\{g\in \GL_{2}(\K\otimes_\F R) \mid gg^*=\id_n\}.
+\end{equation*}
+In this section we recall the definition of algebraic modular forms on $G$
+and the big Hecke algebra acting on which. We also recall the properties
+of the Galois pseudo-representation of $\Gal_\K$ to the big Hecke algebra.
+
+
+\subsection{Algebraic modular forms}
+
+Let $B=TN\subset \GL_2$ be the subgroup of
+upper triangular matrices and its Levi decomposition.
+Following \cite[Def 2.3]{ger},
+we identify $X^*(T)$ with $\Z^2$
+and $k=(k_1,k_2)\in X^*(T)$
+is said to be dominant if $k_1\geq k_2$.
+Then $\xi_k(R)\coloneqq \Sym^{k_1-k_2}R^2\otimes\det^{k_2}$
+defines an algebraic representation of $\GL_2$
+of highest weight $k$.
+
+
+Suppose $v\in\finite$ and $v=w\bw$ splits in $\K$,
+then $\GL_n(\F_v\otimes_\F\K)
+\cong \GL_n(\K_w)\times\GL_n(\K_{\bw})$.
+Let $\iota_w$ denote the projection to the component
+at $w$, then $\iota_w\colon G(\F_v)\to \GL_n(\K_w)$
+is an isomorphism and 
+$\iota_w(g_v)=\iota_{\bw}(g_v)^{-\intercal}$
+if we identify $\K_w=\F_v=\K_\bw$.
+Fix a choice of $w\mid v$ for each $v\in\finite$ that splits,
+we will identify $\GL_2(\K_w)$ with $G(\F_v)$ via $\iota_w$,
+so $B(\K_w), N(\K_w)$ and $T(\K_w)$ are viewed as 
+subgroups of $G(\F_v)$.
+In particular, pick $w\in \Sigma_p$ when $v\in S_p$, then we view
+$K_p\coloneqq\prod_{w\in \Sigma_p}\GL_2(\oo_w)$
+as an open compact subgroup of $\prod_{v\mid p}G(\F_v)$.
+
+Fix a finite extension $E$ over $\Qp$
+that contains $\iota_p(\sigma(\K))$
+for all $\sigma\in I_\K$.
+Let $\oo=\oo_E$ be the ring of integers in $E$ and
+$\varpi\in\oo$ be a uniformizer.
+When $\wt{k}=(k_\sigma)\in (\Z^2)^{\Sigma}$
+is dominant in the sense that
+$k_\sigma=(k_{\sigma,1},k_{\sigma,2})$
+is dominant for each $\sigma\in \Sigma$,
+let $\xi_{\wt{k}}$ be
+the algebraic $K_p$-representation over $\oo$ given by
+\begin{equation*}
+	\xi_{\wt{k}}=\bigotimes_{\sigma\in \Sigma}
+	\xi_{k_\sigma},\quad
+	\xi_{\wt{k}}(g)=
+	\otimes_{w\in \Sigma_p}
+	\otimes_{\sigma\in I_w}\xi_{k_\sigma}(g_w)\,
+	\text{ for } g=(g_w)\in K_p.
+\end{equation*}
+
+\begin{defn}\label{def:algform}
+Let $A$ be an $\oo$-module,
+$\wt{k}$ be a dominant weight,
+and $U\subset G(\A_f^p)\times K_p$ be an open compact subgroup.
+We define the space of algebraic modular forms
+of weight $\wt{k}$, coefficients in $A$,
+and level $U$ by
+\begin{equation*}
+S_{\wt{k}}(U,A)=
+\left\{ f: G(\F)\backslash G(\A_f)/
+\rightarrow A\otimes_{\oo}\xi_{\wt{k}}(\oo)
+\mid f(gu)=\xi_{\wt{k}}(u_p)^{-1}\cdot f(g), u\in U\right\}.
+\end{equation*}
+\end{defn}
+
+Let $U^p=\prod_{v\in\finite\setminus{S_p}}U_v$
+be an open compact subgroup of $G(\A_f^p)$.
+For integers $c\geq b\geq 0$ and $c>0$ we define the open subgroup
+$\Iw(w^{b,c})=\{k\in \GL_2(\oo_w)\mid 
+k \bmod \varpi_w^c \in B(\oo/\varpi_w^c)
+\text{ and } k \bmod \varpi_w^b \in N(\oo/\varpi_w^b)\}$
+for each $w\in \Sigma_p$ and put
+$\Iw(p^{b,c})=\prod_{w\in \Sigma_p}\Iw(w^{b,c})\subset K_p$.
+In \cite{ger}, the Hecke operators acting on 
+$S_{\wt{k}}(U^p\Iw(p^{b,c}),A)$
+are defined by the following double cosets operators.
+
+\begin{itemize}
+\item If $v=w\bw$ splits in $\K$ and $U_v=\GL_2(\oo_w)$, we define
+\begin{equation*}
+	T_w^{(1)}=
+	\left[
+	\GL_2(\oo_w)
+	\begin{pmatrix}
+		\varpi_w&\\&1
+	\end{pmatrix}
+	\GL_2(\oo_w)
+	\right],\quad
+	T_w^{(2)}=
+	\left[
+	\GL_2(\oo_w)
+	\begin{pmatrix}
+		\varpi_w&\\&\varpi_w
+	\end{pmatrix}
+	\GL_2(\oo_w)
+	\right],
+\end{equation*}
+We can similarly define $T^{(j)}_\bw$, but then 
+$T_{\bw}^{(1)}=(T_{w}^{(2)})^{-1}T_w^{(1)}$ and
+$T_{\bw}^{(2)}=(T_{w}^{(2)})^{-1}$.
+\item
+If $w\in \Sigma_p$, for 
+$\alpha_w^{(1)}=\smat{\varpi_w&\\&1}$ and
+$\alpha_w^{(2)}=\smat{\varpi_w&\\&\varpi_w}\in T(\K_w)$
+and $u\in T(\oo_w)$
+we define
+\begin{equation*}
+	U_{\wt{k},w}^{(j)}=
+	(w_0\wt{k})^{-1}(\alpha_{w}^{(j)})\cdot
+	[\Iw(w^{b,c})\alpha_w^{(j)}\Iw(w^{b,c})]\quad
+    \langle u\rangle_{\wt{k}}=
+	(w_0\wt{k})^{-1}(u)\cdot
+	[\Iw(w^{b,c})u\Iw(w^{b,c})].
+\end{equation*}
+Here $w_0\wt{k}\coloneqq(k_{2,\sigma},k_{1,\sigma})_\sigma$ defines a character
+of $T(\K_w)$ by the same recipe defining $\xi_{\wt{k}}$.
+\end{itemize}
+
+The Hecke operators are compatible with the inclusion
+$S_{\wt{k}}(U^p\Iw(p^{b,c}),A)\subset S_{\wt{k}}(U^p\Iw(p^{b',c'}),A)$
+when $b'\geq b$ and $c'\geq c$. 
+We define the ordinary projector 
+$e\coloneqq\lim_{n\to \infty}\prod_{w\in\Sigma_p}
+(U_{\wt{k},w}^{(1)}U_{\wt{k},w}^{(2)})^{n!}$
+when $A$ is equal to $\oo$ or $E/\oo$.
+Omit the subscript $\wt{k}$
+when $\xi_{\wt{k}}$ is the trivial representation, we then define
+\[
+    S^{\ord}(U^p,E/\oo)=\varinjlim_{b\geq 1}\,eS(U^p\Iw(p^{b,b}),E/\oo)
+\]
+and let $\TT^{\ord}(U^p)$ be the Hecke algebra acting on which 
+generated by the Hecke operators defined above.
+
+
+Put $\Iw'(p^{b,c})=\prod_{w\neq w_0}\Iw(w^{b,c})$ 
+and let $U_0\subset \GL_2(\oo_{w_0})$ be an open subgroup.
+We can also consider the projector
+$e'\coloneqq\lim_{n\to \infty}\prod_{w\neq w_0}
+(U_{\wt{k},w}^{(1)}U_{\wt{k},w}^{(2)})^{n!}$
+on $S_{\wt{k}}(U^pU_0\Iw'(p),A)$ and define
+\[
+    S(U^p,E/\oo)=
+    \varinjlim_{U_0}\varinjlim_{b\geq 1}\,e'S(U^pU_0\Iw'(p^{b,b}),E/\oo),
+\]
+where $U_0$ goes through open compact subgroups of $\GL_2(\oo_{w_0})$.
+Let $\TT(U^p)$ denote the Hecke algebra
+generated by the Hecke operators except for $U_{\wt{k},w_0}^{(1)}$.
+
+For $b\geq 0$ let
+$T(w^b)=\{u\in T(\oo_w)\mid u\equiv \id \mod\varpi_w^b\}$
+for each $w\in \Sigma_p$ and put $T(p^b)=\prod_{w\in\Sigma_p}T(w^b)$.
+Define $\Lambda^+\coloneqq\Lambda\llbracket T(p^0)\rrbracket$.
+Then the diamond operators $\langle u\rangle$ 
+define structures of $\Lambda^+$-algebras on the Hecke algebras
+and the clear inclusion $S^{\ord}(U^p,E/\oo)\subset S(U^p,E/\oo)$
+induces an $\Lambda^+$-algebra homomorphism
+\[
+\TT(U^p)\to \TT^{\ord}(U^p).
+\]
+
+
+
+\subsection{Completed homology and cohomology}
+
+Let $N^\vee\coloneqq \Hom_\oo(N,E/\oo)$ denote 
+the Pontryagin dual of a locally compact $\oo$-module $N$. We then define
+the (ordinary-)completed homology of tame level $U^p$ by
+\[
+    M(U^p)=S(U^p,E/\oo)^\vee\text{ and }
+    M^{\ord}(U^p)=S^{\ord}(U^p,E/\oo)^\vee.
+\]
+Note that $S^{\ord}(U^p,E/\oo)\subset S(U^p,E/\oo)$ 
+induces a Hecke equivariant homomorphism
+$M(U^p)\to M^{\ord}(U^p)$.
+Furthermore, if we define $S(U^p)=\Hom_\oo(E/\oo, S(U^p,E/\oo))$,
+it can be verified that 
+\begin{equation*}
+	M(U^p)\cong \Hom_\oo(S(U^p),\oo),\qquad
+	S(U^p)\cong \Hom_\oo^{\cts}(M(U^p),\oo)
+\end{equation*}
+and similar statement holds for 
+$S^{\ord}(U^p)=\Hom_\oo(E/\oo, S^{\ord}(U^p,E/\oo))$ as well.
+Therefore it makes sense to call $S(U^p)$ and $S^{\ord}(U^p)$
+the (ordinary-)completed cohomology of tame level $U^p$.
+We also note that the space $S(U^p)_E\coloneqq S(U^p)\otimes_\oo E$
+is equipped with a structure of $E$-Banach space
+for which $S(U^p)$ is open.
+
+Let $T_p'=\prod_{w\neq w_0}T(\K_w)$ and identify $\K_{w_0}=\Qp$,
+we can define a $\GL_2(\Qp)\times T'_p$-representation on
+$S(U^p,E/\oo)$ by right translation.
+Furthermore, let $T'(p^b)=\prod_{w\neq w_0}T(w^b)$, 
+then the restriction of the representation to $\GL_2(\Zp)\times T'(p^0)$
+is an injective object following the same argument in \cite[\S 3]{pan}.
+Write $\wt{k}'=(k_\sigma)_{w\neq w_0}$ and let 
+$\pi_{\wt{k}}=\xi_{k_{\sigma_0}}\otimes \wt{k}'$ be
+the $\GL_2(\Zp)\times T'(p^0)$ representation
+defined by the same recipe defining $\xi_{\wt{k}}$.
+The injectivity then yields the following proposition.
+
+\begin{prop}\label{prop:density}
+The subspace $S(U^p)_E^{\textnormal{alg}}$ 
+of algebraic vectors, defined as
+\[
+\Image\left(ev\colon
+\bigoplus_{\wt{k}}
+\Hom_{E[\GL_2(\Zp)\times T'(p^0)]}(\pi_{\wt{k}}^*(\oo), S(U^p)_E)
+\otimes_E \pi_{\wt{k}}^*(E)\rightarrow S(U^p)_E\right)
+\]
+where $\wt{k}$ ranges through all dominant weights,
+is dense in the $E$-Banach space $S(U^p)_E$.
+\end{prop}
+We remark that a generalization of the control theorem
+for ordinary modular forms implies that the space
+$\Hom_{\oo[\GL_2(\Zp)\times T'(p^0)]}(\pi_{\wt{k}}^*(\oo), S(U^p)_E)$
+is Hecke-equivariantly isomorphic to
+$e'S_{\wt{k}}(U^p\GL_2(\Qp)\Iw'(p^{0,1}),E)$.
+Therefore the proposition is a modified version of
+the density of crystalline points from \cite{emeI} and \cite{pan}.  
+
+
+
+
+
+\subsection{Galois representations}
+
+Thanks to the work of \cite{ger},
+we can associated a Galois representation $r_\pi$ of $\Gal_\K$
+to an irreducible $G(\A_f)$-representation $\pi$
+inside the space of algebraic modular form.
+Moreover, if $\pi\cap S_{\wt{k}}(U^p\GL_2(\K_{w_0})\Iw(p^{0,1}),E)\neq 0$,
+then $r_\pi$ is unramified at the places where 
+$U_v$ is hyperspecial and ordinary at $w\in \Sigma_p\setminus\{w_0\}$.
+As the Hecke operators all acts semi-simply,
+the Hecke algebra $\TT(U^p)$ is reduced 
+and we can glue the Galois representations from 
+finite levels into a big Galois pseudo-representation
+\[
+    T(U^p)\colon \Gal_\K\to \TT(U^p)
+\]
+with the properties listed below.
+\begin{enumerate}
+    \item Let $S\supset S_p$ be a finite set of places $v\in\finite$
+    such that $U_v$ is hyperspecial if $v\notin S$.
+    Denote the maximal Galois extension
+    that is unramified outside $S$ by $\K^S/\K$, then
+    $T(U^p)$ factors through $Gal(\K^S/\K)$.
+    \item Let $v\notin S$ be a split place
+    and $\Fr_w$ be the geometric Frobenius at $w\mid v$, then
+    \[
+        T(U^p)(\Fr_w)=T_w^{(1)},\quad
+        (\epsilon \det T(U^p))(\Fr_w)=T_w^{(2)}.
+    \]
+    \item Let $D_{w}$ be the decomposition group at
+    $w\in S_p\setminus\{w_0\}$, then 
+    $T(U^p)\vert_{D_{w}}=\Psi_{w,1}+\epsilon^{-1}\Psi_{w,2}$,
+    where $\Psi_{w,1},\Psi_{w,2}\colon D_{w}\to \TT(U^p)$
+    are characters and satisfy
+    \begin{equation*}
+	\begin{aligned}
+		\Psi_{w,1}\circ \Art_{w}(\varpi_{w})&=
+		U_{w}^{(1)} &
+		\Psi_{w,1}\circ \Art_{w}(x)&=
+		\langle 
+		(\begin{smallmatrix}
+			x&\\&1
+		\end{smallmatrix})
+		\rangle\, \text{ for }x\in \oo_{w}^{\times}\\
+		\Psi_{w,2}\circ \Art_{w}(\varpi_{w})&=
+		U_{w}^{(2)}/
+		U_{w}^{(1)}&
+		\Psi_{w,2}\circ \Art_{w}(x)&=
+		\langle 
+		(\begin{smallmatrix}
+			1&\\&x
+		\end{smallmatrix})
+		\rangle\, \text{ for }x\in \oo_{w}^{\times}
+	\end{aligned}
+	\end{equation*}
+    Moreover, $T(U^p)$ is $\Psi_{w,1}$-ordinary 
+    in the sense that for all 
+    $\sigma, \tau\in D_{w}$ and $\eta\in\Gal_\K$ we have
+    \[
+        T(U^p)(\sigma\tau\eta)
+        -\Psi_{w,1}(\sigma)T(U^p)(\tau\eta)
+        -\Psi_{w,2}(\tau)T(U^p)(\sigma\eta)
+        +\Psi_{w,1}(\sigma)\Psi_{w',2}(\tau)T(U^p)(\eta)=0.
+    \]
+    \item Let $D_{w_0}$ be the decomposition group at $w_0$, then
+    \[
+        (\epsilon\det T(U^p))\circ \Art_{w_0}
+        (\varpi_{w_0})=U_{w_0}^{(2)}\quad
+        (\epsilon\det T(U^p))\circ \Art_{w_0}(x)=
+        \langle 
+		(\begin{smallmatrix}
+			x&\\&x
+		\end{smallmatrix})
+		\rangle\, \text{ for }x\in \oo_{w_0}^{\times}
+    \]
+\end{enumerate}
+We remark that a pseudo-representation
+$T^{\ord}(U^p)\colon \Gal_\K\to \TT^{\ord}(U^p)$ 
+with the same properties also exists and is in fact 
+isomorphic to the pushforward of $T(U^p)$ via the homomorphism
+$\TT(U^p)\to\TT^{\ord}(U^p)$.
+Moreover, there exists characters
+$\Psi_{w_0,1},\Psi_{w_0,2}\colon D_{w_0}\to \TT^{\ord}(U^p)$
+such that the third property above holds for $w_0$.
+
+
+\subsection{Hida family}
+
+Let $\I$ be a local complete Noetherian ring
+that is finite over $\Lambda^+$ and flat over $\oo$.
+We define the space of $\I$-adic Hida families of tame level $U^p$ by
+\begin{equation*}
+    S^{\ord}(U^p,\I)\coloneqq 
+    \{\euF\in S^{\ord}(U^p)\widehat{\otimes}_\oo\I\mid 
+    (\langle u\rangle\otimes\id)\euF=
+    (\id\otimes\langle u\rangle)\euF\, \text{ for }
+    u\in \Lambda^+\}.
+\end{equation*}
+Here $(\langle u\rangle\otimes\id)$ denotes
+the action through the Hecke algebra and
+$(\id\otimes\langle u\rangle)$ denotes the action through $\I$.
+
+Define $M^{\ord}(U^p,\I)=M^{\ord}(U^p)\otimes_{\Lambda^+}\I$.
+From the duality between the completed homology and cohomology,
+it is easy to check that we have a Hecke-equivariant isomorphism
+$S^{\ord}(U^p,\I)\cong\Hom_\I(M^{\ord}(U^p,\I), \I)$.
+Moreover, suppose $U^p$ is sufficiently small in the sense that
+$G(\F)\cap g_i(U^pK_p)g_i^{-1}=\{1\}$ for all $i\in I$ in 
+a decomposition $G(\A_f)=\bigsqcup_{i\in I} G(\F)t_i (U^pK_p)$,
+then we can show that $M^{\ord}(U^p,\I)$ and $S^{\ord}(U^p,\I)$
+are finite free over $\I$ 
+and there exists a Hecke-equivariant isomorphism
+\[
+    M^{\ord}(U^p,\I)\cong \Hom_\I(S^{\ord}(U^p,\I),\I).
+\]
+
+
+\section{Results from p-adic local Langlands}
+
+Fix a maximal ideal $\fm\subset \TT(U^p,\oo)$.
+Enlarge $E$ if necessary, we assume that 
+$\TT(U^p,\oo)/\fm$ coincides with the residue field $\fF$ of $\oo$.
+Write $\TT_\fm=\TT(U^p)_\fm$ and let
+$T_\fm\colon\Gal_\K\to \TT_\fm$ denote the localization of 
+the pseudo-representation $T(U^p)$.
+If $\omega$ denotes the Teichmuller character,
+we say $T_{\fm}$ is residually reducible and locally generic at $w_0$
+if there exists characters
+$\bar{\delta}_1, \bar{\delta}_2\colon \Gal_{\K}\to \fF^\times$
+such that 
+\begin{equation}\tag{red.gen}\label{cond:red_gen}
+	T_\fm\equiv \bar{\delta}_1+\bar{\delta}_2
+	\mod \fm,\quad
+    \text{ and }\quad
+	\bar{\delta}_1\bar{\delta}_2^{-1} \vert_{D_{w_0}}
+	\neq \id,\omega^{\pm}.
+\end{equation}
+
+From now on we identify $D_{w_0}$ with $\Gp$, the absolute Galois
+group of $\Qp$. We shall apply techniques from $p$-adic local Langlands
+to study $S(U^p,E/\oo)_\fm$ as a $\GL_2(\Qp)\times T'_p$-representation.
+For a technical reason, it is necessary to make a twist as follows
+so that the $\GL_2(\Qp)$-action has a central character.
+
+Fix a continuous character $\zeta\colon \Gp\to \oo^\times$
+such that $\zeta\equiv \omega\delta_1\delta_2\vert_{\Gp}\bmod \varpi$.
+Then $\xi_\fm\coloneqq\zeta(\epsilon \det T_\fm)^{-1}\vert_{\Gp}$ 
+is trivial modulo $\fm$ and there exists a well-defined 
+square-root character $\xi_\fm^{1/2} \colon\Gp\to \TT_\fm$
+since $p$ is odd.
+Identify $\Qp^\times$ with the central torus of $\GL_2(\Qp)$.
+We let $S(U^p,E/\oo)_\fm$ be a $Q$-representation for
+\[
+    Q\coloneqq \GL_2(\Qp)\times \Qp^\times \times T'_p,
+\]
+on which $\Qp^\times\times T_p'$ acts by the usual translation,
+but $\GL_2(\Qp)$ acts with the translation
+twisted by $\xi_\fm^{1/2}\circ\Art$ 
+and has a central character $\epsilon\zeta$.
+Take the localization $S^{\ord}(U^p,E/\oo)_\fm$ via 
+$\TT(U^p)\to \TT^{\ord}(U^p)$.
+We make a similar twist of the translation by $T(\Qp)\times T'_p$
+on $S^{\ord}(U^p,E/\oo)_\fm$ and define an $M$-representation for 
+\[
+    M\coloneqq T(\Qp)\times \Qp^\times \times T'_p.
+\]
+
+
+\subsection{Local-global compatibility}
+
+We very briefly review P\v ask\={u}nas' theory of blocks 
+of a $p$-adic analytic group $H$ and refer the details to \cite{pask}.
+Let $\Mod^{\sm}_H(\oo)$ be the category 
+of $\oo[H]$-modules $V$ such that 
+\begin{itemize}
+    \item Each $v\in V$ is fixed by some open compact subgroup of $H$.
+    \item Each $v\in V$ is annihilated by $\varpi^h$ for some $h\geq 0$.
+\end{itemize}
+We call $V\in \Mod^{\sm}_{H}(\oo)$ admissible if
+$V^K[\varpi^h]$ is $\oo$-finite 
+for any $h$ and any compact open subgroup $K$ of $H$.
+
+Let $\Mod^{\lfin}_H(\oo)$ be the full subcategory of
+$V\in \Mod^{\sm}_{H}(\oo)$  such that each $v\in V$ generates 
+a $\oo[H]$-submodule of finite length.
+A general formalism ensures that 
+an irreducible $\pi\in \Mod^{\lfin}_H(\oo)$ admits
+an injective envelope $\tilde{J}_\pi$, or dually, 
+the Pontryagin dual $\pi^\vee$ 
+admits a projective envelope $\tilde{P}_{\pi^\vee}$.
+
+
+We say two irreducible representations $\pi,\pi'$ 
+are equivalent if there exists a sequence 
+$\pi=\pi_1,\cdots, \pi_n=\pi'$ of irreducible representations
+such that all successive $\pi_i,\pi_{i+1}$ have nontrival extensions.
+A block $\B$ is an equivalence class of irreducible representations.
+Given a block $\B$, we let $\fC^\B_H(\oo)$ denote the subcategory
+of all $S^\vee$, where $S\in \Mod^{\lfin}_H(\oo)$ and
+all the irreducible subquotients of $S$ belong to $\B$. We have
+\begin{enumerate}[label=(P\arabic*)]
+\item $\Hom_H(\tilde{P}_\pi,\tilde{P}_{\pi'})=0$ if 
+$\pi,\pi'$ are not equivalent and 
+$\tilde{P}_\pi\in \fC^\B_H(\oo)$ if $\pi\in\B$.
+\item Let $\tilde{P}_\B=\oplus_{\pi\in\B}\tilde{P}_\pi$
+and $\tilde{E}_\B=\End_H(\tilde{P}_\B)$,
+then the evaluation map 
+$\Hom_H(\tilde{P}_\B,N)\otimes_{\tilde{E}_\B}\tilde{P}_\B\to N$
+is an isomorphism if $N\in \fC^\B_H(\oo)$.
+In fact $\fm(N)\coloneqq \Hom_H(\tilde{P}_\B,N)$ defines an
+equivalence between $\fC^\B_H(\oo)$ and the category of pseudo-compact
+$\tilde{E}_\B$-modules.
+\label{P2}
+\end{enumerate}
+
+
+We now apply the results from \cite[\S 7]{pask}
+to our settings.
+Let $\chi_i\colon \Gp\to \fF^\times$ 
+denote the character $\omega\bar{\delta}_i$.
+If we identify $\chi_i$ with the 
+$\Q^\times$-characters obtained through composition
+with $\Art$,
+then under the generic assumption in \eqref{cond:red_gen} the set 
+$\B=\{\pi_1,\pi_2\}$ is a block of 
+irreducible $\GL_2(\Qp)$-representations for
+\[
+\pi_1\coloneqq 
+\Ind_{B}^{\GL_2}\chi_1\otimes\chi_2\omega^{-1} \text{ and }
+\pi_2\coloneqq
+\Ind_{B}^{\GL_2}\chi_2\otimes\chi_1\omega^{-1} .
+\]
+For the same technical reason, we actually use the subcategories
+$\Mod^{\lfin}_{\GL_2(\Qp),\epsilon\zeta}(\oo)$ and 
+$\Mod^{\lfin}_{T(\Qp),\epsilon\zeta}(\oo)$
+of representations on which 
+the central $\Qp^\times$ acts by $\epsilon\zeta$,
+and we identify the latter category with 
+$\Mod^{\lfin}_{\Qp^\times}(\oo)$ via 
+$\Qp^\times\cong \smat{1&\\&*}\subset T(\Qp)$.
+Let $\tilde{P}_j$ denote the projective envelope of $\pi^\vee$
+and let $R^{\epsilon\zeta}$ represent
+the universal pseudo-deformation of 
+$\chi_1+\chi_2$ with fixed determinant $\epsilon\zeta$,
+then we have the following results.
+\begin{enumerate}
+    \item $R^{\epsilon\zeta}$ is a regular local ring 
+    of relative dimension 3 over $\oo$ and the reducibility ideal of which 
+    is generated by a regular element $\xx$,
+    we write $R^{\epsilon\zeta}_\red\coloneqq R^{\epsilon\zeta}/(\xx)$.
+    \item $\End_{\GL_2(\Qp)}(\tilde{P}_j)$ 
+    is isomorphic to $R^{\epsilon\zeta}$ as a ring and
+    $\Hom_{\GL_2(\Qp)}(\tilde{P}_i,\tilde{P}_j)$ is free of rank one over
+    $R^{\epsilon\zeta}$ if $i\neq j$. Moreover, let 
+    $\Phi_{ij}\in\Hom_{\GL_2(\Qp)}(\tilde{P}_j, \tilde{P}_i)$
+    be a generator, then $\Phi_{ji}\circ\Phi_{ij}$
+    generates the reducibility ideal under the isomoprhism
+    $\End_{\GL_2(\Qp)}(\tilde{P}_j)\cong R^{\epsilon\zeta}$.
+    \item Let $\tilde{P}_\B=
+    \tilde{P}_2\oplus \tilde{P}_2$, then $R^{\epsilon\zeta}$ is
+    isomorphic to the center of 
+    $\tilde{E}_\B\coloneqq
+    \End_{\GL_2(\Qp)}(\tilde{P}_\B)$.
+    \item Let $\Ord\colon \Mod_{\GL_2(\Qp)}(\oo)\to 
+    \Mod_{T(\Qp)}(\oo)$ denote Emerton's functor
+    \cite{emeI} with respect to $B$.
+    Then $\Ord(\tilde{P}_{j})
+    =\tilde{P}_{\chi_j^\vee}$ and 
+    $\Ord\colon 
+    \End_{\GL_2(\Qp)}(\tilde{P}_j)\to 
+    \End_{T(\Qp)}(\tilde{P}_{\chi_j^\vee})$
+    is surjective with the reducibility ideal 
+    as the kernel. Therefore we can identify 
+    $\End_{T(\Qp)}(\tilde{P}_{\chi_j^\vee})$
+    with $R^{\epsilon\zeta}_\red$.
+\end{enumerate}
+
+
+On the other hand, consider the $\TT_\fm^\times$-valued character 
+of $\Qp^\times\times T'_p$ defined by 
+$(\epsilon\det T(U^p))$ at $w_0$
+and by $\Psi_{w,1}\otimes\Psi_{w,2}$ at $w\neq w_0$
+after composition with the Artin map.
+Let $\upsilon\colon\Qp^\times\times T'_p\to\fF^\times$
+denote the residual character.
+Then $\tilde{P}=\tilde{P}_{\upsilon^\vee}$ is free of rank one over
+$\tilde{E}=\End_{\Qp^\times\times T'_p}(\tilde{P})$,
+which is isomorphic to the universal deformation ring of $\upsilon$.
+Now $\tilde{P}_{i,\fm}\coloneqq\tilde{P}_i\otimes \tilde{P}$
+is the projective envelope of $(\pi\otimes\upsilon)^\vee$.
+Put $\tilde{P}_{\B,\fm}=\tilde{P}_\B\otimes \tilde{P}$ and 
+$\tilde{E}_\fm=\End_{Q}(\tilde{P}_{\B,\fm})\cong 
+\tilde{E}_\B\otimes \tilde{E}$,
+then $R_\fm\coloneqq R^{\epsilon\zeta}\otimes \tilde{E}$
+acts on $\Hom_{Q}(\tilde{P}_\fm, M(U^p)_\fm)$ in two ways:
+
+
+
+\begin{itemize}
+\item $R_\fm$ acts on $\tilde{P}_\fm$ as the center of 
+$\tilde{E}_\fm=\End_{Q}(\tilde{P}_{\B,\fm})$.
+\item $R_\fm$ acts on $M(U^p)_\fm$ through the homomorphism
+$R_\fm\coloneqq R^{\epsilon\zeta}\otimes \tilde{E}\to \TT_\fm$, which is
+induced respectively from $\xi_\fm^{1/2}\epsilon {T_\fm}\mid_{\Gp}$
+and $\upsilon$ by the universal property.
+
+\end{itemize}
+We remark that since we don't know yet whether $\TT_\fm$ is Noetherian,
+the homomorphism from $R^{\epsilon\zeta}$ comes from 
+first applying the universal property to the Hecke algebras at finite
+levels then take the inverse limit.
+
+The following proposition is a modified version of
+the local-global compatibility from \cite{pan}.
+
+\begin{prop}\label{prop:compatibility}
+    All the irreducible subquotients of $S(U^p,E/\oo)_\fm$
+    are isomorphic to either $\pi_1\otimes\upsilon$ or 
+    $\pi_2\otimes\upsilon$. 
+    As a consequence the two $R_\fm$-actions on 
+    $\Hom_{Q}(\tilde{P}_\fm, M(U^p)_\fm)$ coincide.
+\end{prop}
+
+\subsection{Reducible part of the completed homology}
+
+
+We can deduce from the local-global compatibility that 
+there is a projective resolution
+\begin{equation*}
+0\to \tilde{P}_{\B,\fm}^{\oplus r}\to 
+\tilde{P}_{\B,\fm}^{\oplus r}\to 
+M(U^p)_{\fm}\to 0
+\end{equation*}
+The first morphism above can be represented by a matrix
+$A=\smat{A_{11} & A_{12}\Phi_{12}\\A_{21}\Phi_{21} & A_{22}}$
+for $A_{ij}\in M_r(R_{\fm})$.
+Now apply the right exact $\Ord$ to the $\GL_2(\Qp)$-part of the sequence.
+We have $\Ord(\tilde{P}_{i,\fm})=\tilde{P}_{\chi_i^\vee,\fm}\coloneqq
+\tilde{P}_{\chi_i^\vee}\otimes \tilde{P}$ and it can be checked that
+$\Ord(M(U^p)_\fm)=M^{\ord}(U^p)_\fm$.
+Thus we obtain the right exact sequence
+\begin{equation}\label{eq:presentord}
+	\tilde{P}_{\chi_1^\vee,\fm}^{\oplus r}\oplus 
+	\tilde{P}_{\chi_2^\vee,\fm}^{\oplus r}
+	\xrightarrow{\overline{A}_{11}\oplus\overline{A}_{22}}
+	\tilde{P}_{\chi_1^\vee,\fm}^{\oplus r}\oplus 
+	\tilde{P}_{\chi_2^\vee,\fm}^{\oplus r}
+	\to M^{\ord}(U^p)_\fm\to 0
+\end{equation}
+where $\overline{A}_{ii}$ denote the reduction in 
+$R^\red_\fm\coloneqq R^{\epsilon\zeta}_\red\otimes\tilde{E}$.
+This shows that $M^{\ord}(U^p)_\fm$ is the direct sum of 
+\[
+    M^{\ord}(U^p)_{\fm,i}\coloneqq 
+    \Hom_{M}(\tilde{P}_{\chi_i^\vee,\fm}, M^{\ord}(U^p)_\fm)
+    \otimes_{R_\fm^\red}
+    \tilde{P}_{\chi_i^\vee,\fm}\cong 
+    \Hom_{M}(\tilde{P}_{\chi_i^\vee,\fm}, M^{\ord}(U^p)_\fm)
+\]
+where the isomorphism follows
+since $\tilde{P}_{\chi_i^\vee,\fm}$ is free of rank one
+over $R_\fm^\red\cong \End_M(\tilde{P}_{\chi_i^\vee,\fm})$.
+In fact, this implies that there are exactly two maximal ideals 
+$\fm_1,\fm_2$ in $\TT^{\ord}(U^p)_{\fm}$,
+which are characterized by $\Psi_{2,w_0}\bmod \fm_i=\chi_i$,
+and that $M^{\ord}(U^p)_{\fm,i}=M^{\ord}(U^p)_{\fm_i}$.
+Another conclusion we can draw,
+using that $M^{\ord}(U^p)$ is finite over $\Lambda^+$
+and $\dim\Lambda^+<\dim R_\fm^\red$, is that both
+$\overline{A}_{11}$ and $\overline{A}_{22}$ are injective.
+
+This last fact has two importance consequences for us.
+First, apply the snake lemma to
+\begin{equation*}
+    \begin{tikzcd}
+    0 \arrow[r] & 
+    \tilde{P}_{\B,\fm}^{\oplus r} 
+	\arrow[d,"\xx"] \arrow[r,"A"] & 
+	\tilde{P}_{\B,\fm}^{\oplus r} 
+	\arrow[d,"\xx"] \arrow[r] & 
+	M(U^p)_{\fm}
+    \arrow[d,"\xx"]  \arrow[r] & 0 \\ 
+    0 \arrow[r] & 
+    \tilde{P}_{\B,\fm}^{\oplus r}
+	\arrow[r,"A"] & 
+    \tilde{P}_{\B,\fm}^{\oplus r}
+	\arrow[r] &
+    M(U^p)_{\fm} 
+    \arrow[r] & 0 
+    \end{tikzcd}
+\end{equation*}
+Write $M^\red\coloneqq M/\xx M$ if $M$ is an $R_\fm$-module.
+We can show that $\xx$ is injective on $\tilde{P}_{\B,\fm}$.
+Thus for both $j=1,2$, the space
+$\Hom_{Q}(\tilde{P}_{j,\fm}, M(U^p)_{\fm}[\xx])$
+is isomorphic to the kernel of the homomorphism
+\begin{equation*}
+	A'=\smat{\bar{A}_{ii}& \bar{A}_{ij}\Phi_{ij}\\& \bar{A}_{jj}}\colon 
+	\Hom_{Q'}(\tilde{P}_{j,\fm},\tilde{P}_{\B,\fm}^{\oplus r})^{\red}\to
+	\Hom_{Q'}(\tilde{P}_{j,\fm},\tilde{P}_{\B,\fm}^{\oplus r})^{\red}
+\end{equation*}
+which we know to be injective.
+Therefore $\Hom_{Q}(\tilde{P}_{j,\fm}, M(U^p)_{\fm}[\xx])=0$
+for $j=1,2$.
+
+Second, we can observe that the same homomorphism 
+above also appears in the commutative diagram 
+\begin{equation*}
+    \begin{tikzcd}
+	    0 \arrow[r]& 
+	    \Hom_{Q}(\tilde{P}_{2,\fm},\tilde{P}_{1,\fm}^{\oplus r})^{\red}
+	    \arrow[r,"\bar{A}_{11}"] \arrow[d]&
+	    \Hom_{Q}(\tilde{P}_{2,\fm}, \tilde{P}_{1,\fm}^{\oplus r})^{\red}
+	    \arrow[d] &&\\
+	    0\arrow[r] & 
+	    \Hom_{Q}(\tilde{P}_{2,\fm},\tilde{P}_{\B,\fm}^{\oplus r})^{\red}
+	    \arrow[r,"A'"] \arrow[d,"\Ord"] &
+	    \Hom_{Q}(\tilde{P}_{2,\fm},\tilde{P}_{\B,\fm}^{\oplus r})^{\red}
+	    \arrow[d,"\Ord"] \arrow[r]&
+	    \Hom_{Q}(\tilde{P}_{2,\fm}, M(U^p)_{\fm})^{\red}\arrow[r]
+        \arrow[d,"\Ord"] &0\\
+	    0\arrow[r] & 
+	    \End_{M}(\tilde{P}_{\chi_2^\vee,\fm})^{r}
+	    \arrow[r,"\bar{A}_{22}"] &
+	    \End_{M}(\tilde{P}_{\chi_2^\vee,\fm})^{r}
+        \arrow[r]&
+        \Hom_{M}(\tilde{P}_{\chi_2^\vee,\fm}, M^{\ord}(U^p)_\fm)
+        \arrow[r]&0
+    \end{tikzcd}
+\end{equation*}
+where the exactness of the columns follows from 
+$\Hom_{Q}(\tilde{P}_{2,\fm}, \tilde{P}_{2,\fm})^{\red}
+\cong \End_{M}(\tilde{P}_{\chi_2^\vee,\fm})$.
+Since taking $\Ord$ is Hecke-equivariant,
+apply the snake lemma and use the presentation \eqref{eq:presentord}
+gives the result below.
+\begin{prop}\label{cor:fil_by_ord}
+	We have the following exact sequences of
+	$\TT(U^p,\oo)_\fm\times R_{\fm}^{\red}$-modules
+\begin{equation*}
+\begin{aligned}
+	0\to M^{\ord}(U^p)_{\fm,1}\to
+	\Hom_{Q}(\tilde{P}_{2,\fm},M(U^p)_{\fm})^{\red}
+    \to
+	M^{\ord}(U^p)_{\fm,2}\to0\\
+	0\to M^{\ord}(U^p)_{\fm,2}\to
+	\Hom_{Q}(\tilde{P}_{1,\fm},M(U^p)_{\fm})^{\red}
+    \to
+	M^{\ord}(U^p)_{\fm,1}\to0
+\end{aligned}
+\end{equation*}
+\end{prop}
+
+
+Let $\Lambda\coloneqq\llbracket T(p^1)\rrbracket$,
+which is a subalgebra of $\Lambda^+=\llbracket T(p^0)\rrbracket$.
+If $U^p$ is sufficiently small, then 
+$M^{\ord}(U^p)$ is finite free over $\Lambda$ and therefore
+so is $\Hom_{Q}(\tilde{P}_{i,\fm},M(U^p)_{\fm})^\red$ by the proposition above.
+Write $\mathbf{m}_i=\Hom_{Q}(\tilde{P}_{i,\fm},M(U^p)_{\fm})$
+and suppose $s=\rank_{\Lambda}\mathbf{m}_i^\red$.
+By the topological Nakayama lemma there exists a surjection
+$\Lambda\llbracket \xx\rrbracket^{\oplus s}\to\mathbf{m}_i$.
+Let $N$ denote the kerne and apply the snake lemma to the diagram
+\[
+\begin{tikzcd}
+0\arrow[r]& 
+N\arrow[r]\arrow[d,"\xx"]&
+\Lambda\llbracket \xx\rrbracket^{\oplus s}\arrow[r]\arrow[d,"\xx"]&
+\mathbf{m}_i\arrow[r]\arrow[d,"\xx"] &0\\
+0\arrow[r]& 
+N\arrow[r]&
+\Lambda\llbracket \xx\rrbracket^{\oplus s}\arrow[r]&
+\mathbf{m}_i\arrow[r] &0
+\end{tikzcd}
+\]
+shows that $N^\red\cong\fm_i[\xx]$, which is trivial
+by the first consequence above.
+Therefore $N=0$ by Nakayama's lemma, as a result
+$\fm_1,\fm_2$, and
+$\Hom_{Q}(\tilde{P}_{\B,\fm}, M(U^p)_\fm)=\fm_1\oplus \fm_2$
+are finite free over $\Lambda\llbracket \xx\rrbracket$.
+
+
+From $\xx\in R_\fm\to \TT_\fm$ we can view $\TT_{\fm}$
+as a $\Lambda\llbracket \xx\rrbracket$-algebra.
+The local-global compatibility then implies the injectivity of
+the $\Lambda\llbracket\xx\rrbracket$-algebra homomorphism
+\[
+    \TT_\fm\hookrightarrow
+    \End_{\Lambda\llbracket\xx\rrbracket}
+    (\Hom_{Q}(\tilde{P}_{\B,\fm},M(U^p)_{\fm})).
+\]
+We can now conclude that the right hand side is finite free
+and obtain the corollary below.
+
+
+\begin{cor}\label{cor:Hecke_ff}
+Assume that $U^p$ is sufficiently small,
+then $\TT_\fm$ is a finite free 
+$\Lambda\llbracket\xx\rrbracket$-algebra.
+\end{cor}
+
+
+
+\subsection{Fundamental exact sequence}
+
+
+Let $\fG$ be an abelian profinite group.
+The algebra $\I\coloneqq\oo\llbracket\fG\rrbracket$
+is local complete Noetherian and flat over $\oo$.
+We assume $\fG=W\times \Delta$,
+where $\Delta$ is a finite and $W\cong\Zp^n$.
+
+We fix a surjective homomorphism 
+$\lambda^{\ord}\colon \TT^{\ord}(U^p,\I)\to\I$
+of $\Lambda^+$-algebras and let 
+\begin{equation*}
+    \lambda\colon 
+    \TT(U^p,\oo)\to
+    \TT^{\ord}(U^p,\oo)\to\I
+\end{equation*}
+denote the composition. 
+Let $\fm_\I\subset\I$ be the maximal ideal,
+$\fm=\lambda^{-1}(\fm_\I)$, and $\fm_\circ=(\lambda^\ord)^{-1}(\fm_\I)$.
+We assume the maximal ideal
+$\fm$ satisfies \eqref{cond:red_gen},
+then we know $\fm_\circ$ is one of the only two maximal 
+ideals $\fm_1,\fm_2\subset \TT^{\ord}_\fm\coloneqq\TT^{\ord}(U^p)_\fm$,
+say $\fm_\circ=\fm_1$.
+We now make the following assumptions on the space of Hida families
+$M^{\ord}(U^p,\I)_{\fm_i}\coloneqq
+M^{\ord}(U^p)_{\fm_i}\otimes_{\Lambda^+}\I$ for $i=1,2$.
+\begin{enumerate}[label=(C\arabic*)]
+\item There exists a nonzero $\TT_\fm$-linear map
+$\Theta\colon M^{\ord}(U^p,\I)_{\fm_1}\to \I$,
+where $\TT_\fm$ acts on $\I$ via $\lambda$.
+\label{cond:C1}
+\item There exists an ideal $\fq\subset \TT_{\fm}$
+containing $\xx$ such that $\fq M^{\ord}(U^p,\I)_{\fm_2}=0$.
+\label{cond:C2}
+\item There exists $F\in M^{\ord}(U^p,\I)_{\fm_1}$
+such that $\Theta(F)\neq0$ and $\fq F=0$.
+\label{cond:C3}
+\end{enumerate}
+
+To simplify the notation, let 
+$M=\Hom_{Q}(\tilde{P}_{1,\fm},M(U^p)_{\fm})\otimes_{\Lambda^+}\I$,
+$M_i^{\ord}=M^{\ord}(U^p,\I)_{\fm_i}$ for $i=1,2$, and
+define $S_1^{\ord}=\ker(\Theta)\subset M_1^{\ord}$.
+By Proposition \ref{cor:fil_by_ord}, 
+we have a right exact sequence of $\TT_\fm$-modules
+\begin{equation*}
+    M_2^{\ord}\to M^\red\to M_1^{\ord}\to 0
+\end{equation*}
+Let $S\subset M$ be the preimage of $S_1^{\ord}$ via
+$M\to M^\red\to M_1^{\ord}$.
+By \ref{cond:C2}
+we have the commutative diagram
+\[
+\begin{tikzcd}
+	S\arrow[r,"\xx"] \arrow[d]
+	& \fq S \arrow[r] \arrow[d]
+	& \fq S^{\red} \arrow[r] \arrow[d] & 0\\
+	M\arrow[r,"\xx"]
+	& \fq M \arrow[r]
+	& \fq M^{\red} \arrow[r] & 0
+\end{tikzcd}
+\]
+and apply the snake lemma gives a right exact sequence of $\TT_\fm$-modules
+\begin{equation*}
+	M/S\xrightarrow{\xx} \fq M/\fq S\to 
+	\fq M_1^\red/\fq S_1^\red \to 0
+\end{equation*}
+Note that by definition we have $M/S\cong M_1^\ord/S_1^\ord$
+and $\xx M\subset S$. We can then use \ref{cond:C2} to show that
+$\fq M^{\red}/\fq S^{\red}=\fq M_1^{\ord}/\fq S_1^{\ord}$.
+And with more work we can deduce the left-exactness of the sequence.
+
+
+\begin{prop}\label{cor:fund}
+	Under the assumptions
+    \ref{cond:C1}, \ref{cond:C3}, and \ref{cond:C2},
+    we have the following commutative diagram of $\TT_\fm$-modules
+    where the bottom row is exact
+    \begin{equation*}
+    \begin{tikzcd}
+    & M/S
+    \arrow[r,"\xx"]\arrow[d,"\cong"] &
+    (M/S)\otimes_{\TT_\fm}\fq
+    \arrow[r]\arrow[d] &
+    (M/S)\otimes_{\TT_\fm}\fq^\red
+    \arrow[r]\arrow[d] &0\\
+    0\arrow[r] &
+    M^\ord_1/S^\ord_1
+    \arrow[r,"\xx"] &
+    \fq M/\fq S
+    \arrow[r] &
+    \fq M_1^{\ord}/\fq S_1^{\ord}
+    \arrow[r] &0
+    \end{tikzcd}
+    \end{equation*}
+\end{prop}
+
+The proof of the proposition is a long commutative algebra argument
+and uses Proposition \ref{cor:Hecke_ff} in an essential way.
+One first uses \ref{cond:C3} and reduces the proposition 
+to showing that a suitable localization of $\fq M/\fq S$,
+which becomes a $\textnormal{Frac}\Lambda\llbracket\xx\rrbracket$-module,
+is nontrivial.
+But Proposition \ref{cor:Hecke_ff} implies that the suitable
+localization of $\TT_\fm$ is a discrete valuation ring.
+Therefore the localization of $\fq M/\fq S$ coincides with that 
+of $M/S$, which we can show to be nontrivial by \ref{cond:C3}.
+
+
+\begin{rem}
+Aside from some modifications,
+the formulation and the proof of the proposition
+are entirely from \cite[Prop. 6.3.5]{urban},
+which deals with the case of Eisenstein ideals on modular curves.
+We also refer to \cite[Thm 3.4.1]{urban}
+for a different proof 
+which relies on the geometry of eigencurves.
+\end{rem}
+
+
+\section{Construction of Euler systems}
+
+Let $\psi$ be the finite order anticyclotomic Hecke character
+as in the introduction and let $W^-$ be the Galois group 
+of the maximal anticyclotomic $\Zp^d$ extension 
+$\tilde{\K}^a$, where $d=[\F:\Q]$.
+Write $\I=\oo\llbracket W^-\rrbracket$. 
+We would first like to have an eigensystem 
+\[
+\lambda^{\ord}\colon \TT^{\ord}(U^p)\to\I
+\]
+that involes the deformation of $\psi$ and
+satisfies the assumptions from the previous section.
+
+\subsection{Hida family of theta lifts}
+
+Let $\Psi\coloneqq \psi^{-1}\langle*\rangle$,
+where $\langle*\rangle\colon \Gal_\K\to \I$ is the tautological character.
+In the previous work \cite{lee} of the author,
+after enlarging $E$ to a finite extension
+of $\bar{\Q}_p^{un}$,
+we can interpolate
+theta lifts of Hecke characters and obtain
+\begin{itemize}
+    \item a Hida family $\euF\in S^{\ord}(U^p,\I)$ which induces
+    the eigensystem $\lambda^{\ord}\colon \TT^{\ord}(U^p)\to\I$
+    with 
+    \begin{equation}\label{eq:eigen}
+        \lambda^{\ord}(T_w^{(1)})=
+        \epsilon^{-1}\hat{\chi}_\circ(\varpi_w)+
+        \epsilon^{-1}\hat{\chi}_\circ\Psi(\varpi_w),\quad
+        \lambda^{\ord}(U_w^{(1)})=
+        \epsilon^{-1}\hat{\chi}_\circ\Psi(\varpi_w).
+    \end{equation}
+    \item an element
+    $L=\Omega_p^{-2\Sigma}\mathbf{B}(\euF,\euF)\in \I$, where 
+    $\mathbf{B}\colon S^{\ord}(U^p,\I)\times S^{\ord}(U^p,\I)\to\I$ 
+    is a certain Hecke-equivariant symmetric pairing, which induces
+    a homomorphism $S^{\ord}(U^p,\I)\to M^{\ord}(U^p,\I)$.
+\end{itemize}
+
+Here $\chi_\circ$ is an auxiliary Hecke character of $\K$ that
+defines the theta lift and $(\Omega_p,\Omega_\infty)$ 
+are the CM periods associated to $\K$.
+Let $\alpha$ be Hecke character such that the $p$-adic avatar
+$\widehat{\alpha}$ defines a character of $W^-$.
+We have shown in \cite{lee2} that if $\alpha$ 
+has the infinity type $(k+1)\Sigma$ for $k\geq0$ and $\tilde{\alpha}\coloneqq\alpha/\alpha^c$,
+then
+\begin{equation*}
+        \frac{1}{\Omega_p^{(2k+2)\Sigma}}
+        \int_{W^-}\widehat{\alpha}\,L=C(\K,\chi)
+        \left(\frac{2\pi}{\Omega_\infty}\right)^{(2k+2)\Sigma}
+    \textnormal{Im}(\delta)^{k}(\psi^{-1}\tilde{\alpha})(z_\delta^{-1})
+    \frac{\Gamma((k+2)\Sigma)}{(2\pi)^{(k+2)\Sigma}}
+    L(1,\psi^{-1}\tilde{\alpha})
+    \prod_{w\in \Sigma_p}E_w(\psi^{-1}\tilde{\alpha}),
+\end{equation*}
+where $\delta=-\delta^c\in\K$, $z_\delta\in \A_{\K,f}^\times$,
+and $C(\chi,\K)\in\oo$ are constant and
+$E_w(\psi^{-1}\tilde{\alpha})$ is the modified Euler factor 
+\[
+\frac{
+(1-\psi^{-1}\tilde{\alpha}(\varpi_\bw)q_\bw^{-1})
+(1-\psi\tilde{\alpha}^{-1}(\varpi_w))}
+{{\varepsilon(1,(\psi^{-1}\tilde{\alpha})_w,\psi_w)}}
+\]
+introduced by Coates and Perrin-Rious \cite{CP89}.
+From the interpolation formula we see that
+$L$ coincides with the anticyclotomic $p$-adic $L$-function
+of Katz and Hida-Tilouine up to a units and the constant $C(\chi,\K)$.
+
+\begin{rem}
+We have $C(\chi,\K)\neq 0$ if the central 
+$L$-value of $\chi_\circ$ is nonzero.
+To the limited knowledge of the author, 
+the most general result towards the existence of
+such an character $\chi_\circ$ with the properties
+\begin{enumerate}[label={($\chi$\arabic*)}]
+    \item $\chi_\circ$ restricts to $\qch_{\K/\F}|\cdot|_{\F}$,
+    where $\qch_{\K/\F}$ is the quadratic character associated
+    to $\K/\F$.
+    \item $\chi_\circ$ is unramified at places above $p$ and has
+    the infinity type $\Sigma^c$.
+    \item \label{cond:chi1}
+    The central $L$-value of $\chi_\circ$ is nonzero.
+\end{enumerate}
+is to combine the results of \cite{Rohrlich} and \cite{Hsieh2012},
+which actually produces the stronger result that 
+the central value is nonzero modulo $p$.
+This is the main reason we impose the condition \eqref{cond:K2in}.
+\end{rem}
+
+
+
+
+
+\subsection{Main construction}
+
+Let $\lambda\colon\TT(U^p)\to \I$ denote the composition like before,
+From \eqref{eq:eigen} we have
+\[
+    \lambda\circ T(U^p)=
+    \epsilon^{-1}\hat{\chi}_\circ+
+    \epsilon^{-1}\hat{\chi}_\circ\Psi.
+\]
+Thus $\lambda$ is surjective by Chebotarev's density
+and $\fm$ satisfies \eqref{cond:red_gen} because of 
+\ref{cond:psi1in}. Moreover, 
+\begin{itemize}
+\item \ref{cond:C1} holds if we let 
+$\Theta$ be the evaluation map 
+of $M^{\ord}(U^p,\I)_{\fm_1}\cong \Hom_\I(S^{\ord}(U^p,\I)_{\fm_1},\I)$
+at $\euF$.
+\item the first half of \ref{cond:C3} holds if we let 
+$F=\Omega_p^{-2\Sigma}\mathbf{B}(*,\euF)\in M^{\ord}(U^p,\I)_{\fm_1}$,
+since the $p$-adic $L$-function $\Theta(F)=L$ is nonzero by \cite{Hida10}.
+\end{itemize}
+To verify the next half and \ref{cond:C2}, we first recall the general process 
+of constructing cohomology classes from a generically irreducible
+pseudo-representation.
+Suppose $T\colon \mathcal{G}\to R$
+is a two-dimensional pseudo-representation
+into a Henselian local ring $R$
+with maximal ideal $\fm_R$
+and of odd residual characteristic.
+Assume there exists distinct characters
+$\bar{\delta}_i\colon \mathcal{G}\to R/\fm_R$ of $\mathcal{G}$
+for $i=1,2$ such that  
+$T\equiv \bar{\delta}_1+\bar{\delta}_2\bmod \fm_R$.
+Fix a choice of $z\in \mathcal{G}$
+with $\bar{\delta}_1(z)\neq \bar{\delta}_2(z)$
+We then apply the Hensel lemma to the characteristic polynomial
+\begin{equation*}
+    P(z,X)\coloneqq
+    X^2-T(z)X+\det(T)(z) \equiv 
+    (X-\bar{\delta}_1(z))(X-\bar{\delta}_2(z))
+    \mod \fm_R
+\end{equation*}
+and lift $\bar{\delta}_1(z)$ and $\bar{\delta}_2(z)$ 
+to roots $\alpha,\beta$ of $P(z,X)$
+such that $\alpha-\beta\in R^\times$.
+We then define the functions
+\begin{equation}\label{eq:presentation}
+   A(\sigma)=
+   \frac{T(\sigma z)-\beta T(\sigma)}{\alpha-\beta}\quad
+   D(\sigma)=
+   \frac{T(\sigma z)-\alpha T(\sigma)}{\beta-\alpha}\quad
+   x(\sigma,\tau)=a(\sigma\tau)-a(\sigma)a(\tau).
+\end{equation}
+Then 
+$A(\sigma)\equiv \bar{\delta}_1(\sigma)$,
+$D(\sigma)\equiv \bar{\delta}_2(\sigma)\bmod\fm_R$,
+and $x(\sigma,\tau)$
+generate the reducibility ideal of $T$.
+
+Moreover, when there exists $\sigma_0,\tau_0$ such that
+$x=x(\sigma_0,\tau_0)\in R$ is not a zero divisor, the map
+\begin{equation}\label{eq:present_repn}
+    \sigma\mapsto 
+    \begin{pmatrix}
+        A(\sigma)& B(\sigma)\\
+        C(\sigma) & D(\sigma)
+    \end{pmatrix}\coloneqq
+    \begin{pmatrix}
+        A(\sigma)& x(\sigma,\tau_0)/x(\sigma_0,\tau_0)\\
+        x(\sigma_0,\sigma) & D(\sigma)
+    \end{pmatrix}
+        \in \GL_2(R[1/x])
+\end{equation}
+defines a group representation 
+and satisfies $x(\sigma,\tau)=B(\sigma)C(\tau)$.
+Let $B\subset R[1/x]$ and $C\subset R$
+be the $R$-submodules generated respectively by
+$B(\sigma)$ and $C(\sigma)$ for $\sigma\in\mathcal{G}$.
+The following proposition is a subcase of 
+\cite[Thm 1.5.5]{BC}, which generalizes Ribet's lemma.
+\begin{prop}\label{prop:BC}
+Given a homomorphism $\phi\colon R\to S$ and suppose 
+$\phi\circ T$ is reducible, so that 
+$\delta_1\coloneqq \phi\circ A(\sigma)$ and 
+$\delta_2\coloneqq \phi\circ D(\sigma)$ become characters.
+Write $\delta=\delta_1\delta_2^{-1}$, then
+there exists injections 
+\begin{align*}
+    \Hom_R(B,S)&\hookrightarrow H^1(\mathcal{G},S(\delta))\quad
+    f\mapsto \delta_2(\sigma)^{-1}f(B(\sigma))\\
+    \Hom_R(C,S)&\hookrightarrow H^1(\mathcal{G},S(\delta^{-1}))\quad
+    f\mapsto \delta_1(\tau)^{-1}f(C(\tau))
+\end{align*}
+\end{prop}
+
+Now, let $\delta_1=\epsilon^{-1}\hat{\chi}_\circ$,
+$\delta_2=\epsilon^{-1}\hat{\chi}_\circ\Psi$ 
+and let $\bar{\delta}_i$ be the residual characters.
+As in previous section, we have two distinct characters
+$\chi_i=\omega\bar{\delta}_i\mid_{\Gp}$ and let 
+$R^{\epsilon\zeta}$ denote the universal deformation ring
+of $\chi_1+\chi_2$.
+
+Fix $z\in\Gp$ such that $\chi_1(z)\neq \chi_2(z)$.
+We let $\alpha_0,\beta_0$ be the roots of $P(z,X)$
+and define the $ R^{\epsilon\zeta}$-valued functions
+$A_0(\sigma)$, $D_0(\sigma)$, and $x_0(\sigma,\tau)$
+on $\Gp$ by \eqref{eq:presentation}.
+Then pick $\sigma_0,\tau_0\in\Gp$ such that
+$\xx=x(\sigma_0,\tau_0)$
+and let $B_0(\sigma)$, $C_0(\sigma)$ be defined
+by \eqref{eq:present_repn}.
+Note that by definition 
+$R^{\epsilon\zeta}=B_0\coloneqq(B_0(\sigma), \sigma\in\Gp)$.
+
+Let $\alpha,\beta\in \TT_\fm$
+denote the images of $\alpha_0,\beta_0$
+under $R^{\zeta\epsilon}\to \TT_\fm$.
+We similarly define the $\TT_\fm$-valued functions
+$A(\sigma), D(\sigma)$, and $x(\sigma,\tau)$ on $\Gal_\K$
+by \eqref{eq:presentation}, then
+the restrictions of the functions to $\Gp$ coincide with the images of
+$A_0(\sigma), D_0(\sigma)$, and $x_0(\sigma,\tau)$.
+In particular $\xx=x(\sigma_0,\tau_0)$ is not a zero divisor
+by Proposition \ref{cor:Hecke_ff}.
+We can then define $B(\sigma)$ and $C(\sigma)$,
+which also coincide with the images of $B_0(\sigma)$ and $C_0(\sigma)$
+when restricted to $\Gp$.
+
+\begin{lem}
+Let $x_i(\sigma,\tau)$ denote the image of $x(\sigma,\tau)$ in
+$\TT^{\ord}_{\fm_i}$ for $i=1,2$, then 
+\begin{itemize}
+    \item $x_1(\sigma,\tau)=0=x_2(\tau, \sigma)$ 
+    for $\sigma\in D_{w_0}$ and $\tau\in\Gal_\K$.
+    \item $x_1(\sigma,\tau)=0=x_2(\tau,\sigma)$ 
+    for $\sigma\in \Gal_\K$ and $\tau\in D_{\bw_0}$.
+\end{itemize}
+\end{lem}
+The lemma essentially follows from that 
+the ordinary Galois representation to $\TT^{\ord}_{\fm_i}$
+has $\epsilon^{-1}\hat{\chi}_\circ\Psi$ as a subrepresentation 
+when $i=1$ and 
+has $\epsilon^{-1}\hat{\chi}_\circ$ as a subrepresentation 
+when $i=2$. We now define the ideal 
+\[
+    \fq=(x(\sigma,\tau_0)=B(\sigma)C(\tau_0)=B(\sigma)\xx
+    \mid\sigma\in\Gal_\K)\subset \TT_\fm.
+\]
+Then $\xx\in\fq$ be definition;
+$\fq F=0$ since the action factors through $\lambda$
+and $\lambda\circ T(U^p)$ is reducible;
+and $\fq M^{\ord}(U^p,\I)_{\fm_2}=0$
+since $x_2(\sigma,\tau_0)=0$ by the lemma.
+Thus we have verified \ref{cond:C2} and \ref{cond:C3}.
+
+We may now apply Proposition \ref{cor:fund} and 
+get the commutative diagram
+\begin{equation*}
+    \begin{tikzcd}
+    & (M/S)
+    \arrow[r]\arrow[d,equal] &
+    (M/S)\otimes_{\TT_\fm}\fq
+    \arrow[r,"q"]\arrow[d,"p"] &
+    (M/S)\otimes_{\TT_\fm}\fq^\red
+    \arrow[r]\arrow[d,"s"] &0\\
+    0\arrow[r] &
+    M^{\ord}_1/S^{\ord}_1
+    \arrow[r] &
+    \fq M/\fq S
+    \arrow[r,"r"] &
+    \fq M^{\ord}_1/\fq S^{\ord}_1
+    \arrow[r] &0
+    \end{tikzcd}
+\end{equation*}
+
+\begin{defn}\label{def:cong_map}
+We define $f\in \Hom_{\TT_\fm}(B,\I)$ for
+$B=(B(\sigma),\sigma\in\Gal_\K)\subset \TT_\fm[1/\xx]$
+as follows.
+Let $\tilde{F}\in M$ be a preimage of $F\bmod S^\ord_1$,
+which is unique modulo $S$.
+For $b\in B$, let $q(b)=b\xx=bC(\tau_0)\in\fq$ and define
+\begin{align*}
+   &y'(b)=(\tilde{F}\bmod S)\otimes q(b)\in(M/S)\otimes_{\TT_\fm}\fq\\
+   &y(b)=p(y'(b))= q(b)\tilde{F}\bmod \fq S\in\fq M/\fq S
+\end{align*}
+On the other hand, observe that 
+$(M/S)\otimes_{\TT_\fm}\fq^\red=
+(M^{\ord}_1/S^{\ord}_1)\otimes_{\TT_\fm}\fq^\red$
+and therefore
+\begin{align*}
+   q(y'(b))&=(F\bmod S^{\ord}_1)\otimes q(b)\in 
+(M^{\ord}_1/S^{\ord}_1)\otimes_{\TT_\fm}\fq^\red\\
+   r(y(b))&=(s\circ q)(y'(b))=
+q(b)F\bmod \fq S^{\ord}_1\in\fq M^{\ord}/\fq S^{\ord}
+\end{align*}
+But $q(b){F}=0$ by \ref{cond:C2},
+so there exists $F(b)\in M^{\ord}_1/ S^{\ord}_1$ that maps to $y(b)$.
+We define $f(b)=\Theta(F(b))\in \I$.
+\end{defn}
+
+Observe that if $b\in\TT_\fm$, then 
+we can take $F(b)=q F$ and $f(b)=qL$.
+In particular this is the case if $b=B(\sigma)$ for $\sigma\in\Gp$.
+On the other hand, if $w\in\Sigma_p\setminus\{w_0\}$ and $\sigma_1,\sigma_2\in D_{w}$ we can show that
+\[
+(A(\sigma_1)-D(\sigma_1))B(\sigma_2)=
+(A(\sigma_2)-D(\sigma_2))B(\sigma_1).
+\]
+Moreover, let $\ff$ be a square-free product of split primes
+such that $\ff$ is prime to $p$ and $\ff+\ff^c=\oo_\K$.
+We let $\mathcal{R}$ be the set of $\fs\coloneqq\ff\ff^c$
+such that $\iota_w^{-1}(\GL_2(\oo_w))\subset U^p$ for all $w\mid\ff$.
+We then define $U^p_\fs\subset U^p$ by replacing $U_v$ with
+$\Iw(w^{1,1})$ when $w\mid \ff$ and $w\mid v$,
+and define $\I_\fs=\oo\llbracket\fG^a_\fs\rrbracket$, 
+where $\fG^a_\fs$ is the Galois group of  the maximal anticyclotomic
+pro-p abelain extension $\widetilde{\K}^a_\fs$ that is unramified away $p\fs$.
+
+
+For $\fs\in \mathcal{R}$, 
+let $\Psi_\fs\coloneqq \psi^{-1}\langle*\rangle_\fs$,
+where $\langle*\rangle_\fs\colon \Gal_\K\to \I_\fs$ 
+is the tautological character.
+Then the construction in \cite{lee} also gives a Hida family
+$\euF_\fs\in S^{\ord}(U^p_\fs,\I_\fs)$ and 
+an eigensystem $\lambda_\fs\coloneqq \TT^{\ord}(U^p_\fs)\to \I_\fs$.
+satisfying \eqref{eq:eigen}.
+Furthermore, when $\fs, \ell\fs\in \mathcal{R}$
+we have the commutative diagram
+\[
+\begin{tikzcd}
+	& \TT(U^p_{\ell\fs})_\fm
+    \arrow[d,"\varphi^{\ell\fs}_\fs"] \arrow[r,"\lambda_{\ell\fs}"]
+    &\I_{\ell\fs} \arrow[d,"\phi^{\ell\fs}_\fs"]\\
+	R^{\zeta\epsilon}\arrow[r]\arrow[ur]
+	& \TT(U^p_\fs)_\fm \arrow[r,"\lambda_{\fs}"] &
+    \I_\fs
+\end{tikzcd}
+\]
+where $\varphi^{\ell\fs}_\fs$ is induced by the obvious inclusions
+between algebraic modular forms and $\phi^{\ell\fs}_\fs$
+is induced by the homomorphis $\fG^a_{\ell\fs}\to\fG^a_{\fs}$.
+Then if $\ell=\fl\fl^c$ for a prime $\fl$, we can show that 
+\[
+\varphi^{\ell\fs}_\fs(B_{\ell\fs}(\sigma))=B_\fs(\sigma)
+    \text{ if }\sigma\in\Gal_\K
+    \text{ and }
+    \phi^{\ell\fs}_\fs\circ f_{\ell\fs}=
+    (1-\epsilon\Psi_{\fs}(\varpi_{\bar{\fl}}))
+    (1-\Psi_\fs(\varpi_{\bar{\fl}}))
+    \cdot (f_\fs\circ \varphi^{\ell\fs}_\fs).
+\]
+
+We now apply Proposition \ref{prop:BC} and
+let $Z_\fs\in H^1(\K,\I_\fs(\Psi_\fs^{-1}))$
+be the class constructed from 
+$B_\fs(\sigma)$ and $f_\fs$; and
+$Z_{\fs,p}\in H^1(\Gp,\I_\fs(\Psi_\fs^{-1}))$
+be the class constructed from 
+$B_\fs(\sigma)$ and $B_0=R^{\epsilon\zeta}\to \TT(U^p_\fs)\to\I_\fs$.
+We omit the subscript when $\fs=\oo_\K$.
+Then by the discussion above we obtain the following theorem.
+
+\begin{thm}\label{thm:Bigeu}
+The cohomology classes
+$\{\mathcal{Z}_\fs\in H^1(\K, \I_\fs(\Psi_\fs^{-1}))\}_{\fs\in\mathcal{R}}$
+has the following properties.
+\begin{enumerate}
+    \item There exists a finite set $S$ of primes of $\K$ such that 
+    $\mathcal{Z}_{\fs}$ is unramified at $w$ if $w\notin S$ and 
+    $w\nmid \fs$.
+    \item If $w\in \Sigma_p\setminus\{w_0\}$, 
+    $\loc_{w}(\mathcal{Z}_\fs)\in H^1(\K_{w}, \I_\fs(\Psi_\fs^{-1}))$
+    is annihilated by $(\Psi_{\fs}^{-1}(\sigma)-1)$
+    for any $\sigma\in D_{w}$.
+    \item At $w_0$,
+    $\loc_{w_0}(\mathcal{Z})\in H^1(\Qp, \I(\Psi^{-1}))$ coincides with
+    $L\cdot \mathcal{Z}_{p}$.
+    \item If $\ell\fs,\fs\in \mathcal{R}$ and $\ell=\fl\fl^c$
+    for a prime $\fl$, then
+    $\phi^{\ell\fs}_\fs(\mathcal{Z}_{\ell\fs})=
+    (1-\epsilon\Psi_{\fs}(\varpi_{\bar{\fl}}))
+    (1-\Psi_\fs(\varpi_{\bar{\fl}}))\cdot 
+    \mathcal{Z}_{\fs}$
+\end{enumerate}
+\end{thm}
+
+We call $\{\mathcal{Z}_\fs\in H^1(\K, \I_\fs(\Psi_\fs^{-1}))\}_{\fs\in\mathcal{R}}$
+an anticyclotomic Euler system because
+of the last property.
+We also remark that the third property
+should be viewed as a form of explicit reciprocity law.
+
+
+\subsection{Application to the main conjecture}
+
+
+Write $\Lambda_W^-=\I$ and let $\psi_\Lambda\coloneqq\psi\langle*\rangle$.
+To comform to the previous notations, we replace $\Sigma_p$
+with $\Sigma_p^c$ and consider instead the main conjecture for 
+\[
+\Sel(\psi_\Lambda,\Sigma_p^c)=\ker
+    \big\{
+    H^1(\K, \Lambda_W^{-*}(\psi_\Lambda))\to \prod_{w\notin \Sigma_p^c}
+    H^1(I_w, \Lambda_W^{-*}(\psi_\Lambda))
+    \big\},
+\]
+where $\Lambda_W^{-*}=\Hom^{\cts}(\Lambda_W^{-}, \Qp/\Zp)$.
+From the algebraic functional equation 
+and the technique from \cite{Hsieh2010}, 
+we can first reduce the theorem to showing that
+$(L_p(\psi_\Lambda, \Sigma_p^c))$ 
+is contained in the characteristic ideal of
+\begin{equation*}
+    \Sel^{str}(\epsilon\psi^{-1}_\Lambda,\Sigma_p)=
+    \ker\big\{
+    H^1(\K,\Lambda_W^{-*}(\epsilon\psi^{-1}_\Lambda))\to 
+    \prod_{w\nmid p}
+    H^1(I_w,\Lambda_W^{-*}(\epsilon\psi^{-1}_\Lambda))\times
+    \prod_{w\in \Sigma_p^c}
+    H^1(\K_w,\Lambda_W^{-*}(\epsilon\psi^{-1}\langle*\rangle^{-1}))
+    \big\}
+\end{equation*}
+in $E\llbracket W^-\rrbracket$.
+In fact, let $L^\iota\in \Lambda_W^-$
+denote the image of $L$ under the map
+$\langle\gamma\rangle\mapsto \langle\gamma\rangle^{-1}$.
+We can replace $L_p(\psi_\Lambda, \Sigma_p^c)$ with $(L^\iota)$
+since the interpolation formula implies that the two 
+generates the same ideal in $E\llbracket W^-\rrbracket$.
+We then apply 
+the specialization principle \cite{Och05} and further
+reduce the theorem to the proposition below.
+\begin{prop}
+    For almost all characters $\alpha\colon W^-\to \oo$, the length of
+    \begin{equation*}
+\ker\big\{
+H^1(\K, (E/\oo)(\epsilon(\psi\alpha)^{-1}))\to
+\prod_{w\nmid p}
+H^1(I_w,(E/\oo)(\epsilon(\psi\alpha)^{-1}))
+\prod_{w\in\Sigma_p^c}
+H^1(\K_w,(E/\oo)(\epsilon(\psi\alpha)^{-1}))
+\big\}
+\end{equation*}
+is finite and bounded by the length of  the $\oo/(\alpha(L^\iota))$.
+\end{prop}
+
+
+Let $\alpha^\iota\colon \I_\fs\to \I_\fs$ be the homomorphism
+induced by $\langle\gamma\rangle_{\fs}\mapsto 
+\alpha^{-1}(\gamma)\langle \gamma^{-1}\rangle_{\fs}$
+Then $\alpha^\iota$ defines an isomorphism between Galois modules
+$\alpha^\iota\colon \I_\fs(\Psi_\fs^{-1})=
+\I_\fs(\psi\langle*\rangle^{-1}_\fs)
+\to \I_\fs(\psi\alpha\langle*\rangle_\fs)$
+and by Shapiro lemma (cf \cite[Lem 5.8]{Schneider2016} for example), 
+we then have an isomorphism between Galois modules
+\begin{equation*}
+    \alpha^\iota(\mathcal{Z}_\fs) \in 
+    H^1(\K, \I_\fs(\psi\alpha\langle*\rangle_\fs))\cong 
+    \varprojlim_{L\subset {\K}_\fs^a}
+    H^1(L, \eo(\psi\alpha))
+\end{equation*}
+where $\Gal_\K$ acts on the left by $\langle*\rangle$
+and on the right by the usual 
+Galois actions on cohomology groups.
+Translating the result from Theorem \ref{thm:Bigeu}, 
+we have the collection of classes 
+$\{ z_{L}\in H^1(L, \oo(\psi\alpha))\}
+_{L\subset \widetilde{\K}^a_\fs, \,\fs\in \mathcal{R}}$ with the 
+following properties.
+
+\begin{enumerate}
+    \item If $L\subset \tilde{\K}^a_\fs$, then 
+    $z_{L}$ is unramified at $w$ if $w\notin S$ and $w\nmid \fs$.
+    \item If $w\in \Sigma_p\setminus\{w_0\}$, 
+    $\loc_{w}(z_L)\in H^1(L_w, \oo(\psi\alpha))$
+    is annihilated by $((\psi\alpha)(\sigma)-1)$
+    for any $\sigma\in D_{w}$.
+    \item Let $z\in H^1(\K, \oo(\psi\alpha))$ and
+    $z_p\in H^1(\Qp, \oo(\psi\alpha))$ be the bottom class of 
+    $\alpha^\iota(\mathcal{Z})$ and $\alpha^\iota(\mathcal{Z}_p)$, then
+    \[
+        \loc_{w_0}(z)=\alpha(L^\iota)\cdot z_{p}\in 
+        H^1(\Qp, \oo(\psi\alpha)).
+    \]
+    \item Let $\ell\fs,\fs\in \mathcal{R}$ with $\ell=\fl\fl^c$
+    for a prime $\fl$ and define 
+    $P_\fl(X)=(1-\epsilon(\psi\alpha)^{-1}(\varpi_\bl)X)
+    (1-(\psi\alpha)^{-1}(\varpi_\bl)X)$.
+    Suppose $L_\fs\subset \widetilde{\K}^a_\fs$ 
+    and $L_{\fs\ell}\subset \widetilde{\K}^a_{\fs\ell}$ 
+    and the inclusions do not hold for larger ideals, then
+    \begin{equation*}
+        \Cor_{L_{\fs}}^{L_{\fs\ell}}(z_{L_{\fs\ell}})=
+        P_\fl(\Fr_\fl)\cdot z_{L_{\fs}}.
+    \end{equation*}
+\end{enumerate}
+
+Now the proposition can be proved 
+with the general machinery in \cite{Rubin}
+after a slight modification.
+
+
+\section*{Acknowledgement}
+
+The author would like to thank Professor Kenichi Namikawa
+for the opportunity to present 
+and his hospitality during the conference.
+The author would also like to thank Professor Eric Urban
+and Professor Ming-Lun Hsieh for their support and encouragement
+during the period of the project.
+
+
+
+
+
+
+
+
+\bibliographystyle{amsalpha}
+\bibliography{biblio}
+
+\end{document}
